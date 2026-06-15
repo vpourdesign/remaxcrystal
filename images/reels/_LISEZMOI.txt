@@ -1,0 +1,15 @@
+Déposez ici vos reels nommés exactement :
+reel-01.mp4, reel-02.mp4, ... reel-12.mp4 (format .mp4)
+
+La grille de la page d'accueil (section « Notre présence sur les réseaux sociaux »)
+recadre automatiquement chaque vidéo selon la forme de sa tuile (object-fit: cover).
+Inutile de rogner les vidéos vous-même : déposez vos reels verticaux 9:16 tels quels.
+
+Tuiles à formats variés (effet masonry) :
+- reel-01  haute
+- reel-03  large
+- reel-04  grande (2x2)
+- reel-06  haute
+- reel-09  large
+- reel-10  haute
+- les autres : carrées

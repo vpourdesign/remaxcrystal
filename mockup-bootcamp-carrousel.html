@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mockup Facebook — Carrousel Boot Camp 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f0f2f5;
+    color: #050505;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+  .fb-post {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    overflow: hidden;
+  }
+  .fb-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  .fb-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #003DA5 50%, #DC1C2E 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 11px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .fb-page-info { flex: 1; min-width: 0; }
+  .fb-page-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #050505;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .fb-page-name svg { width: 14px; height: 14px; fill: #1877f2; }
+  .fb-meta {
+    font-size: 12px;
+    color: #65676b;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 1px;
+  }
+  .fb-more {
+    color: #65676b;
+    font-size: 20px;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+  .fb-text {
+    padding: 0 16px 12px;
+    font-size: 15px;
+    line-height: 1.33;
+    color: #050505;
+  }
+  .fb-text strong { font-weight: 600; }
+
+  /* Carousel */
+  .carousel-wrapper {
+    position: relative;
+    background: #000;
+  }
+  .carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+
+  .card {
+    flex: 0 0 88%;
+    scroll-snap-align: start;
+    background: #fff;
+    margin-right: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:last-child { margin-right: 0; }
+  .card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #1a1a2e;
+    object-fit: cover;
+    display: block;
+  }
+  .card-caption {
+    background: #fff;
+    padding: 10px 12px;
+    border-top: 1px solid #e4e6eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-text { min-width: 0; flex: 1; }
+  .caption-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #050505;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .caption-sub {
+    font-size: 12px;
+    color: #65676b;
+    margin-top: 1px;
+  }
+  .cta-btn {
+    background: #e4e6eb;
+    color: #050505;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* Nav arrows */
+  .nav-arrow {
+    position: absolute;
+    top: calc(50% - 30px);
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    z-index: 2;
+    font-size: 18px;
+    color: #050505;
+    user-select: none;
+  }
+  .nav-arrow.left { left: 10px; }
+  .nav-arrow.right { right: 10px; }
+
+  /* Actions row */
+  .fb-actions {
+    display: flex;
+    border-top: 1px solid #e4e6eb;
+    padding: 4px 8px;
+    margin-top: 0;
+  }
+  .fb-action {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    color: #65676b;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .fb-action:hover { background: #f2f2f2; }
+
+  .reactions {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px 6px;
+    font-size: 13px;
+    color: #65676b;
+    justify-content: space-between;
+  }
+  .reactions-left { display: flex; align-items: center; gap: 4px; }
+  .react-icons { display: flex; }
+  .react-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left: -4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+  .react-icon:first-child { margin-left: 0; }
+  .react-like { background: #1877f2; color: #fff; }
+  .react-love { background: #f33e58; color: #fff; }
+  .react-care { background: #f7b125; color: #fff; }
+
+  .label {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #65676b;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .hint {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #8a8d91;
+    font-style: italic;
+  }
+
+  /* =========================== */
+  /* STRATÉGIE SECTION           */
+  /* =========================== */
+  .strategy {
+    margin-top: 60px;
+    background: linear-gradient(180deg, #0a0e27 0%, #050816 100%);
+    border-radius: 16px;
+    padding: 48px 32px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #e8eaf2;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  }
+  .strategy-inner { max-width: 980px; margin: 0 auto; }
+
+  .strat-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #DC1C2E;
+    font-weight: 700;
+    padding: 6px 12px;
+    border: 1px solid rgba(220,28,46,.4);
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .strat-title {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .strat-accent {
+    background: linear-gradient(135deg, #DC1C2E 0%, #ff4d6a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .strat-sub {
+    font-size: 15px;
+    color: #8b91a8;
+    margin-bottom: 36px;
+  }
+  .strat-h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 40px 0 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .strat-h2::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg, #DC1C2E, #003DA5);
+    border-radius: 4px;
+  }
+
+  /* Budget cards */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .budget-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all .2s;
+  }
+  .budget-card:hover {
+    background: rgba(255,255,255,.07);
+    border-color: rgba(220,28,46,.3);
+  }
+  .budget-card--total {
+    background: linear-gradient(135deg, rgba(0,61,165,.25) 0%, rgba(220,28,46,.2) 100%);
+    border-color: rgba(220,28,46,.5);
+  }
+  .budget-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8b91a8;
+    margin-bottom: 8px;
+  }
+  .budget-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+  .budget-value--big { font-size: 36px; }
+  .budget-unit {
+    font-size: 13px;
+    font-weight: 500;
+    color: #8b91a8;
+    margin-left: 4px;
+  }
+  .budget-foot {
+    font-size: 12px;
+    color: #b8bcd1;
+    margin-top: 10px;
+  }
+  .budget-foot strong { color: #fff; }
+
+  /* Funnel */
+  .funnel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .phase {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--phase-color, #DC1C2E);
+  }
+  .phase--awareness { --phase-color: #DC1C2E; }
+  .phase--traffic { --phase-color: #b3173f; }
+  .phase--conversion { --phase-color: #003DA5; }
+
+  .phase-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    margin-bottom: 14px;
+  }
+  .phase-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--phase-color);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .phase-month {
+    font-size: 11px;
+    color: #8b91a8;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .phase-goal {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+  }
+  .phase-budget {
+    margin-left: auto;
+    background: rgba(255,255,255,.06);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .phase-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 12px;
+  }
+  .row-key {
+    color: #8b91a8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+    font-weight: 600;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .row-val {
+    color: #e8eaf2;
+    text-align: right;
+    line-height: 1.4;
+  }
+  .phase-msg {
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: rgba(0,0,0,.3);
+    border-radius: 8px;
+    font-size: 12px;
+    color: #b8bcd1;
+    font-style: italic;
+    border-left: 2px solid var(--phase-color);
+  }
+
+  /* Audience */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .aud-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .aud-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .aud-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .aud-desc {
+    font-size: 12.5px;
+    color: #8b91a8;
+    line-height: 1.5;
+  }
+
+  /* Why box */
+  .why-box {
+    margin-top: 36px;
+    background: linear-gradient(135deg, rgba(0,61,165,.15) 0%, rgba(220,28,46,.1) 100%);
+    border: 1px solid rgba(0,61,165,.3);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .why-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .why-list {
+    list-style: none;
+    padding: 0;
+  }
+  .why-list li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 13.5px;
+    color: #b8bcd1;
+    line-height: 1.5;
+  }
+  .why-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: #DC1C2E;
+    font-weight: 800;
+  }
+  .why-list strong { color: #fff; }
+
+  /* Recap */
+  .recap {
+    margin-top: 36px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px 26px;
+    color: #050816;
+  }
+  .recap-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #eaecf3;
+  }
+  .recap-row:last-child { border-bottom: none; }
+  .recap-total {
+    font-size: 18px;
+    font-weight: 800;
+    color: #DC1C2E;
+    padding-top: 14px;
+  }
+
+  /* =========================== */
+  /* GUIDE PAS À PAS             */
+  /* =========================== */
+  .guide {
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 48px 32px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,.1);
+  }
+  .guide-inner { max-width: 980px; margin: 0 auto; }
+  .guide-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #003DA5;
+    font-weight: 700;
+    padding: 6px 12px;
+    border: 1px solid rgba(0,61,165,.3);
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .guide-title {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #0a0e27;
+    margin-bottom: 8px;
+  }
+  .guide-accent {
+    background: linear-gradient(135deg, #003DA5 0%, #1877f2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .guide-sub {
+    color: #65676b;
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+  .guide-section { margin-top: 36px; }
+
+  /* Eventbrite link box */
+  .eb-link-box {
+    margin: 28px 0 8px;
+    background: linear-gradient(135deg, #ff5a36 0%, #d1410c 100%);
+    border-radius: 14px;
+    padding: 24px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(209,65,12,.25);
+  }
+  .eb-link-head {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .eb-logo { font-size: 32px; }
+  .eb-link-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: .8;
+  }
+  .eb-link-sub {
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .eb-base {
+    background: rgba(0,0,0,.25);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+  }
+  .eb-base-tag {
+    background: rgba(255,255,255,.18);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  .eb-base code {
+    font-family: SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .eb-utm-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    opacity: .9;
+  }
+  .eb-utm-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,.2);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    overflow-x: auto;
+  }
+  .eb-utm-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .eb-utm-row .tag-p1 { background: #ffe4e7; color: #b3173f; }
+  .eb-utm-row .tag-p2 { background: #dde7ff; color: #003DA5; }
+  .eb-utm-row code {
+    font-family: SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .eb-tip {
+    margin-top: 16px;
+    background: rgba(255,255,255,.12);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .eb-tip strong, .eb-tip em { color: #fff; font-style: normal; font-weight: 700; }
+  .eb-tip code {
+    background: rgba(0,0,0,.3);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 11.5px;
+  }
+
+  .guide-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .tag-aud { background: #fff4d6; color: #8a5a00; }
+  .tag-p1 { background: #ffe4e7; color: #b3173f; }
+  .tag-p2 { background: #dde7ff; color: #003DA5; }
+  .guide-h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0a0e27;
+    margin-bottom: 20px;
+  }
+
+  /* Status audiences */
+  .aud-status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .aud-status {
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1.5px solid;
+  }
+  .aud-ok { background: #e8f5e9; border-color: #4caf50; }
+  .aud-todo { background: #fff8e1; border-color: #ff9800; }
+  .aud-status-head {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .aud-ok .aud-status-head { color: #2e7d32; }
+  .aud-todo .aud-status-head { color: #e65100; }
+  .aud-status-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0a0e27;
+    margin-bottom: 4px;
+  }
+  .aud-status-use {
+    font-size: 12.5px;
+    color: #65676b;
+  }
+
+  /* Steps */
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: #f7f8fa;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 4px solid #003DA5;
+  }
+  .step--optional {
+    border-left-color: #ff9800;
+    background: #fffbf2;
+  }
+  .step-num {
+    background: linear-gradient(135deg, #003DA5, #1877f2);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: -0.5px;
+  }
+  .step--optional .step-num {
+    background: linear-gradient(135deg, #ff9800, #ffb74d);
+  }
+  .step-content { flex: 1; min-width: 0; }
+  .step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0a0e27;
+    margin-bottom: 12px;
+  }
+  .step-list {
+    padding-left: 20px;
+    font-size: 13.5px;
+    color: #2c3041;
+    line-height: 1.65;
+  }
+  .step-list li { margin-bottom: 4px; }
+  .step-list ul, .sub-list {
+    padding-left: 20px;
+    margin-top: 4px;
+    list-style-type: none;
+    counter-reset: subitem;
+  }
+  .sub-list li {
+    counter-increment: subitem;
+    position: relative;
+    padding-left: 26px;
+  }
+  .sub-list li::before {
+    content: counter(subitem);
+    position: absolute;
+    left: 0; top: 2px;
+    width: 20px; height: 20px;
+    background: #003DA5;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-list code {
+    background: #e8eaf2;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    color: #003DA5;
+    font-weight: 600;
+  }
+  .step-list strong { color: #0a0e27; }
+  .step-tip {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #fff;
+    border: 1px dashed #d1d5dc;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #65676b;
+  }
+  .step-tip code, .step-tip strong { color: #0a0e27; }
+
+  /* Checklist */
+  .checklist-box {
+    margin-top: 36px;
+    background: linear-gradient(135deg, #f0f7ff, #fff5f6);
+    border: 1px solid #e0e6ef;
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .check-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0a0e27;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .check-item {
+    font-size: 13.5px;
+    color: #2c3041;
+    padding: 8px 12px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #e4e6eb;
+  }
+
+  /* Next box */
+  .next-box {
+    margin-top: 24px;
+    background: #0a0e27;
+    color: #fff;
+    border-radius: 12px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+  .next-badge {
+    background: linear-gradient(135deg, #DC1C2E, #ff4d6a);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .next-text {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #c8cde0;
+  }
+  .next-text strong { color: #fff; }
+  .next-text em { color: #ff8896; font-style: normal; font-weight: 600; }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    .strategy, .guide { padding: 32px 20px; }
+    .strat-title { font-size: 28px; }
+    .guide-title { font-size: 24px; }
+    .budget-grid, .funnel, .audience-grid,
+    .aud-status-grid, .check-grid {
+      grid-template-columns: 1fr;
+    }
+    .next-box { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="label">Aperçu — Pub Carrousel Facebook 1:1</div>
+
+    <div class="fb-post">
+      <!-- Header -->
+      <div class="fb-header">
+        <div class="fb-avatar">RE/<br>MAX</div>
+        <div class="fb-page-info">
+          <div class="fb-page-name">
+            RE/MAX Crystal d'Ici
+            <svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.97 5.97a.75.75 0 011.06 1.06l-5 5a.75.75 0 01-1.06 0l-2.5-2.5a.75.75 0 011.06-1.06L7.5 10.44l4.47-4.47z"/></svg>
+          </div>
+          <div class="fb-meta">Sponsorisé · <svg width="12" height="12" viewBox="0 0 16 16" fill="#65676b"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zM7 4h2v5H7V4zm0 6h2v2H7v-2z"/></svg></div>
+        </div>
+        <div class="fb-more">⋯</div>
+      </div>
+
+      <!-- Main text -->
+      <div class="fb-text">
+        Notre <strong>Boot Camp 2026</strong> aura lieu les <strong>14 et 15 octobre</strong>. 2 jours, 8 conférenciers! L'événement de l'automne. <strong>Réserver ta place dès maintenant.</strong> 🎤🔥
+      </div>
+
+      <!-- Carousel -->
+      <div class="carousel-wrapper">
+        <div class="nav-arrow left" onclick="scrollCarousel(-1)">‹</div>
+        <div class="nav-arrow right" onclick="scrollCarousel(1)">›</div>
+
+        <div class="carousel-track" id="track">
+
+          <!-- Card 1 — Cover -->
+          <div class="card">
+            <img class="card-image" src="1.png" alt="Boot Camp 2026 — Cover">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Boot Camp RE/MAX Crystal d'Ici</div>
+                <div class="caption-sub">14 & 15 octobre 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+          <!-- Card 2 — Charles Perreault -->
+          <div class="card">
+            <img class="card-image" src="2.jpg" alt="Charles Perreault">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Charles Perreault</div>
+                <div class="caption-sub">Conférencier · Boot Camp 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+          <!-- Card 3 — Isabelle Fontaine -->
+          <div class="card">
+            <img class="card-image" src="3.jpg" alt="Isabelle Fontaine">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Isabelle Fontaine</div>
+                <div class="caption-sub">Conférencière · Boot Camp 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+          <!-- Card 4 — Mehdi Jamal -->
+          <div class="card">
+            <img class="card-image" src="4.jpg" alt="Mehdi Jamal">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Mehdi Jamal</div>
+                <div class="caption-sub">Conférencier · Boot Camp 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+          <!-- Card 5 — Normand McGuirk -->
+          <div class="card">
+            <img class="card-image" src="5.jpg" alt="Normand McGuirk">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Normand McGuirk</div>
+                <div class="caption-sub">Conférencier · Boot Camp 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+          <!-- Card 6 — Rahima Jamal -->
+          <div class="card">
+            <img class="card-image" src="6.jpg" alt="Rahima Jamal">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Rahima Jamal</div>
+                <div class="caption-sub">Conférencière · Boot Camp 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+          <!-- Card 7 — Sylvain Boudreau -->
+          <div class="card">
+            <img class="card-image" src="7.jpg" alt="Sylvain Boudreau">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Sylvain Boudreau</div>
+                <div class="caption-sub">Conférencier · Boot Camp 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+          <!-- Card 8 — Vincent Lavoie -->
+          <div class="card">
+            <img class="card-image" src="8.jpg" alt="Vincent Lavoie">
+            <div class="card-caption">
+              <div class="caption-text">
+                <div class="caption-title">Vincent Lavoie</div>
+                <div class="caption-sub">Conférencier · Boot Camp 2026</div>
+              </div>
+              <button class="cta-btn">Réserver</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Reactions -->
+      <div class="reactions">
+        <div class="reactions-left">
+          <div class="react-icons">
+            <div class="react-icon react-like">👍</div>
+            <div class="react-icon react-love">❤</div>
+            <div class="react-icon react-care">🤗</div>
+          </div>
+          <span style="margin-left: 4px;">Vous, Marie L. et 247 autres</span>
+        </div>
+        <div>32 commentaires · 18 partages</div>
+      </div>
+
+      <!-- Actions -->
+      <div class="fb-actions">
+        <div class="fb-action">👍 J'aime</div>
+        <div class="fb-action">💬 Commenter</div>
+        <div class="fb-action">↗ Partager</div>
+      </div>
+    </div>
+
+    <div class="hint">Place les fichiers <strong>1.png + 2.jpg → 8.jpg</strong> dans le même dossier que ce HTML pour voir l'aperçu complet.</div>
+  </div>
+
+  <!-- =============================================== -->
+  <!-- STRATÉGIE PUBLICITAIRE                          -->
+  <!-- =============================================== -->
+  <section class="strategy">
+    <div class="strategy-inner">
+
+      <div class="strat-eyebrow">Plan média · Été 2026</div>
+      <h1 class="strat-title">Stratégie publicitaire <span class="strat-accent">Boot Camp</span></h1>
+      <p class="strat-sub">Campagne 3 phases · juin → août 2026 · cible interne RE/MAX Crystal d'Ici</p>
+
+      <!-- Budget snapshot -->
+      <div class="budget-grid">
+        <div class="budget-card">
+          <div class="budget-label">Budget pub</div>
+          <div class="budget-value">300 $<span class="budget-unit">/ mois</span></div>
+          <div class="budget-foot">× 3 mois = <strong>900 $</strong></div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-label">Gestion</div>
+          <div class="budget-value">250 $<span class="budget-unit">/ mois</span></div>
+          <div class="budget-foot">× 3 mois = <strong>750 $</strong></div>
+        </div>
+        <div class="budget-card budget-card--total">
+          <div class="budget-label">Investissement total</div>
+          <div class="budget-value budget-value--big">1 650 $</div>
+          <div class="budget-foot">juin · juillet · août</div>
+        </div>
+      </div>
+
+      <!-- Funnel timeline -->
+      <h2 class="strat-h2">Funnel en 3 phases</h2>
+      <div class="funnel">
+
+        <div class="phase phase--awareness">
+          <div class="phase-head">
+            <span class="phase-num">01</span>
+            <div>
+              <div class="phase-month">Juin</div>
+              <div class="phase-goal">Notoriété</div>
+            </div>
+            <div class="phase-budget">300 $</div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-row"><span class="row-key">Objectif Meta</span><span class="row-val">Couverture / Reconnaissance</span></div>
+            <div class="phase-row"><span class="row-key">Format</span><span class="row-val">Vidéo teaser + image cover</span></div>
+            <div class="phase-row"><span class="row-key">Audience</span><span class="row-val">Custom Audience courriels courtiers + membres du groupe FB</span></div>
+            <div class="phase-row"><span class="row-key">KPI</span><span class="row-val">Reach &gt; 95 % · Fréq. 3-4×</span></div>
+          </div>
+          <div class="phase-msg">« Save the date — 14 & 15 octobre »</div>
+        </div>
+
+        <div class="phase phase--traffic">
+          <div class="phase-head">
+            <span class="phase-num">02</span>
+            <div>
+              <div class="phase-month">Juillet</div>
+              <div class="phase-goal">Trafic</div>
+            </div>
+            <div class="phase-budget">300 $</div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-row"><span class="row-key">Objectif Meta</span><span class="row-val">Trafic vers page événement</span></div>
+            <div class="phase-row"><span class="row-key">Format</span><span class="row-val">Carrousel des 8 conférenciers (ce mockup)</span></div>
+            <div class="phase-row"><span class="row-key">Audience</span><span class="row-val">Engagés Phase 1 + retargeting page vue &lt; 75 %</span></div>
+            <div class="phase-row"><span class="row-key">KPI</span><span class="row-val">CTR &gt; 2 % · CPC &lt; 0,80 $</span></div>
+          </div>
+          <div class="phase-msg">« Découvrez nos 8 conférenciers »</div>
+        </div>
+
+        <div class="phase phase--conversion">
+          <div class="phase-head">
+            <span class="phase-num">03</span>
+            <div>
+              <div class="phase-month">Août</div>
+              <div class="phase-goal">Conversion</div>
+            </div>
+            <div class="phase-budget">300 $</div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-row"><span class="row-key">Objectif Meta</span><span class="row-val">Conversions (réservations)</span></div>
+            <div class="phase-row"><span class="row-key">Format</span><span class="row-val">Image CTA + témoignage / urgence</span></div>
+            <div class="phase-row"><span class="row-key">Audience</span><span class="row-val">Retargeting cliqueurs Phase 2 + non-inscrits</span></div>
+            <div class="phase-row"><span class="row-key">KPI</span><span class="row-val">Taux d'inscription cible: 80 %+ des courtiers</span></div>
+          </div>
+          <div class="phase-msg">« Réserve ta place — places limitées »</div>
+        </div>
+
+      </div>
+
+      <!-- Audience -->
+      <h2 class="strat-h2">Audience ciblée</h2>
+      <div class="audience-grid">
+        <div class="aud-card">
+          <div class="aud-icon">📧</div>
+          <div class="aud-title">Custom Audience courriels</div>
+          <div class="aud-desc">Liste des courtiers de l'agence importée dans Meta — match précis 1:1</div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">👥</div>
+          <div class="aud-title">Groupe Facebook interne</div>
+          <div class="aud-desc">Membres du groupe RE/MAX Crystal d'Ici — engagement organique boosté</div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">🎯</div>
+          <div class="aud-title">Retargeting séquentiel</div>
+          <div class="aud-desc">Phase 2 retarget Phase 1 · Phase 3 retarget Phase 2 — funnel chaud</div>
+        </div>
+      </div>
+
+      <!-- Why this works -->
+      <div class="why-box">
+        <div class="why-title">Pourquoi cette approche fonctionne</div>
+        <ul class="why-list">
+          <li><strong>Audience captive et qualifiée</strong> — pas de gaspillage en prospection à froid</li>
+          <li><strong>Fréquence répartie sur 3 mois</strong> — réservation organique avant la rentrée</li>
+          <li><strong>Funnel chaud</strong> — chaque phase nourrit la suivante (notoriété → curiosité → action)</li>
+          <li><strong>Budget concentré</strong> — 300 $ sur une audience de quelques centaines = saturation possible</li>
+        </ul>
+      </div>
+
+      <!-- Recap -->
+      <div class="recap">
+        <div class="recap-row"><span>Budget pub (3 × 300 $)</span><span>900 $</span></div>
+        <div class="recap-row"><span>Gestion (3 × 250 $)</span><span>750 $</span></div>
+        <div class="recap-row recap-total"><span>Total juin → août</span><span>1 650 $</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================== -->
+  <!-- GUIDE PAS À PAS — META SETUP                    -->
+  <!-- =============================================== -->
+  <section class="guide">
+    <div class="guide-inner">
+
+      <div class="guide-eyebrow">Guide opérationnel</div>
+      <h2 class="guide-title">Création des audiences <span class="guide-accent">+ campagnes Meta</span></h2>
+      <p class="guide-sub">Étape par étape · Phase 1 (Notoriété) et Phase 2 (Trafic) seulement — la Conversion viendra en août</p>
+
+      <!-- Eventbrite link reference -->
+      <div class="eb-link-box">
+        <div class="eb-link-head">
+          <span class="eb-logo">🎟️</span>
+          <div>
+            <div class="eb-link-label">Page Eventbrite officielle</div>
+            <div class="eb-link-sub">Boot Camp RE/MAX Crystal d'Ici · 14-15 octobre 2026</div>
+          </div>
+        </div>
+        <div class="eb-base">
+          <span class="eb-base-tag">Lien de base</span>
+          <code>https://www.eventbrite.ca/e/boot-camp-remax-crystaldici-14-15-octobre-2026-tickets-1988849037008</code>
+        </div>
+        <div class="eb-utms">
+          <div class="eb-utm-title">Liens à utiliser dans Meta Ads (copier-coller direct)</div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p1">Phase 1 — Notoriété</span>
+            <code>...tickets-1988849037008?aff=meta_awareness</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 1 (Cover)</span>
+            <code>...tickets-1988849037008?aff=meta_card1_cover</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 2 (Perreault)</span>
+            <code>...tickets-1988849037008?aff=meta_card2_perreault</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 3 (Fontaine)</span>
+            <code>...tickets-1988849037008?aff=meta_card3_fontaine</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 4 (Jamal M.)</span>
+            <code>...tickets-1988849037008?aff=meta_card4_mehdi</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 5 (McGuirk)</span>
+            <code>...tickets-1988849037008?aff=meta_card5_mcguirk</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 6 (Jamal R.)</span>
+            <code>...tickets-1988849037008?aff=meta_card6_rahima</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 7 (Boudreau)</span>
+            <code>...tickets-1988849037008?aff=meta_card7_boudreau</code>
+          </div>
+          <div class="eb-utm-row">
+            <span class="eb-utm-tag tag-p2">Phase 2 — Carte 8 (Lavoie)</span>
+            <code>...tickets-1988849037008?aff=meta_card8_lavoie</code>
+          </div>
+        </div>
+        <div class="eb-tip">📊 <strong>Suivi dans Eventbrite :</strong> Dashboard → Ordres → Rapport → onglet <em>« Source d'inscription »</em>. Chaque <code>aff=</code> apparaîtra avec son nombre de billets vendus.</div>
+      </div>
+
+      <!-- ============== AUDIT AUDIENCES EXISTANTES ============== -->
+      <div class="guide-section">
+        <div class="guide-tag tag-aud">État actuel · Audit</div>
+        <h3 class="guide-h3">Audiences déjà créées dans ton compte</h3>
+
+        <div class="aud-status-grid">
+          <div class="aud-status aud-ok">
+            <div class="aud-status-head">✅ Déjà créée</div>
+            <div class="aud-status-name">Interaction — page IG — 365 jours</div>
+            <div class="aud-status-use">Sera utilisée en Phase 1 (Notoriété)</div>
+          </div>
+          <div class="aud-status aud-ok">
+            <div class="aud-status-head">✅ Déjà créée</div>
+            <div class="aud-status-name">Interaction — page FB — 365 jours</div>
+            <div class="aud-status-use">Sera utilisée en Phase 1 (Notoriété)</div>
+          </div>
+          <div class="aud-status aud-ok">
+            <div class="aud-status-head">✅ Déjà créée</div>
+            <div class="aud-status-name">Visiteurs page web — 180 jours</div>
+            <div class="aud-status-use">Sera utilisée en Phase 2 (Trafic / retargeting site)</div>
+          </div>
+          <div class="aud-status aud-todo">
+            <div class="aud-status-head">⚠️ À créer</div>
+            <div class="aud-status-name">BOOTCAMP_Courtiers_Courriels</div>
+            <div class="aud-status-use">Custom Audience à partir de la liste CSV des courtiers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== AUDIENCES ============== -->
+      <div class="guide-section">
+        <div class="guide-tag tag-aud">Partie A · Audience manquante</div>
+        <h3 class="guide-h3">Créer l'audience courriels (la seule manquante)</h3>
+
+        <!-- A1 — Custom Audience Courriels -->
+        <div class="step">
+          <div class="step-num">A1</div>
+          <div class="step-content">
+            <div class="step-title">Custom Audience — Liste courriels courtiers</div>
+            <ol class="step-list">
+              <li>Ouvre <strong>Meta Business Suite</strong> → <code>business.facebook.com</code></li>
+              <li>Menu gauche → <strong>Tous les outils</strong> → <strong>Audiences</strong></li>
+              <li>Bouton bleu <strong>Créer une audience</strong> → <strong>Audience personnalisée</strong></li>
+              <li>Sélectionne <strong>Liste de clients</strong> comme source</li>
+              <li>Prépare ton CSV avec colonnes : <code>email</code>, <code>prénom</code>, <code>nom</code>, <code>téléphone</code> (plus tu donnes de champs, meilleur le match)</li>
+              <li>Glisse-dépose ton CSV, accepte les conditions, clique <strong>Importer et créer</strong></li>
+              <li>Nomme-la : <code>BOOTCAMP_Courtiers_Courriels</code></li>
+              <li>Attends 30-60 min que Meta fasse le match (taux attendu 70-90 %)</li>
+            </ol>
+            <div class="step-tip">💡 <strong>Astuce :</strong> ajoute une colonne <code>code postal</code> et <code>ville</code> pour booster le taux de match.</div>
+          </div>
+        </div>
+
+        <!-- Note groupe FB -->
+        <div class="step step--optional">
+          <div class="step-num">A2</div>
+          <div class="step-content">
+            <div class="step-title">Note sur le groupe Facebook interne</div>
+            <ol class="step-list">
+              <li>⚠️ Meta ne permet PAS de cibler les membres d'un groupe directement</li>
+              <li><strong>Bonne nouvelle :</strong> tes audiences <em>Interaction page FB 365j</em> + <em>Interaction page IG 365j</em> couvrent déjà la majorité des courtiers actifs sur tes pages</li>
+              <li><strong>Action gratuite :</strong> publie le carrousel en post organique dans le groupe FB le même jour que le lancement de Phase 1 — double exposition sans coût</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== CAMPAGNE PHASE 1 ============== -->
+      <div class="guide-section">
+        <div class="guide-tag tag-p1">Partie B · Phase 1 — Notoriété (juin)</div>
+        <h3 class="guide-h3">Créer la campagne Notoriété</h3>
+
+        <div class="step">
+          <div class="step-num">B1</div>
+          <div class="step-content">
+            <div class="step-title">Niveau Campagne</div>
+            <ol class="step-list">
+              <li>Gestionnaire de publicités → <strong>+ Créer</strong></li>
+              <li>Objectif : <strong>Notoriété</strong> (Awareness)</li>
+              <li>Nom campagne : <code>BOOTCAMP_2026_P1_AWARENESS</code></li>
+              <li>Catégorie de pub spéciale : <strong>Aucune</strong></li>
+              <li>Budget : <strong>CBO désactivé</strong> (budget au niveau adset)</li>
+              <li>A/B test : non</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">B2</div>
+          <div class="step-content">
+            <div class="step-title">Niveau Ensemble de publicités (Adset)</div>
+            <ol class="step-list">
+              <li>Optimisation : <strong>Couverture</strong> (reach)</li>
+              <li>Budget : <strong>10 $/jour</strong> × ~30 jours = 300 $</li>
+              <li>Dates : <strong>1 juin → 30 juin 2026</strong></li>
+              <li>Audience (combinées avec OR) :
+                <ul>
+                  <li><code>BOOTCAMP_Courtiers_Courriels</code> (à créer A1)</li>
+                  <li><code>Interaction - page fb-365 jours</code> ✅</li>
+                  <li><code>Interaction - page IG - 365 jours</code> ✅</li>
+                </ul>
+              </li>
+              <li>Lieux : Québec (sécurité, l'audience custom restreint déjà)</li>
+              <li>Âge : 25-65+ · Langue : français</li>
+              <li>Plafond de fréquence : <strong>3 impressions / 7 jours</strong></li>
+              <li>Placements : <strong>Manuels</strong> → Facebook Feed + Instagram Feed + Stories seulement</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">B3</div>
+          <div class="step-content">
+            <div class="step-title">Niveau Publicité (créatif)</div>
+            <ol class="step-list">
+              <li>Format : <strong>Image unique</strong></li>
+              <li>Visuel : <code>1.png</code> (cover BOOT CAMP du mockup)</li>
+              <li>Texte principal : <em>« Notre Boot Camp 2026 aura lieu les 14 et 15 octobre. 2 jours, 8 conférenciers de haut niveau. Réserve la date. »</em></li>
+              <li>Titre : <em>« Boot Camp RE/MAX Crystal d'Ici »</em></li>
+              <li>Description : <em>« 14 & 15 octobre 2026 »</em></li>
+              <li>CTA : <strong>En savoir plus</strong></li>
+              <li>URL destination : <strong>lien Eventbrite</strong> du Boot Camp</li>
+              <li>Suivi : ajoute UTM au lien Eventbrite <code>?aff=meta_awareness</code> (le param <code>aff</code> est suivi nativement par Eventbrite dans son dashboard)</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== CAMPAGNE PHASE 2 ============== -->
+      <div class="guide-section">
+        <div class="guide-tag tag-p2">Partie C · Phase 2 — Trafic (juillet)</div>
+        <h3 class="guide-h3">Créer la campagne Trafic (carrousel 8 conférenciers)</h3>
+
+        <div class="step">
+          <div class="step-num">C1</div>
+          <div class="step-content">
+            <div class="step-title">Audience retargeting Phase 1</div>
+            <ol class="step-list">
+              <li>Avant de créer la campagne C2, crée une nouvelle Custom Audience</li>
+              <li>Audiences → Créer → <strong>Engagement</strong> → <strong>Publicité Instagram/Facebook</strong></li>
+              <li>« Personnes ayant vu ou cliqué sur ta publicité » → sélectionne la campagne <code>BOOTCAMP_2026_P1_AWARENESS</code></li>
+              <li>Durée : <strong>30 jours</strong></li>
+              <li>Nomme : <code>BOOTCAMP_Retarget_P1_Engaged</code></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">C2</div>
+          <div class="step-content">
+            <div class="step-title">Campagne Trafic</div>
+            <ol class="step-list">
+              <li>+ Créer → Objectif : <strong>Trafic</strong></li>
+              <li>Nom : <code>BOOTCAMP_2026_P2_TRAFIC</code></li>
+              <li>Adset → Destination : <strong>Site web</strong> (lien Eventbrite)</li>
+              <li>Optimisation : <strong>Clics sur le lien</strong></li>
+              <li>Budget : <strong>10 $/jour</strong> · Dates : 1 → 31 juillet</li>
+              <li>Audience principale (combinées avec OR) :
+                <ul>
+                  <li><code>BOOTCAMP_Retarget_P1_Engaged</code> (créée en C1)</li>
+                  <li><code>visiteurs page web-180 jours</code> ✅ (déjà créée)</li>
+                </ul>
+              </li>
+              <li>Audience exclusion : aucune pour l'instant</li>
+              <li>Placements : Manuels → Feeds + Stories</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">C3</div>
+          <div class="step-content">
+            <div class="step-title">Créatif Carrousel — 8 cartes</div>
+            <ol class="step-list">
+              <li>Format : <strong>Carrousel</strong></li>
+              <li>Active <strong>« Optimiser l'ordre des cartes »</strong> → désactive (garde ordre manuel)</li>
+              <li>Cartes dans l'ordre exact :
+                <ol class="sub-list">
+                  <li><code>1.png</code> — Cover · Titre « Boot Camp 2026 » · CTA Réserver</li>
+                  <li><code>2.jpg</code> — Titre « Charles Perreault » · Description « Conférencier · 14-15 oct. »</li>
+                  <li><code>3.jpg</code> — Titre « Isabelle Fontaine »</li>
+                  <li><code>4.jpg</code> — Titre « Mehdi Jamal »</li>
+                  <li><code>5.jpg</code> — Titre « Normand McGuirk »</li>
+                  <li><code>6.jpg</code> — Titre « Rahima Jamal »</li>
+                  <li><code>7.jpg</code> — Titre « Sylvain Boudreau »</li>
+                  <li><code>8.jpg</code> — Titre « Vincent Lavoie »</li>
+                </ol>
+              </li>
+              <li>Texte principal commun : <em>« Découvre les 8 conférenciers du Boot Camp 2026. 14-15 octobre. Réserve ta place. »</em></li>
+              <li>URL : lien Eventbrite, UTM par carte <code>?aff=meta_card1</code> … <code>?aff=meta_card8</code> (permet de voir quel conférencier convertit le mieux dans Eventbrite)</li>
+              <li>CTA toutes cartes : <strong>En savoir plus</strong></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== CHECKLIST ============== -->
+      <div class="checklist-box">
+        <div class="check-title">Checklist avant lancement</div>
+        <div class="check-grid">
+          <div class="check-item">☐ Événement Eventbrite publié et testé mobile</div>
+          <div class="check-item">☐ Liens UTM <code>?aff=meta_xxx</code> testés dans Eventbrite</div>
+          <div class="check-item">☐ Visuels 1.png + 2-8.jpg en 1080×1080 minimum</div>
+          <div class="check-item">☐ Mode de paiement Meta validé</div>
+          <div class="check-item">☐ Pages Business Manager bien liées</div>
+          <div class="check-item">☐ Rapport hebdo prévu (CTR, CPM, fréquence)</div>
+          <div class="check-item">☐ CSV courtiers (à venir, pas bloquant)</div>
+          <div class="check-item">☐ Pixel Meta (skip pour l'instant — à voir en août)</div>
+        </div>
+      </div>
+
+      <!-- Next step teaser -->
+      <div class="next-box">
+        <div class="next-badge">À venir · Août</div>
+        <div class="next-text">
+          <strong>Phase 3 — Conversion :</strong> on connectera <em>Eventbrite ↔ Meta Pixel</em> (intégration native via Eventbrite Organizer), puis campagne objectif <em>Conversions</em> avec retargeting des cliqueurs Phase 2 + exclusion des déjà-inscrits. À planifier fin juillet.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<script>
+  function scrollCarousel(dir) {
+    const track = document.getElementById('track');
+    const card = track.querySelector('.card');
+    const step = card.getBoundingClientRect().width + 4;
+    track.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>

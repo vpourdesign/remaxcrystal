@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Téléchargeur d'images — REMAX Crystal</title>
+<style>
+  :root {
+    --bg: #0e0e10; --fg: #f3f3f3; --muted: #8a8a90; --accent: #ff3c00; --line: #232327;
+    --ok: #1f9d55; --warn: #d97706;
+  }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.5 -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--fg); margin: 0; padding: 40px 24px; }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.5px; }
+  .lede { color: var(--muted); margin: 0 0 24px; }
+  .panel { background: #161618; border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 14px; }
+  .name { font-weight: 600; font-size: 16px; min-width: 220px; }
+  .count { color: var(--muted); font-size: 13px; min-width: 130px; }
+  .status { color: var(--muted); font-size: 13px; flex: 1; }
+  .status.ok { color: var(--ok); }
+  .status.warn { color: var(--warn); }
+  button { background: var(--accent); color: #fff; border: 0; padding: 10px 18px; border-radius: 6px; font: 600 13px/1 inherit; cursor: pointer; }
+  button:hover { filter: brightness(1.1); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .all { background: #fff; color: #000; }
+  .toolbar { display: flex; gap: 12px; margin: 0 0 24px; align-items: center; }
+  .toolbar .hint { color: var(--muted); font-size: 13px; }
+  code { background: #1c1c1f; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Téléchargeur d'images des villes</h1>
+  <p class="lede">Sources: Wikimedia Commons (licences CC). Clique sur chaque bouton pour télécharger un ZIP dans <code>~/Téléchargements/</code>. Claude prendra ensuite le relais pour les déplacer dans les bons dossiers.</p>
+  <div class="toolbar">
+    <button class="all" onclick="downloadAll()">⬇ Tout télécharger (séquentiel)</button>
+    <span class="hint">Allume les téléchargements multiples si Chrome demande la permission.</span>
+  </div>
+  <div id="rows"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const CITIES = {
+  "boisbriand": [
+    "https://upload.wikimedia.org/wikipedia/commons/b/b0/Centrerousseau.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/80/Boisbriand_QC_1.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/66/Target_Rue_d%27Annemasse_Boisbriand%2C_QC_3_%2816573271790%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a3/Boisbriand_QC_2.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c8/Pont_suspendu_Morris.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/21/MaisonBelanger_Boisbriand.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a1/78863-maison-habitations-quartier-boisbriand.jpg"
+  ],
+  "boisdesfilion": [
+    "https://upload.wikimedia.org/wikipedia/commons/4/49/49i%C3%A8me_avenue_%C3%A0_Bois-des-fillion.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/fd/%C3%8Eles_Garth_57ieme.jpg"
+  ],
+  "deux-montagnes": [
+    "https://upload.wikimedia.org/wikipedia/commons/5/57/Deux-Montagnes%28QC%29-Parc_des_b%C3%A9n%C3%A9voles-2022-03-15.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/66/Deux-Montagnes-Parc_pr%C3%A8s_de_rivi%C3%A8re-2022-03-15.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/3/39/Deux-Montagnes_%28QC%29-Ar%C3%A9na_Olympia-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/aa/Deux-Montagnes_%28Qu%C3%A9bec%29-Panneau_d%27accueil_et_salle_du_Verger_aux_Pignons_Rouge-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/b2/Deux-Montagnes_%28Qu%C3%A9bec%29-Biblioth%C3%A8que_municipale-2022-05-19.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d6/Deux-Montagnes_%28QC%29-Vue_de_la_20e_ave._et_panneau_d%27information_num%C3%A9rique-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/eb/Deux-Montagnes_%28QC%29-20e_avenue-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/26/Deux-Montagnes%28QC%29-Vue_de_la_20e_avenue-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/81/Deux-Montagnes_%28Qu%C3%A9bec%29-Quartier_g%C3%A9n%C3%A9ral_de_la_police-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/cb/%C3%89cole_Polyvalente_Deux-Montagnes.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/ae/Deux-Montagnes-%C3%89cole_sec._Lake_of_two_mountains.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4b/Deux-Montagnes_%28Qu%C3%A9bec%29-R%C3%A9servoir_d%27eau_de_la_ville-2024-03-24.jpg"
+  ],
+  "mirabel": [
+    "https://upload.wikimedia.org/wikipedia/commons/f/fc/Poney_et_lama%2C_Mirabel_01.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/9/9e/Poney_et_lama%2C_Mirabel_02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c8/Mirabel-St-Monique.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/1/1a/Poney_et_lama%2C_Mirabel_02a.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/0/02/Chateau_de_l%27A%C3%A9roport.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/f/f0/Mirabel_QC.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d7/Poney_et_lama%2C_Mirabel_01a.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/e4/Extr%C3%A9mit%C3%A9_de_la_rue_Henri-Pich%C3%A9_-_panoramio.jpg"
+  ],
+  "oka": [
+    "https://upload.wikimedia.org/wikipedia/commons/0/06/Oka_%28Qu%C3%A9bec%29-Abbaye_d%27Oka-Vue_d%27un_des_annexes_et_de_l%27all%C3%A9e-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/2d/Oka_%28Qu%C3%A9bec%29-Abbaye_d%27Oka_avec_aire_de_d%C3%A9tente-Vue_arri%C3%A8re-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/4/40/Oka_%28Qu%C3%A9bec%29-Abbaye_d%27Oka-Face_arri%C3%A8re_de_l%27%C3%A9glise-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c7/Oka_%28QC%29-Immeuble_municipal_en_bordure_du_ch._d%27Oka-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d6/Oka_%28Qu%C3%A9bec%29-Abbaye_d%27Oka-Vue_arri%C3%A8re_de_l%27%C3%A9glise-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/7/70/Oka_%28Qu%C3%A9bec%29-Centre_administratif_de_la_S%C3%89PAQ_au_parc_national_d%27Oka-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/ed/Oka_%28Qu%C3%A9bec%29-Abbaye_d%27Oka-Fa%C3%A7ade_avant_de_l%27immeuble_principal-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a1/Oka_%28QC%29-Champs_de_vignes-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/0/03/Oka_%28QC%29-Abbaye_d%27Oka-B%C3%A2timents-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/9/94/Oka_%28QC%29-Abbaye_d%27Oka_%28entr%C3%A9e%29-2023-04-02.jpg"
+  ],
+  "pointe-calumet": [
+    "https://upload.wikimedia.org/wikipedia/commons/b/be/Pointe-Calumet%28QC%29-boul._Proulx_%28vue_vers_l%27Est%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/0/08/Pointe-Calumet_%28QC%29-Vue_vers_l%27ouest_du_boul._Proulx_%28coin_Mont%C3%A9e_de_la_Baie%29-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/5/54/Pointe-Calumet_%28QC%29-Vue_des_glissades_d%27eau_en_hiver-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/2d/Pointe-Calumet_%28Qu%C3%A9bec%29-Vue_du_lac_en_hiver_sur_la_Mont%C3%A9e_de_la_Baie-2023-04-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/4/49/Pointe-Calumet%28QC%29-Panneau_num%C3%A9rique_d%27accueil_sur_la_Mont%C3%A9e_de_la_Baie-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/ee/Pointe-Calumet_%28QC%29-Vue_de_Mont%C3%A9e_de_la_Baie-2023.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a3/Pointe-Calumet_QC_3.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/1/1a/Pointe-Calumet_QC_2.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d6/Pointe-Calumet_QC_1.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/83/Pointe_Calumet_008.jpg"
+  ],
+  "st-eustache": [
+    "https://upload.wikimedia.org/wikipedia/commons/5/53/Saint-Eustache%28QC%29-Monument_des_patriotes_devant_l%27%C3%A9glise_et_le_presbyt%C3%A8re-_2022-03-15.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/3/34/Saint-Eustache-Rivi%C3%A8re_du_ch%C3%AAne-Vue_d%27un_pont_routier-2022-05-19.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/b0/Saibt-Eustache%28QC%29-Vue_de_la_marie%2C_%C3%A9glise_et_presbyt%C3%A8re-2022-03-15.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a7/St-Eustache%28QC%29-Monument_Paul_Sauv%C3%A9_dans_un_parc_derri%C3%A8re_la_marie-2022-03-15.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/b3/Saint-Eustache_%28exo%29_bus_terminal.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a2/Place_for_visiting_Pure_Lavande_-_panoramio.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/8f/Little_group_of_lavenders_at_the_entrance_of_Pure_Lavande_-_panoramio.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/8d/At_Pure_Lavande%2C_only_the_sky_is_colorful..._-_panoramio.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/1/17/Terre_Des_Patriotes_St-Eustache_Quebec.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a3/Pont_%C3%A0_St-Eustache_sur_la_rivi%C3%A8re_des_Mille-%C3%8Eles_-_panoramio.jpg"
+  ],
+  "ste-anne-des-plaines": [
+    "https://upload.wikimedia.org/wikipedia/commons/6/6d/%C3%89glise_de_Sainte-Anne-des-Plaines_12.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/6/67/%C3%89glise_de_Sainte-Anne-des-Plaines_06.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/0/0e/%C3%89glise_de_Sainte-Anne-des-Plaines_03.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/e/ef/%C3%89glise_de_Sainte-Anne-des-Plaines_16.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/1/1d/Ancien_couvent_de_Sainte-Anne-des-Plaines_03.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/8/85/%C3%89glise_de_Sainte-Anne-des-Plaines_05.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/1/17/%C3%89glise_de_Sainte-Anne-des-Plaines_19.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c3/Sainte-anne-des-plaines1.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/cd/Ancienne_%C3%A9glise_de_Sainte-Anne-des-Plaines_en_1899.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/f5/Magasin_Sainte-Anne-des-Plaines_1910.jpg"
+  ],
+  "ste-marthe-sur-le-lac": [
+    "https://upload.wikimedia.org/wikipedia/commons/5/5f/Sainte-Marthe-sur-le-Lac_-_Vue_a%C3%A9rienne_%282%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Digue_-_Sainte-Marthe-sur-le-Lac_-_Vue_a%C3%A9rienne_%282%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/e5/Sainte-Marthe-sur-le-Lac_-_Vue_a%C3%A9rienne_%281%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/be/Parc_de_la_Prucheraie_-_Sainte-Marthe-sur-le-Lac_%28vue_a%C3%A9rienne%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d6/Digue_-_Sainte-Marthe-sur-le-Lac_-_Vue_a%C3%A9rienne_%281%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/5/5f/Parc_de_la_Fray%C3%A8re_-_Sainte-Marthe-sur-le-Lac_%282%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d5/Parc_de_la_Fray%C3%A8re_-_Sainte-Marthe-sur-le-Lac_%281%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/e9/Digue_-_Sainte-Marthe-sur-le-Lac_-_Vue_a%C3%A9rienne_%285%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c6/22e_avenue_-_Sainte-Marthe-sur-le-Lac.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/fa/%C3%89glise_Sainte-Marthe_-_Sainte-Marthe-sur-le-Lac_%281%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/bb/Parc_municipal_-_Sainte-Marthe-sur-le-Lac.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/0/01/Lac_des_Deux_Montagnes_-_Sainte-Marthe-sur-le-Lac.jpg"
+  ],
+  "ste-sophie": [
+    "https://upload.wikimedia.org/wikipedia/commons/8/8e/Sainte-Sophie.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c2/Sainte-Sophie%2C_QC%2C_Canada_-_panoramio_%2814%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/0/01/Sainte-Sophie%2C_QC%2C_Canada_-_panoramio_%288%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/fe/Sainte-Sophie%2C_QC%2C_Canada_-_panoramio_%283%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/0/0c/Sainte-Sophie%2C_QC%2C_Canada_-_panoramio_%285%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/3/3c/Chemin_priv%C3%A9_-_panoramio.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/9/9f/Sainte-Sophie%2C_QC%2C_Canada_-_panoramio_%282%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/63/Sainte-Sophie%2C_QC%2C_Canada_-_panoramio_%284%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/3/3e/Lac_des_Vallons_-_Hivers_-_panoramio.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/e2/Sainte-Sophie%2C_QC%2C_Canada_-_panoramio_%286%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/0/0d/Lac_des_Vallons_-_%C3%A9t%C3%A9_-_panoramio.jpg"
+  ],
+  "stetherese": [
+    "https://upload.wikimedia.org/wikipedia/commons/9/9a/Lac_%C2%AB_Chantiers_jeunesse_%C2%BB_%C3%A0_Sainte_Th%C3%A9r%C3%A8se_%282015%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/9/92/Ste-Th%C3%A9r%C3%A8se%2C_150e_anniversaire_%28BAnQ_3833737%29.jpg"
+  ]
+};
+
+const rows = document.getElementById('rows');
+const state = {};
+
+function basename(url) {
+  const u = decodeURIComponent(url.split('/').pop());
+  return u.replace(/[^\w.\-]/g, '_');
+}
+
+for (const [city, urls] of Object.entries(CITIES)) {
+  const row = document.createElement('div');
+  row.className = 'panel';
+  row.innerHTML = `
+    <div class="name">${city}</div>
+    <div class="count">${urls.length} image${urls.length>1?'s':''}</div>
+    <div class="status" id="s_${city}">Prêt</div>
+    <button onclick="downloadCity('${city}')">⬇ ZIP</button>
+  `;
+  rows.appendChild(row);
+}
+
+async function downloadCity(city) {
+  const urls = CITIES[city];
+  const s = document.getElementById('s_' + city);
+  s.className = 'status'; s.textContent = 'Téléchargement…';
+  const zip = new JSZip();
+  let okCount = 0, errCount = 0;
+  for (let i = 0; i < urls.length; i++) {
+    const url = urls[i];
+    s.textContent = `Téléchargement ${i+1}/${urls.length}…`;
+    try {
+      const r = await fetch(url);
+      if (!r.ok) { errCount++; continue; }
+      const buf = await r.arrayBuffer();
+      zip.file(basename(url), buf);
+      okCount++;
+    } catch (e) { errCount++; console.error(url, e); }
+  }
+  s.textContent = `Zippage de ${okCount} fichier${okCount>1?'s':''}…`;
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const u = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = u; a.download = `remax_villes_${city}.zip`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(u), 3000);
+  s.className = 'status ' + (errCount ? 'warn' : 'ok');
+  s.textContent = `✓ ZIP téléchargé · ${okCount} image${okCount>1?'s':''}` + (errCount ? ` · ${errCount} échec${errCount>1?'s':''}` : '');
+}
+
+async function downloadAll() {
+  for (const city of Object.keys(CITIES)) {
+    await downloadCity(city);
+    await new Promise(r => setTimeout(r, 800));
+  }
+}
+</script>
+</body>
+</html>

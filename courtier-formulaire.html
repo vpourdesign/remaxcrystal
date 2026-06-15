@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire courtier — Votre page RE/MAX Crystal</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep:#1a2332; --navy:#1e3350; --navy-mid:#264060;
+    --blue-brand:#3578c4; --blue-light:#6ba3d9; --blue-pale:#b0cfe8;
+    --cream:#f7f5f0; --warm-white:#faf9f6; --gold:#c4a245;
+    --text-dark:#1a1f2b; --text-body:#3d4555; --text-muted:#6b7385;
+    --surface-card:#f8f9fb; --border-subtle:#e2e5eb;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; scroll-behavior:smooth; }
+  body { font-family:'Open Sans',sans-serif; background:var(--warm-white); color:var(--text-body); line-height:1.7; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family:'Raleway',sans-serif; color:var(--text-dark); line-height:1.1; letter-spacing:-0.03em; }
+  em { font-style:italic; color:var(--blue-brand); }
+  img { display:block; max-width:100%; }
+  .container { width:min(92%,860px); margin-inline:auto; }
+
+  /* header */
+  .form-hero { background:linear-gradient(160deg,var(--navy-deep),var(--navy) 60%,#15212f); color:#fff; padding:clamp(40px,6vw,72px) 0; position:relative; overflow:hidden; }
+  .form-hero::after { content:""; position:absolute; inset:0; background:radial-gradient(800px 360px at 85% 0%,rgba(53,120,196,0.25),transparent 60%); }
+  .form-hero .container { position:relative; z-index:1; }
+  .form-hero img { height:26px; margin-block-end:26px; }
+  .form-hero .eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:'Raleway',sans-serif; font-size:0.74rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue-light); margin-block-end:16px; }
+  .form-hero .eyebrow::before { content:""; width:26px; height:2px; background:var(--gold); }
+  .form-hero h1 { color:#fff; font-weight:300; font-size:clamp(2rem,5vw,3.2rem); letter-spacing:-0.04em; }
+  .form-hero h1 strong { font-weight:700; }
+  .form-hero p { color:rgba(255,255,255,0.82); max-width:60ch; margin-block-start:16px; font-weight:300; }
+  .form-hero .meta { margin-block-start:20px; font-size:0.84rem; color:var(--blue-pale); }
+
+  /* progress info */
+  .form-body { padding-block:clamp(40px,6vw,72px); }
+  fieldset { border:none; background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:clamp(24px,3vw,38px); margin-block-end:24px; box-shadow:0 1px 3px rgba(35,50,70,0.04),0 10px 30px rgba(35,50,70,0.04); }
+  legend { font-family:'Raleway',sans-serif; font-weight:600; font-size:1.25rem; color:var(--text-dark); letter-spacing:-0.02em; padding:0; margin-block-end:6px; display:flex; align-items:center; gap:12px; }
+  .legend-no { width:34px; height:34px; border-radius:10px; background:var(--navy); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:0.95rem; font-weight:600; flex-shrink:0; }
+  .legend-hint { font-size:0.9rem; color:var(--text-muted); margin-block-end:22px; font-weight:400; }
+
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .row.three { grid-template-columns:1fr 1fr 1fr; }
+  @media (max-width:620px){ .row, .row.three { grid-template-columns:1fr; } }
+  .field { margin-block-end:18px; }
+  .field.full { grid-column:1/-1; }
+  label { display:block; font-size:0.82rem; font-weight:600; color:var(--text-dark); margin-block-end:7px; letter-spacing:0.01em; }
+  label .req { color:var(--blue-brand); }
+  input[type=text], input[type=tel], input[type=email], input[type=url], input[type=number], select, textarea {
+    width:100%; padding:12px 14px; border:1px solid var(--border-subtle); border-radius:10px; background:var(--surface-card);
+    font-family:'Open Sans',sans-serif; font-size:0.94rem; color:var(--text-dark); transition:border-color .25s, box-shadow .25s;
+  }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--blue-brand); box-shadow:0 0 0 3px rgba(53,120,196,0.12); }
+  textarea { resize:vertical; min-height:96px; line-height:1.6; }
+  .hint { font-size:0.78rem; color:var(--text-muted); margin-block-start:6px; }
+
+  /* checkbox grids */
+  .check-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  @media (max-width:620px){ .check-grid { grid-template-columns:1fr 1fr; } }
+  .check {
+    display:flex; align-items:center; gap:9px; padding:10px 13px; border:1px solid var(--border-subtle); border-radius:10px;
+    background:var(--surface-card); font-size:0.86rem; cursor:pointer; transition:border-color .2s, background .2s;
+  }
+  .check:hover { border-color:var(--blue-light); }
+  .check input { accent-color:var(--blue-brand); width:16px; height:16px; }
+  .check input:checked ~ span { color:var(--text-dark); font-weight:600; }
+
+  .testi-block { border:1px dashed var(--border-subtle); border-radius:12px; padding:18px; margin-block-end:14px; }
+  .testi-block h4 { font-size:0.9rem; font-weight:700; color:var(--blue-brand); margin-block-end:12px; letter-spacing:0.04em; text-transform:uppercase; }
+
+  .consent { display:flex; gap:12px; align-items:flex-start; font-size:0.9rem; }
+  .consent input { accent-color:var(--blue-brand); width:18px; height:18px; margin-top:3px; flex-shrink:0; }
+
+  .submit-row { text-align:center; margin-block-start:8px; }
+  .btn { display:inline-block; padding:15px 38px; border-radius:999px; background:var(--blue-brand); color:#fff; font-weight:600; font-family:'Raleway',sans-serif; font-size:0.98rem; border:none; cursor:pointer; transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(53,120,196,0.35); }
+  .submit-hint { font-size:0.82rem; color:var(--text-muted); margin-block-start:14px; }
+
+  /* success */
+  .success { display:none; background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:clamp(28px,4vw,48px); text-align:center; box-shadow:0 10px 30px rgba(35,50,70,0.06); }
+  .success.show { display:block; }
+  .success .tick { width:60px; height:60px; border-radius:50%; background:rgba(53,120,196,0.12); color:var(--blue-brand); display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 18px; }
+  .success h2 { font-size:1.6rem; font-weight:600; margin-block-end:10px; }
+  .success p { color:var(--text-body); max-width:48ch; margin:0 auto 8px; }
+
+  .footer { background:var(--navy-deep); color:rgba(255,255,255,0.5); padding-block:26px; font-size:0.8rem; text-align:center; }
+</style>
+</head>
+<body>
+
+  <header class="form-hero">
+    <div class="container">
+      <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal">
+      <div class="eyebrow">Votre présence en ligne</div>
+      <h1>Bâtissons <strong>votre page</strong> de courtier</h1>
+      <p>Remplissez ce formulaire une seule fois. Avec ces informations, nous générons votre page personnelle optimisée pour Google et pour les moteurs de réponse IA (ChatGPT, Perplexity), reliée au site de l'agence pour décupler votre visibilité locale.</p>
+      <div class="meta">⏱ Environ 10 minutes · Vos réponses servent uniquement à bâtir votre page</div>
+    </div>
+  </header>
+
+  <main class="form-body">
+    <div class="container">
+      <form id="courtierForm">
+
+        <!-- 1 · IDENTITÉ -->
+        <fieldset>
+          <legend><span class="legend-no">1</span> Identité</legend>
+          <div class="legend-hint">Comment vous présenter sur votre page.</div>
+          <div class="row">
+            <div class="field"><label>Prénom <span class="req">*</span></label><input type="text" name="prenom" required></div>
+            <div class="field"><label>Nom <span class="req">*</span></label><input type="text" name="nom" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label>Titre professionnel <span class="req">*</span></label>
+              <select name="titre" required>
+                <option value="">Choisir…</option>
+                <option>Courtier immobilier résidentiel</option>
+                <option>Courtier immobilier résidentiel et commercial</option>
+                <option>Courtier immobilier agréé</option>
+                <option>Courtier immobilier</option>
+              </select>
+            </div>
+            <div class="field"><label>Raison sociale (inc.)</label><input type="text" name="raison_sociale" placeholder="Ex. Alain Brunelle, courtier immobilier inc."></div>
+          </div>
+          <div class="row">
+            <div class="field"><label>No de permis OACIQ</label><input type="text" name="permis"></div>
+            <div class="field"><label>Photo professionnelle</label><input type="file" name="photo" accept="image/*"><div class="hint">Format paysage de préférence, haute résolution.</div></div>
+          </div>
+        </fieldset>
+
+        <!-- 2 · COORDONNÉES -->
+        <fieldset>
+          <legend><span class="legend-no">2</span> Coordonnées</legend>
+          <div class="legend-hint">Ces informations alimentent aussi les données structurées lues par Google et les IA.</div>
+          <div class="row three">
+            <div class="field"><label>Cellulaire <span class="req">*</span></label><input type="tel" name="cellulaire" required></div>
+            <div class="field"><label>Bureau</label><input type="tel" name="bureau"></div>
+            <div class="field"><label>Courriel <span class="req">*</span></label><input type="email" name="courriel" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label>Adresse du bureau</label><input type="text" name="adresse" placeholder="Rue, ville, code postal"></div>
+            <div class="field"><label>Site web personnel</label><input type="url" name="site_web" placeholder="https://"></div>
+          </div>
+          <div class="row three">
+            <div class="field"><label>Facebook</label><input type="url" name="facebook" placeholder="https://"></div>
+            <div class="field"><label>Instagram</label><input type="url" name="instagram" placeholder="https://"></div>
+            <div class="field"><label>LinkedIn</label><input type="url" name="linkedin" placeholder="https://"></div>
+          </div>
+        </fieldset>
+
+        <!-- 3 · EXPÉRIENCE -->
+        <fieldset>
+          <legend><span class="legend-no">3</span> Expérience</legend>
+          <div class="legend-hint">Les chiffres concrets rassurent les clients et renforcent votre crédibilité.</div>
+          <div class="row three">
+            <div class="field"><label>Années d'expérience</label><input type="number" name="annees" min="0" placeholder="Ex. 35"></div>
+            <div class="field"><label>Propriétés vendues (env.)</label><input type="number" name="ventes" min="0" placeholder="Ex. 1700"></div>
+            <div class="field"><label>Langues parlées</label><input type="text" name="langues" placeholder="Français, anglais…"></div>
+          </div>
+        </fieldset>
+
+        <!-- 4 · TERRITOIRE -->
+        <fieldset>
+          <legend><span class="legend-no">4</span> Territoire</legend>
+          <div class="legend-hint">Sélectionnez les villes où vous êtes actif. Votre page sera reliée aux guides de ces villes.</div>
+          <div class="field">
+            <label>Ville principale <span class="req">*</span></label>
+            <select name="ville_principale" required>
+              <option value="">Choisir…</option>
+              <option>Blainville</option><option>Sainte-Thérèse</option><option>Lorraine</option><option>Rosemère</option>
+              <option>Boisbriand</option><option>Bois-des-Filion</option><option>Saint-Eustache</option><option>Oka</option>
+              <option>Deux-Montagnes</option><option>Mirabel</option><option>Pointe-Calumet</option><option>Sainte-Marthe-sur-le-Lac</option>
+              <option>Saint-Janvier</option><option>Ste-Anne-des-Plaines</option><option>Sainte-Sophie</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Toutes les villes desservies</label>
+            <div class="check-grid" data-group="villes">
+              <label class="check"><input type="checkbox" name="villes" value="Blainville"><span>Blainville</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Sainte-Thérèse"><span>Sainte-Thérèse</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Lorraine"><span>Lorraine</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Rosemère"><span>Rosemère</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Boisbriand"><span>Boisbriand</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Bois-des-Filion"><span>Bois-des-Filion</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Saint-Eustache"><span>Saint-Eustache</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Oka"><span>Oka</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Deux-Montagnes"><span>Deux-Montagnes</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Mirabel"><span>Mirabel</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Pointe-Calumet"><span>Pointe-Calumet</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Sainte-Marthe-sur-le-Lac"><span>Ste-Marthe-sur-le-Lac</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Saint-Janvier"><span>Saint-Janvier</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Ste-Anne-des-Plaines"><span>Ste-Anne-des-Plaines</span></label>
+              <label class="check"><input type="checkbox" name="villes" value="Sainte-Sophie"><span>Sainte-Sophie</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 5 · SPÉCIALITÉS -->
+        <fieldset>
+          <legend><span class="legend-no">5</span> Spécialités</legend>
+          <div class="legend-hint">Ce que vous faites — pour cibler les bonnes recherches.</div>
+          <div class="field full">
+            <label>Type de marché</label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="types" value="résidentiel"><span>Résidentiel</span></label>
+              <label class="check"><input type="checkbox" name="types" value="commercial"><span>Commercial</span></label>
+              <label class="check"><input type="checkbox" name="types" value="revenus"><span>Immeubles à revenus</span></label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Transactions</label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="transaction" value="achat"><span>Achat</span></label>
+              <label class="check"><input type="checkbox" name="transaction" value="vente"><span>Vente</span></label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Types de propriétés</label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="proprietes" value="unifamiliale"><span>Unifamiliale</span></label>
+              <label class="check"><input type="checkbox" name="proprietes" value="condo"><span>Condo</span></label>
+              <label class="check"><input type="checkbox" name="proprietes" value="jumelé"><span>Jumelé / cottage</span></label>
+              <label class="check"><input type="checkbox" name="proprietes" value="plex"><span>Plex</span></label>
+              <label class="check"><input type="checkbox" name="proprietes" value="terrain"><span>Terrain</span></label>
+              <label class="check"><input type="checkbox" name="proprietes" value="commercial"><span>Commercial</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 6 · CE QUI VOUS DISTINGUE -->
+        <fieldset>
+          <legend><span class="legend-no">6</span> Ce qui vous distingue</legend>
+          <div class="legend-hint">Le cœur de votre différenciation — ce qui rend votre page unique et évite le contenu générique.</div>
+          <div class="field full"><label>En quelques phrases, qu'est-ce qui vous distingue ? <span class="req">*</span></label><textarea name="differenciateur" required placeholder="Votre approche, votre force, ce que vos clients soulignent le plus…"></textarea></div>
+          <div class="field full"><label>Votre clientèle de prédilection</label><input type="text" name="clientele" placeholder="Ex. Familles, premiers acheteurs, propriétés de prestige…"></div>
+          <div class="field full"><label>Certifications, prix, distinctions</label><input type="text" name="distinctions" placeholder="Ex. Club 100 % Or RE/MAX, certification copropriété…"></div>
+        </fieldset>
+
+        <!-- 7 · GEO / QUESTIONS CLIENTS -->
+        <fieldset>
+          <legend><span class="legend-no">7</span> Questions de vos clients</legend>
+          <div class="legend-hint">Les vraies questions qu'on vous pose. Elles deviennent une FAQ que les IA peuvent citer.</div>
+          <div class="field full"><label>Questions fréquentes (une par ligne)</label><textarea name="questions" placeholder="Ex. Combien vaut ma maison à Sainte-Thérèse ?&#10;Combien de temps pour vendre dans le secteur ?&#10;Quels sont les frais à prévoir ?"></textarea></div>
+        </fieldset>
+
+        <!-- 8 · TÉMOIGNAGES -->
+        <fieldset>
+          <legend><span class="legend-no">8</span> Témoignages</legend>
+          <div class="legend-hint">2 à 3 témoignages de clients (avec leur accord). Ils renforcent fortement la confiance et le référencement.</div>
+          <div class="testi-block">
+            <h4>Témoignage 1</h4>
+            <div class="field full"><label>Citation</label><textarea name="temoignage_1" placeholder="Ce que le client a dit…"></textarea></div>
+            <div class="row"><div class="field"><label>Nom du client</label><input type="text" name="temoignage_1_nom"></div><div class="field"><label>Ville</label><input type="text" name="temoignage_1_ville"></div></div>
+          </div>
+          <div class="testi-block">
+            <h4>Témoignage 2</h4>
+            <div class="field full"><label>Citation</label><textarea name="temoignage_2"></textarea></div>
+            <div class="row"><div class="field"><label>Nom du client</label><input type="text" name="temoignage_2_nom"></div><div class="field"><label>Ville</label><input type="text" name="temoignage_2_ville"></div></div>
+          </div>
+          <div class="testi-block">
+            <h4>Témoignage 3</h4>
+            <div class="field full"><label>Citation</label><textarea name="temoignage_3"></textarea></div>
+            <div class="row"><div class="field"><label>Nom du client</label><input type="text" name="temoignage_3_nom"></div><div class="field"><label>Ville</label><input type="text" name="temoignage_3_ville"></div></div>
+          </div>
+        </fieldset>
+
+        <!-- 9 · CONSENTEMENT -->
+        <fieldset>
+          <legend><span class="legend-no">9</span> Autorisation</legend>
+          <label class="consent"><input type="checkbox" name="consentement" required> J'autorise RE/MAX Crystal à utiliser ces informations pour créer et publier ma page de courtier sur le site de l'agence. <span class="req">*</span></label>
+        </fieldset>
+
+        <div class="submit-row">
+          <button type="submit" class="btn">Envoyer mes informations</button>
+          <div class="submit-hint">À l'envoi, un fichier de vos réponses est généré pour la création de votre page.</div>
+        </div>
+      </form>
+
+      <!-- success -->
+      <div class="success" id="success">
+        <div class="tick">✓</div>
+        <h2>Merci ! C'est reçu.</h2>
+        <p>Vos informations ont été enregistrées dans un fichier (<strong id="fileName">courtier.json</strong>) qui vient d'être téléchargé.</p>
+        <p>Transmettez ce fichier à l'équipe V pour Design — votre page sera générée à partir de ces données.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 RE/MAX Crystal — Formulaire de création de page courtier · V pour Design</footer>
+
+  <script>
+    const form = document.getElementById('courtierForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const data = {};
+      // champs simples + groupes multiples
+      for (const [key, val] of fd.entries()) {
+        if (key === 'photo') { data.photo = val && val.name ? val.name : null; continue; }
+        if (['villes','types','transaction','proprietes'].includes(key)) {
+          (data[key] = data[key] || []).push(val);
+        } else {
+          data[key] = val;
+        }
+      }
+      data._genere_le = new Date().toISOString();
+      // téléchargement du fichier de données
+      const slug = ((data.prenom||'') + '-' + (data.nom||'courtier')).toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+      const fileName = 'courtier-' + (slug||'courtier') + '.json';
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = fileName;
+      document.body.appendChild(a); a.click(); a.remove();
+      // affichage succès
+      document.getElementById('fileName').textContent = fileName;
+      form.style.display = 'none';
+      const ok = document.getElementById('success');
+      ok.classList.add('show');
+      ok.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

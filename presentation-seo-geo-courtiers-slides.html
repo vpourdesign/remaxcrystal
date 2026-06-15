@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE/MAX Crystal — SEO &amp; GEO courtiers · Slides</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== BASE VIEWPORT (frontend-slides) ===== */
+html, body { height:100%; overflow-x:hidden; }
+html { scroll-snap-type:y mandatory; scroll-behavior:smooth; }
+.slide { width:100vw; height:100vh; height:100dvh; overflow:hidden; scroll-snap-align:start; display:flex; flex-direction:column; position:relative; }
+.slide-content { flex:1; display:flex; flex-direction:column; justify-content:center; max-height:100%; overflow:hidden; padding:var(--pad); width:min(94vw,1320px); margin-inline:auto; }
+:root {
+  --pad: clamp(1.4rem, 5vw, 5rem);
+  --kicker: clamp(0.72rem, 1vw, 0.9rem);
+  --h: clamp(2rem, 6.5vw, 5.4rem);
+  --h-sm: clamp(1.6rem, 4.5vw, 3.4rem);
+  --body: clamp(0.95rem, 1.5vw, 1.35rem);
+}
+@media (max-height:700px){ :root { --pad: clamp(1rem,3vw,2.4rem); --h: clamp(1.7rem,5.5vw,3.6rem); --h-sm: clamp(1.4rem,4vw,2.6rem); } }
+@media (max-height:560px){ :root { --h: clamp(1.4rem,4.5vw,2.6rem); --body: clamp(0.85rem,1.3vw,1.05rem); } .nav-dots,.keyboard-hint{ display:none; } }
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation-duration:.01ms!important; transition-duration:.2s!important; } html{ scroll-behavior:auto; } }
+
+/* ===== MARQUE ===== */
+:root {
+  --navy-deep:#1a2332; --navy:#1e3350; --navy-mid:#264060;
+  --blue-brand:#3578c4; --blue-light:#6ba3d9; --blue-pale:#b0cfe8;
+  --cream:#f4f1ea; --warm-white:#faf9f6; --gold:#c4a245;
+  --text-dark:#15191f; --text-body:#3d4555; --text-muted:#7a8294;
+  --track:#e7e9ef; --border:#e2e5eb;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Open Sans',sans-serif; background:var(--warm-white); color:var(--text-dark); -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4 { font-family:'Raleway',sans-serif; letter-spacing:-0.035em; line-height:1.02; font-weight:800; }
+
+/* backgrounds — texte monochrome par fond */
+.bg-light { background:var(--warm-white); color:var(--text-dark); }
+.bg-cream { background:var(--cream); color:var(--text-dark); }
+.bg-dark { background:linear-gradient(155deg,var(--navy-deep),var(--navy) 60%,#141d2a); color:#fff; }
+.bg-dark h1,.bg-dark h2,.bg-dark h3 { color:#fff; }
+
+/* kicker (monochrome, accent = trait doré uniquement) */
+.kicker { display:inline-flex; align-items:center; gap:12px; font-family:'Raleway',sans-serif; font-size:var(--kicker); font-weight:800; letter-spacing:0.22em; text-transform:uppercase; margin-block-end:clamp(14px,2.4vh,30px); color:var(--text-muted); }
+.kicker::before { content:""; width:34px; height:3px; background:var(--gold); border-radius:2px; }
+.bg-dark .kicker { color:rgba(255,255,255,0.62); }
+
+h1.big { font-size:var(--h); font-weight:900; }
+h2.big { font-size:var(--h-sm); font-weight:800; }
+.sub { font-size:var(--body); line-height:1.5; max-width:54ch; margin-block-start:clamp(16px,2.6vh,30px); color:inherit; opacity:.9; font-weight:500; }
+.bg-dark .sub { opacity:.84; }
+
+/* ===== SLIDE 2 — gauges ===== */
+.metrics { margin-block-start:clamp(28px,5vh,64px); display:flex; flex-direction:column; gap:clamp(22px,4vh,46px); }
+.metric { display:grid; grid-template-columns:clamp(150px,20vw,300px) 1fr auto; align-items:center; gap:clamp(16px,2.5vw,40px); }
+.metric .name { font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(1.2rem,2.8vw,2.4rem); }
+.track { height:clamp(28px,5vh,46px); background:var(--track); border-radius:999px; overflow:hidden; }
+.bg-dark .track { background:rgba(255,255,255,0.14); }
+.track .fill { height:100%; border-radius:999px; background:var(--navy); }
+.bg-dark .track .fill { background:var(--blue-light); }
+.metric .val { font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(1rem,2.2vw,1.7rem); white-space:nowrap; }
+@media (max-width:620px){ .metric{ grid-template-columns:1fr auto; } .metric .track{ grid-column:1/-1; order:3; } }
+
+/* ===== SLIDE 3 — clone vs unique ===== */
+.dupes { display:flex; gap:clamp(16px,3vw,40px); align-items:center; margin-block-start:clamp(28px,5vh,60px); flex-wrap:wrap; }
+.dupe-stack { display:flex; gap:10px; }
+.dupe { width:clamp(46px,7vw,84px); height:clamp(64px,11vh,128px); border-radius:10px; background:rgba(255,255,255,0.14); border:2px dashed rgba(255,255,255,0.4); }
+.vs { font-family:'Raleway',sans-serif; font-weight:900; font-size:clamp(1.4rem,3vw,2.4rem); opacity:.6; }
+.uniq { width:clamp(58px,9vw,110px); height:clamp(64px,11vh,128px); border-radius:10px; background:var(--blue-light); box-shadow:0 12px 30px rgba(53,120,196,0.4); }
+
+/* ===== SLIDE 4 — diagram ===== */
+.diagram { width:100%; height:auto; max-height:min(62vh,520px); margin-block-start:clamp(20px,3vh,40px); }
+
+/* ===== SLIDE 5 — tiers ===== */
+.tiers { margin-block-start:clamp(24px,4vh,52px); display:flex; flex-direction:column; gap:clamp(12px,2vh,20px); }
+.tierbar { display:flex; align-items:center; gap:clamp(16px,2.5vw,32px); background:#fff; border:1px solid var(--border); border-left:7px solid var(--navy); border-radius:14px; padding:clamp(16px,2.2vw,30px) clamp(20px,2.8vw,38px); box-shadow:0 14px 36px rgba(35,50,70,0.07); }
+.tierbar .tname { font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(1.1rem,2.4vw,2rem); white-space:nowrap; }
+.tierbar .tdesc { font-size:var(--body); color:var(--text-body); font-weight:500; }
+.tierbar.t1{ width:100%; } .tierbar.t2{ width:84%; } .tierbar.t3{ width:68%; }
+@media (max-width:760px){ .tierbar,.tierbar.t2,.tierbar.t3{ width:100%; flex-direction:column; align-items:flex-start; gap:6px; } .tierbar .tname{ white-space:normal; } }
+
+/* ===== SLIDE 6 — manifeste ===== */
+.center { align-items:center; text-align:center; }
+.center .sub { margin-inline:auto; }
+.manifesto { font-size:clamp(2rem,7vw,6rem); font-weight:900; line-height:1.0; letter-spacing:-0.04em; }
+
+/* ===== SLIDE 7 — timeline ===== */
+.timeline { margin-block-start:clamp(28px,5vh,64px); display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2.5vw,34px); position:relative; }
+.timeline::before { content:""; position:absolute; top:clamp(26px,4vh,42px); left:6%; right:6%; height:3px; background:var(--track); z-index:0; }
+.bg-dark .timeline::before { background:rgba(255,255,255,0.16); }
+.step { position:relative; z-index:1; text-align:center; }
+.step .num { width:clamp(52px,8vh,84px); height:clamp(52px,8vh,84px); border-radius:50%; background:var(--navy); color:#fff; font-family:'Raleway',sans-serif; font-weight:900; font-size:clamp(1.2rem,2.6vw,2.2rem); display:flex; align-items:center; justify-content:center; margin:0 auto clamp(12px,2vh,20px); }
+.bg-dark .step .num { background:var(--blue-brand); }
+.step .slabel { font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(0.95rem,1.8vw,1.35rem); }
+.step .sdesc { font-size:clamp(0.74rem,1.1vw,0.95rem); color:var(--text-muted); margin-block-start:5px; line-height:1.4; }
+@media (max-width:620px){ .timeline{ grid-template-columns:1fr 1fr; gap:22px; } .timeline::before{ display:none; } }
+
+/* ===== SLIDE 8 — tiles ===== */
+.tiles { margin-block-start:clamp(24px,4vh,52px); display:grid; grid-template-columns:1fr 1fr; gap:clamp(16px,2.5vw,28px); }
+.tile { display:flex; flex-direction:column; background:#fff; border:1px solid var(--border); border-radius:18px; padding:clamp(22px,3vw,44px); box-shadow:0 16px 40px rgba(35,50,70,0.08); transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; }
+.tile:hover { transform:translateY(-5px); box-shadow:0 22px 54px rgba(35,50,70,0.14); }
+.tile .tk { font-family:'Raleway',sans-serif; font-size:var(--kicker); font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); margin-block-end:12px; }
+.tile h3 { font-size:clamp(1.4rem,2.8vw,2.2rem); margin-block-end:12px; }
+.tile p { font-size:var(--body); color:var(--text-body); font-weight:500; line-height:1.5; flex:1; }
+.tile .go { margin-block-start:clamp(16px,2.4vh,26px); font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(0.95rem,1.6vw,1.2rem); color:var(--navy); display:inline-flex; align-items:center; gap:8px; }
+@media (max-width:720px){ .tiles{ grid-template-columns:1fr; } }
+
+/* ===== CTA ===== */
+.btn { display:inline-block; margin-block-start:clamp(22px,4vh,40px); padding:16px 40px; border-radius:999px; background:var(--blue-brand); color:#fff; font-weight:800; font-family:'Raleway',sans-serif; font-size:clamp(0.95rem,1.6vw,1.2rem); }
+
+/* ===== UI ===== */
+.progress { position:fixed; top:0; left:0; height:4px; background:var(--gold); width:0; z-index:60; transition:width .3s ease; }
+.nav-dots { position:fixed; right:clamp(12px,2vw,28px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:12px; z-index:50; }
+.nav-dots button { width:10px; height:10px; border-radius:50%; border:none; background:rgba(120,130,148,0.4); cursor:pointer; padding:0; transition:all .3s ease; }
+.nav-dots button.active { background:var(--gold); transform:scale(1.5); }
+.counter { position:fixed; left:clamp(16px,2.4vw,32px); bottom:clamp(14px,2.2vh,28px); z-index:50; font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(0.78rem,1vw,0.95rem); color:var(--text-muted); }
+.keyboard-hint { position:fixed; right:clamp(16px,2.4vw,32px); bottom:clamp(14px,2.2vh,28px); z-index:50; font-size:0.8rem; color:var(--text-muted); opacity:.7; }
+
+[data-reveal] { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1); }
+.slide.active [data-reveal] { opacity:1; transform:none; transition-delay:calc(var(--i,0) * .09s); }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- 1 · COUVERTURE -->
+<section class="slide bg-dark">
+  <div class="slide-content">
+    <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" style="height:clamp(24px,3.4vh,36px); width:auto; margin-block-end:clamp(24px,5vh,60px);" data-reveal>
+    <div class="kicker" data-reveal style="--i:1">Note de projet · pour décision</div>
+    <h1 class="big" data-reveal style="--i:2">Dominer le SEO<br>et le GEO local.</h1>
+    <p class="sub" data-reveal style="--i:3">Faire de chaque courtier Crystal une force de référencement — et creuser un écart que les autres bannières ne rattraperont pas.</p>
+  </div>
+</section>
+
+<!-- 2 · CONSTAT -->
+<section class="slide bg-light">
+  <div class="slide-content">
+    <div class="kicker" data-reveal>Le constat</div>
+    <h2 class="big" data-reveal style="--i:1">L'agence est forte.<br>Les courtiers sont invisibles.</h2>
+    <div class="metrics">
+      <div class="metric" data-reveal style="--i:2">
+        <div class="name">Site agence</div>
+        <div class="track"><div class="fill" style="width:90%"></div></div>
+        <div class="val">Solide</div>
+      </div>
+      <div class="metric" data-reveal style="--i:3">
+        <div class="name">Courtiers</div>
+        <div class="track"><div class="fill" style="width:14%"></div></div>
+        <div class="val">Dormant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · PROBLÈME -->
+<section class="slide bg-dark">
+  <div class="slide-content">
+    <div class="kicker" data-reveal>Le piège</div>
+    <h2 class="big" data-reveal style="--i:1">Cloner les pages,<br>c'est se faire pénaliser.</h2>
+    <div class="dupes" data-reveal style="--i:2">
+      <div class="dupe-stack"><div class="dupe"></div><div class="dupe"></div><div class="dupe"></div></div>
+      <div class="vs">VS</div>
+      <div class="uniq"></div>
+    </div>
+    <p class="sub" data-reveal style="--i:3">Une seule règle : chaque courtier obtient une page <strong>unique</strong>, bâtie sur ses vrais chiffres. On différencie, ou on ne fait rien.</p>
+  </div>
+</section>
+
+<!-- 4 · VISION / MAILLAGE -->
+<section class="slide bg-light">
+  <div class="slide-content">
+    <div class="kicker" data-reveal>La vision</div>
+    <h2 class="big" data-reveal style="--i:1">Un maillage incopiable.</h2>
+    <div data-reveal style="--i:2">
+      <svg class="diagram" viewBox="0 0 1000 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maillage agence, villes et courtiers">
+        <g stroke="#264060" stroke-width="2.5" opacity="0.4">
+          <line x1="500" y1="118" x2="180" y2="248"/><line x1="500" y1="118" x2="360" y2="248"/>
+          <line x1="500" y1="118" x2="500" y2="248"/><line x1="500" y1="118" x2="640" y2="248"/><line x1="500" y1="118" x2="820" y2="248"/>
+        </g>
+        <g stroke="#3578c4" stroke-width="2.5" opacity="0.45">
+          <line x1="180" y1="288" x2="120" y2="378"/><line x1="180" y1="288" x2="240" y2="378"/>
+          <line x1="360" y1="288" x2="360" y2="378"/><line x1="500" y1="288" x2="440" y2="378"/>
+          <line x1="500" y1="288" x2="560" y2="378"/><line x1="640" y1="288" x2="640" y2="378"/>
+          <line x1="820" y1="288" x2="760" y2="378"/><line x1="820" y1="288" x2="880" y2="378"/>
+        </g>
+        <rect x="365" y="36" width="270" height="82" rx="16" fill="#1a2332"/>
+        <text x="500" y="72" text-anchor="middle" fill="#fff" font-family="Raleway,sans-serif" font-size="22" font-weight="800">RE/MAX Crystal</text>
+        <text x="500" y="96" text-anchor="middle" fill="#b0cfe8" font-family="Open Sans,sans-serif" font-size="13">Autorité de l'agence</text>
+        <g font-family="Raleway,sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#1e3350">
+          <g><rect x="118" y="250" width="124" height="44" rx="10" fill="#fff" stroke="#264060" stroke-width="1.5"/><text x="180" y="277">Blainville</text></g>
+          <g><rect x="298" y="250" width="124" height="44" rx="10" fill="#fff" stroke="#264060" stroke-width="1.5"/><text x="360" y="277">Ste-Thérèse</text></g>
+          <g><rect x="438" y="250" width="124" height="44" rx="10" fill="#fff" stroke="#264060" stroke-width="1.5"/><text x="500" y="277">Rosemère</text></g>
+          <g><rect x="578" y="250" width="124" height="44" rx="10" fill="#fff" stroke="#264060" stroke-width="1.5"/><text x="640" y="277">Boisbriand</text></g>
+          <g><rect x="758" y="250" width="124" height="44" rx="10" fill="#fff" stroke="#264060" stroke-width="1.5"/><text x="820" y="277">Lorraine…</text></g>
+        </g>
+        <g fill="#3578c4">
+          <circle cx="120" cy="380" r="15"/><circle cx="240" cy="380" r="15"/><circle cx="360" cy="380" r="15"/><circle cx="440" cy="380" r="15"/>
+          <circle cx="560" cy="380" r="15"/><circle cx="640" cy="380" r="15"/><circle cx="760" cy="380" r="15"/><circle cx="880" cy="380" r="15"/>
+        </g>
+        <text x="500" y="420" text-anchor="middle" fill="#7a8294" font-family="Open Sans,sans-serif" font-size="13" font-weight="600">Pages courtier différenciées, reliées à l'agence et aux villes</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · DIFFÉRENCIATION -->
+<section class="slide bg-cream">
+  <div class="slide-content">
+    <div class="kicker" data-reveal>Le moteur</div>
+    <h2 class="big" data-reveal style="--i:1">On orchestre.<br>On ne nivelle pas.</h2>
+    <div class="tiers">
+      <div class="tierbar t1" data-reveal style="--i:2"><span class="tname">Courtier très actif</span><span class="tdesc">Page riche : marché, secteurs de force, inscriptions, maillage maximal.</span></div>
+      <div class="tierbar t2" data-reveal style="--i:3"><span class="tname">Courtier établi</span><span class="tdesc">Page complète, ciblée sur ses villes, avec un angle propre.</span></div>
+      <div class="tierbar t3" data-reveal style="--i:4"><span class="tname">Courtier émergent</span><span class="tdesc">Page minimale, unique, reliée à l'agence.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · MANIFESTE -->
+<section class="slide bg-dark">
+  <div class="slide-content center">
+    <div class="kicker" data-reveal>L'esprit</div>
+    <h1 class="manifesto" data-reveal style="--i:1">On ne se bat pas<br>entre nous.<br>On bat les autres<br>bannières.</h1>
+    <p class="sub" data-reveal style="--i:2">Chaque courtier gagne parce que toute la bannière monte ensemble.</p>
+  </div>
+</section>
+
+<!-- 7 · PHASES -->
+<section class="slide bg-light">
+  <div class="slide-content">
+    <div class="kicker" data-reveal>Le déploiement</div>
+    <h2 class="big" data-reveal style="--i:1">Quatre phases.</h2>
+    <div class="timeline">
+      <div class="step" data-reveal style="--i:2"><div class="num">1</div><div class="slabel">Socle</div><div class="sdesc">Sitemap, robots, balisage</div></div>
+      <div class="step" data-reveal style="--i:3"><div class="num">2</div><div class="slabel">Courtiers</div><div class="sdesc">Pages + maillage</div></div>
+      <div class="step" data-reveal style="--i:4"><div class="num">3</div><div class="slabel">GEO</div><div class="sdesc">FAQ IA + différenciation</div></div>
+      <div class="step" data-reveal style="--i:5"><div class="num">4</div><div class="slabel">Mesure</div><div class="sdesc">Suivi + automatisation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · PREUVE CONCRÈTE -->
+<section class="slide bg-cream">
+  <div class="slide-content">
+    <div class="kicker" data-reveal>Déjà construit</div>
+    <h2 class="big" data-reveal style="--i:1">Deux pages à voir.</h2>
+    <div class="tiles">
+      <a class="tile" href="courtier-alain-brunelle.html" target="_blank" rel="noopener" data-reveal style="--i:2">
+        <div class="tk">Le livrable type</div>
+        <h3>La page d'un courtier</h3>
+        <p>Exemple pour Alain Brunelle : optimisée SEO + GEO, données structurées, reliée aux guides de ville.</p>
+        <span class="go">Ouvrir la page →</span>
+      </a>
+      <a class="tile" href="courtier-formulaire.html" target="_blank" rel="noopener" data-reveal style="--i:3">
+        <div class="tk">La collecte</div>
+        <h3>Le formulaire courtier</h3>
+        <p>Rempli une fois par le courtier. Ses réponses génèrent sa page, sans contenu cloné.</p>
+        <span class="go">Ouvrir le formulaire →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · CTA -->
+<section class="slide bg-dark">
+  <div class="slide-content center">
+    <div class="kicker" data-reveal>Prochaine étape</div>
+    <h1 class="big" data-reveal style="--i:1">On lance la Phase 1 ?</h1>
+    <p class="sub" data-reveal style="--i:2">On part de ce qui existe déjà. L'avance se construit dès le premier mois.</p>
+    <a class="btn" href="#" data-reveal style="--i:3">En discuter avec V pour Design</a>
+  </div>
+</section>
+
+<!-- UI -->
+<div class="nav-dots" id="navDots"></div>
+<div class="counter" id="counter">01 / 09</div>
+<div class="keyboard-hint">↑ ↓ &nbsp;ou&nbsp; espace</div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const total = slides.length;
+const dotsWrap = document.getElementById('navDots');
+const counter = document.getElementById('counter');
+const progress = document.getElementById('progress');
+let current = 0;
+slides.forEach((s,i)=>{ const b=document.createElement('button'); b.setAttribute('aria-label','Slide '+(i+1)); b.addEventListener('click',()=>slides[i].scrollIntoView({behavior:'smooth'})); dotsWrap.appendChild(b); });
+const dots = Array.from(dotsWrap.children);
+const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting && e.intersectionRatio>0.5){ const i=slides.indexOf(e.target); e.target.classList.add('active'); current=i; dots.forEach((d,k)=>d.classList.toggle('active',k===i)); counter.textContent=String(i+1).padStart(2,'0')+' / '+String(total).padStart(2,'0'); progress.style.width=((i+1)/total*100)+'%'; } }); }, { threshold:[0.5,0.75] });
+slides.forEach(s=>io.observe(s));
+function go(dir){ const n=Math.min(total-1,Math.max(0,current+dir)); slides[n].scrollIntoView({behavior:'smooth'}); }
+window.addEventListener('keydown',(e)=>{ if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){ e.preventDefault(); go(1);} else if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); go(-1);} else if(e.key==='Home'){ e.preventDefault(); slides[0].scrollIntoView({behavior:'smooth'});} else if(e.key==='End'){ e.preventDefault(); slides[total-1].scrollIntoView({behavior:'smooth'});} });
+slides[0].classList.add('active');
+</script>
+</body>
+</html>

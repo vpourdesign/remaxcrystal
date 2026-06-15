@@ -1,0 +1,25 @@
+# OS
+.DS_Store
+**/.DS_Store
+
+# Dépendances & artefacts de build
+node_modules/
+**/node_modules/
+**/out/
+__pycache__/
+*.pyc
+
+# Backups locaux
+_backup-pre-remax-norms-2026-06-15/
+
+# Sous-projet vidéo (dépôt git autonome, versionné séparément)
+presentation-client/
+
+# Médias source lourds — non utilisés par les pages index/villes
+# (vidéos > 100 Mo refusées par GitHub, conservées en local seulement)
+images/pourlecourtier/
+images/nosdirigeants/
+images/bureaux/
+images/galas/*
+!images/galas/gala-web.mp4
+!images/galas/gala-poster.jpg

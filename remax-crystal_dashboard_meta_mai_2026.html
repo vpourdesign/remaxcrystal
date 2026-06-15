@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE/MAX Crystal — Dashboard Meta Mai 2026</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231e3350'/><text x='16' y='22' font-family='Cormorant Garamond,serif' font-size='18' font-weight='700' text-anchor='middle' fill='%233578c4'>C</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'monospace']
+        },
+        colors: {
+          rx: {
+            navyDeep: '#1a2332',
+            navy: '#1e3350',
+            navyMid: '#264060',
+            blue: '#3578c4',
+            blueLight: '#6ba3d9',
+            bluePale: '#b0cfe8',
+            blueWhisper: '#e8f0f7',
+            cream: '#f7f5f0',
+            warm: '#faf9f6',
+            gold: '#c4a245',
+            goldSoft: '#d9c88a',
+            ink: '#1a1f2b',
+            body: '#3d4555',
+            muted: '#6b7385',
+            surface: '#f8f9fb',
+            line: '#e2e5eb'
+          }
+        }
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    background: linear-gradient(180deg, #faf9f6 0%, #f0f4f9 100%);
+    background-attachment: fixed;
+    color: #3d4555;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; color: #1a1f2b; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #e8f0f7; }
+  ::-webkit-scrollbar-thumb { background: #b0cfe8; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #6ba3d9; }
+  .card { transition: box-shadow 0.25s, transform 0.25s; }
+  .card:hover { box-shadow: 0 6px 28px rgba(30, 51, 80, 0.08); }
+  .pill { font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .fade-in { animation: fade 0.35s ease-out; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Hero gradient */
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 0%, rgba(53, 120, 196, 0.18), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(196, 162, 69, 0.12), transparent 60%),
+      linear-gradient(180deg, #1a2332 0%, #1e3350 100%);
+  }
+
+  /* Plan Média tree */
+  .tree-camp { border-left: 4px solid var(--bucket-color, #3578c4); }
+  .tree-branch { position: relative; }
+  .tree-branch::before {
+    content: ''; position: absolute; left: -1px; top: 0; bottom: 0;
+    width: 1px; background: #b0cfe8;
+  }
+  .tree-branch > .tree-item::before {
+    content: ''; position: absolute; left: -1px; top: 22px;
+    width: 22px; height: 1px; background: #b0cfe8;
+  }
+  .tree-item { position: relative; }
+
+  /* City chips */
+  .city-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 11px; border-radius: 999px;
+    background: #e8f0f7; color: #1e3350;
+    font-size: 12px; font-weight: 500;
+    border: 1px solid #b0cfe8;
+  }
+  .city-chip svg { color: #3578c4; }
+
+  /* Print */
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="application/json" id="dashboard-data">{
+  "meta": {
+    "client": "RE/MAX Crystal",
+    "month": "Mai 2026",
+    "period": "2026-05-01 → 2026-05-31",
+    "period_days": 31,
+    "budget_media": 1000,
+    "budget_management": 400,
+    "budget_total": 1400,
+    "channels": ["Facebook", "Instagram"]
+  },
+  "cities": [
+    "Blainville", "Sainte-Thérèse", "Lorraine", "Rosemère", "Boisbriand",
+    "Bois-des-Filion", "Saint-Eustache", "Oka", "Deux-Montagnes", "Mirabel",
+    "Pointe-Calumet", "Sainte-Marthe-sur-le-Lac", "Saint-Janvier",
+    "Ste-Anne-des-Plaines", "Sainte-Sophie"
+  ],
+  "buckets": [
+    {
+      "id": "notoriete",
+      "label": "Notoriété",
+      "subtitle": "Faire connaître l'agence + ses outils AI",
+      "color": "#1e3350",
+      "color_soft": "#e8f0f7",
+      "color_text": "#1a2332",
+      "budget": 200,
+      "pct": 20,
+      "objective_meta": "Notoriété de la marque",
+      "kpi": "Portée · Impressions · Coût/1000 vues",
+      "icon": "broadcast"
+    },
+    {
+      "id": "trafic",
+      "label": "Trafic",
+      "subtitle": "Découvrez nos outils AI",
+      "color": "#3578c4",
+      "color_soft": "#e8f0f7",
+      "color_text": "#264060",
+      "budget": 300,
+      "pct": 30,
+      "objective_meta": "Trafic vers le site",
+      "kpi": "Clics · CTR · Coût par clic",
+      "icon": "click"
+    },
+    {
+      "id": "conversion",
+      "label": "Conversion",
+      "subtitle": "Démo des 3 outils AI spécifiques",
+      "color": "#c4a245",
+      "color_soft": "#faf6e8",
+      "color_text": "#7a651e",
+      "budget": 500,
+      "pct": 50,
+      "objective_meta": "Conversions / Leads",
+      "kpi": "Leads · Coût par lead · Taux de conversion",
+      "icon": "target"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "CAMP-01",
+      "name": "Notoriété — L'agence et ses outils AI",
+      "bucket_id": "notoriete",
+      "objective": "notoriete",
+      "budget": 200,
+      "daily": 6.45,
+      "languages": ["FR"],
+      "audience": "Adultes 28-65 · Intérêts immobilier, vie de famille, achat maison · 15 villes Basses-Laurentides",
+      "ad_sets": [
+        {
+          "id": "AS-01a",
+          "name": "Notoriété — Agence + Outils AI",
+          "geo": "15 villes ciblées",
+          "audience": "Famille_BassesLaurentides_FR",
+          "budget": 200,
+          "daily": 6.45,
+          "creatives": [
+            { "id": "CR-NOT-01", "name": "L'agence qui connaît vos quartiers", "format": "video", "language": "FR", "desc": "Présentation courtiers + outils AI : vidéo 15s · brand awareness" }
+          ]
+        }
+      ],
+      "client_message": "Une seule pub qui présente l'agence ET met en avant nos 3 outils AI. Objectif : que les gens des 15 villes nous reconnaissent."
+    },
+    {
+      "id": "CAMP-02",
+      "name": "Trafic — Découvrez nos outils AI",
+      "bucket_id": "trafic",
+      "objective": "trafic",
+      "budget": 300,
+      "daily": 9.68,
+      "languages": ["FR"],
+      "audience": "Acheteurs potentiels 28-55 · Intérêts immobilier · 15 villes",
+      "ad_sets": [
+        {
+          "id": "AS-02a",
+          "name": "Trafic — Découverte outils AI",
+          "geo": "15 villes ciblées",
+          "audience": "Acheteurs_BassesLaurentides_FR",
+          "budget": 300,
+          "daily": 9.68,
+          "creatives": [
+            { "id": "CR-TRA-01", "name": "Découvrez nos 3 outils gratuits", "format": "carrousel", "language": "FR", "desc": "Carrousel des 3 outils → clic vers la section #outils-rapides" }
+          ]
+        }
+      ],
+      "client_message": "Les gens cliquent et arrivent sur la page d'outils AI. On veut du trafic qualifié sur le site."
+    },
+    {
+      "id": "CAMP-03",
+      "name": "Conversion — Démo des 3 outils AI",
+      "bucket_id": "conversion",
+      "objective": "conversion",
+      "budget": 500,
+      "daily": 16.13,
+      "languages": ["FR"],
+      "audience": "Acheteurs actifs 28-55 + retargeting visiteurs site",
+      "ad_sets": [
+        {
+          "id": "AS-03a",
+          "name": "Outil 1 — Taxe de bienvenue",
+          "geo": "15 villes ciblées",
+          "audience": "Acheteurs_BassesLaurentides_FR + RT_30j",
+          "budget": 170,
+          "daily": 5.48,
+          "creatives": [
+            { "id": "CR-CONV-01", "name": "Calculez votre taxe de bienvenue", "format": "statique", "language": "FR", "desc": "Visuel calcul taxe de bienvenue par ville · CTA : Calculer maintenant" }
+          ]
+        },
+        {
+          "id": "AS-03b",
+          "name": "Outil 2 — Comparateur taxes municipales",
+          "geo": "15 villes ciblées",
+          "audience": "Acheteurs_BassesLaurentides_FR + RT_30j",
+          "budget": 165,
+          "daily": 5.32,
+          "creatives": [
+            { "id": "CR-CONV-02", "name": "Comparez les taxes municipales", "format": "statique", "language": "FR", "desc": "Visuel comparateur 5 villes (Blainville, Ste-Thérèse, Rosemère, Boisbriand, Lorraine) · CTA : Comparer" }
+          ]
+        },
+        {
+          "id": "AS-03c",
+          "name": "Outil 3 — Calculateur d'hypothèque locale",
+          "geo": "15 villes ciblées",
+          "audience": "Acheteurs_BassesLaurentides_FR + RT_30j",
+          "budget": 165,
+          "daily": 5.32,
+          "creatives": [
+            { "id": "CR-CONV-03", "name": "Votre paiement réel, par ville", "format": "statique", "language": "FR", "desc": "Visuel hypothèque + taxes par ville · CTA : Calculer mon paiement" }
+          ]
+        }
+      ],
+      "client_message": "3 pubs distinctes — une par outil AI. Chacune amène vers un calculateur précis. C'est ici qu'on génère les leads qualifiés."
+    }
+  ]
+}</script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect } = React;
+const DATA = JSON.parse(document.getElementById('dashboard-data').textContent);
+
+// ===== Helpers =====
+const fmt$ = (n) => new Intl.NumberFormat('fr-CA', { style:'currency', currency:'CAD', maximumFractionDigits: 0 }).format(n);
+const fmt$2 = (n) => new Intl.NumberFormat('fr-CA', { style:'currency', currency:'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+
+const BUCKET_BY_ID = Object.fromEntries(DATA.buckets.map(b => [b.id, b]));
+
+const FORMAT_META = {
+  video:     { icon: '🎬', label: 'Vidéo',     bg: 'bg-violet-50',   text: 'text-violet-800', border: 'border-violet-200' },
+  statique:  { icon: '🖼️', label: 'Statique',  bg: 'bg-stone-50',    text: 'text-stone-800',  border: 'border-stone-200' },
+  carrousel: { icon: '⊞',  label: 'Carrousel', bg: 'bg-cyan-50',     text: 'text-cyan-800',   border: 'border-cyan-200' }
+};
+
+const ICONS = {
+  broadcast: 'M3 12a9 9 0 0118 0M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12v9',
+  click:     'M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11',
+  target:    'M12 2v4m0 12v4M2 12h4m12 0h4M12 8a4 4 0 100 8 4 4 0 000-8z',
+  check:     'M5 13l4 4L19 7',
+  x:         'M6 18L18 6M6 6l12 12',
+  download:  'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4',
+  pin:       'M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z',
+  refresh:   'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+  globe:     'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20'
+};
+
+const Icon = ({ name, size = 18, className = '', strokeWidth = 2 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" strokeWidth={strokeWidth}
+       strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d={ICONS[name] || ICONS.target} />
+  </svg>
+);
+
+const Pill = ({ children, className = '' }) => (
+  <span className={`pill inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${className}`}>{children}</span>
+);
+
+// ===== KPI Card =====
+const KPI = ({ label, value, sub, accent }) => (
+  <div className="card bg-white rounded-2xl p-5 border border-rx-line">
+    <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-rx-muted">{label}</div>
+    <div className={`mt-2 text-3xl font-extrabold ${accent || 'text-rx-ink'}`} style={{fontFamily:'Outfit, sans-serif'}}>{value}</div>
+    {sub && <div className="mt-1 text-[12px] text-rx-muted">{sub}</div>}
+  </div>
+);
+
+// ===== Budget Bar =====
+const BudgetBar = ({ label, value, total, color, sub }) => {
+  const pct = total > 0 ? (value / total) * 100 : 0;
+  return (
+    <div>
+      <div className="flex items-baseline justify-between mb-1.5">
+        <div>
+          <span className="text-sm font-bold text-rx-ink">{label}</span>
+          {sub && <span className="ml-2 text-xs text-rx-muted">{sub}</span>}
+        </div>
+        <span className="text-sm tabular-nums">
+          <span className="font-bold text-rx-ink">{fmt$(value)}</span>
+          <span className="text-rx-muted"> · {pct.toFixed(0)}%</span>
+        </span>
+      </div>
+      <div className="h-2.5 bg-rx-line rounded-full overflow-hidden">
+        <div className="h-full transition-all duration-500 rounded-full" style={{ width: `${pct}%`, background: color }}></div>
+      </div>
+    </div>
+  );
+};
+
+// ===== Hero Header =====
+const Hero = () => {
+  const totalAds = DATA.campaigns.reduce((acc, c) => acc + c.ad_sets.reduce((a, s) => a + s.creatives.length, 0), 0);
+  return (
+    <header className="hero-gradient text-white relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.04]" style={{
+        backgroundImage: 'radial-gradient(white 1px, transparent 1px)',
+        backgroundSize: '24px 24px'
+      }}></div>
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-10 md:py-14 relative">
+        <div className="flex items-start justify-between gap-6 flex-wrap">
+          <div className="flex items-center gap-5">
+            <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" style={{height: 44}} className="drop-shadow-md"/>
+            <div className="hidden md:block w-px h-12 bg-white/25"></div>
+            <div className="hidden md:block">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-rx-bluePale font-semibold">Plan Média Meta</div>
+              <div className="text-sm text-white/85 mt-1">Facebook · Instagram · Mai 2026</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 no-print">
+            <button onClick={() => window.print()}
+              className="px-4 py-2 rounded-lg bg-white/95 text-rx-navy font-semibold text-sm flex items-center gap-2 hover:bg-white transition shadow-md">
+              <Icon name="download" size={16} /> Exporter PDF
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-10 md:mt-14 max-w-4xl">
+          <div className="text-[13px] uppercase tracking-[0.25em] text-rx-blueLight font-semibold mb-3">
+            Campagne d'acquisition de leads · Mai 2026
+          </div>
+          <h1 className="text-4xl md:text-6xl font-semibold text-white" style={{lineHeight: 1.05}}>
+            Attirer les leads des <em className="text-rx-blueLight font-medium" style={{fontStyle:'italic'}}>Basses-Laurentides</em><br/>
+            avec nos outils AI.
+          </h1>
+          <p className="mt-5 text-lg text-rx-bluePale max-w-2xl" style={{fontWeight: 300}}>
+            3 campagnes simples · 15 villes ciblées · 1 message clair par étape : on fait connaître l'agence, on envoie du trafic vers les outils AI, et on convertit avec 3 démos précises.
+          </p>
+        </div>
+
+        {/* Top KPIs in hero */}
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15">
+            <div className="text-[10px] uppercase tracking-wider text-rx-bluePale font-semibold">Budget média</div>
+            <div className="mt-1 text-2xl md:text-3xl font-extrabold text-white">{fmt$(DATA.meta.budget_media)}</div>
+            <div className="text-[11px] text-white/70">/ mois · 31 jours</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15">
+            <div className="text-[10px] uppercase tracking-wider text-rx-bluePale font-semibold">Gestion</div>
+            <div className="mt-1 text-2xl md:text-3xl font-extrabold text-white">{fmt$(DATA.meta.budget_management)}</div>
+            <div className="text-[11px] text-white/70">forfait mensuel</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15">
+            <div className="text-[10px] uppercase tracking-wider text-rx-bluePale font-semibold">Campagnes</div>
+            <div className="mt-1 text-2xl md:text-3xl font-extrabold text-white">{DATA.campaigns.length}</div>
+            <div className="text-[11px] text-white/70">{totalAds} pubs · 15 villes</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15">
+            <div className="text-[10px] uppercase tracking-wider text-rx-bluePale font-semibold">Total facturé</div>
+            <div className="mt-1 text-2xl md:text-3xl font-extrabold" style={{color:'#d9c88a'}}>{fmt$(DATA.meta.budget_total)}</div>
+            <div className="text-[11px] text-white/70">média + gestion</div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+// ===== Tab navigation =====
+const TabNav = ({ active, setActive }) => {
+  const tabs = [
+    { id: 'overview', label: "Vue d'ensemble" },
+    { id: 'plan',     label: 'Plan média' },
+    { id: 'reach',    label: 'Reach estimé' },
+    { id: 'cities',   label: 'Villes ciblées' },
+    { id: 'budget',   label: 'Budget' }
+  ];
+  return (
+    <nav className="bg-white border-b border-rx-line sticky top-0 z-30 no-print">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="flex items-center gap-1 overflow-x-auto -mb-px">
+          {tabs.map(t => (
+            <button key={t.id} onClick={() => setActive(t.id)}
+              className={`px-5 py-4 text-sm font-semibold whitespace-nowrap border-b-2 transition-colors ${
+                active === t.id
+                  ? 'border-rx-blue text-rx-blue'
+                  : 'border-transparent text-rx-muted hover:text-rx-ink'
+              }`}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+// ===== Vue d'ensemble =====
+const TabOverview = () => (
+  <div className="space-y-8 fade-in">
+    {/* Strategy summary cards */}
+    <div>
+      <h2 className="text-3xl font-semibold mb-2">Notre stratégie en 3 étapes</h2>
+      <p className="text-rx-muted">Un entonnoir simple pour transformer des inconnus en leads qualifiés.</p>
+
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
+        {DATA.buckets.map((b, i) => (
+          <div key={b.id} className="card bg-white rounded-2xl p-6 border border-rx-line relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1.5" style={{background: b.color}}></div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center text-white font-bold" style={{background: b.color}}>
+                <Icon name={b.icon} size={22} strokeWidth={2.2} />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-wider font-bold" style={{color: b.color}}>Étape {i+1}</div>
+                <h3 className="text-2xl font-semibold text-rx-ink">{b.label}</h3>
+              </div>
+            </div>
+            <p className="text-rx-body text-sm leading-relaxed">{b.subtitle}</p>
+            <div className="mt-5 pt-5 border-t border-rx-line flex items-baseline justify-between">
+              <div>
+                <div className="text-2xl font-extrabold text-rx-ink">{fmt$(b.budget)}</div>
+                <div className="text-[11px] text-rx-muted">{b.pct}% du budget</div>
+              </div>
+              <Pill className="bg-rx-blueWhisper text-rx-navy">{b.objective_meta}</Pill>
+            </div>
+            <div className="mt-3 text-[11px] text-rx-muted">
+              <span className="font-semibold text-rx-body">Mesure : </span>{b.kpi}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Funnel diagram */}
+    <div className="bg-white rounded-2xl p-7 md:p-8 border border-rx-line">
+      <h3 className="text-2xl font-semibold mb-1">L'entonnoir, simplement</h3>
+      <p className="text-sm text-rx-muted mb-7">Comment chaque dollar travaille pour générer un lead.</p>
+
+      <div className="relative">
+        {[
+          { label: '1. NOTORIÉTÉ', desc: "On apparaît dans le fil des familles des 15 villes. Ils découvrent RE/MAX Crystal et ses outils AI.", w: 100, color: '#1e3350', soft: '#e8f0f7', amt: 200 },
+          { label: '2. TRAFIC',    desc: "Ceux qui ont vu la pub cliquent et atterrissent sur la page des outils AI.", w: 75,  color: '#3578c4', soft: '#e8f0f7', amt: 300 },
+          { label: '3. CONVERSION',desc: "On les recible avec 3 pubs précises — une par outil. Le calculateur capte le lead.", w: 50,  color: '#c4a245', soft: '#faf6e8', amt: 500 }
+        ].map((s, i) => (
+          <div key={i} className="flex items-center gap-5 mb-4 last:mb-0">
+            <div className="flex-shrink-0 hidden md:flex flex-col items-center" style={{width: 60}}>
+              <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md" style={{background: s.color}}>
+                {i+1}
+              </div>
+              {i < 2 && <div className="w-0.5 h-12 mt-1" style={{background: s.color, opacity: 0.3}}></div>}
+            </div>
+
+            <div className="flex-1">
+              <div className="rounded-xl p-5 border" style={{background: s.soft, borderColor: s.color + '30'}}>
+                <div className="flex items-center justify-between gap-4 flex-wrap mb-2">
+                  <div className="text-sm font-bold" style={{color: s.color}}>{s.label}</div>
+                  <div className="text-lg font-extrabold tabular-nums" style={{color: s.color}}>{fmt$(s.amt)}</div>
+                </div>
+                <p className="text-sm text-rx-body">{s.desc}</p>
+                <div className="mt-3 h-2 bg-white/60 rounded-full overflow-hidden">
+                  <div className="h-full transition-all duration-700 rounded-full" style={{width: s.w + '%', background: s.color}}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Key principles */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="bg-rx-navy rounded-2xl p-7 text-white">
+        <h3 className="text-2xl font-semibold text-white mb-3">Ce qu'on fait</h3>
+        <ul className="space-y-3 text-sm text-rx-bluePale">
+          <li className="flex gap-3"><span className="text-rx-blueLight font-bold">→</span><span><strong className="text-white">3 campagnes distinctes</strong>, chacune avec son objectif Meta : Notoriété, Trafic, Conversion.</span></li>
+          <li className="flex gap-3"><span className="text-rx-blueLight font-bold">→</span><span><strong className="text-white">15 villes</strong> ciblées sur Facebook + Instagram dans les Basses-Laurentides.</span></li>
+          <li className="flex gap-3"><span className="text-rx-blueLight font-bold">→</span><span><strong className="text-white">5 pubs au total</strong> : 1 vidéo notoriété, 1 carrousel trafic, 3 visuels conversion (un par outil AI).</span></li>
+          <li className="flex gap-3"><span className="text-rx-blueLight font-bold">→</span><span><strong className="text-white">Reciblage automatique</strong> : ceux qui ont visité le site reverront les pubs conversion.</span></li>
+        </ul>
+      </div>
+
+      <div className="bg-white rounded-2xl p-7 border-2 border-rx-gold/30">
+        <div className="flex items-center gap-3 mb-3">
+          <Icon name="target" size={26} className="text-rx-gold" />
+          <h3 className="text-2xl font-semibold">Pourquoi ça marche</h3>
+        </div>
+        <ul className="space-y-3 text-sm text-rx-body">
+          <li className="flex gap-3"><span className="text-rx-gold font-bold">·</span><span>Les outils AI sont <strong>l'aimant à leads</strong> — gratuits, utiles, hyper-locaux.</span></li>
+          <li className="flex gap-3"><span className="text-rx-gold font-bold">·</span><span>Le client qui calcule sa taxe de bienvenue est <strong>en mode achat actif</strong>.</span></li>
+          <li className="flex gap-3"><span className="text-rx-gold font-bold">·</span><span>L'entonnoir respecte le parcours : on ne demande pas un lead à un inconnu.</span></li>
+          <li className="flex gap-3"><span className="text-rx-gold font-bold">·</span><span>3 pubs en conversion = on teste <strong>quel outil convertit le mieux</strong> et on optimise.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
+// ===== Plan Média =====
+const CampaignCard = ({ camp }) => {
+  const bucket = BUCKET_BY_ID[camp.bucket_id];
+  return (
+    <div className="card bg-white rounded-2xl overflow-hidden border border-rx-line tree-camp"
+         style={{'--bucket-color': bucket.color}}>
+      {/* Header */}
+      <div className="px-6 py-5 border-b border-rx-line" style={{background: bucket.color_soft}}>
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap mb-2">
+              <span className="font-mono text-xs font-bold" style={{color: bucket.color}}>{camp.id}</span>
+              <span className="text-rx-muted">·</span>
+              <Pill style={{background: bucket.color, color: 'white'}}>
+                <Icon name={bucket.icon} size={11} strokeWidth={2.5} />{bucket.label}
+              </Pill>
+            </div>
+            <h3 className="text-2xl font-semibold text-rx-ink leading-tight">{camp.name}</h3>
+            <p className="text-sm text-rx-body mt-2 italic">{camp.client_message}</p>
+          </div>
+          <div className="text-right shrink-0">
+            <div className="text-3xl font-extrabold tabular-nums text-rx-ink">{fmt$(camp.budget)}</div>
+            <div className="text-xs text-rx-muted tabular-nums">{fmt$2(camp.daily)} / jour</div>
+          </div>
+        </div>
+
+        {/* Audience strip */}
+        <div className="mt-4 pt-4 border-t flex items-start gap-3" style={{borderColor: bucket.color + '20'}}>
+          <Icon name="globe" size={16} className="text-rx-muted mt-0.5 shrink-0" />
+          <div className="text-xs text-rx-body"><strong>Audience :</strong> {camp.audience}</div>
+        </div>
+      </div>
+
+      {/* Ad sets */}
+      <div className="tree-branch pl-7 pt-3 pb-2">
+        {camp.ad_sets.map((as, i) => (
+          <div key={as.id} className="tree-item pl-7 py-4 border-t border-rx-line/60 first:border-t-0">
+            <div className="flex items-start justify-between gap-3 flex-wrap">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-mono text-xs font-bold" style={{color: bucket.color}}>{as.id}</span>
+                  <span className="text-rx-muted">·</span>
+                  <span className="font-bold text-rx-ink">{as.name}</span>
+                </div>
+                <div className="mt-1 text-xs text-rx-muted">
+                  <span className="inline-flex items-center gap-1"><Icon name="pin" size={11} />{as.geo}</span>
+                  <span className="mx-2">·</span>
+                  <span className="font-mono">{as.audience}</span>
+                </div>
+              </div>
+              <div className="text-right shrink-0">
+                <div className="text-base font-extrabold tabular-nums text-rx-ink">{fmt$(as.budget)}</div>
+                <div className="text-[10px] text-rx-muted tabular-nums">{fmt$2(as.daily)}/j</div>
+              </div>
+            </div>
+
+            {/* Creatives */}
+            <div className="mt-3 space-y-2">
+              {as.creatives.map(cr => {
+                const f = FORMAT_META[cr.format] || FORMAT_META.statique;
+                return (
+                  <div key={cr.id} className={`rounded-lg p-3 border ${f.bg} ${f.border} flex items-start gap-3`}>
+                    <div className={`text-xl shrink-0 ${f.text}`}>{f.icon}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-mono text-[10px] font-bold text-rx-muted">{cr.id}</span>
+                        <Pill className={`${f.bg} ${f.text} border ${f.border}`}>{f.label}</Pill>
+                        <Pill className="bg-rx-blueWhisper text-rx-navy">🇨🇦 {cr.language}</Pill>
+                      </div>
+                      <div className="mt-1 font-semibold text-sm text-rx-ink">{cr.name}</div>
+                      <div className="text-xs text-rx-muted mt-0.5">{cr.desc}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const TabPlan = () => (
+  <div className="space-y-7 fade-in">
+    <div>
+      <h2 className="text-3xl font-semibold mb-2">Plan média détaillé</h2>
+      <p className="text-rx-muted">3 campagnes · {DATA.campaigns.reduce((a,c) => a + c.ad_sets.length, 0)} ad sets · {DATA.campaigns.reduce((a,c) => a + c.ad_sets.reduce((b,s) => b + s.creatives.length, 0), 0)} pubs</p>
+    </div>
+
+    {DATA.buckets.map(b => {
+      const camps = DATA.campaigns.filter(c => c.bucket_id === b.id);
+      return (
+        <div key={b.id}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-2 h-2 rounded-full" style={{background: b.color}}></div>
+            <h3 className="text-sm font-bold uppercase tracking-[0.15em]" style={{color: b.color}}>{b.label}</h3>
+            <div className="flex-1 h-px bg-rx-line"></div>
+            <span className="text-xs text-rx-muted tabular-nums font-semibold">{fmt$(b.budget)} · {b.pct}%</span>
+          </div>
+          <div className="space-y-5">
+            {camps.map(c => <CampaignCard key={c.id} camp={c} />)}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+);
+
+// ===== Cities tab =====
+const TabCities = () => (
+  <div className="space-y-7 fade-in">
+    <div>
+      <h2 className="text-3xl font-semibold mb-2">{DATA.cities.length} villes ciblées</h2>
+      <p className="text-rx-muted">Toutes les pubs sont diffusées dans ces villes des Basses-Laurentides — celles où RE/MAX Crystal a une expertise locale réelle.</p>
+    </div>
+
+    <div className="bg-white rounded-2xl p-8 border border-rx-line">
+      <div className="flex flex-wrap gap-2.5">
+        {DATA.cities.map(c => (
+          <span key={c} className="city-chip">
+            <Icon name="pin" size={13} />{c}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-8 pt-6 border-t border-rx-line grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div>
+          <div className="text-xs uppercase tracking-wider text-rx-muted font-semibold mb-1">Région</div>
+          <div className="font-bold text-rx-ink">Basses-Laurentides</div>
+          <div className="text-xs text-rx-muted mt-1">Rive-Nord de Montréal</div>
+        </div>
+        <div>
+          <div className="text-xs uppercase tracking-wider text-rx-muted font-semibold mb-1">Plateformes</div>
+          <div className="font-bold text-rx-ink">Facebook + Instagram</div>
+          <div className="text-xs text-rx-muted mt-1">Diffusion automatique sur les deux</div>
+        </div>
+        <div>
+          <div className="text-xs uppercase tracking-wider text-rx-muted font-semibold mb-1">Langue</div>
+          <div className="font-bold text-rx-ink">Français</div>
+          <div className="text-xs text-rx-muted mt-1">Message adapté marché local</div>
+        </div>
+      </div>
+    </div>
+
+    <div className="bg-rx-blueWhisper rounded-2xl p-6 border border-rx-bluePale/50">
+      <div className="flex items-start gap-3">
+        <Icon name="target" size={22} className="text-rx-blue mt-0.5 shrink-0" />
+        <div>
+          <div className="font-bold text-rx-navy mb-1">Pourquoi ces 15 villes ?</div>
+          <p className="text-sm text-rx-body">
+            Ce sont les villes où RE/MAX Crystal a des courtiers actifs et une expertise terrain. Plutôt que de gaspiller le budget sur tout le Québec, on concentre chaque dollar là où l'agence peut <strong>réellement convertir un lead en transaction</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// ===== Budget tab =====
+const TabBudget = () => {
+  const totalCreatives = DATA.campaigns.reduce((a,c) => a + c.ad_sets.reduce((b,s) => b + s.creatives.length, 0), 0);
+  return (
+    <div className="space-y-7 fade-in">
+      <div>
+        <h2 className="text-3xl font-semibold mb-2">Budget mensuel</h2>
+        <p className="text-rx-muted">Répartition claire du {fmt$(DATA.meta.budget_total)} mensuel.</p>
+      </div>
+
+      {/* Top split */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="card bg-white rounded-2xl p-7 border border-rx-line">
+          <div className="text-xs uppercase tracking-[0.15em] text-rx-muted font-bold mb-2">Investissement Meta</div>
+          <div className="text-5xl font-extrabold text-rx-blue">{fmt$(DATA.meta.budget_media)}</div>
+          <div className="text-sm text-rx-muted mt-2">Versé directement à Facebook / Instagram pour la diffusion des pubs.</div>
+          <div className="mt-5 pt-5 border-t border-rx-line text-xs text-rx-body">
+            <div className="flex justify-between mb-1"><span>Quotidien moyen</span><span className="font-mono font-bold">{fmt$2(DATA.meta.budget_media / 31)}/jour</span></div>
+            <div className="flex justify-between"><span>Sur 31 jours</span><span className="font-mono font-bold">{fmt$(DATA.meta.budget_media)}</span></div>
+          </div>
+        </div>
+
+        <div className="card bg-rx-navy rounded-2xl p-7 text-white relative overflow-hidden">
+          <div className="text-xs uppercase tracking-[0.15em] text-rx-bluePale font-bold mb-2">Gestion mensuelle</div>
+          <div className="text-5xl font-extrabold" style={{color:'#d9c88a'}}>{fmt$(DATA.meta.budget_management)}</div>
+          <div className="text-sm text-rx-bluePale mt-2">Forfait mensuel — création des pubs, gestion, optimisation, reporting.</div>
+          <div className="mt-5 pt-5 border-t border-white/15 text-xs text-rx-bluePale space-y-1">
+            <div className="flex justify-between"><span>Création des 5 visuels</span><Icon name="check" size={14} className="text-rx-gold" /></div>
+            <div className="flex justify-between"><span>Mise en place des 3 campagnes</span><Icon name="check" size={14} className="text-rx-gold" /></div>
+            <div className="flex justify-between"><span>Optimisation continue</span><Icon name="check" size={14} className="text-rx-gold" /></div>
+            <div className="flex justify-between"><span>Rapport mensuel</span><Icon name="check" size={14} className="text-rx-gold" /></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Total */}
+      <div className="bg-gradient-to-br from-rx-gold/10 to-rx-gold/5 rounded-2xl p-7 border-2 border-rx-gold/30 text-center">
+        <div className="text-xs uppercase tracking-[0.2em] text-rx-gold font-bold">Total facturé / mois</div>
+        <div className="text-6xl font-extrabold text-rx-ink mt-2">{fmt$(DATA.meta.budget_total)}</div>
+        <div className="text-sm text-rx-muted mt-1">{fmt$(DATA.meta.budget_media)} média + {fmt$(DATA.meta.budget_management)} gestion</div>
+      </div>
+
+      {/* Breakdown by bucket */}
+      <div className="bg-white rounded-2xl p-7 border border-rx-line">
+        <h3 className="text-2xl font-semibold mb-1">Comment le {fmt$(DATA.meta.budget_media)} média est réparti</h3>
+        <p className="text-sm text-rx-muted mb-6">Plus on descend dans l'entonnoir, plus on investit — la conversion mérite plus d'argent.</p>
+        <div className="space-y-5">
+          {DATA.buckets.map(b => (
+            <BudgetBar key={b.id} label={b.label} sub={b.subtitle} value={b.budget} total={DATA.meta.budget_media} color={b.color} />
+          ))}
+        </div>
+      </div>
+
+      {/* Detail table */}
+      <div className="bg-white rounded-2xl border border-rx-line overflow-hidden">
+        <div className="px-7 py-5 border-b border-rx-line">
+          <h3 className="text-2xl font-semibold">Détail par campagne</h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-rx-blueWhisper text-rx-navy">
+              <tr>
+                <th className="text-left px-6 py-3 font-bold uppercase text-[11px] tracking-wider">Campagne</th>
+                <th className="text-left px-4 py-3 font-bold uppercase text-[11px] tracking-wider">Étape</th>
+                <th className="text-right px-4 py-3 font-bold uppercase text-[11px] tracking-wider">Pubs</th>
+                <th className="text-right px-4 py-3 font-bold uppercase text-[11px] tracking-wider">Budget</th>
+                <th className="text-right px-6 py-3 font-bold uppercase text-[11px] tracking-wider">Quotidien</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-rx-line">
+              {DATA.campaigns.map(c => {
+                const b = BUCKET_BY_ID[c.bucket_id];
+                const ads = c.ad_sets.reduce((a,s) => a + s.creatives.length, 0);
+                return (
+                  <tr key={c.id} className="hover:bg-rx-surface">
+                    <td className="px-6 py-4">
+                      <div className="font-mono text-[10px] text-rx-muted">{c.id}</div>
+                      <div className="font-semibold text-rx-ink">{c.name}</div>
+                    </td>
+                    <td className="px-4 py-4"><Pill style={{background: b.color, color:'white'}}>{b.label}</Pill></td>
+                    <td className="px-4 py-4 text-right tabular-nums font-mono">{ads}</td>
+                    <td className="px-4 py-4 text-right tabular-nums font-bold">{fmt$(c.budget)}</td>
+                    <td className="px-6 py-4 text-right tabular-nums text-rx-muted">{fmt$2(c.daily)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+            <tfoot className="bg-rx-navy text-white">
+              <tr>
+                <td className="px-6 py-4 font-bold uppercase text-[11px] tracking-wider">Total média</td>
+                <td colSpan="2" className="px-4 py-4 text-right tabular-nums font-mono text-rx-bluePale">{totalCreatives} pubs</td>
+                <td className="px-4 py-4 text-right tabular-nums font-extrabold text-lg">{fmt$(DATA.meta.budget_media)}</td>
+                <td className="px-6 py-4 text-right tabular-nums text-rx-bluePale">{fmt$2(DATA.meta.budget_media / 31)}/j</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ===== Reach estimé tab =====
+const REACH_DATA = {
+  benchmarks: {
+    notoriete: { cpm: 7,    ctr: 0.008, freq: 1.8, eng_rate: 0.018 },
+    trafic:    { cpc: 0.80, cpm: 12,   ctr: 0.015, freq: 1.5, eng_rate: 0.025 },
+    conversion:{ cpc: 1.80, cpm: 23,   ctr: 0.013, freq: 2.4, eng_rate: 0.030, lead_rate: 0.13 }
+  },
+  totals: {
+    reach_unique: { low: 26000, high: 34000, mid: 30000 },
+    impressions: 73500,
+    interactions: { low: 900, high: 1300, mid: 1100 },
+    link_clicks: { low: 580, high: 720, mid: 650 },
+    sessions: { low: 510, high: 640, mid: 575 },
+    leads: { low: 30, high: 50, mid: 40 }
+  }
+};
+
+const TabReach = () => {
+  const camps = DATA.campaigns.map(c => {
+    const b = BUCKET_BY_ID[c.bucket_id];
+    const benchmark = REACH_DATA.benchmarks[c.bucket_id];
+    let impressions, reach, clicks, ctr, interactions, extra;
+
+    if (c.bucket_id === 'notoriete') {
+      impressions = Math.round(c.budget / benchmark.cpm * 1000);
+      reach = Math.round(impressions / benchmark.freq);
+      clicks = Math.round(impressions * benchmark.ctr);
+      ctr = (benchmark.ctr * 100).toFixed(2);
+      interactions = Math.round(reach * benchmark.eng_rate);
+      extra = { label: 'Vues vidéo (3s)', value: Math.round(impressions * 0.32).toLocaleString('fr-CA') };
+    } else if (c.bucket_id === 'trafic') {
+      clicks = Math.round(c.budget / benchmark.cpc);
+      impressions = Math.round(clicks / benchmark.ctr);
+      reach = Math.round(impressions / benchmark.freq);
+      ctr = (benchmark.ctr * 100).toFixed(2);
+      interactions = Math.round(clicks * 1.4);
+      extra = { label: 'Coût par clic', value: fmt$2(benchmark.cpc) };
+    } else {
+      clicks = Math.round(c.budget / benchmark.cpc);
+      impressions = Math.round(clicks / benchmark.ctr);
+      reach = Math.round(impressions / benchmark.freq);
+      ctr = (benchmark.ctr * 100).toFixed(2);
+      interactions = Math.round(clicks * 1.6);
+      extra = { label: 'Leads estimés', value: Math.round(clicks * benchmark.lead_rate) };
+    }
+
+    return { camp: c, bucket: b, impressions, reach, clicks, ctr, interactions, extra, benchmark };
+  });
+
+  return (
+    <div className="space-y-7 fade-in">
+      <div>
+        <h2 className="text-3xl font-semibold mb-2">Reach estimé · Mai 2026</h2>
+        <p className="text-rx-muted max-w-3xl">
+          Projections basées sur les benchmarks Meta Québec 2026 pour le secteur immobilier · marché francophone · 15 villes Basses-Laurentides. <em className="text-rx-gold not-italic font-semibold">Estimations approximatives — les chiffres réels dépendent de la qualité créative et de la pertinence audience.</em>
+        </p>
+      </div>
+
+      {/* Big totals */}
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+        <KPI label="Personnes touchées" value={`~${Math.round(REACH_DATA.totals.reach_unique.mid/1000)}k`} sub={`${Math.round(REACH_DATA.totals.reach_unique.low/1000)}k – ${Math.round(REACH_DATA.totals.reach_unique.high/1000)}k uniques`} accent="text-rx-blue" />
+        <KPI label="Impressions" value={`~${Math.round(REACH_DATA.totals.impressions/1000)}k`} sub="affichages totaux" />
+        <KPI label="Interactions" value={`~${REACH_DATA.totals.interactions.mid.toLocaleString('fr-CA')}`} sub="likes · partages · saves" />
+        <KPI label="Clics vers site" value={`~${REACH_DATA.totals.link_clicks.mid}`} sub={`${REACH_DATA.totals.sessions.mid} sessions site`} accent="text-rx-navy" />
+        <KPI label="Leads estimés" value={`~${REACH_DATA.totals.leads.mid}`} sub={`${REACH_DATA.totals.leads.low}–${REACH_DATA.totals.leads.high} contacts qualifiés`} accent="text-rx-gold" />
+      </div>
+
+      {/* Detail table */}
+      <div className="bg-white rounded-2xl border border-rx-line overflow-hidden">
+        <div className="px-7 py-5 border-b border-rx-line flex items-baseline justify-between flex-wrap gap-2">
+          <h3 className="text-2xl font-semibold">Détail par campagne</h3>
+          <div className="text-xs text-rx-muted">Sources : Meta Ads benchmarks · Canada FR · immobilier 2025-2026</div>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-rx-blueWhisper text-rx-navy">
+              <tr>
+                <th className="text-left px-6 py-3 font-bold uppercase text-[11px] tracking-wider">Campagne</th>
+                <th className="text-right px-3 py-3 font-bold uppercase text-[11px] tracking-wider">Budget</th>
+                <th className="text-right px-3 py-3 font-bold uppercase text-[11px] tracking-wider">Reach</th>
+                <th className="text-right px-3 py-3 font-bold uppercase text-[11px] tracking-wider">Impressions</th>
+                <th className="text-right px-3 py-3 font-bold uppercase text-[11px] tracking-wider">Clics</th>
+                <th className="text-right px-3 py-3 font-bold uppercase text-[11px] tracking-wider">CTR</th>
+                <th className="text-right px-3 py-3 font-bold uppercase text-[11px] tracking-wider">Interactions</th>
+                <th className="text-right px-6 py-3 font-bold uppercase text-[11px] tracking-wider">Bonus</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-rx-line">
+              {camps.map(({camp, bucket, impressions, reach, clicks, ctr, interactions, extra}) => (
+                <tr key={camp.id} className="hover:bg-rx-surface">
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full" style={{background: bucket.color}}></span>
+                      <span className="font-mono text-[10px] text-rx-muted">{camp.id}</span>
+                    </div>
+                    <div className="font-semibold text-rx-ink mt-0.5">{bucket.label}</div>
+                    <div className="text-[11px] text-rx-muted">{bucket.subtitle}</div>
+                  </td>
+                  <td className="px-3 py-4 text-right tabular-nums font-bold">{fmt$(camp.budget)}</td>
+                  <td className="px-3 py-4 text-right tabular-nums">~{reach.toLocaleString('fr-CA')}</td>
+                  <td className="px-3 py-4 text-right tabular-nums text-rx-muted">~{impressions.toLocaleString('fr-CA')}</td>
+                  <td className="px-3 py-4 text-right tabular-nums font-bold text-rx-blue">~{clicks.toLocaleString('fr-CA')}</td>
+                  <td className="px-3 py-4 text-right tabular-nums text-rx-muted">{ctr}%</td>
+                  <td className="px-3 py-4 text-right tabular-nums">~{interactions.toLocaleString('fr-CA')}</td>
+                  <td className="px-6 py-4 text-right">
+                    <div className="text-[10px] uppercase tracking-wider text-rx-muted">{extra.label}</div>
+                    <div className="font-bold text-rx-gold tabular-nums">{extra.value}</div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot className="bg-rx-navy text-white">
+              <tr>
+                <td className="px-6 py-4 font-bold uppercase text-[11px] tracking-wider">Total</td>
+                <td className="px-3 py-4 text-right tabular-nums font-extrabold">{fmt$(DATA.meta.budget_media)}</td>
+                <td className="px-3 py-4 text-right tabular-nums font-extrabold">~{REACH_DATA.totals.reach_unique.mid.toLocaleString('fr-CA')}</td>
+                <td className="px-3 py-4 text-right tabular-nums font-extrabold text-rx-bluePale">~{REACH_DATA.totals.impressions.toLocaleString('fr-CA')}</td>
+                <td className="px-3 py-4 text-right tabular-nums font-extrabold" style={{color:'#d9c88a'}}>~{REACH_DATA.totals.link_clicks.mid}</td>
+                <td className="px-3 py-4 text-right text-rx-bluePale">—</td>
+                <td className="px-3 py-4 text-right tabular-nums font-extrabold">~{REACH_DATA.totals.interactions.mid.toLocaleString('fr-CA')}</td>
+                <td className="px-6 py-4 text-right tabular-nums font-extrabold" style={{color:'#d9c88a'}}>~{REACH_DATA.totals.leads.mid} leads</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div className="px-7 py-3 bg-rx-surface border-t border-rx-line text-[11px] text-rx-muted">
+          Le total <strong>Reach</strong> est dédoublonné (les 3 campagnes touchent en partie les mêmes personnes — ~35% de chevauchement appliqué).
+        </div>
+      </div>
+
+      {/* What this means on the website */}
+      <div className="bg-white rounded-2xl p-7 border border-rx-line">
+        <h3 className="text-2xl font-semibold mb-1">Ce que ça donne sur le site web</h3>
+        <p className="text-sm text-rx-muted mb-6">Trafic direct généré par la campagne Meta sur remaxcrystal.ca</p>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="rounded-xl p-5 bg-rx-blueWhisper border border-rx-bluePale/40">
+            <div className="text-[10px] uppercase tracking-wider text-rx-navy font-bold">Sessions / mois</div>
+            <div className="text-3xl font-extrabold text-rx-navy mt-1">~{REACH_DATA.totals.sessions.mid}</div>
+            <div className="text-[11px] text-rx-muted mt-1">{REACH_DATA.totals.sessions.low}–{REACH_DATA.totals.sessions.high} visites</div>
+          </div>
+          <div className="rounded-xl p-5 bg-rx-blueWhisper border border-rx-bluePale/40">
+            <div className="text-[10px] uppercase tracking-wider text-rx-navy font-bold">Pages vues</div>
+            <div className="text-3xl font-extrabold text-rx-navy mt-1">~1 300</div>
+            <div className="text-[11px] text-rx-muted mt-1">2,2 pages/session</div>
+          </div>
+          <div className="rounded-xl p-5 bg-rx-blueWhisper border border-rx-bluePale/40">
+            <div className="text-[10px] uppercase tracking-wider text-rx-navy font-bold">Temps moyen</div>
+            <div className="text-3xl font-extrabold text-rx-navy mt-1">~1m 40s</div>
+            <div className="text-[11px] text-rx-muted mt-1">les calculateurs retiennent</div>
+          </div>
+          <div className="rounded-xl p-5 bg-rx-blueWhisper border border-rx-bluePale/40">
+            <div className="text-[10px] uppercase tracking-wider text-rx-navy font-bold">Utilisations outils</div>
+            <div className="text-3xl font-extrabold text-rx-navy mt-1">~115</div>
+            <div className="text-[11px] text-rx-muted mt-1">calculateurs complétés</div>
+          </div>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-xl p-4 border border-rx-line">
+            <div className="text-xs font-bold text-rx-ink mb-1">Page la plus visitée</div>
+            <div className="text-sm text-rx-muted">/#outils-rapides — calculateurs AI</div>
+            <div className="text-xs text-rx-blue mt-2 font-semibold">~60% du trafic Meta</div>
+          </div>
+          <div className="rounded-xl p-4 border border-rx-line">
+            <div className="text-xs font-bold text-rx-ink mb-1">Pages secondaires</div>
+            <div className="text-sm text-rx-muted">guide-blainville.html · pages villes</div>
+            <div className="text-xs text-rx-blue mt-2 font-semibold">~25% du trafic Meta</div>
+          </div>
+          <div className="rounded-xl p-4 border border-rx-line">
+            <div className="text-xs font-bold text-rx-ink mb-1">Page courtiers</div>
+            <div className="text-sm text-rx-muted">section #guides + contact</div>
+            <div className="text-xs text-rx-blue mt-2 font-semibold">~15% du trafic Meta</div>
+          </div>
+        </div>
+      </div>
+
+      {/* SEO impact */}
+      <div className="bg-rx-navy rounded-2xl p-7 md:p-9 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 rounded-full -mr-32 -mt-32" style={{background: 'radial-gradient(circle, rgba(196,162,69,0.15), transparent 70%)'}}></div>
+        <div className="relative">
+          <div className="flex items-center gap-3 mb-4">
+            <Icon name="target" size={26} className="text-rx-gold" />
+            <h3 className="text-2xl font-semibold text-white">Impact sur le SEO global</h3>
+          </div>
+          <p className="text-sm text-rx-bluePale max-w-3xl mb-7">
+            Les pubs Meta n'agissent pas <em>directement</em> sur le classement Google — mais elles envoient des signaux que Google récompense. Voici ce qu'on attend après 60-90 jours de campagne.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/15">
+              <div className="text-[10px] uppercase tracking-wider text-rx-gold font-bold">Recherche de marque</div>
+              <div className="text-3xl font-extrabold text-white mt-1">+ 80 à 150 %</div>
+              <p className="text-xs text-rx-bluePale mt-2">Sur "RE/MAX Crystal", "Crystal Blainville", etc. Les gens qui ont vu une pub <strong className="text-white">Googlent ensuite</strong> — c'est le signal #1 qui booste les pages locales.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/15">
+              <div className="text-[10px] uppercase tracking-wider text-rx-gold font-bold">Trafic direct</div>
+              <div className="text-3xl font-extrabold text-white mt-1">+ 575 sessions/mois</div>
+              <p className="text-xs text-rx-bluePale mt-2">Trafic ciblé qui passe du temps sur les outils. <strong className="text-white">Dwell time élevé</strong> = signal positif pour Google sur la qualité du site.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/15">
+              <div className="text-[10px] uppercase tracking-wider text-rx-gold font-bold">Engagement par session</div>
+              <div className="text-3xl font-extrabold text-white mt-1">2,2 pages · 1m40</div>
+              <p className="text-xs text-rx-bluePale mt-2">Bien au-dessus de la moyenne immobilier (~1,4 pages · 50s). Les calculateurs <strong className="text-white">retiennent les visiteurs</strong> — Google le voit.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/15">
+              <div className="text-[10px] uppercase tracking-wider text-rx-gold font-bold">Partages & mentions naturelles</div>
+              <div className="text-3xl font-extrabold text-white mt-1">~5 à 12 / mois</div>
+              <p className="text-xs text-rx-bluePale mt-2">Estimation des partages de l'outil dans groupes Facebook locaux + bouche-à-oreille. <strong className="text-white">Backlinks indirects</strong> + signal social.</p>
+            </div>
+          </div>
+
+          <div className="mt-7 pt-5 border-t border-white/15 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div>
+              <div className="text-rx-gold font-bold mb-1">Mois 1</div>
+              <div className="text-rx-bluePale">Trafic direct + premières recherches de marque · familiarisation Google</div>
+            </div>
+            <div>
+              <div className="text-rx-gold font-bold mb-1">Mois 2-3</div>
+              <div className="text-rx-bluePale">Hausse mesurable des positions locales sur "courtier [ville]" + augmentation CTR organique</div>
+            </div>
+            <div>
+              <div className="text-rx-gold font-bold mb-1">Mois 3-6</div>
+              <div className="text-rx-bluePale">Effet cumulé : marque reconnue → meilleur taux de clic → meilleur rang → plus de leads gratuits</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="bg-rx-blueWhisper border border-rx-bluePale/40 rounded-2xl p-5">
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 rounded-lg bg-rx-blue text-white flex items-center justify-center shrink-0 font-bold text-sm">i</div>
+          <div className="text-sm text-rx-body">
+            <strong className="text-rx-navy">À garder en tête : </strong>
+            ces chiffres sont des <strong>moyennes du marché</strong>. La performance réelle peut varier de ±30% selon la qualité des visuels, la pertinence du message, la saisonnalité (mai = haute saison immobilière, ce qui aide), et le taux d'engagement organique de la page Facebook RE/MAX Crystal. Les chiffres seront calibrés après 30 jours de données réelles.
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ===== App =====
+const App = () => {
+  const [tab, setTab] = useState('overview');
+  return (
+    <div className="min-h-screen">
+      <Hero />
+      <TabNav active={tab} setActive={setTab} />
+      <main className="max-w-7xl mx-auto px-6 md:px-10 py-10">
+        {tab === 'overview' && <TabOverview />}
+        {tab === 'plan' && <TabPlan />}
+        {tab === 'reach' && <TabReach />}
+        {tab === 'cities' && <TabCities />}
+        {tab === 'budget' && <TabBudget />}
+      </main>
+      <footer className="bg-rx-navy text-rx-bluePale">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between gap-4 flex-wrap">
+          <div className="flex items-center gap-4">
+            <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" style={{height: 28}} />
+            <div className="text-xs">
+              <div className="text-white font-semibold">Plan média Meta · Mai 2026</div>
+              <div className="text-rx-bluePale/70">Préparé pour la rencontre client</div>
+            </div>
+          </div>
+          <div className="text-xs text-rx-bluePale/70 font-mono">remax-crystal · {DATA.meta.period}</div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE/MAX Crystal — Où on s'en va</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crystal-dark: #1E2D3D;
+    --crystal-navy: #1E3A5F;
+    --crystal-blue: #3B7DC4;
+    --crystal-light: #7EB3E0;
+    --crystal-pale: #B8D5EF;
+    --crystal-white: #F5F8FC;
+    --crystal-black: #2C2C2C;
+    --crystal-gray: #6B7280;
+    --crystal-accent: #5DADE2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--crystal-dark);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--crystal-dark) 0%, var(--crystal-navy) 60%, #0d2035 100%);
+    padding: 36px 48px 28px;
+    border-bottom: 1px solid rgba(91,155,213,0.25);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(94,173,227,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .logo-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .logo-img {
+    height: 58px;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(91,155,213,0.35);
+  }
+
+  .header-text h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  .header-text h1 span {
+    color: var(--crystal-light);
+  }
+
+  .header-text p {
+    font-size: 0.82rem;
+    color: var(--crystal-pale);
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .header-badge {
+    margin-left: auto;
+    background: rgba(94,173,227,0.15);
+    border: 1px solid rgba(94,173,227,0.3);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.78rem;
+    color: var(--crystal-pale);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .header-badge strong {
+    display: block;
+    color: var(--crystal-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* TABS */
+  .tabs-bar {
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(91,155,213,0.2);
+    padding: 0 48px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    color: var(--crystal-pale);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 16px 22px 14px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.25s;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .tab-btn:hover {
+    color: #fff;
+    background: rgba(91,155,213,0.08);
+  }
+
+  .tab-btn.active {
+    color: var(--crystal-light);
+    border-bottom-color: var(--crystal-blue);
+    background: rgba(59,125,196,0.1);
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .section-title span { color: var(--crystal-light); }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    color: var(--crystal-pale);
+    margin-bottom: 40px;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+
+  /* OVERVIEW CARD */
+  .overview-card {
+    background: linear-gradient(135deg, rgba(30,58,95,0.8) 0%, rgba(59,125,196,0.15) 100%);
+    border: 1px solid rgba(91,155,213,0.3);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .overview-icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .overview-card h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--crystal-light);
+    margin-bottom: 6px;
+  }
+
+  .overview-card p {
+    font-size: 0.88rem;
+    color: var(--crystal-pale);
+    line-height: 1.65;
+  }
+
+  /* FLOW DIAGRAM */
+  .flow-container {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(91,155,213,0.2);
+    border-radius: 16px;
+    padding: 40px 32px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+  }
+
+  .flow-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--crystal-light);
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(91,155,213,0.2);
+  }
+
+  /* VERTICAL FLOW */
+  .vflow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .vflow-step {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 24px;
+    background: rgba(30,58,95,0.5);
+    border: 1px solid rgba(91,155,213,0.25);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .vflow-step:hover {
+    background: rgba(59,125,196,0.2);
+    border-color: rgba(91,155,213,0.5);
+    transform: translateX(4px);
+  }
+
+  .vflow-arrow {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+    padding: 8px 0;
+    position: relative;
+  }
+
+  .vflow-arrow::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(91,155,213,0.5), rgba(91,155,213,0.2));
+    transform: translateX(-50%);
+  }
+
+  .arrow-icon {
+    background: var(--crystal-navy);
+    border: 1px solid rgba(91,155,213,0.4);
+    color: var(--crystal-light);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--crystal-blue);
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-num.accent { background: var(--crystal-navy); border: 2px solid var(--crystal-blue); }
+
+  .step-content h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .step-content p {
+    font-size: 0.83rem;
+    color: rgba(184,213,239,0.85);
+    line-height: 1.55;
+  }
+
+  .step-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(59,125,196,0.25);
+    border: 1px solid rgba(91,155,213,0.3);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    color: var(--crystal-light);
+    font-weight: 600;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* CONTENT TYPES GRID */
+  .content-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .content-type-card {
+    background: rgba(59,125,196,0.15);
+    border: 1px solid rgba(91,155,213,0.25);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .content-type-card .ct-icon { font-size: 1.5rem; margin-bottom: 6px; display: block; }
+  .content-type-card span {
+    font-size: 0.78rem;
+    color: var(--crystal-pale);
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  /* DOUBLE EFFECT BANNER */
+  .double-effect {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .effect-card {
+    background: linear-gradient(135deg, rgba(30,58,95,0.9) 0%, rgba(59,125,196,0.2) 100%);
+    border: 1px solid rgba(91,155,213,0.35);
+    border-radius: 12px;
+    padding: 24px 20px;
+  }
+
+  .effect-card .effect-icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+  .effect-card h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--crystal-light);
+    margin-bottom: 6px;
+  }
+  .effect-card p { font-size: 0.82rem; color: var(--crystal-pale); line-height: 1.55; }
+
+  /* CITIES GRID */
+  .cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .city-card {
+    background: linear-gradient(160deg, rgba(30,58,95,0.8) 0%, rgba(20,40,70,0.9) 100%);
+    border: 1px solid rgba(91,155,213,0.25);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .city-card:hover {
+    border-color: rgba(91,155,213,0.5);
+    transform: translateY(-3px);
+  }
+
+  .city-card .city-icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+  .city-card h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .city-card p { font-size: 0.74rem; color: var(--crystal-pale); }
+
+  /* PROCESS STEPS */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .process-card {
+    background: rgba(30,58,95,0.5);
+    border: 1px solid rgba(91,155,213,0.2);
+    border-radius: 12px;
+    padding: 22px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .process-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--crystal-blue), var(--crystal-light));
+  }
+
+  .process-card .p-num {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(91,155,213,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .process-card h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--crystal-light);
+    margin-bottom: 6px;
+  }
+
+  .process-card p { font-size: 0.8rem; color: var(--crystal-pale); line-height: 1.55; }
+
+  /* TOOLS SECTION */
+  .tools-hub {
+    background: linear-gradient(135deg, rgba(30,58,95,0.9) 0%, rgba(10,20,40,0.95) 100%);
+    border: 1px solid rgba(91,155,213,0.3);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tools-hub::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 320px; height: 200px;
+    background: radial-gradient(circle, rgba(59,125,196,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .tools-hub h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .tools-hub p {
+    font-size: 0.88rem;
+    color: var(--crystal-pale);
+    max-width: 500px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .tools-ring {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    position: relative;
+  }
+
+  .tool-card {
+    background: rgba(59,125,196,0.12);
+    border: 1px solid rgba(91,155,213,0.3);
+    border-radius: 12px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: all 0.25s;
+    cursor: default;
+  }
+
+  .tool-card:hover {
+    background: rgba(59,125,196,0.25);
+    border-color: rgba(126,179,224,0.6);
+    transform: translateY(-4px);
+  }
+
+  .tool-card .t-icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+  .tool-card h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .tool-card p { font-size: 0.76rem; color: var(--crystal-pale); line-height: 1.4; }
+
+  /* INBOUND PYRAMID / SEO FLOW */
+  .seo-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 32px 0;
+  }
+
+  .seo-tier {
+    border-radius: 10px;
+    padding: 16px 24px;
+    text-align: center;
+    border: 1px solid rgba(91,155,213,0.3);
+    transition: all 0.2s;
+  }
+
+  .seo-tier:hover {
+    border-color: rgba(91,155,213,0.6);
+    transform: scale(1.02);
+  }
+
+  .seo-tier h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .seo-tier p { font-size: 0.8rem; color: var(--crystal-pale); }
+
+  .tier-1 { width: 90%; background: rgba(59,125,196,0.25); }
+  .tier-1 h4 { font-size: 1rem; color: #fff; }
+
+  .tier-2 { width: 75%; background: rgba(59,125,196,0.18); }
+  .tier-2 h4 { font-size: 0.92rem; color: var(--crystal-light); }
+
+  .tier-3 { width: 60%; background: rgba(59,125,196,0.12); }
+  .tier-3 h4 { font-size: 0.88rem; color: var(--crystal-pale); }
+
+  .tier-4 { width: 44%; background: rgba(30,58,95,0.7); }
+  .tier-4 h4 { font-size: 0.84rem; color: rgba(184,213,239,0.7); }
+
+  .seo-arrow { color: rgba(91,155,213,0.5); font-size: 1.1rem; }
+
+  /* TABLE */
+  .seo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.83rem;
+  }
+
+  .seo-table th {
+    background: rgba(59,125,196,0.3);
+    color: var(--crystal-light);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(91,155,213,0.3);
+  }
+
+  .seo-table td {
+    padding: 11px 16px;
+    color: var(--crystal-pale);
+    border-bottom: 1px solid rgba(91,155,213,0.1);
+  }
+
+  .seo-table tr:hover td {
+    background: rgba(59,125,196,0.08);
+  }
+
+  .seo-table td:first-child {
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .badge {
+    display: inline-block;
+    border-radius: 12px;
+    padding: 2px 9px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .badge-green { background: rgba(34,197,94,0.2); color: #86efac; border: 1px solid rgba(34,197,94,0.2); }
+  .badge-blue  { background: rgba(59,125,196,0.25); color: var(--crystal-light); border: 1px solid rgba(91,155,213,0.3); }
+  .badge-gold  { background: rgba(234,179,8,0.2); color: #fde68a; border: 1px solid rgba(234,179,8,0.2); }
+
+  /* CONCLUSION PANEL */
+  .conclusion {
+    background: linear-gradient(135deg, var(--crystal-navy) 0%, rgba(59,125,196,0.3) 100%);
+    border: 1px solid rgba(91,155,213,0.4);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .conclusion h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .conclusion p {
+    font-size: 0.9rem;
+    color: var(--crystal-pale);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+
+  .kpi-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .kpi {
+    text-align: center;
+  }
+
+  .kpi strong {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--crystal-light);
+    line-height: 1;
+  }
+
+  .kpi span {
+    font-size: 0.78rem;
+    color: var(--crystal-pale);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .header { flex-wrap: wrap; padding: 24px; }
+    .content { padding: 24px; }
+    .double-effect { grid-template-columns: 1fr; }
+    .tabs-bar { padding: 0 16px; }
+    .tab-btn { padding: 14px 14px 12px; font-size: 0.75rem; }
+    .header-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-zone">
+    <img src="/mnt/user-data/uploads/LogoRemax_Crystal_Bleu_FondBlanc_gauche_300dpi_CMYK.jpg" alt="RE/MAX Crystal" class="logo-img">
+  </div>
+  <div class="header-divider"></div>
+  <div class="header-text">
+    <h1>Où on <span>s'en va</span></h1>
+    <p>Stratégie numérique &amp; SEO — Vision 2025–2026</p>
+  </div>
+  <div class="header-badge">
+    <strong>3 Piliers Stratégiques</strong>
+    Pain Points · Géolocalisation · Outils AI
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('tab1', this)">① Pain Points &amp; Contenu</button>
+  <button class="tab-btn" onclick="showTab('tab2', this)">② Location, Location</button>
+  <button class="tab-btn" onclick="showTab('tab3', this)">③ Suite d'Outils AI</button>
+  <button class="tab-btn" onclick="showTab('tab4', this)">🎯 Impact SEO Global</button>
+  <button class="tab-btn" onclick="showTab('tab5', this)">🕸️ Architecture du Site</button>
+  <button class="tab-btn" onclick="showTab('tab6', this)">🤖 Stratégie SEO · AI</button>
+</div>
+
+<!-- ===== TAB 1 ===== -->
+<div id="tab1" class="tab-panel active">
+<div class="content">
+  <div class="section-title">Schéma 1 — <span>Pain Points &amp; Contenu à Valeur Ajoutée</span></div>
+  <div class="section-subtitle">Chaque mois, un agent IA scrape les douleurs des courtiers cherchant une agence. Ce contenu devient du carburant SEO et GEO — visible partout, autant pour les humains que les moteurs AI.</div>
+
+  <div class="overview-card">
+    <div class="overview-icon">💡</div>
+    <div>
+      <h3>Le principe central</h3>
+      <p>On identifie les vraies questions que se posent les courtiers. On y répond avec du contenu de qualité, distribué sur tous les canaux. Ce double effet rassure les courtiers ET nourrit les engins d'intelligence artificielle comme ChatGPT, Perplexity et Google AI.</p>
+    </div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">🔄 Flux mensuel — De la douleur au contenu</div>
+
+    <div class="vflow">
+
+      <div class="vflow-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>🔍 Scraping Web — Pain Points des courtiers</h4>
+          <p>L'agent IA fait une recherche mensuelle des forums, groupes, questions, avis et discussions de courtiers immobiliers cherchant une agence. Il identifie les frustrations réelles, les hésitations, les critères décisifs.</p>
+          <span class="step-tag">⚡ Automatisé</span>
+        </div>
+      </div>
+
+      <div class="vflow-arrow"><div class="arrow-icon">↓</div></div>
+
+      <div class="vflow-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>📊 Génération d'un fichier Excel des Pain Points</h4>
+          <p>L'agent compile les résultats dans un rapport structuré. Chaque pain point est catégorisé, priorisé et lié à une intention de recherche précise. Ce fichier devient le brief éditorial du mois.</p>
+          <span class="step-tag">📁 Fichier Excel</span>
+        </div>
+      </div>
+
+      <div class="vflow-arrow"><div class="arrow-icon">↓</div></div>
+
+      <div class="vflow-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>✍️ Création de contenu à valeur ajoutée</h4>
+          <p>Pour chaque pain point identifié, on crée un ou plusieurs formats de contenu qui répondent à la question de fond. Le contenu est conçu pour sortir dans les engins de recherche classiques ET dans les engins AI (GEO).</p>
+          <div class="content-types">
+            <div class="content-type-card"><span class="ct-icon">📝</span><span>Articles de blogue</span></div>
+            <div class="content-type-card"><span class="ct-icon">🎬</span><span>Vidéos</span></div>
+            <div class="content-type-card"><span class="ct-icon">📖</span><span>Guides interactifs</span></div>
+            <div class="content-type-card"><span class="ct-icon">🎙️</span><span>Podcasts</span></div>
+            <div class="content-type-card"><span class="ct-icon">📱</span><span>Reels &amp; Stories</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vflow-arrow"><div class="arrow-icon">↓</div></div>
+
+      <div class="vflow-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>📡 Distribution &amp; Promotion multicanal</h4>
+          <p>Le contenu est poussé sur tous les médias sociaux (LinkedIn, Facebook, Instagram) et sponsorisé en publicité ciblée pour amplifier la portée. Chaque pièce de contenu contient des balises GEO pour sortir dans les résultats des IA.</p>
+          <span class="step-tag">🚀 Multicanal</span>
+          <span class="step-tag" style="margin-left:8px;">🤖 GEO inclus</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="double-effect">
+    <div class="effect-card">
+      <span class="effect-icon">🤝</span>
+      <h4>Effet 1 — Confiance &amp; Conversion</h4>
+      <p>Le courtier qui hésite trouve ses réponses sur le site RE/MAX Crystal. Le contenu le rassure, répond à ses objections et l'amène naturellement à choisir votre agence.</p>
+    </div>
+    <div class="effect-card">
+      <span class="effect-icon">🤖</span>
+      <h4>Effet 2 — Présence dans les IA</h4>
+      <p>Les engins comme ChatGPT, Perplexity et Google AI indexent ce contenu. Quand un courtier pose une question à une IA, RE/MAX Crystal sort dans la réponse.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== TAB 2 ===== -->
+<div id="tab2" class="tab-panel">
+<div class="content">
+  <div class="section-title">Schéma 2 — <span>Location, Location, Location</span></div>
+  <div class="section-subtitle">Positionner RE/MAX Crystal comme l'expert incontournable de chaque ville desservie — pas seulement en immobilier, mais comme une ressource locale de référence que les familles consultent.</div>
+
+  <div class="overview-card">
+    <div class="overview-icon">📍</div>
+    <div>
+      <h3>La stratégie géo-localisée</h3>
+      <p>On crée des guides de vie par ville — des pages profondes, mises à jour mensuellement, qui parlent de ce qui se passe réellement dans chaque communauté. Ces pages captent le trafic local et le connectent à l'expertise immobilière de RE/MAX Crystal.</p>
+    </div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">🏙️ Villes ciblées — Territoire RE/MAX Crystal</div>
+    <div class="cities-grid">
+      <div class="city-card"><span class="city-icon">🏘️</span><h4>Sainte-Thérèse</h4><p>Vivre à Sainte-Thérèse en 2026</p></div>
+      <div class="city-card"><span class="city-icon">🌳</span><h4>Blainville</h4><p>Pourquoi les familles adorent Blainville</p></div>
+      <div class="city-card"><span class="city-icon">🏡</span><h4>Lorraine</h4><p>Vivre à Lorraine en 2026</p></div>
+      <div class="city-card"><span class="city-icon">🌆</span><h4>Boisbriand</h4><p>Événements &amp; qualité de vie</p></div>
+      <div class="city-card"><span class="city-icon">🏫</span><h4>Rosemère</h4><p>Guide de vie local</p></div>
+      <div class="city-card"><span class="city-icon">🌿</span><h4>Bois-des-Filion</h4><p>S'installer dans Bois-des-Filion</p></div>
+    </div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">⚙️ Processus mensuel de mise à jour</div>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="p-num">01</div>
+        <h4>Scraping des données municipales</h4>
+        <p>L'agent IA scrape les sites de chaque ville pour les événements à venir, les nouvelles municipales, les projets culturels et communautaires.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">02</div>
+        <h4>Catégorisation des informations</h4>
+        <p>L'agent filtre selon nos critères : famille, culture, loisirs, développement urbain, schools, parcs — les éléments importants pour les acheteurs potentiels.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">03</div>
+        <h4>Mise à jour de la page "Vivre à..."</h4>
+        <p>La section "Événements à venir" de chaque guide de ville est mise à jour automatiquement. La page reste fraîche et pertinente pour Google.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">04</div>
+        <h4>Ancrage immobilier</h4>
+        <p>Chaque page contient des mots-clés immobiliers ciblés pour maintenir la pertinence avec l'expertise de RE/MAX Crystal. SEO double : local + courtage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">📋 Tableau — Types de contenu par page de ville</div>
+    <table class="seo-table">
+      <thead>
+        <tr>
+          <th>Section de la page</th>
+          <th>Type de contenu</th>
+          <th>Fréquence</th>
+          <th>Impact SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Guide "Vivre à [Ville]"</td>
+          <td>Guide long format evergreen</td>
+          <td>Annuel (base)</td>
+          <td><span class="badge badge-green">★★★★★</span></td>
+        </tr>
+        <tr>
+          <td>Événements à venir</td>
+          <td>Contenu dynamique mis à jour par agent</td>
+          <td>Mensuel</td>
+          <td><span class="badge badge-blue">★★★★☆</span></td>
+        </tr>
+        <tr>
+          <td>Qualité de vie</td>
+          <td>Données : parcs, écoles, transport</td>
+          <td>Semestriel</td>
+          <td><span class="badge badge-green">★★★★★</span></td>
+        </tr>
+        <tr>
+          <td>Marché immobilier local</td>
+          <td>Stats de vente, prix médians, tendances</td>
+          <td>Mensuel</td>
+          <td><span class="badge badge-gold">★★★★★</span></td>
+        </tr>
+        <tr>
+          <td>Témoignages de résidents</td>
+          <td>Contenu UGC &amp; interviews vidéo</td>
+          <td>Trimestriel</td>
+          <td><span class="badge badge-blue">★★★☆☆</span></td>
+        </tr>
+        <tr>
+          <td>Liens vers événements officiels</td>
+          <td>Backlinks entrants (municipaux)</td>
+          <td>Continu</td>
+          <td><span class="badge badge-green">★★★★☆</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!-- ===== TAB 3 ===== -->
+<div id="tab3" class="tab-panel">
+<div class="content">
+  <div class="section-title">Schéma 3 — <span>Suite d'Outils AI</span></div>
+  <div class="section-subtitle">Une page "Outils" centrale qui devient un aimant à trafic. On ouvre ces outils à tous les courtiers — pas seulement RE/MAX Crystal — pour démontrer la confiance et l'expertise technologique de l'agence.</div>
+
+  <div class="tools-hub">
+    <h3>🛠️ La Page "Outils" — Votre Hub Central</h3>
+    <p>Tous les outils sont regroupés sur une seule page. On drive du trafic massif vers elle via publicités, reels, podcasts et médias sociaux. Elle devient une destination incontournable pour tous les courtiers de la région.</p>
+
+    <div class="tools-ring">
+      <div class="tool-card">
+        <span class="t-icon">📄</span>
+        <h4>PDF Generator de propriété</h4>
+        <p>Génère automatiquement une fiche de propriété professionnelle et complète, prête à remettre aux acheteurs potentiels.</p>
+      </div>
+      <div class="tool-card">
+        <span class="t-icon">📸</span>
+        <h4>Amélioration photo Google Street</h4>
+        <p>Améliore et optimise les photos issues de Google Street View pour présenter la propriété sous son meilleur angle.</p>
+      </div>
+      <div class="tool-card">
+        <span class="t-icon">🗺️</span>
+        <h4>Carte à proximité</h4>
+        <p>Génère une carte interactive des services et commodités à proximité de la propriété : écoles, parcs, commerces, transport.</p>
+      </div>
+      <div class="tool-card">
+        <span class="t-icon">✍️</span>
+        <h4>Générateur de contenu pour les propriétés</h4>
+        <p>Crée des descriptions accrocheuses, posts sociaux et textes marketing optimisés pour chaque propriété à vendre.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">🚀 Stratégie de promotion des outils</div>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="p-num">A</div>
+        <h4>Annonces payantes</h4>
+        <p>Google Ads et Meta Ads ciblant les courtiers immobiliers de la région. Message : "Essayez nos outils IA gratuits".</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">B</div>
+        <h4>Reels &amp; Vidéos</h4>
+        <p>Démonstrations visuelles des outils en action. Format court (30-60 sec), montrant la valeur immédiatement.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">C</div>
+        <h4>Podcasts &amp; Entrevues</h4>
+        <p>Entrevues avec des courtiers qui utilisent les outils. Témoignages authentiques et discussions sur l'immobilier local.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">D</div>
+        <h4>Ouverture à tous</h4>
+        <p>Les outils sont accessibles à TOUS les courtiers, pas seulement RE/MAX Crystal. Cela démontre la confiance et génère un flux massif d'utilisateurs.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">📋 Tableau — Types d'implantation SEO par outil</div>
+    <table class="seo-table">
+      <thead>
+        <tr>
+          <th>Outil</th>
+          <th>Type de SEO généré</th>
+          <th>Mots-clés ciblés</th>
+          <th>Impact trafic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PDF Generator de propriété</td>
+          <td>SEO transactionnel + backlinks naturels</td>
+          <td>"fiche propriété PDF", "présentation maison courtier"</td>
+          <td><span class="badge badge-blue">Moyen → Fort</span></td>
+        </tr>
+        <tr>
+          <td>Amélioration photo Google Street</td>
+          <td>SEO image + engagement visuel</td>
+          <td>"photo propriété", "présentation maison en ligne"</td>
+          <td><span class="badge badge-blue">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Carte à proximité</td>
+          <td>SEO local + GEO (engins AI)</td>
+          <td>"écoles près de [adresse]", "services à proximité [ville]"</td>
+          <td><span class="badge badge-gold">Très fort</span></td>
+        </tr>
+        <tr>
+          <td>Générateur de contenu pour les propriétés</td>
+          <td>SEO éditorial + trafic social</td>
+          <td>"description propriété IA", "annonce immobilière [ville]"</td>
+          <td><span class="badge badge-green">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Page "Outils" (hub)</td>
+          <td>SEO autorité + liens entrants</td>
+          <td>"outils courtier immobilier gratuits", "RE/MAX Crystal outils"</td>
+          <td><span class="badge badge-gold">Très fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!-- ===== TAB 4 ===== -->
+<div id="tab4" class="tab-panel">
+<div class="content">
+  <div class="section-title">🎯 <span>Impact SEO Global — La Vision d'Ensemble</span></div>
+  <div class="section-subtitle">Tous les outils, tout le contenu, toutes les pages géolocalisées convergent vers un seul résultat : RE/MAX Crystal existe massivement en ligne. Chaque action est un inbound vers le site.</div>
+
+  <div class="flow-container">
+    <div class="flow-title">📈 Pyramide SEO — De l'action à l'autorité</div>
+    <div class="seo-flow">
+      <div class="seo-tier tier-1">
+        <h4>🏆 Autorité &amp; Dominance Locale</h4>
+        <p>RE/MAX Crystal = LA référence immobilière des Laurentides-Sud</p>
+      </div>
+      <div class="seo-arrow">▲</div>
+      <div class="seo-tier tier-2">
+        <h4>📊 Trafic organique massif &amp; récurrent</h4>
+        <p>Inbound constant : outils, guides de villes, contenu Pain Points</p>
+      </div>
+      <div class="seo-arrow">▲</div>
+      <div class="seo-tier tier-3">
+        <h4>🔗 Backlinks naturels &amp; signaux sociaux</h4>
+        <p>Les courtiers partagent les outils · Les villes linkent les guides · Les médias citent</p>
+      </div>
+      <div class="seo-arrow">▲</div>
+      <div class="seo-tier tier-4">
+        <h4>⚙️ Actions mensuelles : scraping · contenu · mise à jour · promotion</h4>
+        <p>Les 3 schémas en action simultanée</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">🗺️ Vue d'ensemble — Les 3 piliers et leur rôle SEO</div>
+    <table class="seo-table">
+      <thead>
+        <tr>
+          <th>Pilier</th>
+          <th>Ce qu'on fait</th>
+          <th>Type de SEO</th>
+          <th>Audience ciblée</th>
+          <th>Effet GEO (IA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>① Pain Points</td>
+          <td>Contenu répondant aux douleurs des courtiers</td>
+          <td>SEO informatif + éditorial</td>
+          <td>Courtiers cherchant une agence</td>
+          <td><span class="badge badge-gold">Très élevé</span></td>
+        </tr>
+        <tr>
+          <td>② Géolocalisation</td>
+          <td>Guides "Vivre à [Ville]" mis à jour mensuellement</td>
+          <td>SEO local + SEO événementiel</td>
+          <td>Familles, acheteurs potentiels</td>
+          <td><span class="badge badge-green">Élevé</span></td>
+        </tr>
+        <tr>
+          <td>③ Outils AI</td>
+          <td>Suite d'outils gratuits pour tous les courtiers</td>
+          <td>SEO transactionnel + backlinks</td>
+          <td>Tous les courtiers du Québec</td>
+          <td><span class="badge badge-blue">Moyen → Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-title">⚡ Canaux de diffusion — Où RE/MAX Crystal va exister</div>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="p-num">🌐</div>
+        <h4>Google &amp; Bing</h4>
+        <p>Résultats organiques sur des centaines de mots-clés locaux, informatifs et transactionnels.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">🤖</div>
+        <h4>Engins AI (GEO)</h4>
+        <p>ChatGPT, Perplexity, Google AI Overview citent RE/MAX Crystal quand des questions immobilières locales sont posées.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">📱</div>
+        <h4>Médias Sociaux</h4>
+        <p>Présence constante sur LinkedIn, Facebook, Instagram avec du contenu de valeur diffusé et sponsorisé.</p>
+      </div>
+      <div class="process-card">
+        <div class="p-num">🗺️</div>
+        <h4>Google Maps &amp; Local</h4>
+        <p>Domination des recherches locales dans chaque ville desservie grâce aux guides géolocalisés.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>Le résultat final : Exister massivement en ligne</h3>
+    <p>Chaque outil qu'on construit ensemble, chaque page de contenu, chaque guide de ville — tout est un inbound vers le site de RE/MAX Crystal. On ne fait pas juste du SEO : on bâtit une présence numérique qui travaille 24/7.</p>
+    <div class="kpi-row">
+      <div class="kpi">
+        <strong>3</strong>
+        <span>Piliers stratégiques</span>
+      </div>
+      <div class="kpi">
+        <strong>6+</strong>
+        <span>Villes ciblées</span>
+      </div>
+      <div class="kpi">
+        <strong>12×</strong>
+        <span>Mises à jour / an</span>
+      </div>
+      <div class="kpi">
+        <strong>∞</strong>
+        <span>Inbounds générés</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===== TAB 5 ===== -->
+<div id="tab5" class="tab-panel">
+<div class="content">
+  <div class="section-title">Architecture du <span>Site Web</span></div>
+  <div class="section-subtitle">Structure réseau en sous-domaines — chaque branche vit sur son propre sous-domaine. Les flèches pointillées indiquent les liens croisés entre sous-domaines qui amplifient le SEO global.</div>
+
+  <div style="background:rgba(30,58,95,0.3);border:1px solid rgba(91,155,213,0.2);border-radius:12px;padding:16px 20px;margin-bottom:28px;">
+    <div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--crystal-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Stratégie sous-domaines</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;font-size:0.78rem;">
+      <div style="color:var(--crystal-pale);"><span style="color:#7EB3E0;font-weight:600;">remaxcrystal.ca</span> — Accueil, Propriétés, Courtiers, À propos, Contact</div>
+      <div style="color:var(--crystal-pale);"><span style="color:#f59e0b;font-weight:600;">outils.remaxcrystal.ca</span> — Hub + 4 outils AI</div>
+      <div style="color:var(--crystal-pale);"><span style="color:#22c55e;font-weight:600;">blogue.remaxcrystal.ca</span> — Articles Pain Points SEO</div>
+      <div style="color:var(--crystal-pale);"><span style="color:#a855f7;font-weight:600;">villes.remaxcrystal.ca</span> — Hub + 6 guides de villes</div>
+    </div>
+  </div>
+</div>
+
+<div style="padding: 0 48px 48px; max-width: 1200px; margin: 0 auto;">
+  <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(91,155,213,0.2); border-radius: 16px; padding: 20px 20px 16px;">
+
+    <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:16px; padding: 0 4px;">
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.76rem;color:var(--crystal-pale);">
+        <div style="width:12px;height:12px;border-radius:50%;background:#162d45;border:2px solid #7EB3E0;"></div>remaxcrystal.ca
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.76rem;color:var(--crystal-pale);">
+        <div style="width:12px;height:12px;border-radius:50%;background:#3a1200;border:2px solid #f59e0b;"></div>outils.remaxcrystal.ca
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.76rem;color:var(--crystal-pale);">
+        <div style="width:12px;height:12px;border-radius:50%;background:#0a2e14;border:2px solid #22c55e;"></div>blogue.remaxcrystal.ca
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.76rem;color:var(--crystal-pale);">
+        <div style="width:12px;height:12px;border-radius:50%;background:#280838;border:2px solid #a855f7;"></div>villes.remaxcrystal.ca
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.76rem;color:var(--crystal-pale);">
+        <svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="rgba(91,155,213,0.6)" stroke-width="1.5" stroke-dasharray="4 3"/></svg>Lien croisé inter-sous-domaines
+      </div>
+    </div>
+
+    <canvas id="networkChart" style="width:100%;display:block;border-radius:10px;cursor:default;"></canvas>
+  </div>
+</div>
+</div>
+
+<!-- ===== TAB 6 ===== -->
+<div id="tab6" class="tab-panel">
+<div class="content">
+  <div class="section-title">🤖 Stratégie SEO <span>propulsée par l'IA</span></div>
+  <div class="section-subtitle">Comment on utilise Claude et des fichiers intelligents pour espionner les compétiteurs, trouver les opportunités et dominer Google — expliqué simplement.</div>
+
+  <!-- BIG PICTURE BANNER -->
+  <div style="background:linear-gradient(135deg,rgba(30,58,95,0.9) 0%,rgba(59,125,196,0.2) 100%);border:1px solid rgba(91,155,213,0.35);border-radius:16px;padding:32px;margin-bottom:36px;text-align:center;">
+    <div style="font-size:2.2rem;margin-bottom:12px;">🧠</div>
+    <div style="font-family:'Raleway',sans-serif;font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:10px;">L'idée centrale</div>
+    <div style="font-size:0.92rem;color:var(--crystal-pale);max-width:620px;margin:0 auto;line-height:1.7;">
+      On donne à Claude des instructions précises dans des fichiers <code style="background:rgba(91,155,213,0.2);padding:2px 7px;border-radius:4px;color:var(--crystal-light);">.md</code> — comme un guide de travail. Claude lit, analyse, compare et produit du contenu SEO optimisé. <strong style="color:#fff;">Vous n'avez pas besoin de comprendre le SEO</strong> — les machines s'en occupent.
+    </div>
+  </div>
+
+  <!-- 3 STEPS VISUAL -->
+  <div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--crystal-light);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;">Le processus en 3 actes</div>
+
+  <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:0;align-items:start;margin-bottom:40px;">
+
+    <!-- Acte 1 -->
+    <div style="background:rgba(13,74,42,0.4);border:1px solid rgba(34,197,94,0.3);border-radius:14px;padding:28px 22px;">
+      <div style="font-size:2rem;margin-bottom:12px;">🕵️</div>
+      <div style="font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Acte 1</div>
+      <div style="font-family:'Raleway',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin-bottom:10px;">Espionner les compétiteurs</div>
+      <div style="font-size:0.82rem;color:rgba(184,213,239,0.85);line-height:1.65;">
+        Claude reçoit un fichier <code style="background:rgba(34,197,94,0.15);padding:1px 6px;border-radius:3px;color:#86efac;">seo.md</code> avec des instructions précises. Il analyse les sites compétiteurs, identifie leurs mots-clés, leurs forces et leurs failles.
+      </div>
+      <div style="margin-top:14px;padding:12px;background:rgba(34,197,94,0.08);border-radius:8px;border-left:3px solid rgba(34,197,94,0.4);">
+        <div style="font-size:0.76rem;color:#86efac;font-weight:600;margin-bottom:4px;">Ce qu'on trouve :</div>
+        <div style="font-size:0.78rem;color:rgba(184,213,239,0.8);line-height:1.6;">
+          • Quels mots-clés ils utilisent<br>
+          • Ce qui manque dans leur contenu<br>
+          • Les opportunités que personne ne prend
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow 1 -->
+    <div style="display:flex;align-items:center;justify-content:center;padding-top:60px;">
+      <div style="color:rgba(91,155,213,0.6);font-size:1.4rem;">→</div>
+    </div>
+
+    <!-- Acte 2 -->
+    <div style="background:rgba(30,58,95,0.6);border:1px solid rgba(91,155,213,0.3);border-radius:14px;padding:28px 22px;">
+      <div style="font-size:2rem;margin-bottom:12px;">📊</div>
+      <div style="font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:700;color:var(--crystal-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Acte 2</div>
+      <div style="font-family:'Raleway',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin-bottom:10px;">Mesurer & suivre</div>
+      <div style="font-size:0.82rem;color:rgba(184,213,239,0.85);line-height:1.65;">
+        Un fichier <code style="background:rgba(91,155,213,0.15);padding:1px 6px;border-radius:3px;color:var(--crystal-light);">SUIVI-SEO.md</code> enregistre chaque semaine les résultats réels : clics, positions Google, trafic. On voit exactement si ça monte.
+      </div>
+      <div style="margin-top:14px;padding:12px;background:rgba(59,125,196,0.08);border-radius:8px;border-left:3px solid rgba(91,155,213,0.4);">
+        <div style="font-size:0.76rem;color:var(--crystal-light);font-weight:600;margin-bottom:4px;">Ce qu'on mesure :</div>
+        <div style="font-size:0.78rem;color:rgba(184,213,239,0.8);line-height:1.6;">
+          • Position sur Google (ex : #4 → #1)<br>
+          • Nombre de visites organiques<br>
+          • Quelles pages attirent le plus
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow 2 -->
+    <div style="display:flex;align-items:center;justify-content:center;padding-top:60px;">
+      <div style="color:rgba(91,155,213,0.6);font-size:1.4rem;">→</div>
+    </div>
+
+    <!-- Acte 3 -->
+    <div style="background:rgba(74,26,0,0.5);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:28px 22px;">
+      <div style="font-size:2rem;margin-bottom:12px;">🚀</div>
+      <div style="font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Acte 3</div>
+      <div style="font-family:'Raleway',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin-bottom:10px;">Créer & dominer</div>
+      <div style="font-size:0.82rem;color:rgba(184,213,239,0.85);line-height:1.65;">
+        Claude produit du contenu ciblé — textes, guides, descriptions — optimisé pour Google ET pour les IA comme ChatGPT. Le site de RE/MAX Crystal grimpe dans les résultats.
+      </div>
+      <div style="margin-top:14px;padding:12px;background:rgba(245,158,11,0.08);border-radius:8px;border-left:3px solid rgba(245,158,11,0.4);">
+        <div style="font-size:0.76rem;color:#fde68a;font-weight:600;margin-bottom:4px;">Ce qu'on produit :</div>
+        <div style="font-size:0.78rem;color:rgba(184,213,239,0.8);line-height:1.6;">
+          • Textes de pages optimisés<br>
+          • Articles de blogue ciblés<br>
+          • Contenu visible sur les IA
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT ARE .MD FILES — VULGARIZED -->
+  <div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--crystal-light);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;">C'est quoi, ces fichiers .md ?</div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:40px;">
+
+    <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(34,197,94,0.25);border-radius:12px;padding:22px 20px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-size:1.8rem;flex-shrink:0;">📋</div>
+      <div>
+        <div style="font-family:'Raleway',sans-serif;font-size:0.9rem;font-weight:700;color:#86efac;margin-bottom:5px;">seo.md</div>
+        <div style="font-size:0.8rem;color:rgba(184,213,239,0.85);line-height:1.6;">Le <strong style="color:#fff;">guide de travail</strong> donné à Claude. Il dit exactement quoi analyser, comment réécrire les textes, et quoi livrer. C'est comme donner un manuel à un employé très compétent.</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(91,155,213,0.25);border-radius:12px;padding:22px 20px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-size:1.8rem;flex-shrink:0;">📈</div>
+      <div>
+        <div style="font-family:'Raleway',sans-serif;font-size:0.9rem;font-weight:700;color:var(--crystal-light);margin-bottom:5px;">SUIVI-SEO.md</div>
+        <div style="font-size:0.8rem;color:rgba(184,213,239,0.85);line-height:1.6;">Le <strong style="color:#fff;">tableau de bord</strong> mis à jour chaque semaine. On y voit les positions Google, le nombre de visites, les pages qui montent. Une preuve concrète que ça fonctionne.</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(168,85,247,0.25);border-radius:12px;padding:22px 20px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-size:1.8rem;flex-shrink:0;">📍</div>
+      <div>
+        <div style="font-family:'Raleway',sans-serif;font-size:0.9rem;font-weight:700;color:#d8b4fe;margin-bottom:5px;">local-seo-prompts.md</div>
+        <div style="font-size:0.8rem;color:rgba(184,213,239,0.85);line-height:1.6;">Les <strong style="color:#fff;">recettes locales</strong> — les instructions spécifiques pour dominer ville par ville. Chaque ville a ses mots-clés, ses opportunités, son contenu sur mesure.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- REAL RESULTS STRIP -->
+  <div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--crystal-light);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;">Résultats réels — Preuve que ça fonctionne</div>
+
+  <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(91,155,213,0.2);border-radius:14px;padding:28px;margin-bottom:36px;">
+    <div style="font-size:0.8rem;color:rgba(184,213,239,0.6);margin-bottom:18px;font-style:italic;">Données réelles d'un site client après 2 semaines d'utilisation de cette méthode :</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;">
+
+      <div style="text-align:center;padding:16px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:10px;">
+        <div style="font-family:'Raleway',sans-serif;font-size:2rem;font-weight:800;color:#86efac;line-height:1;">+117%</div>
+        <div style="font-size:0.74rem;color:rgba(184,213,239,0.7);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Requêtes détectées</div>
+        <div style="font-size:0.7rem;color:rgba(184,213,239,0.5);margin-top:2px;">27 → 56 en 7 jours</div>
+      </div>
+
+      <div style="text-align:center;padding:16px;background:rgba(59,125,196,0.1);border:1px solid rgba(91,155,213,0.2);border-radius:10px;">
+        <div style="font-family:'Raleway',sans-serif;font-size:2rem;font-weight:800;color:var(--crystal-light);line-height:1;">+118%</div>
+        <div style="font-size:0.74rem;color:rgba(184,213,239,0.7);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Impressions Google</div>
+        <div style="font-size:0.7rem;color:rgba(184,213,239,0.5);margin-top:2px;">123 → 268 en 7 jours</div>
+      </div>
+
+      <div style="text-align:center;padding:16px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:10px;">
+        <div style="font-family:'Raleway',sans-serif;font-size:2rem;font-weight:800;color:#fde68a;line-height:1;">#4.8</div>
+        <div style="font-size:0.74rem;color:rgba(184,213,239,0.7);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Position Google</div>
+        <div style="font-size:0.7rem;color:rgba(184,213,239,0.5);margin-top:2px;">Pour un mot-clé local cible</div>
+      </div>
+
+      <div style="text-align:center;padding:16px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);border-radius:10px;">
+        <div style="font-family:'Raleway',sans-serif;font-size:2rem;font-weight:800;color:#d8b4fe;line-height:1;">16</div>
+        <div style="font-size:0.74rem;color:rgba(184,213,239,0.7);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Pages indexées</div>
+        <div style="font-size:0.7rem;color:rgba(184,213,239,0.5);margin-top:2px;">Dès la 2e semaine</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WHY AI WINS -->
+  <div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--crystal-light);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;">Pourquoi l'IA change tout</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px;">
+
+    <div style="background:rgba(30,58,95,0.4);border:1px solid rgba(91,155,213,0.2);border-radius:12px;padding:22px 20px;">
+      <div style="font-family:'Raleway',sans-serif;font-size:0.82rem;font-weight:700;color:rgba(184,213,239,0.5);margin-bottom:14px;text-decoration:line-through;">Avant — Sans IA</div>
+      <div style="font-size:0.82rem;color:rgba(184,213,239,0.7);line-height:1.8;">
+        ❌ Analyser les compétiteurs manuellement : 10–20 heures<br>
+        ❌ Écrire du contenu SEO : 5–8 heures par page<br>
+        ❌ Suivre les métriques : fichiers Excel complexes<br>
+        ❌ Résultats visibles en 6–12 mois
+      </div>
+    </div>
+
+    <div style="background:rgba(13,74,42,0.4);border:1px solid rgba(34,197,94,0.25);border-radius:12px;padding:22px 20px;">
+      <div style="font-family:'Raleway',sans-serif;font-size:0.82rem;font-weight:700;color:#86efac;margin-bottom:14px;">Maintenant — Avec IA</div>
+      <div style="font-size:0.82rem;color:rgba(184,213,239,0.85);line-height:1.8;">
+        ✅ Analyse compétiteurs : 20 minutes<br>
+        ✅ Contenu SEO complet : 30 minutes par page<br>
+        ✅ Suivi automatisé avec fichiers .md<br>
+        ✅ Résultats visibles en 2–4 semaines
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WHAT THIS MEANS FOR REMAX -->
+  <div style="background:linear-gradient(135deg,rgba(30,58,95,0.95) 0%,rgba(59,125,196,0.25) 100%);border:1px solid rgba(91,155,213,0.4);border-radius:16px;padding:36px;text-align:center;">
+    <div style="font-size:1.8rem;margin-bottom:12px;">🏡</div>
+    <div style="font-family:'Raleway',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:12px;">Ce que ça veut dire pour RE/MAX Crystal</div>
+    <div style="font-size:0.88rem;color:var(--crystal-pale);max-width:580px;margin:0 auto 24px;line-height:1.7;">
+      On applique exactement cette méthode sur votre site. Claude analyse vos compétiteurs immobiliers sur la Rive-Nord, identifie ce qui manque, et produit du contenu qui va faire grimper remaxcrystal.ca dans Google <strong style="color:#fff;">et dans les réponses des IA</strong> comme ChatGPT et Perplexity.
+    </div>
+    <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="font-family:'Raleway',sans-serif;font-size:1.6rem;font-weight:800;color:var(--crystal-light);">Sem. 1</div>
+        <div style="font-size:0.76rem;color:var(--crystal-pale);text-transform:uppercase;letter-spacing:0.5px;">Analyse & audit</div>
+      </div>
+      <div style="color:rgba(91,155,213,0.4);font-size:1.2rem;padding-top:8px;">→</div>
+      <div style="text-align:center;">
+        <div style="font-family:'Raleway',sans-serif;font-size:1.6rem;font-weight:800;color:var(--crystal-light);">Sem. 2</div>
+        <div style="font-size:0.76rem;color:var(--crystal-pale);text-transform:uppercase;letter-spacing:0.5px;">Contenu déployé</div>
+      </div>
+      <div style="color:rgba(91,155,213,0.4);font-size:1.2rem;padding-top:8px;">→</div>
+      <div style="text-align:center;">
+        <div style="font-family:'Raleway',sans-serif;font-size:1.6rem;font-weight:800;color:var(--crystal-light);">Sem. 3–4</div>
+        <div style="font-size:0.76rem;color:var(--crystal-pale);text-transform:uppercase;letter-spacing:0.5px;">Google réagit</div>
+      </div>
+      <div style="color:rgba(91,155,213,0.4);font-size:1.2rem;padding-top:8px;">→</div>
+      <div style="text-align:center;">
+        <div style="font-family:'Raleway',sans-serif;font-size:1.6rem;font-weight:800;color:#86efac;">Mois 2+</div>
+        <div style="font-size:0.76rem;color:var(--crystal-pale);text-transform:uppercase;letter-spacing:0.5px;">Trafic qui monte</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'tab5') setTimeout(drawNetwork, 80);
+}
+
+function drawNetwork() {
+  const canvas = document.getElementById('networkChart');
+  if (!canvas) return;
+  const W = canvas.parentElement.clientWidth - 40;
+  const H = 860;
+  canvas.width = W;
+  canvas.height = H;
+  canvas.style.height = H + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, W, H);
+
+  // ── Fixed layout (all positions in a 1000×860 design space, scaled to W) ──
+  const S = W / 1000;
+  const p = (x, y) => ({ x: x * S, y: y * S });
+
+  // Node definitions: id, label line1, label line2 (optional), sublabel, x, y, r, fill, stroke, cat
+  const raw = [
+    // ROOT — centre
+    { id:'home',    l1:'Accueil',         l2:'',                sub:'remaxcrystal.ca',          x:500, y:430, r:46, fill:'#0e2035', stroke:'#7EB3E0', sw:2.5, cat:'root' },
+
+    // MAIN pages — right arc (remaxcrystal.ca)
+    { id:'props',   l1:'Propriétés',      l2:'',                sub:'/proprietes',               x:760, y:310, r:32, fill:'#0e2035', stroke:'#5B9BD5', sw:1.5, cat:'main' },
+    { id:'agents',  l1:'Courtiers',       l2:'',                sub:'/courtiers',                x:820, y:430, r:32, fill:'#0e2035', stroke:'#5B9BD5', sw:1.5, cat:'main' },
+    { id:'about',   l1:'À propos',        l2:'',                sub:'/a-propos',                 x:760, y:550, r:28, fill:'#0e2035', stroke:'#5B9BD5', sw:1.5, cat:'main' },
+    { id:'contact', l1:'Contact',         l2:'',                sub:'/contact',                  x:680, y:640, r:26, fill:'#0e2035', stroke:'#5B9BD5', sw:1.5, cat:'main' },
+
+    // HUB OUTILS — top-left quadrant
+    { id:'outils',  l1:'Outils AI',       l2:'',                sub:'outils.remaxcrystal.ca',    x:240, y:200, r:38, fill:'#2e1400', stroke:'#f59e0b', sw:2.2, cat:'hub-tool' },
+    { id:'pdf',     l1:'PDF',             l2:'Generator',       sub:'outils.remaxcrystal.ca/pdf',x:95,  y:115, r:26, fill:'#3a1200', stroke:'#f59e0b', sw:1.5, cat:'tool' },
+    { id:'photo',   l1:'Photo',           l2:'Street View',     sub:'outils.remaxcrystal.ca/photo',x:240,y:80, r:26, fill:'#3a1200', stroke:'#f59e0b', sw:1.5, cat:'tool' },
+    { id:'carte',   l1:'Carte',           l2:'Proximité',       sub:'outils.remaxcrystal.ca/carte',x:390,y:115,r:26, fill:'#3a1200', stroke:'#f59e0b', sw:1.5, cat:'tool' },
+    { id:'content', l1:'Contenu',         l2:'Propriété',       sub:'outils.remaxcrystal.ca/contenu',x:95,y:290,r:26,fill:'#3a1200', stroke:'#f59e0b', sw:1.5, cat:'tool' },
+
+    // HUB VILLES — top-right quadrant
+    { id:'villes',  l1:'Villes',          l2:'',                sub:'villes.remaxcrystal.ca',    x:660, y:200, r:38, fill:'#1c0030', stroke:'#a855f7', sw:2.2, cat:'hub-city' },
+    { id:'blainv',  l1:'Blainville',      l2:'',                sub:'villes.remaxcrystal.ca/blainville', x:530,y:80, r:24, fill:'#280838', stroke:'#a855f7', sw:1.5, cat:'city' },
+    { id:'stheres', l1:'Ste-Thérèse',    l2:'',                sub:'villes.remaxcrystal.ca/ste-therese',x:670,y:75, r:24, fill:'#280838', stroke:'#a855f7', sw:1.5, cat:'city' },
+    { id:'lorraine',l1:'Lorraine',        l2:'',                sub:'villes.remaxcrystal.ca/lorraine',   x:800,y:110,r:22, fill:'#280838', stroke:'#a855f7', sw:1.5, cat:'city' },
+    { id:'boisbr',  l1:'Boisbriand',      l2:'',                sub:'villes.remaxcrystal.ca/boisbriand', x:870,y:210,r:22, fill:'#280838', stroke:'#a855f7', sw:1.5, cat:'city' },
+    { id:'rosem',   l1:'Rosemère',        l2:'',                sub:'villes.remaxcrystal.ca/rosemere',   x:870,y:320,r:22, fill:'#280838', stroke:'#a855f7', sw:1.5, cat:'city' },
+    { id:'boisf',   l1:'Bois-des-',       l2:'Filion',          sub:'villes.remaxcrystal.ca/bois-des-filion',x:800,y:420,r:22,fill:'#280838',stroke:'#a855f7',sw:1.5,cat:'city'},
+
+    // HUB BLOGUE — bottom-left quadrant
+    { id:'blog',    l1:'Blogue',          l2:'',                sub:'blogue.remaxcrystal.ca',    x:280, y:650, r:36, fill:'#082010', stroke:'#22c55e', sw:2.2, cat:'hub-blog' },
+    { id:'pp1',     l1:'Rejoindre',       l2:'une agence',      sub:'blogue.remaxcrystal.ca/...',x:90,  y:510, r:22, fill:'#0a2e14', stroke:'#22c55e', sw:1.5, cat:'seo' },
+    { id:'pp2',     l1:'Commission',      l2:'& revenus',       sub:'blogue.remaxcrystal.ca/...',x:90,  y:650, r:22, fill:'#0a2e14', stroke:'#22c55e', sw:1.5, cat:'seo' },
+    { id:'pp3',     l1:'Formation',       l2:'& support',       sub:'blogue.remaxcrystal.ca/...',x:90,  y:790, r:22, fill:'#0a2e14', stroke:'#22c55e', sw:1.5, cat:'seo' },
+    { id:'pp4',     l1:'Outils &',        l2:'technologie',     sub:'blogue.remaxcrystal.ca/...',x:280, y:790, r:22, fill:'#0a2e14', stroke:'#22c55e', sw:1.5, cat:'seo' },
+    { id:'pp5',     l1:'Visibilité',      l2:'& marketing',     sub:'blogue.remaxcrystal.ca/...',x:470, y:790, r:22, fill:'#0a2e14', stroke:'#22c55e', sw:1.5, cat:'seo' },
+  ];
+
+  // Scale all positions
+  const nodes = raw.map(n => ({ ...n, x: n.x * S, y: n.y * S, r: n.r * S }));
+  const nm = {};
+  nodes.forEach(n => { nm[n.id] = n; });
+
+  // ── Edges ──
+  const solid = (f, t, c, w) => ({ f, t, c, w, dash: false });
+  const dashed = (f, t, c) => ({ f, t, c, w: 1, dash: true });
+
+  const edges = [
+    // Root → hubs
+    solid('home', 'outils',  'rgba(245,158,11,0.5)',  2),
+    solid('home', 'villes',  'rgba(168,85,247,0.5)',  2),
+    solid('home', 'blog',    'rgba(34,197,94,0.5)',   2),
+    // Root → main pages
+    solid('home', 'props',   'rgba(91,155,213,0.45)', 1.5),
+    solid('home', 'agents',  'rgba(91,155,213,0.45)', 1.5),
+    solid('home', 'about',   'rgba(91,155,213,0.35)', 1.2),
+    solid('home', 'contact', 'rgba(91,155,213,0.35)', 1.2),
+    // Outils hub → tools
+    solid('outils', 'pdf',     'rgba(245,158,11,0.55)', 1.5),
+    solid('outils', 'photo',   'rgba(245,158,11,0.55)', 1.5),
+    solid('outils', 'carte',   'rgba(245,158,11,0.55)', 1.5),
+    solid('outils', 'content', 'rgba(245,158,11,0.55)', 1.5),
+    // Villes hub → cities
+    solid('villes', 'blainv',  'rgba(168,85,247,0.5)', 1.3),
+    solid('villes', 'stheres', 'rgba(168,85,247,0.5)', 1.3),
+    solid('villes', 'lorraine','rgba(168,85,247,0.5)', 1.3),
+    solid('villes', 'boisbr',  'rgba(168,85,247,0.5)', 1.3),
+    solid('villes', 'rosem',   'rgba(168,85,247,0.5)', 1.3),
+    solid('villes', 'boisf',   'rgba(168,85,247,0.5)', 1.3),
+    // Blog hub → articles
+    solid('blog', 'pp1', 'rgba(34,197,94,0.5)', 1.3),
+    solid('blog', 'pp2', 'rgba(34,197,94,0.5)', 1.3),
+    solid('blog', 'pp3', 'rgba(34,197,94,0.5)', 1.3),
+    solid('blog', 'pp4', 'rgba(34,197,94,0.5)', 1.3),
+    solid('blog', 'pp5', 'rgba(34,197,94,0.5)', 1.3),
+    // Cross-subdomain dashed links
+    dashed('outils', 'props',   'rgba(245,158,11,0.3)'),
+    dashed('outils', 'agents',  'rgba(245,158,11,0.3)'),
+    dashed('content','props',   'rgba(245,158,11,0.25)'),
+    dashed('villes', 'blog',    'rgba(168,85,247,0.3)'),
+    dashed('blog',   'props',   'rgba(34,197,94,0.25)'),
+    dashed('carte',  'villes',  'rgba(245,158,11,0.25)'),
+  ];
+
+  // ── Draw grid dots ──
+  ctx.fillStyle = 'rgba(91,155,213,0.035)';
+  for (let x = 0; x < W; x += 28*S) {
+    for (let y = 0; y < H; y += 28*S) {
+      ctx.beginPath(); ctx.arc(x, y, 1.2, 0, Math.PI*2); ctx.fill();
+    }
+  }
+
+  // ── Draw edges ──
+  edges.forEach(e => {
+    const a = nm[e.f], b = nm[e.t];
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    if (e.dash) {
+      ctx.setLineDash([5*S, 4*S]);
+    } else {
+      ctx.setLineDash([]);
+    }
+    // Gentle bezier curve
+    const cpx = (a.x + b.x) / 2 + (b.y - a.y) * 0.12;
+    const cpy = (a.y + b.y) / 2 - (b.x - a.x) * 0.12;
+    ctx.quadraticCurveTo(cpx, cpy, b.x, b.y);
+    ctx.strokeStyle = e.c;
+    ctx.lineWidth = e.w * S;
+    ctx.stroke();
+    ctx.restore();
+  });
+
+  // ── Draw nodes ──
+  nodes.forEach(n => {
+    // Soft glow
+    const g = ctx.createRadialGradient(n.x, n.y, n.r * 0.3, n.x, n.y, n.r * 2.4);
+    g.addColorStop(0, n.stroke + '22');
+    g.addColorStop(1, 'transparent');
+    ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 2.4, 0, Math.PI*2);
+    ctx.fillStyle = g; ctx.fill();
+
+    // Fill circle
+    ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+    ctx.fillStyle = n.fill; ctx.fill();
+    ctx.strokeStyle = n.stroke; ctx.lineWidth = n.sw * S; ctx.stroke();
+
+    // Text
+    const fs1 = Math.max(8, Math.round(n.r * 0.38));
+    const fs2 = Math.max(7, Math.round(n.r * 0.29));
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+
+    const hasL2 = n.l2 !== '';
+    const lineCount = hasL2 ? 2 : 1;
+    const lineH = fs1 * 1.25;
+    const totalH = lineCount * lineH;
+    const topY = n.y - totalH / 2 + lineH / 2;
+
+    ctx.font = `600 ${fs1}px "Raleway", sans-serif`;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(n.l1, n.x, topY);
+
+    if (hasL2) {
+      ctx.font = `500 ${fs1}px "Raleway", sans-serif`;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(n.l2, n.x, topY + lineH);
+    }
+
+    // Sublabel below circle
+    if (n.r > 18 * S) {
+      ctx.font = `300 ${fs2}px "Open Sans", sans-serif`;
+      ctx.fillStyle = n.stroke + 'bb';
+      ctx.fillText(n.sub, n.x, n.y + n.r + fs2 * 1.1);
+    }
+  });
+
+  // Root pulse ring
+  ctx.beginPath(); ctx.arc(nm.home.x, nm.home.y, nm.home.r * 1.55, 0, Math.PI*2);
+  ctx.strokeStyle = 'rgba(126,179,224,0.12)'; ctx.lineWidth = 7*S; ctx.setLineDash([]); ctx.stroke();
+}
+
+window.addEventListener('load', () => {
+  const t5 = document.getElementById('tab5');
+  if (t5 && t5.classList.contains('active')) drawNetwork();
+});
+</script>
+</body>
+</html>

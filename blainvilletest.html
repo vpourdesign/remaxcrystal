@@ -1,0 +1,2473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vivre à Blainville en 2026 — Guide complet | RE/MAX Crystal</title>
+<meta name="description" content="Découvrez pourquoi les familles adorent Blainville. Guide complet : qualité de vie, écoles, parcs, marché immobilier, événements et tout ce qu'il faut savoir pour s'installer à Blainville, Québec.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/bundled/lenis.min.js"></script>
+
+<style>
+  :root {
+    --navy-deep: #1a2332;
+    --navy-abyss: #101620;
+    --navy: #1e3350;
+    --navy-mid: #264060;
+    --blue-brand: #3578c4;
+    --blue-light: #6ba3d9;
+    --blue-pale: #b0cfe8;
+    --blue-whisper: #e8f0f7;
+    --cream: #f7f5f0;
+    --warm-white: #faf9f6;
+    --gold: #c4a245;
+    --gold-soft: #d9c88a;
+    --text-dark: #1a1f2b;
+    --text-body: #3d4555;
+    --text-muted: #6b7385;
+    --border-subtle: #e2e5eb;
+    --ink-line: rgba(176,207,232,0.14);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @property --grad-angle {
+    syntax: '<angle>';
+    initial-value: 135deg;
+    inherits: false;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { font-size: 16px; scroll-behavior: auto; }
+
+  ::selection { background: var(--gold); color: var(--navy-deep); }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy-deep);
+    color: var(--text-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; }
+
+  .container { width: min(92%, 1320px); margin-inline: auto; }
+
+  /* ════════ PRELOADER ════════ */
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--navy-deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 4vw, 40px);
+  }
+
+  .preloader-logo {
+    width: clamp(180px, 30vw, 280px);
+    opacity: 0;
+  }
+
+  .preloader-track {
+    width: clamp(180px, 30vw, 280px);
+    height: 1px;
+    background: rgba(176,207,232,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preloader-bar {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--blue-light), var(--gold-soft));
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  .preloader-count {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-weight: 300;
+    color: var(--blue-pale);
+    letter-spacing: 0.3em;
+  }
+
+  /* ════════ SCROLL PROGRESS ════════ */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    z-index: 210;
+    pointer-events: none;
+  }
+
+  .scroll-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--blue-brand), var(--gold));
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  /* ════════ TOPBAR ════════ */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    padding: clamp(14px, 2vw, 22px) clamp(20px, 4vw, 52px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+  }
+
+  body.menu-open .topbar {
+    z-index: 230;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  body.menu-open .topbar .logo-dark { opacity: 0 !important; }
+  body.menu-open .topbar .logo-white { opacity: 1 !important; }
+
+  .topbar.scrolled {
+    background: rgba(250,249,246,0.86);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow:
+      0 1px 2px rgba(26,35,50,0.05),
+      0 8px 28px rgba(26,35,50,0.08);
+  }
+
+  .topbar-brand { display: flex; align-items: center; gap: 14px; }
+
+  .topbar-logo { height: clamp(26px, 3.2vw, 36px); position: relative; }
+  .topbar-logo img { height: 100%; width: auto; transition: opacity 0.45s var(--ease-out); }
+  .topbar-logo .logo-dark { position: absolute; top: 0; left: 0; opacity: 0; }
+  .topbar.scrolled .logo-white { opacity: 0; }
+  .topbar.scrolled .logo-dark { opacity: 1; }
+
+  .topbar-label {
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: var(--blue-pale);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    padding-left: 14px;
+    border-left: 1px solid rgba(176,207,232,0.3);
+    transition: color 0.45s var(--ease-out), border-color 0.45s var(--ease-out);
+  }
+  .topbar.scrolled .topbar-label { color: var(--text-muted); border-color: var(--border-subtle); }
+
+  .topbar-nav { display: flex; gap: clamp(18px, 2.5vw, 36px); align-items: center; }
+
+  .topbar-nav a:not(.topbar-cta) {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--blue-pale);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.35s var(--ease-out);
+  }
+  .topbar.scrolled .topbar-nav a:not(.topbar-cta) { color: var(--text-muted); }
+
+  .topbar-nav a:not(.topbar-cta)::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 100%; height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-out);
+  }
+  .topbar-nav a:not(.topbar-cta):hover { color: var(--gold-soft); }
+  .topbar.scrolled .topbar-nav a:not(.topbar-cta):hover { color: var(--navy); }
+  .topbar-nav a:not(.topbar-cta):hover::after { transform: scaleX(1); transform-origin: left; }
+
+  .topbar-cta {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--navy-deep);
+    background: var(--gold);
+    padding: 10px 22px;
+    border-radius: 999px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), background 0.35s;
+  }
+  .topbar-cta:hover {
+    transform: translateY(-2px);
+    background: var(--gold-soft);
+    box-shadow: 0 2px 6px rgba(196,162,69,0.25), 0 8px 24px rgba(196,162,69,0.35);
+  }
+  .topbar-cta:focus-visible, .topbar-nav a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* Mobile menu toggle */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    width: 44px; height: 44px;
+    position: relative;
+    z-index: 220;
+  }
+  .menu-toggle span {
+    position: absolute;
+    left: 10px;
+    width: 24px; height: 2px;
+    background: var(--blue-pale);
+    border-radius: 2px;
+    transition: transform 0.4s var(--ease-out), opacity 0.3s, background 0.4s;
+  }
+  .topbar.scrolled .menu-toggle span { background: var(--navy); }
+  .menu-toggle span:nth-child(1) { top: 16px; }
+  .menu-toggle span:nth-child(2) { top: 23px; }
+  .menu-toggle span:nth-child(3) { top: 30px; }
+  body.menu-open .menu-toggle span { background: var(--warm-white); }
+  body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+  body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 210;
+    background: linear-gradient(160deg, var(--navy-deep), var(--navy));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(32px, 8vw, 64px);
+    gap: 4px;
+    clip-path: circle(0% at calc(100% - 42px) 36px);
+    transition: clip-path 0.7s var(--ease-out);
+    visibility: hidden;
+  }
+  body.menu-open .mobile-menu { clip-path: circle(150% at calc(100% - 42px) 36px); visibility: visible; }
+
+  .mobile-menu a {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 9vw, 3rem);
+    font-weight: 300;
+    color: var(--warm-white);
+    padding-block: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 1px solid var(--ink-line);
+  }
+  .mobile-menu a small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    color: var(--gold-soft);
+    letter-spacing: 0.2em;
+  }
+
+  /* ════════ HERO ════════ */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    padding-block-end: clamp(56px, 7vw, 96px);
+    overflow: hidden;
+    background: var(--navy-deep);
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .hero-image img {
+    width: 100%; height: 115%;
+    object-fit: cover;
+    opacity: 0.5;
+    transform: scale(1.08);
+    will-change: transform;
+  }
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 130% 90% at 75% 10%, rgba(30,51,80,0.78), transparent),
+      radial-gradient(ellipse 90% 110% at 15% 85%, rgba(26,35,50,0.92), transparent),
+      linear-gradient(180deg, rgba(26,35,50,0.55) 0%, rgba(26,35,50,0.35) 45%, rgba(26,35,50,0.96) 100%);
+  }
+
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 4;
+    width: min(92%, 1320px);
+    margin-inline: auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: clamp(0.62rem, 0.85vw, 0.74rem);
+    font-weight: 600;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    margin-block-end: clamp(18px, 2.5vw, 32px);
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 48px; height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .hero-title {
+    font-size: clamp(3.2rem, 10.5vw, 9.5rem);
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-block-end: clamp(18px, 2.5vw, 30px);
+  }
+
+  .hero-title .line {
+    display: block;
+    overflow: hidden;
+    padding: 0.1em 0.14em;
+    margin: -0.1em -0.14em;
+  }
+  .hero-title .char { display: inline-block; will-change: transform; }
+  .hero-title em { font-style: italic; font-weight: 300; }
+  .hero-title em .char {
+    background: linear-gradient(135deg, var(--blue-pale) 10%, var(--gold-soft) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 80px);
+    align-items: end;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+    font-weight: 300;
+    color: #b6c4d3;
+    max-width: 50ch;
+    line-height: 1.75;
+  }
+  .hero-subtitle strong { color: var(--warm-white); font-weight: 500; }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(18px, 2.5vw, 32px) clamp(24px, 3vw, 48px);
+    padding: clamp(20px, 2.5vw, 32px);
+    border: 1px solid var(--ink-line);
+    border-radius: 16px;
+    background: rgba(16,24,38,0.42);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .hero-stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
+    font-weight: 300;
+    color: var(--warm-white);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    display: block;
+  }
+  .hero-stat-value sup { font-size: 0.5em; color: var(--gold-soft); }
+
+  .hero-stat-label {
+    font-size: clamp(0.6rem, 0.75vw, 0.7rem);
+    font-weight: 600;
+    color: #7d9ab5;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: clamp(24px, 4vw, 44px);
+    right: clamp(20px, 4vw, 52px);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-scroll-text {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #7d9ab5;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    writing-mode: vertical-rl;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 56px;
+    background: linear-gradient(180deg, var(--gold-soft), transparent);
+    animation: scrollPulse 2.2s var(--ease-out) infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.25; transform: scaleY(0.55); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  }
+
+  /* ════════ SECTION SCAFFOLD ════════ */
+  .section { padding-block: clamp(80px, 11vw, 160px); position: relative; }
+
+  .section-light { background: var(--warm-white); }
+  .section-cream { background: var(--cream); }
+  .section-dark { background: var(--navy-deep); }
+  .section-dark h2, .section-dark h3, .section-dark h4 { color: var(--warm-white); }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(20px, 4vw, 64px);
+    align-items: start;
+    margin-block-end: clamp(44px, 6vw, 80px);
+  }
+
+  .section-index {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    font-style: italic;
+    color: var(--gold);
+    padding-top: clamp(10px, 1.5vw, 20px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  }
+  .section-index::after {
+    content: '';
+    width: clamp(28px, 4vw, 56px);
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .section-heading {
+    font-size: clamp(2.4rem, 5.5vw, 5rem);
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    max-width: 18ch;
+  }
+  .section-heading em {
+    font-style: italic;
+    color: var(--blue-brand);
+  }
+  .section-dark .section-heading em { color: var(--gold-soft); }
+
+  .section-intro {
+    font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+    font-weight: 300;
+    color: var(--text-muted);
+    max-width: 58ch;
+    line-height: 1.85;
+    margin-top: clamp(14px, 2vw, 22px);
+  }
+  .section-dark .section-intro { color: #95aabb; }
+
+  /* clip reveal for images */
+  .clip-reveal {
+    clip-path: inset(0 0 100% 0);
+    will-change: clip-path;
+  }
+  .clip-reveal img { transform: scale(1.15); will-change: transform; }
+
+  /* ════════ INTRO / PORTRAIT ════════ */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(36px, 6vw, 96px);
+    align-items: center;
+  }
+
+  .intro-text p {
+    margin-block-end: 1.3em;
+    font-size: clamp(0.95rem, 1.15vw, 1.06rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text-body);
+  }
+
+  .intro-text p:first-of-type::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 4.2em;
+    float: left;
+    line-height: 0.78;
+    margin-right: 12px;
+    margin-top: 8px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .intro-signature {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: clamp(24px, 3vw, 36px);
+  }
+  .intro-signature-line { width: 56px; height: 1px; background: var(--gold); }
+  .intro-signature span {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .intro-visual { position: relative; }
+
+  .intro-image-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    box-shadow:
+      0 1px 2px rgba(26,35,50,0.08),
+      0 16px 40px rgba(26,35,50,0.14),
+      0 48px 100px rgba(26,35,50,0.12);
+  }
+  .intro-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .intro-image-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(26,35,50,0.72));
+    mix-blend-mode: multiply;
+  }
+
+  .intro-image-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: clamp(22px, 3vw, 36px);
+    color: white;
+    z-index: 2;
+  }
+  .intro-image-caption h4 {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    color: white;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .intro-image-caption p { font-size: 0.78rem; opacity: 0.75; margin-top: 4px; }
+
+  .intro-badge {
+    position: absolute;
+    top: -28px;
+    right: clamp(-10px, -2vw, -28px);
+    width: clamp(100px, 11vw, 140px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--gold-soft);
+    display: grid;
+    place-items: center;
+    z-index: 3;
+    box-shadow: 0 12px 36px rgba(26,35,50,0.3);
+  }
+  .intro-badge svg { width: 86%; height: 86%; animation: spinSlow 22s linear infinite; }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+  .intro-badge-center {
+    position: absolute;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+    font-style: italic;
+  }
+
+  /* ════════ QUALITÉ DE VIE ════════ */
+  .ql-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ink-line);
+    border: 1px solid var(--ink-line);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .ql-card {
+    background: var(--navy-deep);
+    padding: clamp(28px, 3.2vw, 46px);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s var(--ease-out);
+  }
+  .ql-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 320px at var(--mx, 50%) var(--my, 50%), rgba(107,163,217,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+  .ql-card:hover::after { opacity: 1; }
+  .ql-card:hover { background: #1d2940; }
+
+  .ql-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(176,207,232,0.35);
+    margin-block-end: clamp(28px, 4vw, 56px);
+    display: block;
+  }
+
+  .ql-icon {
+    display: block;
+    width: 38px; height: 38px;
+    margin-block-end: 18px;
+    color: var(--gold-soft);
+  }
+  .ql-icon svg {
+    width: 100%; height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ql-card h4 {
+    font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+    font-weight: 400;
+    margin-block-end: 10px;
+    color: var(--warm-white);
+  }
+
+  .ql-card p {
+    font-size: clamp(0.82rem, 0.92vw, 0.89rem);
+    font-weight: 300;
+    line-height: 1.75;
+    color: #93a8ba;
+  }
+
+  .ql-value {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--blue-pale);
+    margin-block-start: clamp(14px, 2vw, 24px);
+    letter-spacing: -0.02em;
+  }
+
+  /* ════════ CALCULATORS ════════ */
+  .tools-section {
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 0%, rgba(53,120,196,0.14), transparent),
+      radial-gradient(ellipse 60% 50% at 5% 100%, rgba(196,162,69,0.07), transparent),
+      var(--navy-deep);
+  }
+
+  .tool-calculators {
+    border: 1px solid var(--ink-line);
+    border-radius: 20px;
+    background: rgba(12,22,36,0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.14), 0 24px 64px rgba(0,0,0,0.22);
+    overflow: hidden;
+  }
+
+  .tool-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--ink-line);
+  }
+
+  .tool-tab {
+    min-height: 60px;
+    border: 0;
+    border-right: 1px solid var(--ink-line);
+    background: transparent;
+    color: #8da3b6;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.35s, background 0.35s;
+  }
+  .tool-tab:last-child { border-right: 0; }
+  .tool-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.45s var(--ease-out);
+  }
+  .tool-tab:hover { color: var(--blue-pale); }
+  .tool-tab.active { color: var(--warm-white); background: rgba(107,163,217,0.07); }
+  .tool-tab.active::after { transform: scaleX(1); }
+  .tool-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
+
+  .tool-panel {
+    display: none;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(300px, 1fr);
+    gap: clamp(24px, 4vw, 52px);
+    padding: clamp(24px, 3.8vw, 48px);
+  }
+  .tool-panel.active { display: grid; }
+
+  .tool-form { display: grid; gap: 16px; align-content: start; }
+  .tool-field { display: grid; gap: 8px; }
+
+  .tool-field label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #a8bdce;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .tool-field input,
+  .tool-field select {
+    width: 100%;
+    border: 1px solid var(--ink-line);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    color: var(--warm-white);
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+    font-weight: 300;
+    min-height: 64px;
+    padding: 16px 20px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .tool-field select { font-size: clamp(1rem, 1.25vw, 1.15rem); font-family: 'DM Sans', sans-serif; }
+  .tool-field input:focus, .tool-field select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(196,162,69,0.16);
+  }
+  .tool-field input::placeholder { color: #7990a3; }
+
+  .tool-check { display: flex; align-items: center; gap: 10px; color: #cfe0ee; font-size: 0.86rem; }
+  .tool-check input { width: 16px; height: 16px; accent-color: var(--gold); }
+
+  .tool-result {
+    background: linear-gradient(160deg, rgba(8,18,30,0.85), rgba(20,34,52,0.85));
+    border: 1px solid var(--ink-line);
+    color: white;
+    border-radius: 14px;
+    padding: clamp(24px, 3vw, 36px);
+    display: grid;
+    gap: 20px;
+    align-content: start;
+  }
+
+  .tool-result-label {
+    color: #8da3b6;
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+
+  .tool-result-main {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: white;
+    margin-top: 8px;
+  }
+
+  .tool-result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .tool-result-item {
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.035);
+  }
+  .tool-result-item span {
+    display: block;
+    color: #8da3b6;
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-block-end: 4px;
+  }
+  .tool-result-item strong { font-size: 1rem; font-weight: 500; color: white; }
+
+  .tool-breakdown { display: grid; gap: 6px; color: #aabfd0; font-size: 0.82rem; line-height: 1.6; }
+
+  .tool-source {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-block-start: 16px;
+    color: #84a0b5;
+    font-size: 0.72rem;
+    line-height: 1.6;
+  }
+  .tool-source a { color: var(--gold-soft); text-decoration: underline; text-underline-offset: 3px; }
+
+  .tool-note {
+    padding: 13px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(196,162,69,0.25);
+    background: rgba(196,162,69,0.08);
+    color: #e2d39a;
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  .tool-cta {
+    justify-self: start;
+    color: var(--navy-deep) !important;
+    background: var(--gold);
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  }
+  .tool-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(196,162,69,0.3), 0 10px 28px rgba(196,162,69,0.35);
+  }
+  .tool-cta:focus-visible { outline: 2px solid var(--warm-white); outline-offset: 3px; }
+
+  /* ════════ MARCHÉ ════════ */
+  .stats-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    align-items: center;
+    margin-block-end: clamp(24px, 3vw, 40px);
+    padding: 16px 24px;
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .stats-meta strong { color: var(--navy); font-weight: 600; }
+  .stats-meta a { color: var(--blue-brand); font-weight: 500; border-bottom: 1px dashed currentColor; }
+  .stats-meta a:hover { color: var(--navy); }
+
+  .stats-table-wrap {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+      0 1px 2px oklch(30% 0.05 250 / 0.05),
+      0 8px 24px oklch(30% 0.05 250 / 0.06),
+      0 32px 80px oklch(30% 0.05 250 / 0.05);
+  }
+  .stats-table-caption {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    font-weight: 400;
+    color: var(--text-dark);
+    padding: clamp(22px, 2.4vw, 32px) clamp(22px, 2.6vw, 36px) 0;
+    letter-spacing: -0.01em;
+  }
+  .stats-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .stats-table thead th {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 14px clamp(14px, 1.8vw, 24px);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--cream);
+  }
+  .stats-table thead th.col-group {
+    text-align: center;
+    border-bottom: none;
+    padding-bottom: 6px;
+    color: var(--navy);
+  }
+  .stats-table thead th.col-num { text-align: right; }
+  .stats-table thead th.col-var { text-align: left; width: 1%; white-space: nowrap; }
+  .stats-table thead .row-sub th { font-size: 0.62rem; padding-top: 4px; }
+  .stats-table tbody td {
+    padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 24px);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: middle;
+  }
+  .stats-table tbody tr:last-child td { border-bottom: none; }
+  .stats-table tbody tr { transition: background 0.3s; }
+  .stats-table tbody tr:hover { background: oklch(97% 0.01 250 / 0.7); }
+
+  .stats-row-label {
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .stats-row-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .stats-row-sublabel {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 2px;
+    margin-left: 16px;
+  }
+
+  .stats-value {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.4rem, 1.9vw, 1.8rem);
+    font-weight: 400;
+    color: var(--text-dark);
+    text-align: right;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .stats-value-suffix {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6em;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-left: 3px;
+  }
+
+  .stats-table td.col-divider { border-left: 1px solid var(--border-subtle); padding-left: clamp(18px, 2.2vw, 30px); }
+  .stats-table th.col-divider { border-left: 1px solid var(--border-subtle); }
+
+  .stat-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .stat-trend.trend-up { color: #1f9c5e; background: rgba(45,184,112,0.12); }
+  .stat-trend.trend-down { color: #c44141; background: rgba(209,71,71,0.1); }
+  .stat-trend.trend-stable { color: #6b7385; background: rgba(107,115,133,0.1); }
+  .stat-arrow { font-size: 0.9em; line-height: 1; }
+
+  @media (max-width: 720px) {
+    .stats-table thead { display: none; }
+    .stats-table, .stats-table tbody, .stats-table tr, .stats-table td { display: block; width: 100%; }
+    .stats-table tbody tr { padding: 18px 18px 10px; border-bottom: 1px solid var(--border-subtle); }
+    .stats-table tbody tr:last-child { border-bottom: none; }
+    .stats-table tbody td {
+      border: none;
+      padding: 4px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .stats-table tbody td.col-divider {
+      border-left: none;
+      padding-left: 0;
+      margin-top: 8px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-subtle);
+    }
+    .stats-table tbody td::before {
+      content: attr(data-label);
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+    .stats-table tbody td.cell-label::before { content: none; }
+    .stats-value { font-size: 1.4rem; }
+  }
+
+  /* ════════ ÉVÉNEMENTS ════════ */
+  .events-list { display: flex; flex-direction: column; }
+
+  .event-row {
+    display: grid;
+    grid-template-columns: clamp(72px, 8vw, 110px) 1fr auto;
+    gap: clamp(20px, 3.5vw, 48px);
+    align-items: center;
+    padding: clamp(22px, 3vw, 36px) clamp(8px, 1.5vw, 24px);
+    border-bottom: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .event-row:first-child { border-top: 1px solid var(--border-subtle); }
+  .event-row::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--navy-deep);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s var(--ease-out);
+    z-index: 0;
+  }
+  .event-row:hover::before { transform: scaleY(1); transform-origin: top; }
+  .event-row > * { position: relative; z-index: 1; }
+
+  .event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.4s, background 0.4s;
+  }
+  .event-row:hover .event-date { border-color: rgba(196,162,69,0.5); background: rgba(196,162,69,0.06); }
+
+  .event-date-day {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    transition: color 0.4s;
+  }
+  .event-date-month {
+    font-size: clamp(0.58rem, 0.72vw, 0.68rem);
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: 4px;
+  }
+  .event-row:hover .event-date-day { color: var(--warm-white); }
+
+  .event-category {
+    font-size: clamp(0.6rem, 0.72vw, 0.66rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--blue-brand);
+    transition: color 0.4s;
+  }
+  .event-row:hover .event-category { color: var(--gold-soft); }
+
+  .event-title {
+    font-size: clamp(1.35rem, 2.4vw, 2.1rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-block: 4px 6px;
+    transition: color 0.4s;
+  }
+  .event-row:hover .event-title { color: var(--warm-white); }
+
+  .event-desc {
+    font-size: clamp(0.82rem, 0.95vw, 0.9rem);
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 60ch;
+    transition: color 0.4s;
+  }
+  .event-row:hover .event-desc { color: #9db1c2; }
+
+  .event-arrow {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: border-color 0.4s, color 0.4s, transform 0.5s var(--ease-out), background 0.4s;
+  }
+  .event-row:hover .event-arrow {
+    border-color: var(--gold);
+    color: var(--navy-deep);
+    background: var(--gold);
+    transform: rotate(-45deg);
+  }
+
+  /* ════════ PARCS — HORIZONTAL ════════ */
+  .parks-section {
+    background: var(--navy-deep);
+    overflow: hidden;
+  }
+
+  .parks-head { margin-block-end: clamp(36px, 5vw, 60px); }
+
+  .parks-viewport { overflow: hidden; }
+
+  .parks-track {
+    display: flex;
+    gap: clamp(16px, 2vw, 28px);
+    width: max-content;
+    padding-inline: max(4vw, calc((100vw - 1320px) / 2));
+    will-change: transform;
+  }
+
+  .park-card {
+    position: relative;
+    width: clamp(280px, 38vw, 540px);
+    aspect-ratio: 4/3;
+    border-radius: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .park-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+    will-change: transform;
+  }
+  .park-card:hover img { transform: scale(1.06); }
+  .park-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,35,50,0.05) 35%, rgba(16,24,38,0.85));
+  }
+
+  .park-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: clamp(18px, 2.4vw, 30px);
+    color: white;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .park-info h4 {
+    font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+    color: white;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .park-info p { font-size: 0.76rem; font-weight: 300; opacity: 0.75; margin-top: 3px; }
+  .park-index {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--gold-soft);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 899px) {
+    .parks-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .parks-viewport::-webkit-scrollbar { display: none; }
+    .parks-track { padding-inline: 4vw; }
+    .park-card { scroll-snap-align: center; width: min(82vw, 420px); }
+  }
+
+  /* ════════ TRANSPORT ════════ */
+  .table-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background: white;
+    box-shadow:
+      0 1px 2px rgba(35,50,70,0.04),
+      0 8px 24px rgba(35,50,70,0.06),
+      0 32px 80px rgba(35,50,70,0.05);
+  }
+
+  .table-header {
+    background: var(--navy);
+    padding: clamp(20px, 2.6vw, 30px) clamp(22px, 3vw, 38px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .table-header h4 {
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    font-weight: 400;
+    color: var(--warm-white);
+  }
+  .table-badge {
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: var(--gold-soft);
+    background: rgba(196,162,69,0.12);
+    border: 1px solid rgba(196,162,69,0.3);
+    padding: 5px 14px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table thead { background: var(--cream); }
+  .data-table th {
+    font-size: clamp(0.64rem, 0.78vw, 0.72rem);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+    padding: clamp(12px, 1.6vw, 16px) clamp(16px, 2.2vw, 26px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .data-table td {
+    font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+    padding: clamp(14px, 1.9vw, 22px) clamp(16px, 2.2vw, 26px);
+    border-bottom: 1px solid #e9ecf0;
+    vertical-align: top;
+  }
+  .data-table tbody tr { transition: background 0.3s; }
+  .data-table tbody tr:hover { background: #f4f6f8; }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+  .badge-gold { background: rgba(196,162,69,0.16); color: #94761d; }
+  .badge-green { background: rgba(45,170,110,0.14); color: #178355; }
+  .badge-blue { background: rgba(53,120,196,0.12); color: #2563a8; }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table-scroll .data-table { min-width: 640px; }
+
+  /* ════════ CTA ════════ */
+  .cta-section {
+    position: relative;
+    padding-block: clamp(100px, 14vw, 180px);
+    overflow: hidden;
+    background: var(--navy-deep);
+  }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 90% 70% at 50% 110%, rgba(53,120,196,0.2), transparent),
+      radial-gradient(ellipse 50% 40% at 80% 0%, rgba(196,162,69,0.08), transparent);
+  }
+  .cta-grain { position: absolute; inset: 0; opacity: 0.05; pointer-events: none; }
+
+  .cta-content { position: relative; z-index: 1; text-align: center; }
+
+  .cta-kicker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    color: var(--gold-soft);
+    margin-block-end: clamp(16px, 2vw, 24px);
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cta-kicker::before, .cta-kicker::after {
+    content: '';
+    width: 36px; height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .cta-heading {
+    font-size: clamp(2.8rem, 7vw, 6.5rem);
+    font-weight: 300;
+    color: var(--warm-white);
+    letter-spacing: -0.04em;
+    margin-block-end: clamp(16px, 2.5vw, 28px);
+  }
+  .cta-heading em { font-style: italic; color: var(--blue-pale); }
+
+  .cta-text {
+    font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+    font-weight: 300;
+    color: #95aabb;
+    max-width: 52ch;
+    margin-inline: auto;
+    margin-block-end: clamp(36px, 5vw, 56px);
+  }
+
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn {
+    font-size: clamp(0.78rem, 0.92vw, 0.86rem);
+    font-weight: 600;
+    padding: clamp(16px, 1.8vw, 20px) clamp(32px, 3.5vw, 46px);
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), background 0.4s;
+  }
+  .btn:hover { transform: translateY(-3px); }
+  .btn:active { transform: translateY(0); }
+  .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+  .btn-primary { background: var(--gold); color: var(--navy-deep); }
+  .btn-primary:hover {
+    background: var(--gold-soft);
+    box-shadow:
+      0 2px 6px rgba(196,162,69,0.25),
+      0 10px 32px rgba(196,162,69,0.35),
+      0 28px 64px rgba(196,162,69,0.18);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--blue-pale);
+    border: 1px solid rgba(176,207,232,0.3);
+  }
+  .btn-ghost:hover {
+    background: rgba(176,207,232,0.07);
+    border-color: rgba(176,207,232,0.55);
+    box-shadow: 0 8px 28px rgba(16,24,38,0.4);
+  }
+
+  /* ════════ FOOTER ════════ */
+  .footer {
+    background: #111a25;
+    padding: clamp(56px, 7vw, 88px) 0 clamp(28px, 3vw, 40px);
+    color: #8090a2;
+    border-top: 1px solid var(--ink-line);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: clamp(36px, 4.5vw, 72px);
+    margin-block-end: clamp(44px, 5vw, 68px);
+    padding-block-end: clamp(44px, 5vw, 68px);
+    border-bottom: 1px solid #1d2c3e;
+  }
+
+  .footer-brand-name { margin-block-end: 18px; }
+  .footer-brand-name img { height: clamp(30px, 3.5vw, 40px); width: auto; }
+  .footer-brand-desc { font-size: 0.84rem; font-weight: 300; line-height: 1.75; max-width: 32ch; }
+
+  .footer-col h5 {
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: #5e7080;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-block-end: 18px;
+  }
+
+  .footer-col a {
+    display: block;
+    width: fit-content;
+    font-size: 0.84rem;
+    font-weight: 300;
+    color: #8a9bac;
+    margin-block-end: 11px;
+    transition: color 0.3s, transform 0.35s var(--ease-out);
+  }
+  .footer-col a:hover { color: var(--gold-soft); transform: translateX(4px); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.7rem;
+    color: #4f5f70;
+  }
+
+  /* ════════ RESPONSIVE ════════ */
+  @media (max-width: 900px) {
+    .topbar-nav { display: none; }
+    .menu-toggle { display: block; }
+    .topbar-label { display: none; }
+    .hero-row { grid-template-columns: 1fr; }
+    .hero-stats { margin-top: 8px; }
+    .section-head { grid-template-columns: 1fr; gap: 12px; }
+    .intro-grid { grid-template-columns: 1fr; }
+    .intro-badge { top: -22px; right: 8px; }
+    .ql-grid { grid-template-columns: 1fr; }
+    .tool-tabs { grid-template-columns: 1fr; }
+    .tool-tab { border-right: 0; border-bottom: 1px solid var(--ink-line); text-align: left; padding-inline: 22px; }
+    .tool-tab:last-child { border-bottom: 0; }
+    .tool-panel { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .event-arrow { display: none; }
+    .event-row { grid-template-columns: clamp(64px, 16vw, 80px) 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .hero-scroll-hint { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NOISE SVG FILTER -->
+  <svg style="position:absolute;width:0;height:0;" aria-hidden="true">
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </svg>
+
+  <!-- ═══ PRELOADER ═══ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="" class="preloader-logo" id="preloader-logo">
+    <div class="preloader-track"><div class="preloader-bar" id="preloader-bar"></div></div>
+    <div class="preloader-count" id="preloader-count">0</div>
+  </div>
+
+  <!-- ═══ SCROLL PROGRESS ═══ -->
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div>
+
+  <!-- ═══ TOPBAR ═══ -->
+  <nav class="topbar" id="topbar" aria-label="Navigation principale">
+    <div class="topbar-brand">
+      <a href="#" class="topbar-logo" aria-label="RE/MAX Crystal — accueil">
+        <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" class="logo-white">
+        <img src="brand_assets/Crystal-long-noir-crystal.png" alt="" class="logo-dark" aria-hidden="true">
+      </a>
+      <span class="topbar-label">Guide de ville · 2026</span>
+    </div>
+    <div class="topbar-nav">
+      <a href="#qualite">Qualité de vie</a>
+      <a href="#marche">Marché</a>
+      <a href="#evenements">Événements</a>
+      <a href="#parcs">Parcs</a>
+      <a href="#contact" class="topbar-cta">Nous joindre</a>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#intro"><small>01</small> Portrait</a>
+    <a href="#qualite"><small>02</small> Qualité de vie</a>
+    <a href="#marche"><small>03</small> Marché</a>
+    <a href="#evenements"><small>04</small> Événements</a>
+    <a href="#parcs"><small>05</small> Parcs</a>
+    <a href="#transport"><small>06</small> Transport</a>
+    <a href="#contact"><small>07</small> Nous joindre</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero" id="hero">
+    <div class="hero-image"><img src="hero.jpg" alt="Vue aérienne de Blainville"></div>
+    <div class="hero-grain" style="filter: url(#noise);" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow" data-hero-fade>Guide complet 2026 · Basses-Laurentides</div>
+      <h1 class="hero-title" id="hero-title">
+        <span class="line">Vivre à</span>
+        <span class="line"><em>Blainville</em></span>
+      </h1>
+
+      <div class="hero-row">
+        <p class="hero-subtitle" data-hero-fade>Le guide de référence pour les familles qui rêvent de s'installer dans l'une des villes <strong>les plus prisées</strong> des Basses-Laurentides. Tout ce que vous devez savoir, au même endroit.</p>
+
+        <div class="hero-stats" data-hero-fade>
+          <div class="hero-stat">
+            <span class="hero-stat-value"><span data-count="58800" data-format="space">0</span><sup>+</sup></span>
+            <span class="hero-stat-label">Résidents</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value"><span data-count="74">0</span></span>
+            <span class="hero-stat-label">Parcs & espaces verts</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value"><span data-count="12">0</span></span>
+            <span class="hero-stat-label">Écoles primaires</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">Top&nbsp;10</span>
+            <span class="hero-stat-label">Villes famille au QC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span class="hero-scroll-text">Explorer</span>
+      <span class="hero-scroll-line"></span>
+    </div>
+  </header>
+
+  <!-- ═══ 01 — PORTRAIT ═══ -->
+  <section class="section section-light" id="intro">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-index reveal">N°01 — Portrait</div>
+        <div>
+          <h2 class="section-heading split-words">Pourquoi les familles <em>adorent</em> Blainville</h2>
+        </div>
+      </div>
+
+      <div class="intro-grid">
+        <div class="intro-text reveal">
+          <p>Blainville se distingue comme l'une des villes les plus recherchées de la Rive-Nord de Montréal. Nichée entre l'effervescence métropolitaine et la quiétude des Laurentides, elle offre un équilibre rare entre dynamisme urbain et cadre de vie familial exceptionnel.</p>
+          <p>Avec ses rues bordées d'arbres matures, ses quartiers résidentiels soignés et son centre-ville en pleine transformation, Blainville attire chaque année des centaines de nouvelles familles qui cherchent un milieu de vie où il fait bon grandir.</p>
+          <p>La ville investit massivement dans ses infrastructures culturelles et sportives. Le Complexe aquatique, la bibliothèque Paul-Émile-Salois, le centre communautaire — chaque investissement renforce cette identité de ville tournée vers ses citoyens.</p>
+          <div class="intro-signature">
+            <span class="intro-signature-line"></span>
+            <span>L'équipe RE/MAX Crystal</span>
+          </div>
+        </div>
+
+        <div class="intro-visual reveal">
+          <div class="intro-image-wrap clip-reveal">
+            <img src="images/villes/blainville/blainville1.jpg" alt="Hôtel de Ville de Blainville">
+            <div class="intro-image-caption">
+              <h4>Le Vieux-Blainville</h4>
+              <p>Un quartier en pleine revitalisation</p>
+            </div>
+          </div>
+          <div class="intro-badge" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <defs><path id="circlePath" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"/></defs>
+              <text font-size="9.5" letter-spacing="2.5" fill="currentColor" font-family="DM Sans, sans-serif" font-weight="600">
+                <textPath href="#circlePath">GUIDE 2026 · RE/MAX CRYSTAL · BLAINVILLE ·</textPath>
+              </text>
+            </svg>
+            <span class="intro-badge-center">26</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 02 — QUALITÉ DE VIE ═══ -->
+  <section class="section section-dark" id="qualite">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-index reveal">N°02 — Qualité de vie</div>
+        <div>
+          <h2 class="section-heading split-words">Un cadre de vie <em>exceptionnel</em></h2>
+          <p class="section-intro reveal">Blainville offre tout ce dont une famille a besoin pour s'épanouir — des services de proximité aux grands espaces verts.</p>
+        </div>
+      </div>
+
+      <div class="ql-grid">
+        <div class="ql-card reveal">
+          <span class="ql-num">01</span>
+          <span class="ql-icon"><svg viewBox="0 0 24 24"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg></span>
+          <h4>Espaces verts</h4>
+          <p>Plus de 74 parcs et espaces verts répartis dans tous les quartiers. Sentiers pédestres, pistes cyclables et accès direct à la nature.</p>
+          <div class="ql-value">340+ hectares</div>
+        </div>
+        <div class="ql-card reveal">
+          <span class="ql-num">02</span>
+          <span class="ql-icon"><svg viewBox="0 0 24 24"><path d="M10 11h.01"/><path d="M14 6h.01"/><path d="M18 6h.01"/><path d="M6.5 13.1h.01"/><path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3"/><path d="M17.4 9.9c-.8.8-2 .8-2.8 0"/><path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7"/><path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4"/></svg></span>
+          <h4>Culture & loisirs</h4>
+          <p>Bibliothèque moderne, centre culturel, programmation artistique riche. Spectacles, ateliers et festivals toute l'année.</p>
+          <div class="ql-value">150+ activités/an</div>
+        </div>
+        <div class="ql-card reveal">
+          <span class="ql-num">03</span>
+          <span class="ql-icon"><svg viewBox="0 0 24 24"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/><path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></span>
+          <h4>Sports & santé</h4>
+          <p>Complexe aquatique municipal, arénas, terrains sportifs et centres de conditionnement physique accessibles à tous.</p>
+          <div class="ql-value">25+ installations</div>
+        </div>
+        <div class="ql-card reveal">
+          <span class="ql-num">04</span>
+          <span class="ql-icon"><svg viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg></span>
+          <h4>Commerces & services</h4>
+          <p>Des zones commerciales complètes le long du boulevard de la Seigneurie. Épiceries, restaurants, boutiques et services professionnels à proximité.</p>
+          <div class="ql-value">500+ commerces</div>
+        </div>
+        <div class="ql-card reveal">
+          <span class="ql-num">05</span>
+          <span class="ql-icon"><svg viewBox="0 0 24 24"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"/><path d="m9 15-1-1"/><path d="m15 15 1-1"/><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"/><path d="m8 19-2 3"/><path d="m16 19 2 3"/></svg></span>
+          <h4>Transport en commun</h4>
+          <p>Gare de train de banlieue sur la ligne Saint-Jérôme. Réseau d'autobus EXO et accès rapide à l'autoroute 15 et à la 640.</p>
+          <div class="ql-value">45 min → Montréal</div>
+        </div>
+        <div class="ql-card reveal">
+          <span class="ql-num">06</span>
+          <span class="ql-icon"><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h4>Sécurité</h4>
+          <p>Taux de criminalité parmi les plus bas de la Rive-Nord. Service de police dédié et programmes de surveillance de quartier.</p>
+          <div class="ql-value">Très sécuritaire</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OUTILS / CALCULATEURS ═══ -->
+  <section class="section tools-section" id="outils-blainville">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-index reveal" style="color: var(--gold-soft);">Outils Blainville</div>
+        <div>
+          <h2 class="section-heading split-words" style="color: var(--warm-white);">Calculer le <em>coût réel</em></h2>
+          <p class="section-intro reveal" style="color:#95aabb;">Trois calculateurs rapides pour estimer une transaction à Blainville avec les données fiscales 2026 de la ville et les règles officielles du Québec.</p>
+        </div>
+      </div>
+
+      <div class="tool-calculators reveal" id="calculatrices-blainville">
+        <div class="tool-tabs" role="tablist">
+          <button class="tool-tab active" type="button" data-tool-tab="welcome">Taxe de bienvenue</button>
+          <button class="tool-tab" type="button" data-tool-tab="taxes">Taxes municipales</button>
+          <button class="tool-tab" type="button" data-tool-tab="mortgage">Hypothèque locale</button>
+        </div>
+
+        <div class="tool-panel active" data-tool-panel="welcome">
+          <div class="tool-form">
+            <div class="tool-field">
+              <label for="welcome-price">Prix d'achat ou base d'imposition</label>
+              <input id="welcome-price" type="number" min="0" step="1000" value="650000">
+            </div>
+            <div class="tool-note">Le calcul est verrouillé sur Blainville. La base d'imposition réelle est le plus élevé entre le prix payé, le prix indiqué à l'acte et la valeur marchande uniformisée.</div>
+          </div>
+          <div class="tool-result">
+            <div>
+              <div class="tool-result-label">Droit de mutation estimé à Blainville</div>
+              <div class="tool-result-main" id="welcome-total">$0</div>
+            </div>
+            <div class="tool-breakdown" id="welcome-breakdown"></div>
+            <div class="tool-source" id="welcome-source"></div>
+            <a href="#contact" class="tool-cta">Parler à un courtier</a>
+          </div>
+        </div>
+
+        <div class="tool-panel" data-tool-panel="taxes">
+          <div class="tool-form">
+            <div class="tool-field">
+              <label for="tax-value">Valeur au rôle ou prix estimé</label>
+              <input id="tax-value" type="number" min="0" step="1000" value="650000">
+            </div>
+            <div class="tool-field">
+              <label for="tax-type">Type de propriété</label>
+              <select id="tax-type">
+                <option value="house">Unifamiliale</option>
+                <option value="condo">Condo</option>
+              </select>
+            </div>
+            <label class="tool-check"><input id="tax-pool" type="checkbox"> Inclure piscine résidentielle</label>
+          </div>
+          <div class="tool-result">
+            <div>
+              <div class="tool-result-label">Taxes municipales estimées</div>
+              <div class="tool-result-main" id="tax-total">$0</div>
+            </div>
+            <div class="tool-result-grid">
+              <div class="tool-result-item"><span>Mensuel</span><strong id="tax-month">$0</strong></div>
+              <div class="tool-result-item"><span>Taux utilisé</span><strong id="tax-rate">0 $ / 100 $</strong></div>
+              <div class="tool-result-item"><span>Frais fixes</span><strong id="tax-fixed">$0</strong></div>
+              <div class="tool-result-item"><span>Piscine</span><strong id="tax-pool-fee">$0</strong></div>
+            </div>
+            <div class="tool-breakdown" id="tax-breakdown"></div>
+            <div class="tool-source" id="tax-source"></div>
+          </div>
+        </div>
+
+        <div class="tool-panel" data-tool-panel="mortgage">
+          <div class="tool-form">
+            <div class="tool-field">
+              <label for="mortgage-price">Prix d'achat</label>
+              <input id="mortgage-price" type="number" min="0" step="1000" value="650000">
+            </div>
+            <div class="tool-field">
+              <label for="mortgage-down">Mise de fonds</label>
+              <input id="mortgage-down" type="number" min="0" step="1000" value="65000">
+            </div>
+            <div class="tool-field">
+              <label for="mortgage-rate">Taux hypothécaire annuel (%)</label>
+              <input id="mortgage-rate" type="number" min="0" step="0.01" value="4.49">
+            </div>
+            <div class="tool-field">
+              <label for="mortgage-years">Amortissement</label>
+              <select id="mortgage-years">
+                <option value="25">25 ans</option>
+                <option value="30">30 ans</option>
+              </select>
+            </div>
+          </div>
+          <div class="tool-result">
+            <div>
+              <div class="tool-result-label">Coût mensuel local estimé</div>
+              <div class="tool-result-main" id="mortgage-monthly">$0</div>
+            </div>
+            <div class="tool-result-grid">
+              <div class="tool-result-item"><span>Hypothèque</span><strong id="mortgage-payment">$0</strong></div>
+              <div class="tool-result-item"><span>Taxes municipales</span><strong id="mortgage-taxes">$0</strong></div>
+              <div class="tool-result-item"><span>Prime assur. prêt</span><strong id="mortgage-insurance">$0</strong></div>
+              <div class="tool-result-item"><span>Prêt estimé</span><strong id="mortgage-loan">$0</strong></div>
+            </div>
+            <div class="tool-breakdown" id="mortgage-breakdown"></div>
+            <div class="tool-source" id="mortgage-source"></div>
+            <a href="#contact" class="tool-cta">Valider avec un courtier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 03 — MARCHÉ ═══ -->
+  <section class="section section-cream" id="marche" data-city="blainville">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-index reveal">N°03 — Marché</div>
+        <div>
+          <h2 class="section-heading split-words">Le marché immobilier à <em>Blainville</em></h2>
+          <p class="section-intro reveal">Activité résidentielle à Blainville selon les dernières statistiques publiées par Centris. Les chiffres comparent le trimestre courant à la même période l'an dernier, et présentent le cumul des quatre derniers trimestres.</p>
+        </div>
+      </div>
+
+      <div class="stats-meta reveal">
+        <span><strong data-meta="quarterLabel">1ᵉʳ trimestre 2026</strong> · Total résidentiel</span>
+        <span>Mis à jour le <span data-meta="updatedFr">—</span></span>
+        <span>Source : <a data-meta="centrisUrl" href="https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/blainville" target="_blank" rel="noopener">Centris — Statistiques immobilières</a></span>
+      </div>
+
+      <div class="stats-table-wrap reveal">
+        <div class="stats-table-caption">Total résidentiel — Blainville</div>
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Indicateur</th>
+              <th colspan="2" class="col-group" data-meta="quarterLabel">1ᵉʳ trimestre 2026</th>
+              <th colspan="2" class="col-group col-divider" data-meta="cumulPeriod">Cumul 4 derniers trimestres</th>
+            </tr>
+            <tr class="row-sub">
+              <th class="col-num">Valeur</th>
+              <th class="col-var">Variation</th>
+              <th class="col-num col-divider">Valeur</th>
+              <th class="col-var">Variation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-label">
+                <span class="stats-row-label">Ventes</span>
+                <span class="stats-row-sublabel">Propriétés vendues durant la période</span>
+              </td>
+              <td class="stats-value" data-label="Valeur T1" data-stat="ventes.q">—</td>
+              <td data-label="Variation T1">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="ventes.qVar">—</span></span>
+              </td>
+              <td class="stats-value col-divider" data-label="Valeur cumul" data-stat="ventes.cumul">—</td>
+              <td data-label="Variation cumul">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="ventes.cumulVar">—</span></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-label">
+                <span class="stats-row-label">Nouvelles inscriptions</span>
+                <span class="stats-row-sublabel">Propriétés ajoutées au marché</span>
+              </td>
+              <td class="stats-value" data-label="Valeur T1" data-stat="inscriptions.q">—</td>
+              <td data-label="Variation T1">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="inscriptions.qVar">—</span></span>
+              </td>
+              <td class="stats-value col-divider" data-label="Valeur cumul" data-stat="inscriptions.cumul">—</td>
+              <td data-label="Variation cumul">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="inscriptions.cumulVar">—</span></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-label">
+                <span class="stats-row-label">Inscriptions en vigueur</span>
+                <span class="stats-row-sublabel">Propriétés actuellement à vendre</span>
+              </td>
+              <td class="stats-value" data-label="Valeur T1" data-stat="envigueur.q">—</td>
+              <td data-label="Variation T1">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="envigueur.qVar">—</span></span>
+              </td>
+              <td class="stats-value col-divider" data-label="Valeur cumul" data-stat="envigueur.cumul">—</td>
+              <td data-label="Variation cumul">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="envigueur.cumulVar">—</span></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-label">
+                <span class="stats-row-label">Volume résidentiel</span>
+                <span class="stats-row-sublabel">Valeur totale des transactions (en milliers&nbsp;$)</span>
+              </td>
+              <td class="stats-value" data-label="Valeur T1"><span data-stat="volume.q">—</span><span class="stats-value-suffix">k$</span></td>
+              <td data-label="Variation T1">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="volume.qVar">—</span></span>
+              </td>
+              <td class="stats-value col-divider" data-label="Valeur cumul"><span data-stat="volume.cumul">—</span><span class="stats-value-suffix">k$</span></td>
+              <td data-label="Variation cumul">
+                <span class="stat-trend trend-stable"><span class="stat-arrow">—</span><span data-stat="volume.cumulVar">—</span></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 04 — ÉVÉNEMENTS ═══ -->
+  <section class="section section-light" id="evenements">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-index reveal">N°04 — Événements</div>
+        <div>
+          <h2 class="section-heading split-words">Événements <em>à venir</em></h2>
+          <p class="section-intro reveal">Blainville vibre au rythme de ses événements communautaires, culturels et sportifs tout au long de l'année.</p>
+        </div>
+      </div>
+
+      <div class="events-list" data-events-city="blainville">
+        <div class="event-row reveal">
+          <div class="event-date"><div class="event-date-day">17</div><div class="event-date-month">Mai</div></div>
+          <div class="event-info">
+            <div class="event-category">Festival</div>
+            <h3 class="event-title">Fête des voisins de Blainville</h3>
+            <p class="event-desc">Célébration communautaire dans plusieurs parcs de la ville. Activités familiales, musique et BBQ de quartier.</p>
+          </div>
+          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="event-row reveal">
+          <div class="event-date"><div class="event-date-day">7</div><div class="event-date-month">Juin</div></div>
+          <div class="event-info">
+            <div class="event-category">Marché</div>
+            <h3 class="event-title">Marché public de Blainville</h3>
+            <p class="event-desc">Tous les samedis d'été. Producteurs locaux, artisans, produits frais et ambiance conviviale au Vieux-Blainville.</p>
+          </div>
+          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="event-row reveal">
+          <div class="event-date"><div class="event-date-day">12</div><div class="event-date-month">Juil</div></div>
+          <div class="event-info">
+            <div class="event-category">Culture</div>
+            <h3 class="event-title">Série de spectacles en plein air</h3>
+            <p class="event-desc">Programmation musicale et théâtrale gratuite dans les parcs de Blainville. Chaque samedi soir de juillet.</p>
+          </div>
+          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="event-row reveal">
+          <div class="event-date"><div class="event-date-day">23</div><div class="event-date-month">Août</div></div>
+          <div class="event-info">
+            <div class="event-category">Sport</div>
+            <h3 class="event-title">Vélo-fête familiale</h3>
+            <p class="event-desc">Randonnée cycliste familiale à travers les plus beaux quartiers de Blainville. Parcours de 15 km avec animation.</p>
+          </div>
+          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="event-row reveal">
+          <div class="event-date"><div class="event-date-day">6</div><div class="event-date-month">Sept</div></div>
+          <div class="event-info">
+            <div class="event-category">Communauté</div>
+            <h3 class="event-title">Fête de la rentrée communautaire</h3>
+            <p class="event-desc">Journée portes ouvertes dans les installations municipales. Inscriptions aux activités d'automne et spectacles.</p>
+          </div>
+          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="event-row reveal">
+          <div class="event-date"><div class="event-date-day">6</div><div class="event-date-month">Déc</div></div>
+          <div class="event-info">
+            <div class="event-category">Fêtes</div>
+            <h3 class="event-title">Marché de Noël artisanal</h3>
+            <p class="event-desc">Artisans locaux, chocolat chaud, animation et défilé du Père Noël dans le Vieux-Blainville.</p>
+          </div>
+          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 05 — PARCS (horizontal scroll) ═══ -->
+  <section class="section parks-section" id="parcs">
+    <div class="container parks-head">
+      <div class="section-head" style="margin-block-end:0;">
+        <div class="section-index reveal" style="color: var(--gold-soft);">N°05 — Nature</div>
+        <div>
+          <h2 class="section-heading split-words" style="color: var(--warm-white);">Parcs & <em>espaces verts</em></h2>
+          <p class="section-intro reveal" style="color:#95aabb;">Blainville est reconnue pour la richesse de ses parcs urbains et la proximité de la nature — un atout majeur pour les familles. Faites défiler pour explorer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="parks-viewport" id="parks-viewport">
+      <div class="parks-track" id="parks-track">
+        <figure class="park-card">
+          <img src="images/villes/blainville/parc1.jpg" alt="Parc équestre de Blainville">
+          <figcaption class="park-info">
+            <div><h4>Parc équestre de Blainville</h4><p>Le joyau de la ville — équitation, sentiers et événements</p></div>
+            <span class="park-index">01 / 05</span>
+          </figcaption>
+        </figure>
+        <figure class="park-card">
+          <img src="images/villes/blainville/parc2.jpg" alt="Parc régional du Domaine Vert">
+          <figcaption class="park-info">
+            <div><h4>Parc régional du Domaine Vert</h4><p>200 hectares — ski, raquette, vélo</p></div>
+            <span class="park-index">02 / 05</span>
+          </figcaption>
+        </figure>
+        <figure class="park-card">
+          <img src="images/villes/blainville/parc3.jpg" alt="Parc de Fontainebleau">
+          <figcaption class="park-info">
+            <div><h4>Parc de Fontainebleau</h4><p>Jeux d'eau, soccer et aire de pique-nique</p></div>
+            <span class="park-index">03 / 05</span>
+          </figcaption>
+        </figure>
+        <figure class="park-card">
+          <img src="images/villes/blainville/parc4.jpg" alt="Parc des Trembles">
+          <figcaption class="park-info">
+            <div><h4>Parc des Trembles</h4><p>Sentiers boisés et aire de jeux</p></div>
+            <span class="park-index">04 / 05</span>
+          </figcaption>
+        </figure>
+        <figure class="park-card">
+          <img src="images/villes/blainville/parc5.jpg" alt="Piste du P'tit Train du Nord">
+          <figcaption class="park-info">
+            <div><h4>Piste du P'tit Train du Nord</h4><p>Accès direct depuis Blainville</p></div>
+            <span class="park-index">05 / 05</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 06 — TRANSPORT ═══ -->
+  <section class="section section-light" id="transport">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-index reveal">N°06 — Transport & accès</div>
+        <div>
+          <h2 class="section-heading split-words">Se déplacer depuis <em>Blainville</em></h2>
+          <p class="section-intro reveal">Idéalement située entre Montréal et les Laurentides, Blainville offre une connectivité routière et de transport en commun remarquable.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap reveal">
+        <div class="table-header">
+          <h4>Temps de trajet depuis Blainville</h4>
+          <span class="table-badge">En conditions normales</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr><th>Destination</th><th>En voiture</th><th>En train (EXO)</th><th>Distance</th><th>Accès routier</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Centre-ville de Montréal</strong></td><td>35 – 50 min</td><td>55 min</td><td>38 km</td><td><span class="badge badge-blue">A-15 Sud</span></td></tr>
+              <tr><td><strong>Laval (Carrefour)</strong></td><td>15 – 25 min</td><td>—</td><td>18 km</td><td><span class="badge badge-blue">A-15 / A-640</span></td></tr>
+              <tr><td><strong>Aéroport YUL</strong></td><td>35 – 45 min</td><td>—</td><td>42 km</td><td><span class="badge badge-blue">A-15 / A-40</span></td></tr>
+              <tr><td><strong>Saint-Jérôme</strong></td><td>15 – 20 min</td><td>12 min</td><td>15 km</td><td><span class="badge badge-blue">A-15 Nord</span></td></tr>
+              <tr><td><strong>Mont-Tremblant</strong></td><td>1h10 – 1h30</td><td>—</td><td>110 km</td><td><span class="badge badge-blue">A-15 / R-117</span></td></tr>
+              <tr><td><strong>Sainte-Thérèse</strong></td><td>5 – 10 min</td><td>5 min</td><td>5 km</td><td><span class="badge badge-blue">Boul. Curé-Labelle</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-wrap reveal" style="margin-block-start: clamp(28px, 3.5vw, 44px);">
+        <div class="table-header">
+          <h4>Taxes municipales & coûts de vie — Comparatif</h4>
+          <span class="table-badge">Données 2026</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr><th>Ville</th><th>Taux de taxation (par 100 $)</th><th>Taxe sur maison de 500 000 $</th><th>Eau & services</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Blainville</strong></td><td>0.72 $</td><td>3 600 $ / an</td><td><span class="badge badge-green">Inclus</span></td></tr>
+              <tr><td>Sainte-Thérèse</td><td>0.81 $</td><td>4 050 $ / an</td><td><span class="badge badge-green">Inclus</span></td></tr>
+              <tr><td>Lorraine</td><td>0.68 $</td><td>3 400 $ / an</td><td><span class="badge badge-gold">Extra 200 $/an</span></td></tr>
+              <tr><td>Rosemère</td><td>0.78 $</td><td>3 900 $ / an</td><td><span class="badge badge-green">Inclus</span></td></tr>
+              <tr><td>Boisbriand</td><td>0.85 $</td><td>4 250 $ / an</td><td><span class="badge badge-green">Inclus</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-section" id="contact">
+    <div class="cta-bg"></div>
+    <div class="cta-grain" style="filter: url(#noise);" aria-hidden="true"></div>
+    <div class="container cta-content">
+      <div class="cta-kicker reveal">N°07 — Prochaine étape</div>
+      <h2 class="cta-heading split-words">Prêt à découvrir <em>Blainville</em> ?</h2>
+      <p class="cta-text reveal">Nos courtiers connaissent chaque quartier, chaque rue, chaque opportunité. Parlez à un expert local de RE/MAX Crystal pour trouver votre prochaine maison.</p>
+      <div class="cta-buttons reveal">
+        <a href="#" class="btn btn-primary">Parler à un courtier</a>
+        <a href="#" class="btn btn-ghost">Voir les propriétés à Blainville</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name"><img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></div>
+          <p class="footer-brand-desc">Votre référence immobilière dans les Basses-Laurentides. Expertise locale, résultats exceptionnels.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Guides de villes</h5>
+          <a href="#">Vivre à Blainville</a>
+          <a href="#">Vivre à Sainte-Thérèse</a>
+          <a href="#">Vivre à Lorraine</a>
+          <a href="#">Vivre à Rosemère</a>
+          <a href="#">Vivre à Boisbriand</a>
+          <a href="#">Vivre à Bois-des-Filion</a>
+        </div>
+        <div class="footer-col">
+          <h5>Outils</h5>
+          <a href="#">Générateur PDF</a>
+          <a href="#">Carte à proximité</a>
+          <a href="#">Amélioration photo</a>
+          <a href="#">Générateur de contenu</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="#">Bureau principal</a>
+          <a href="#">Nos courtiers</a>
+          <a href="#">Carrières</a>
+          <a href="#">Évaluation gratuite</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RE/MAX Crystal. Tous droits réservés.</span>
+        <span>Guide mis à jour : Avril 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 899px)').matches;
+
+    /* ════════ LENIS SMOOTH SCROLL ════════ */
+    let lenis = null;
+    if (typeof Lenis !== 'undefined' && !prefersReduced) {
+      try {
+        lenis = new Lenis({
+          duration: 1.25,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+        });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+        window.__lenis = lenis;
+      } catch (e) { lenis = null; }
+    }
+
+    /* ════════ SPLIT HELPERS ════════ */
+    function splitChars(el) {
+      el.querySelectorAll('.line').forEach(line => {
+        const walk = (node) => {
+          if (node.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            node.textContent.split('').forEach(c => {
+              const s = document.createElement('span');
+              s.className = 'char';
+              s.innerHTML = c === ' ' ? '&nbsp;' : c;
+              frag.appendChild(s);
+            });
+            node.replaceWith(frag);
+          } else if (node.nodeType === 1) {
+            Array.from(node.childNodes).forEach(walk);
+          }
+        };
+        Array.from(line.childNodes).forEach(walk);
+      });
+      return el.querySelectorAll('.char');
+    }
+
+    function splitWords(el) {
+      const wrap = (node) => {
+        if (node.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const outer = document.createElement('span');
+            outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:bottom;';
+            const inner = document.createElement('span');
+            inner.className = 'word';
+            inner.style.display = 'inline-block';
+            inner.textContent = part;
+            outer.appendChild(inner);
+            frag.appendChild(outer);
+          });
+          node.replaceWith(frag);
+        } else if (node.nodeType === 1) {
+          Array.from(node.childNodes).forEach(wrap);
+        }
+      };
+      Array.from(el.childNodes).forEach(wrap);
+      return el.querySelectorAll('.word');
+    }
+
+    /* ════════ PRELOADER + HERO ENTRANCE ════════ */
+    const heroChars = splitChars(document.getElementById('hero-title'));
+    gsap.set(heroChars, { yPercent: 110 });
+    gsap.set('[data-hero-fade]', { opacity: 0, y: 30 });
+
+    const counter = { v: 0 };
+    const tlLoad = gsap.timeline();
+    tlLoad
+      .to('#preloader-logo', { opacity: 1, duration: 0.6, ease: 'power2.out' })
+      .to(counter, {
+        v: 100, duration: prefersReduced ? 0.01 : 1.4, ease: 'power2.inOut',
+        onUpdate: () => {
+          document.getElementById('preloader-count').textContent = Math.round(counter.v);
+          document.getElementById('preloader-bar').style.transform = `scaleX(${counter.v / 100})`;
+        }
+      }, '<')
+      .to('#preloader', { opacity: 0, duration: 0.7, ease: 'power2.inOut', onComplete: () => {
+        document.getElementById('preloader').style.display = 'none';
+      }})
+      .to(heroChars, { yPercent: 0, duration: 1.2, ease: 'power4.out', stagger: 0.035 }, '-=0.35')
+      .to('[data-hero-fade]', { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.14 }, '-=0.7');
+
+    /* ════════ HERO STAT COUNTERS ════════ */
+    const nfSpace = new Intl.NumberFormat('fr-CA');
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = Number(el.dataset.count);
+      const obj = { v: 0 };
+      gsap.to(obj, {
+        v: target, duration: 2, ease: 'power2.out', delay: 2.2,
+        onUpdate: () => {
+          el.textContent = el.dataset.format === 'space' ? nfSpace.format(Math.round(obj.v)) : Math.round(obj.v);
+        }
+      });
+    });
+
+    /* ════════ HERO PARALLAX ════════ */
+    gsap.to('.hero-image img', {
+      yPercent: 14, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+    });
+    gsap.to('.hero-content', {
+      yPercent: -10, opacity: 0.25, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: 1 }
+    });
+
+    /* ════════ SCROLL PROGRESS ════════ */
+    gsap.to('#scroll-progress-bar', {
+      scaleX: 1, ease: 'none',
+      scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.4 }
+    });
+    gsap.set('#scroll-progress-bar', { scaleX: 0 });
+
+    /* ════════ TOPBAR STATE ════════ */
+    ScrollTrigger.create({
+      start: 'top -90',
+      onUpdate: (self) => document.getElementById('topbar').classList.toggle('scrolled', self.progress > 0)
+    });
+
+    /* ════════ SECTION HEADINGS — word reveal ════════ */
+    document.querySelectorAll('.split-words').forEach(h => {
+      const words = splitWords(h);
+      gsap.fromTo(words,
+        { yPercent: 110 },
+        {
+          yPercent: 0, duration: 1, ease: 'power4.out', stagger: 0.05,
+          scrollTrigger: { trigger: h, start: 'top 86%' }
+        });
+    });
+
+    /* ════════ GENERIC REVEALS ════════ */
+    document.querySelectorAll('.reveal').forEach(el => {
+      const siblings = el.closest('.ql-grid, .events-list, .hero-stats');
+      gsap.fromTo(el,
+        { opacity: 0, y: 42 },
+        {
+          opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+          delay: siblings ? (Array.from(el.parentElement.children).indexOf(el) % 3) * 0.1 : 0,
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        });
+    });
+
+    /* ════════ CLIP-PATH IMAGE REVEALS ════════ */
+    document.querySelectorAll('.clip-reveal').forEach(el => {
+      const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 82%' } });
+      tl.to(el, { clipPath: 'inset(0 0 0% 0)', duration: 1.4, ease: 'power4.inOut' })
+        .to(el.querySelector('img'), { scale: 1, duration: 1.8, ease: 'power3.out' }, '-=1.1');
+    });
+
+    /* ════════ QL CARD SPOTLIGHT ════════ */
+    document.querySelectorAll('.ql-card').forEach(card => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }, { passive: true });
+    });
+
+    /* ════════ PARKS — pinned horizontal scroll (desktop) ════════ */
+    if (!isMobile && !prefersReduced) {
+      const track = document.getElementById('parks-track');
+      const viewport = document.getElementById('parks-viewport');
+      const getDist = () => track.scrollWidth - viewport.clientWidth;
+      gsap.to(track, {
+        x: () => -getDist(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.parks-section',
+          start: 'top top',
+          end: () => `+=${getDist()}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          anticipatePin: 1
+        }
+      });
+    }
+
+    /* ════════ MOBILE MENU ════════ */
+    const menuToggle = document.getElementById('menu-toggle');
+    menuToggle.addEventListener('click', () => {
+      const open = document.body.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', open);
+      if (lenis) { open ? lenis.stop() : lenis.start(); }
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.body.classList.remove('menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.documentElement.style.overflow = '';
+        if (lenis) lenis.start();
+      });
+    });
+
+    /* ════════ SMOOTH ANCHORS ════════ */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const sel = link.getAttribute('href');
+        if (sel === '#') return;
+        const target = document.querySelector(sel);
+        if (!target) return;
+        e.preventDefault();
+        if (lenis) lenis.scrollTo(target, { offset: -70 });
+        else window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+      });
+    });
+
+    /* ════════ CALCULATEURS BLAINVILLE ════════ */
+    const money = (value) => new Intl.NumberFormat('fr-CA', {
+      style: 'currency', currency: 'CAD', maximumFractionDigits: 0
+    }).format(Number.isFinite(value) ? value : 0);
+
+    const preciseMoney = (value) => new Intl.NumberFormat('fr-CA', {
+      style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2
+    }).format(Number.isFinite(value) ? value : 0);
+
+    const blainvilleData = {
+      mutation: [[62900, 0.005], [315000, 0.01], [750000, 0.015], [Infinity, 0.03]],
+      taxRates: { house: 0.466, condo: 0.503 },
+      fixedFees: 435,
+      poolFee: 50,
+      source: 'Ville de Blainville, Taxes et évaluation 2026',
+      sourceUrl: 'https://blainville.ca/ville/administration-municipale/taxes-et-evaluation',
+      note: 'Inclut les tarifications résidentielles publiées: matières résiduelles et assainissement des eaux.'
+    };
+
+    function calculateBrackets(amount, brackets) {
+      let total = 0, previous = 0;
+      const rows = [];
+      brackets.forEach(([limit, rate]) => {
+        if (amount <= previous) return;
+        const taxable = Math.min(amount, limit) - previous;
+        if (taxable > 0) {
+          const tax = taxable * rate;
+          total += tax;
+          rows.push({ taxable, rate, tax });
+        }
+        previous = limit;
+      });
+      return { total, rows };
+    }
+
+    function municipalTax(propertyValue, type, hasPool) {
+      const rate = blainvilleData.taxRates[type] || blainvilleData.taxRates.house;
+      return (propertyValue / 100) * rate + blainvilleData.fixedFees + (hasPool ? blainvilleData.poolFee : 0);
+    }
+
+    function updateWelcomeTax() {
+      const price = Number(document.getElementById('welcome-price')?.value || 0);
+      const calc = calculateBrackets(price, blainvilleData.mutation);
+      document.getElementById('welcome-total').textContent = money(calc.total);
+      document.getElementById('welcome-breakdown').innerHTML = calc.rows.map(row =>
+        `<div>${money(row.taxable)} x ${(row.rate * 100).toFixed(1)} % = ${preciseMoney(row.tax)}</div>`
+      ).join('');
+      document.getElementById('welcome-source').innerHTML =
+        `Source: <a href="${blainvilleData.sourceUrl}" target="_blank" rel="noopener">${blainvilleData.source}</a><br>${blainvilleData.note}`;
+    }
+
+    function updateMunicipalTaxes() {
+      const value = Number(document.getElementById('tax-value')?.value || 0);
+      const type = document.getElementById('tax-type')?.value || 'house';
+      const hasPool = Boolean(document.getElementById('tax-pool')?.checked);
+      const rate = blainvilleData.taxRates[type] || blainvilleData.taxRates.house;
+      const poolFee = hasPool ? blainvilleData.poolFee : 0;
+      const total = municipalTax(value, type, hasPool);
+
+      document.getElementById('tax-total').textContent = money(total);
+      document.getElementById('tax-month').textContent = money(total / 12);
+      document.getElementById('tax-rate').textContent = `${rate.toFixed(3)} $ / 100 $`;
+      document.getElementById('tax-fixed').textContent = money(blainvilleData.fixedFees);
+      document.getElementById('tax-pool-fee').textContent = money(poolFee);
+      document.getElementById('tax-breakdown').innerHTML =
+        `<div>Calcul: ${money(value)} / 100 x ${rate.toFixed(3)} $ + ${money(blainvilleData.fixedFees)} de frais fixes connus${hasPool ? ` + ${money(poolFee)} piscine` : ''}.</div>`;
+      document.getElementById('tax-source').innerHTML =
+        `Source: <a href="${blainvilleData.sourceUrl}" target="_blank" rel="noopener">${blainvilleData.source}</a><br>${blainvilleData.note}`;
+    }
+
+    function cmhcPremiumRate(loanToValue) {
+      if (loanToValue <= 0.8) return 0;
+      if (loanToValue <= 0.85) return 0.024;
+      if (loanToValue <= 0.9) return 0.031;
+      if (loanToValue <= 0.95) return 0.04;
+      return null;
+    }
+
+    function monthlyMortgagePayment(principal, annualRate, years) {
+      const payments = years * 12;
+      const monthlyRate = Math.pow(1 + annualRate / 2, 2 / 12) - 1;
+      if (monthlyRate === 0) return principal / payments;
+      return principal * (monthlyRate * Math.pow(1 + monthlyRate, payments)) / (Math.pow(1 + monthlyRate, payments) - 1);
+    }
+
+    function updateMortgage() {
+      const price = Number(document.getElementById('mortgage-price')?.value || 0);
+      const down = Number(document.getElementById('mortgage-down')?.value || 0);
+      const rate = Number(document.getElementById('mortgage-rate')?.value || 0) / 100;
+      const years = Number(document.getElementById('mortgage-years')?.value || 25);
+      const baseLoan = Math.max(price - down, 0);
+      const ltv = price > 0 ? baseLoan / price : 0;
+      const premiumRate = cmhcPremiumRate(ltv);
+      const premium = premiumRate === null ? 0 : baseLoan * premiumRate;
+      const totalLoan = baseLoan + premium;
+      const payment = premiumRate === null ? 0 : monthlyMortgagePayment(totalLoan, rate, years);
+      const taxes = municipalTax(price, 'house', false) / 12;
+      const totalMonthly = payment + taxes;
+
+      document.getElementById('mortgage-monthly').textContent = premiumRate === null ? 'Mise insuff.' : money(totalMonthly);
+      document.getElementById('mortgage-payment').textContent = premiumRate === null ? 'À valider' : money(payment);
+      document.getElementById('mortgage-taxes').textContent = money(taxes);
+      document.getElementById('mortgage-insurance').textContent = money(premium);
+      document.getElementById('mortgage-loan').textContent = money(totalLoan);
+      document.getElementById('mortgage-breakdown').innerHTML =
+        premiumRate === null
+          ? '<div>La mise de fonds est sous 5 %. Le scénario doit être validé avec un prêteur.</div>'
+          : `<div>Mise de fonds: ${(down / price * 100 || 0).toFixed(1)} %. Prime assurance prêt estimée: ${(premiumRate * 100).toFixed(2)} %.</div><div>Les taxes municipales utilisent le scénario Blainville.</div>`;
+      document.getElementById('mortgage-source').innerHTML =
+        `Sources: <a href="https://www.canada.ca/fr/services/finance/outils.html" target="_blank" rel="noopener">ACFC / Canada.ca</a>, <a href="https://www.cmhc-schl.gc.ca/consommateurs/acheter-une-maison/assurance-pret-hypothecaire-pour-les-consommateurs/couts-de-lassurance-pret-hypothecaire-schl" target="_blank" rel="noopener">SCHL</a>, <a href="${blainvilleData.sourceUrl}" target="_blank" rel="noopener">${blainvilleData.source}</a>.`;
+    }
+
+    function activateTool(tabName) {
+      document.querySelectorAll('.tool-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.toolTab === tabName);
+      });
+      document.querySelectorAll('[data-tool-panel]').forEach(panel => {
+        panel.classList.toggle('active', panel.dataset.toolPanel === tabName);
+      });
+      setTimeout(() => ScrollTrigger.refresh(), 80);
+    }
+
+    document.querySelectorAll('.tool-tab').forEach(tab => {
+      tab.addEventListener('click', () => activateTool(tab.dataset.toolTab));
+    });
+
+    ['welcome-price'].forEach(id => document.getElementById(id)?.addEventListener('input', updateWelcomeTax));
+    ['tax-value', 'tax-type', 'tax-pool'].forEach(id => document.getElementById(id)?.addEventListener('input', updateMunicipalTaxes));
+    ['tax-type'].forEach(id => document.getElementById(id)?.addEventListener('change', updateMunicipalTaxes));
+    ['mortgage-price', 'mortgage-down', 'mortgage-rate', 'mortgage-years'].forEach(id => document.getElementById(id)?.addEventListener('input', updateMortgage));
+    ['mortgage-years'].forEach(id => document.getElementById(id)?.addEventListener('change', updateMortgage));
+
+    updateWelcomeTax();
+    updateMunicipalTaxes();
+    updateMortgage();
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  </script>
+  <script src="courtiers.js"></script>
+  <script src="data/events.js"></script>
+  <script src="data/events-render.js"></script>
+  <script src="data/market-stats.js"></script>
+  <script src="data/market-render.js"></script>
+</body>
+</html>
