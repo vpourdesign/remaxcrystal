@@ -1,0 +1,51 @@
+name: Mise à jour des événements (villes)
+
+on:
+  schedule:
+    # Dimanche 19h00 UTC = 15h heure de l'Est (été) / 14h (hiver)
+    - cron: "0 19 * * 0"
+  workflow_dispatch: {}   # déclenchement manuel possible depuis l'onglet Actions
+
+permissions:
+  contents: write
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installer Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Mettre à jour data/events.js
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude -p "Nous sommes le $(date +%Y-%m-%d). Suis les instructions de data/EVENTS-UPDATE.md pour mettre à jour data/events.js avec les événements à venir de chaque ville. Ne modifie aucun autre fichier que data/events.js (et data/EVENTS-UPDATE.md uniquement si une URL source doit être corrigée)." \
+            --model claude-sonnet-4-6 \
+            --allowedTools "Read,Grep,Glob,Write,Edit,WebFetch,WebSearch,Bash(node --check:*)" \
+            --max-turns 80
+
+      - name: Valider la syntaxe du fichier généré
+        run: node --check data/events.js
+
+      - name: Commit et push si changements
+        run: |
+          if git diff --quiet data/; then
+            echo "Aucun changement d'événements cette semaine."
+            exit 0
+          fi
+          git config user.name "events-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/events.js data/EVENTS-UPDATE.md
+          git commit -m "chore: mise à jour automatique des événements ($(date +%Y-%m-%d))"
+          git push
