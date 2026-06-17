@@ -1,41 +1,48 @@
-# RE/MAX Crystal — Site villes
+# Sites villes — RE/MAX Crystal &amp; RE/MAX D'ici
 
-Site web data-driven présentant les guides de villes des Basses-Laurentides
-(RE/MAX Crystal) et de Lanaudière (RE/MAX D'ici).
+Deux sites web data-driven présentant des guides de villes :
+- **RE/MAX Crystal** — Basses-Laurentides / Rive-Nord (15 villes)
+- **RE/MAX D'ici** — Lanaudière (12 villes, guides en préparation)
 
-## Architecture
+## Structure
+
+```
+.
+├── index.html            ← page racine : sélecteur Crystal / D'ici (pour GitHub Pages)
+├── remaxcrystal/         ← site RE/MAX Crystal
+│   ├── index.html
+│   ├── guide-<ville>.html (15 guides Basses-Laurentides)
+│   ├── build-cities.mjs   (génère les guides depuis data/cities.js)
+│   ├── data/  images/  brand_assets/
+│   └── courtier-*.html, courtiers.js
+├── remaxdici/            ← site RE/MAX D'ici
+│   ├── index.html
+│   ├── guide-dici-<ville>.html (12 guides Lanaudière)
+│   └── images/ (placeholders)  brand_assets/ (logos dici)
+└── 01_strategie … 06_livrables, presentation-client  (dossiers de travail agence)
+```
+
+## Pipeline Crystal
 
 ```
 data/cities.js ┐
-data/tax-data.js ├─► build-cities.mjs ─► guide-<slug>.html (×14)
+data/tax-data.js ├─► build-cities.mjs ─► guide-<slug>.html
 data/market-stats.js ┘        ▲ gabarit : guide-blainville.html
 data/events.js ───────────────┘
 ```
 
-- **`index.html`** — page d'accueil : hero, calculatrices (taxe de bienvenue,
-  comparateur de taxes A/B, hypothèque), grille des guides de villes, valeur,
-  réseaux sociaux, CTA.
-- **`guide-<ville>.html`** — guides complets (Basses-Laurentides), générés depuis
-  `data/cities.js` via `build-cities.mjs`. Gabarit maître : `guide-blainville.html`.
-- **`guide-dici-<ville>.html`** — pages Lanaudière (RE/MAX D'ici), en préparation.
-
-## Build
-
 ```bash
-node build-cities.mjs   # régénère tous les guide-<slug>.html depuis data/cities.js
+cd remaxcrystal && node build-cities.mjs   # régénère les guides Crystal
 ```
 
-## Données
+## RE/MAX D'ici — à compléter
 
-| Fichier | Rôle |
-|---|---|
-| `data/cities.js` | Contenu narratif des 14 guides de villes |
-| `data/tax-data.js` | Taux de taxation municipale par ville |
-| `data/market-stats.js` + `market-render.js` | Statistiques du marché immobilier |
-| `data/events.js` + `events-render.js` | Événements municipaux |
+- **Données fiscales** : provisoires dans l'index (objet `cityData`), à remplacer par les vraies valeurs par ville.
+- **Images** : placeholders `placehold.co` (hero, cartes, reels, équipe), à remplacer.
+- **Guides de ville** : pages `guide-dici-*.html` encore en « Bientôt disponible ».
 
 ## Médias
 
-Les images web vivent dans `images/villes/`. Les médias source lourds
-(`pourlecourtier/`, `nosdirigeants/`, `bureaux/`, vidéos de galas, `node_modules`)
-sont exclus du dépôt via `.gitignore` — conservés en local uniquement.
+Les médias source lourds (`remaxcrystal/images/pourlecourtier/`, `nosdirigeants/`,
+`bureaux/`, vidéos de galas, `node_modules`) sont exclus du dépôt via `.gitignore`
+— conservés en local uniquement.

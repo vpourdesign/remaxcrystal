@@ -17,9 +17,9 @@ presentation-client/
 
 # Médias source lourds — non utilisés par les pages index/villes
 # (vidéos > 100 Mo refusées par GitHub, conservées en local seulement)
-images/pourlecourtier/
-images/nosdirigeants/
-images/bureaux/
-images/galas/*
-!images/galas/gala-web.mp4
-!images/galas/gala-poster.jpg
+remaxcrystal/images/pourlecourtier/
+remaxcrystal/images/nosdirigeants/
+remaxcrystal/images/bureaux/
+remaxcrystal/images/galas/*
+!remaxcrystal/images/galas/gala-web.mp4
+!remaxcrystal/images/galas/gala-poster.jpg

@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE/MAX Crystal — L'agence qui connaît vos quartiers</title>
+<meta name="description" content="RE/MAX Crystal est l'agence immobilière de référence dans les Basses-Laurentides. Découvrez nos guides de vie pour Blainville, Sainte-Thérèse, Lorraine, Rosemère, Boisbriand et Bois-des-Filion.">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/bundled/lenis.min.js"></script>
+
+<style>
+  :root {
+    --navy-deep: #1a2332;
+    --navy: #1e3350;
+    --navy-mid: #264060;
+    --blue-brand: #3578c4;
+    --blue-light: #6ba3d9;
+    --blue-pale: #b0cfe8;
+    --cream: #f7f5f0;
+    --warm-white: #faf9f6;
+    --gold: #c4a245;
+    --text-dark: #1a1f2b;
+    --text-body: #3d4555;
+    --text-muted: #6b7385;
+    --surface-card: #f8f9fb;
+    --border-subtle: #e2e5eb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Raleway', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+
+  .container {
+    width: min(90%, 1280px);
+    margin-inline: auto;
+  }
+
+  /* ===== TOPBAR ===== */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: clamp(14px, 2vw, 20px) clamp(20px, 4vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .topbar.scrolled {
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow: 0 1px 2px rgba(26,35,50,0.04), 0 4px 16px rgba(26,35,50,0.06);
+  }
+
+  .topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .topbar-logo {
+    display: block;
+    height: clamp(28px, 3.5vw, 38px);
+    position: relative;
+  }
+
+  .topbar-logo img {
+    height: 100%;
+    width: auto;
+    display: block;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .topbar-logo .logo-white { opacity: 1; }
+  .topbar-logo .logo-dark {
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+  }
+
+  .topbar.scrolled .topbar-logo .logo-white { opacity: 0; }
+  .topbar.scrolled .topbar-logo .logo-dark { opacity: 1; }
+
+  .topbar-nav {
+    display: flex;
+    gap: clamp(16px, 2.5vw, 32px);
+    align-items: center;
+  }
+
+  .topbar-nav a {
+    font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .topbar.scrolled .topbar-nav a { color: var(--text-muted); }
+  .topbar-nav a:hover { color: white; }
+  .topbar.scrolled .topbar-nav a:hover { color: var(--navy); }
+
+  .topbar-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--blue-brand);
+    border-radius: 1px;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .topbar-nav a:hover::after { width: 100%; }
+
+  .topbar-cta {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: white !important;
+    background: var(--blue-brand);
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+  }
+
+  .topbar-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(53,120,196,0.35);
+  }
+
+  .topbar-cta::after { display: none !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--navy-deep);
+    z-index: 0;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hero-image img,
+  .hero-image video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    transform: scale(1.06);
+    animation: heroKenBurns 28s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroKenBurns {
+    from { transform: scale(1.06) translate3d(0, 0, 0); }
+    to   { transform: scale(1.14) translate3d(0, -1.4%, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-image img, .hero-image video { animation: none; transform: scale(1.06); }
+  }
+
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 16%, rgba(40,60,90,0.18), transparent 55%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, transparent 38%, rgba(13,21,36,0.58) 100%),
+      linear-gradient(180deg, rgba(20,30,46,0.42) 0%, rgba(20,30,46,0.62) 45%, rgba(16,25,40,0.97) 100%);
+    z-index: 1;
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    padding-inline: 24px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+    font-weight: 600;
+    color: var(--blue-light);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-block-end: clamp(20px, 3vw, 36px);
+  }
+
+  .hero-eyebrow-line {
+    width: 40px; height: 1px;
+    background: var(--blue-light);
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-size: clamp(3.2rem, 8vw, 7.4rem);
+    font-weight: 300;
+    color: white;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    margin-block-end: clamp(20px, 2.8vw, 34px);
+  }
+
+  .hero-title-sans {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    display: block;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title em {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+    font-size: 1.05em;
+    color: var(--blue-pale);
+    background: linear-gradient(105deg, #d4e4f5 0%, #7fb0e3 52%, #d4e4f5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-block-end: 0.08em;
+  }
+
+  .hero-title strong {
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .hero-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-weight: 300;
+    color: #b0bfcf;
+    max-width: 58ch;
+    margin-inline: auto;
+    line-height: 1.75;
+    margin-block-end: clamp(32px, 4vw, 52px);
+  }
+
+  .hero-cities-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-block-end: clamp(32px, 4vw, 48px);
+  }
+
+  .hero-city-tag {
+    font-size: clamp(0.68rem, 0.85vw, 0.78rem);
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 7px 17px;
+    border-radius: 100px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.35s cubic-bezier(0.16,1,0.3,1), color 0.35s, border-color 0.35s, transform 0.35s cubic-bezier(0.16,1,0.3,1);
+    cursor: pointer;
+  }
+
+  .hero-city-tag:hover {
+    background: rgba(53,120,196,0.22);
+    border-color: rgba(107,163,217,0.55);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(0.82rem, 0.95vw, 0.9rem);
+    font-weight: 600;
+    padding: clamp(14px, 1.5vw, 16px) clamp(28px, 3vw, 40px);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #4a8fd6 0%, var(--blue-brand) 55%, #2f6cb4 100%);
+    color: white;
+    box-shadow: 0 1px 2px rgba(13,21,36,0.2), 0 8px 24px rgba(53,120,196,0.28);
+  }
+  .btn-primary:hover { box-shadow: 0 2px 6px rgba(13,21,36,0.25), 0 14px 40px rgba(53,120,196,0.45); }
+  .btn-primary svg { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: #b0bfcf;
+    border: 1px solid rgba(107,163,217,0.25);
+  }
+  .btn-ghost:hover {
+    background: rgba(30,51,80,0.3);
+    box-shadow: 0 4px 16px rgba(26,35,50,0.2);
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-scroll-text {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #7d9ab5;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(180deg, #7d9ab5, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ===== QUICK TOOLS ===== */
+  .quick-tools {
+    position: relative;
+    z-index: 4;
+    padding-block: clamp(36px, 5vw, 64px);
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .quick-tools-head {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: end;
+    margin-block-end: clamp(24px, 4vw, 40px);
+  }
+
+  .quick-tools-title {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .quick-tools-title em {
+    color: var(--blue-brand);
+    font-style: italic;
+  }
+
+  .quick-tools-copy {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 54ch;
+    margin: 0;
+  }
+
+  .quick-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(12px, 1.5vw, 18px);
+  }
+
+  .quick-tool-card {
+    position: relative;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(20px, 2.4vw, 28px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,251,0.98)),
+      var(--surface-card);
+    box-shadow: 0 1px 3px rgba(35,50,70,0.05), 0 8px 24px rgba(35,50,70,0.06);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, box-shadow 0.35s;
+  }
+
+  .quick-tool-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(53,120,196,0.45);
+    box-shadow: 0 2px 8px rgba(35,50,70,0.07), 0 14px 34px rgba(35,50,70,0.1);
+  }
+
+  .quick-tool-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-block-end: 28px;
+  }
+
+  .quick-tool-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-brand);
+    background: rgba(53,120,196,0.08);
+  }
+
+  .quick-tool-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .quick-tool-status {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--blue-brand);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgba(53,120,196,0.08);
+    white-space: nowrap;
+  }
+
+  .quick-tool-name {
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(1rem, 1.35vw, 1.2rem);
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-block-end: 10px;
+  }
+
+  .quick-tool-desc {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .quick-tool-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-block-start: 24px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .quick-tool-link svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s;
+  }
+
+  .quick-tool-card:hover .quick-tool-link svg {
+    transform: translateX(3px);
+  }
+
+  .tool-calculators {
+    margin-block-start: clamp(22px, 3vw, 36px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(35,50,70,0.05), 0 18px 46px rgba(35,50,70,0.08);
+    overflow: hidden;
+  }
+
+  .tool-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--surface-card);
+  }
+
+  .tool-tab {
+    min-height: 56px;
+    border: 0;
+    border-right: 1px solid var(--border-subtle);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .tool-tab:last-child { border-right: 0; }
+  .tool-tab.active { background: white; color: var(--navy); }
+
+  .tool-panel {
+    display: none;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(300px, 1fr);
+    gap: clamp(24px, 4vw, 46px);
+    padding: clamp(22px, 3.5vw, 42px);
+  }
+
+  .tool-panel.active { display: grid; }
+
+  .tool-form {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+  }
+
+  .tool-field {
+    display: grid;
+    gap: 7px;
+  }
+
+  .tool-field label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .tool-field input,
+  .tool-field select {
+    width: 100%;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    padding: 12px 13px;
+    outline: none;
+  }
+
+  .tool-field input:focus,
+  .tool-field select:focus {
+    border-color: var(--blue-brand);
+    box-shadow: 0 0 0 3px rgba(53,120,196,0.12);
+  }
+
+  .tool-check {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--text-body);
+    font-size: 0.86rem;
+  }
+
+  .tool-check input { width: 16px; height: 16px; }
+
+  .tool-result {
+    background: var(--navy-deep);
+    color: white;
+    border-radius: 8px;
+    padding: clamp(22px, 3vw, 32px);
+    display: grid;
+    gap: 18px;
+  }
+
+  .tool-result-label {
+    color: #95aabb;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .tool-result-main {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    font-weight: 300;
+    line-height: 1;
+    color: white;
+  }
+
+  .tool-result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .tool-result-item {
+    padding: 13px 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .tool-result-item span {
+    display: block;
+    color: #95aabb;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-block-end: 4px;
+  }
+
+  .tool-result-item strong {
+    font-size: 1rem;
+    color: white;
+  }
+
+  .tool-breakdown {
+    display: grid;
+    gap: 6px;
+    color: #b8c9d8;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .tool-source {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-block-start: 16px;
+    color: #8fa4b6;
+    font-size: 0.74rem;
+    line-height: 1.6;
+  }
+
+  .tool-source a { color: var(--blue-pale); text-decoration: underline; text-underline-offset: 3px; }
+
+  .tool-note {
+    padding: 12px 14px;
+    border-radius: 6px;
+    background: rgba(196,162,69,0.12);
+    color: #d8c98c;
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  .tool-cta {
+    justify-self: start;
+    margin-top: 2px;
+    color: white !important;
+    background: var(--blue-brand);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== MISSION STRIP ===== */
+  .mission {
+    padding-block: clamp(48px, 7vw, 80px);
+    background: var(--navy-deep);
+    border-bottom: 1px solid rgba(53,120,196,0.1);
+  }
+
+  .mission-inner {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: clamp(24px, 3vw, 40px);
+    align-items: center;
+  }
+
+  .mission-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(107,163,217,0.15);
+  }
+
+  .mission-item {
+    text-align: center;
+    padding: 0 clamp(12px, 2vw, 24px);
+  }
+
+  .mission-number {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: white;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .mission-label {
+    font-size: clamp(0.72rem, 0.85vw, 0.8rem);
+    font-weight: 500;
+    color: #7d9ab5;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 6px;
+  }
+
+  /* ===== CITY GUIDES SECTION ===== */
+  .guides {
+    padding-block: clamp(72px, 10vw, 128px);
+  }
+
+  .guides-header {
+    text-align: center;
+    margin-block-end: clamp(48px, 6vw, 80px);
+  }
+
+  .section-eyebrow {
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(0.65rem, 0.85vw, 0.75rem);
+    font-weight: 600;
+    color: var(--blue-brand);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-block-end: clamp(8px, 1.5vw, 16px);
+  }
+
+  .section-heading {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 400;
+    margin-block-end: clamp(12px, 2vw, 20px);
+  }
+
+  .section-heading em {
+    font-style: italic;
+    color: var(--blue-brand);
+  }
+
+  .section-intro {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    font-weight: 300;
+    color: var(--text-muted);
+    max-width: 55ch;
+    margin-inline: auto;
+    line-height: 1.8;
+  }
+
+  /* ===== CITY GRID ===== */
+  .city-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .city-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 4/3;
+    background: var(--navy);
+  }
+
+  .city-card.featured {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    aspect-ratio: auto;
+  }
+
+  .city-card-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .city-card-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .city-card:hover .city-card-image img {
+    transform: scale(1.06);
+  }
+
+  .city-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,35,50,0.1) 0%, rgba(26,35,50,0.3) 40%, rgba(26,35,50,0.85) 100%);
+    transition: background 0.5s;
+  }
+
+  .city-card:hover .city-card-overlay {
+    background: linear-gradient(180deg, rgba(26,35,50,0.05) 0%, rgba(26,35,50,0.2) 40%, rgba(26,35,50,0.8) 100%);
+  }
+
+  .city-card-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: clamp(20px, 3vw, 36px);
+    z-index: 2;
+  }
+
+  .city-card-badge {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--blue-light);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-block-end: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .city-card-badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue-brand);
+  }
+
+  .city-card-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+    font-weight: 400;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-block-end: 6px;
+  }
+
+  .city-card.featured .city-card-name {
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+  }
+
+  .city-card-tagline {
+    font-size: clamp(0.8rem, 0.95vw, 0.88rem);
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+    max-width: 40ch;
+  }
+
+  .city-card-arrow {
+    position: absolute;
+    top: clamp(16px, 2vw, 24px);
+    right: clamp(16px, 2vw, 24px);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    z-index: 2;
+    transition: background 0.3s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .city-card:hover .city-card-arrow {
+    background: var(--blue-brand);
+    border-color: var(--blue-brand);
+    transform: translate(3px, -3px);
+  }
+
+  /* ===== VALUE SECTION ===== */
+  .value {
+    padding-block: clamp(72px, 10vw, 120px);
+    background: var(--cream);
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+    margin-block-start: clamp(40px, 5vw, 64px);
+  }
+
+  .value-text h3 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+    margin-block-end: clamp(16px, 2vw, 24px);
+  }
+
+  .value-text h3 em {
+    font-style: italic;
+    color: var(--blue-brand);
+  }
+
+  .value-text p {
+    font-size: clamp(0.92rem, 1.1vw, 1.02rem);
+    line-height: 1.85;
+    margin-block-end: 1.2em;
+    color: var(--text-body);
+  }
+
+  .value-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-block-start: clamp(20px, 3vw, 32px);
+  }
+
+  .value-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 1px 3px rgba(35,50,70,0.04), 0 4px 12px rgba(35,50,70,0.04);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+  }
+
+  .value-feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(35,50,70,0.06), 0 8px 24px rgba(35,50,70,0.08);
+  }
+
+  .value-feature-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--blue-brand);
+  }
+
+  .value-feature-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .value-feature-text h5 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-block-end: 2px;
+  }
+
+  .value-feature-text p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .value-image-wrap {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 5/6;
+    box-shadow: 0 4px 12px rgba(35,50,70,0.08), 0 16px 48px rgba(35,50,70,0.1);
+  }
+
+  .value-image-wrap img,
+  .value-image-wrap video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .value-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(26,35,50,0.5));
+    mix-blend-mode: multiply;
+  }
+
+  /* ===== SOCIAL / REELS ===== */
+  .social {
+    padding-block: clamp(72px, 10vw, 120px);
+    background: var(--warm-white);
+  }
+
+  .social-header {
+    text-align: center;
+    max-width: 660px;
+    margin-inline: auto;
+  }
+
+  .social-header .section-eyebrow { justify-content: center; }
+
+  .social-intro {
+    font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+    color: var(--text-body);
+    line-height: 1.85;
+    margin-block-start: 18px;
+  }
+
+  .reels-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: clamp(140px, 15vw, 196px);
+    grid-auto-flow: dense;
+    gap: 14px;
+    margin-block-start: clamp(40px, 5vw, 64px);
+  }
+
+  .reel-tile {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface-card);
+    box-shadow: 0 2px 6px rgba(35,50,70,0.06), 0 10px 30px rgba(35,50,70,0.08);
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s;
+  }
+
+  .reel-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(35,50,70,0.1), 0 18px 44px rgba(35,50,70,0.14);
+  }
+
+  .reel-tile video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .reel-tile:hover video { transform: scale(1.05); }
+
+  .reel-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(26,35,50,0.28));
+    opacity: 0.6;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+
+  .reel-tile:hover::after { opacity: 0.25; }
+
+  /* varied formats — masonry feel */
+  .reel-tall { grid-row: span 2; }
+  .reel-wide { grid-column: span 2; }
+  .reel-big  { grid-column: span 2; grid-row: span 2; }
+
+  .social-follow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-block-start: clamp(36px, 4vw, 52px);
+  }
+
+  .social-follow-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    background: white;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-dark);
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, border-color 0.4s;
+  }
+
+  .social-btn svg { width: 18px; height: 18px; }
+
+  .social-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--blue-brand);
+    box-shadow: 0 8px 22px rgba(53,120,196,0.16);
+  }
+
+  @media (max-width: 980px) {
+    .reels-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .reels-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: clamp(160px, 42vw, 230px);
+      gap: 10px;
+    }
+    .reel-big { grid-column: span 2; grid-row: span 1; }
+  }
+
+  /* ===== CTA SECTION ===== */
+  .cta-section {
+    position: relative;
+    padding-block: clamp(80px, 12vw, 140px);
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--navy-deep), #141e2d);
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .cta-heading {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: white;
+    margin-block-end: clamp(12px, 2vw, 20px);
+  }
+
+  .cta-heading em { font-style: italic; color: var(--blue-pale); }
+
+  .cta-text {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: #95aabb;
+    max-width: 50ch;
+    margin-inline: auto;
+    margin-block-end: clamp(32px, 4vw, 48px);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: #111a25;
+    padding: clamp(48px, 6vw, 72px) 0 clamp(24px, 3vw, 36px);
+    color: #8090a2;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: clamp(32px, 4vw, 64px);
+    margin-block-end: clamp(40px, 5vw, 64px);
+    padding-block-end: clamp(40px, 5vw, 64px);
+    border-bottom: 1px solid #1d2c3e;
+  }
+
+  .footer-brand-name {
+    margin-block-end: 16px;
+  }
+
+  .footer-brand-name img {
+    height: clamp(30px, 3.5vw, 40px);
+    width: auto;
+    display: block;
+  }
+
+  .footer-brand-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    max-width: 30ch;
+  }
+
+  .footer-col h5 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #5e7080;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-block-end: 16px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 0.82rem;
+    color: #8a9bac;
+    margin-block-end: 10px;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--blue-light); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: #4f5f70;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .quick-tools-head { grid-template-columns: 1fr; }
+    .quick-tools-grid { grid-template-columns: 1fr; }
+    .tool-tabs { grid-template-columns: 1fr; }
+    .tool-tab { border-right: 0; border-bottom: 1px solid var(--border-subtle); }
+    .tool-panel { grid-template-columns: 1fr; }
+    .city-grid { grid-template-columns: 1fr; }
+    .city-card.featured { grid-column: auto; grid-row: auto; aspect-ratio: 16/10; }
+    .city-card { aspect-ratio: 16/10; }
+    .mission-inner { grid-template-columns: 1fr; gap: 24px; }
+    .mission-divider { width: 60px; height: 1px; margin-inline: auto; }
+    .value-grid { grid-template-columns: 1fr; }
+    .value-image-wrap { max-height: 400px; aspect-ratio: 16/10; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .topbar-nav { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-cities-row { gap: 6px; }
+    .hero-cta-row { flex-direction: column; align-items: center; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+  }
+
+  /* Reveal base */
+  .reveal { opacity: 0; transform: translateY(32px); }
+</style>
+<style id="mm-style">
+.mm-trigger{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.02em;background:#3578c4;color:#fff;border:none;border-radius:999px;padding:9px 18px;cursor:pointer;transition:background .25s,transform .25s;}
+.mm-trigger:hover{background:#2b66ab;transform:translateY(-1px);}
+.mm-trigger svg{width:14px;height:14px;}
+.mm-overlay{position:fixed;inset:0;z-index:2000;}
+.mm-overlay[hidden]{display:none;}
+.mm-backdrop{position:absolute;inset:0;background:rgba(20,29,42,0.55);backdrop-filter:blur(3px);opacity:0;transition:opacity .3s ease;}
+.mm-overlay.open .mm-backdrop{opacity:1;}
+.mm-panel{position:relative;background:#faf9f6;width:100%;max-height:92vh;overflow-y:auto;border-radius:0 0 22px 22px;box-shadow:0 24px 60px rgba(20,29,42,0.3);transform:translateY(-20px);opacity:0;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .3s;padding:clamp(18px,3vw,38px) clamp(20px,5vw,70px) clamp(24px,4vw,44px);}
+.mm-overlay.open .mm-panel{transform:none;opacity:1;}
+.mm-head{display:flex;align-items:center;justify-content:space-between;margin-block-end:clamp(12px,2vw,22px);}
+.mm-eyebrow{font-family:'Raleway',sans-serif;font-weight:800;font-size:0.74rem;letter-spacing:0.18em;text-transform:uppercase;color:#3578c4;display:inline-flex;align-items:center;gap:10px;}
+.mm-eyebrow::before{content:"";width:26px;height:2px;background:#c4a245;}
+.mm-close{background:none;border:1px solid #e2e5eb;border-radius:50%;width:38px;height:38px;font-size:1rem;color:#1a1f2b;cursor:pointer;transition:background .2s,border-color .2s;flex-shrink:0;}
+.mm-close:hover{background:#f1efe9;border-color:#cdd2da;}
+.mm-cat{grid-column:1/-1;font-family:'Raleway',sans-serif;font-weight:800;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:#7a8294;margin:10px 0 2px;display:flex;align-items:center;gap:10px;}
+.mm-cat::after{content:"";flex:1;height:1px;background:#e2e5eb;}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.mm-grid a{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid #e2e5eb;border-radius:12px;padding:14px 17px;font-family:'Raleway',sans-serif;font-weight:600;font-size:0.94rem;color:#1a1f2b;letter-spacing:-0.01em;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;}
+.mm-grid a::after{content:"\2192";color:#3578c4;opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s;}
+.mm-grid a:hover{transform:translateY(-3px);border-color:#b0cfe8;box-shadow:0 10px 26px rgba(35,50,70,0.1);}
+.mm-grid a:hover::after{opacity:1;transform:none;}
+.mm-grid a.mm-active{border-color:#3578c4;box-shadow:inset 0 0 0 1px #3578c4;}
+.mm-grid a.mm-soon{color:#7a8294;border-style:dashed;}
+.mm-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-block-start:clamp(16px,2.4vw,24px);padding-block-start:16px;border-top:1px solid #e2e5eb;font-size:0.84rem;color:#6b7385;}
+.mm-foot a{color:#3578c4;font-weight:600;text-decoration:none;}
+body.mm-lock{overflow:hidden;}
+</style>
+</head>
+<body>
+
+  <!-- NOISE SVG -->
+  <svg style="position:absolute;width:0;height:0;">
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </svg>
+
+  <!-- ===== TOPBAR ===== -->
+  <nav class="topbar" id="topbar">
+    <div class="topbar-brand">
+      <div class="topbar-logo">
+        <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" class="logo-white">
+        <img src="brand_assets/Crystal-long-noir-crystal.png" alt="RE/MAX Crystal" class="logo-dark">
+      </div>
+    </div>
+    <div class="topbar-nav">
+      <button type="button" class="mm-trigger" id="mmTrigger" aria-haspopup="dialog" aria-expanded="false">Toutes les villes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <a href="https://remaxcrystal.com/fr/carriere.html" target="_blank" rel="noopener">Carrière</a>
+      <a href="https://remaxcrystal.com/fr/" target="_blank" rel="noopener">Agence</a>
+      <a href="https://remaxcrystal.com/fr/nos-courtiers.html" target="_blank" rel="noopener">Équipe</a>
+      <a href="https://remaxcrystal.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés</a>
+      <a href="https://remaxcrystal.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
+      <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="topbar-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-image">
+      <video autoplay muted loop playsinline poster="hero.jpg">
+        <source src="images/hero.webm" type="video/webm">
+        <img src="hero.jpg" alt="Vue aérienne des Basses-Laurentides">
+      </video>
+    </div>
+    <div class="hero-noise" style="filter: url(#noise);"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">
+        <span class="hero-eyebrow-line"></span>
+        Agence immobilière — Rive-Nord de Montréal
+        <span class="hero-eyebrow-line"></span>
+      </div>
+
+      <h1 class="hero-title reveal">
+        <span class="hero-title-sans">Votre agence immobilière</span>
+        <em>locale.</em>
+      </h1>
+
+      <p class="hero-subtitle reveal">RE/MAX Crystal est enracinée dans chaque ville qu'elle dessert. Nos courtiers connaissent le marché, bien sûr, mais aussi le nom des rues, les bons parcs et l'école que vos enfants vont adorer.</p>
+
+      <div class="hero-cities-row reveal">
+        <a href="guide-blainville.html" class="hero-city-tag">Blainville</a>
+        <a href="guide-stetherese.html" class="hero-city-tag">Sainte-Thérèse</a>
+        <a href="guide-lorraine.html" class="hero-city-tag">Lorraine</a>
+        <a href="guide-rosemere.html" class="hero-city-tag">Rosemère</a>
+        <a href="guide-boisbriand.html" class="hero-city-tag">Boisbriand</a>
+        <a href="guide-boisdesfillions.html" class="hero-city-tag">Bois-des-Filion</a>
+        <a href="guide-steustache.html" class="hero-city-tag">Saint-Eustache</a>
+        <a href="guide-oka.html" class="hero-city-tag">Oka</a>
+        <a href="guide-deuxmontagnes.html" class="hero-city-tag">Deux-Montagnes</a>
+        <a href="guide-mirabel.html" class="hero-city-tag">Mirabel</a>
+        <a href="guide-pointecalumet.html" class="hero-city-tag">Pointe-Calumet</a>
+        <a href="guide-stemarthe.html" class="hero-city-tag">Sainte-Marthe-sur-le-Lac</a>
+        <a href="guide-st-janvier.html" class="hero-city-tag">Saint-Janvier</a>
+        <a href="guide-steannedesplaines.html" class="hero-city-tag">Ste-Anne-des-Plaines</a>
+        <a href="guide-stesophie.html" class="hero-city-tag">Sainte-Sophie</a>
+      </div>
+
+      <div class="hero-cta-row reveal">
+        <a href="#guides" class="btn btn-primary">Trouver votre courtier local <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint" style="display:none;">
+      <span class="hero-scroll-text">Découvrir</span>
+      <span class="hero-scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ===== QUICK TOOLS ===== -->
+  <section class="quick-tools" id="outils-rapides">
+    <div class="container">
+      <div class="quick-tools-head">
+        <div>
+          <div class="section-eyebrow reveal">Outils locaux</div>
+          <h2 class="quick-tools-title reveal">Calculer le <em>coût réel</em></h2>
+        </div>
+        <p class="quick-tools-copy reveal">Des calculateurs basés sur les données officielles des villes et du gouvernement du Québec, pour comparer rapidement un achat sur la Rive-Nord.</p>
+      </div>
+
+      <div class="quick-tools-grid">
+        <a href="#calculatrices" class="quick-tool-card reveal" data-tool-tab="welcome">
+          <div>
+            <div class="quick-tool-top">
+              <span class="quick-tool-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h4"/></svg></span>
+              <span class="quick-tool-status">Prioritaire</span>
+            </div>
+            <h3 class="quick-tool-name">Taxe de bienvenue par ville</h3>
+            <p class="quick-tool-desc">Prix d'achat, ville, tranches applicables et montant payable après la transaction.</p>
+          </div>
+          <span class="quick-tool-link">Voir l'outil <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a href="#calculatrices" class="quick-tool-card reveal" data-tool-tab="taxes">
+          <div>
+            <div class="quick-tool-top">
+              <span class="quick-tool-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V7l6-4 6 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg></span>
+              <span class="quick-tool-status">Comparatif</span>
+            </div>
+            <h3 class="quick-tool-name">Taxes municipales</h3>
+            <p class="quick-tool-desc">Blainville, Sainte-Thérèse, Rosemère, Boisbriand et Lorraine comparées sur la même valeur.</p>
+          </div>
+          <span class="quick-tool-link">Comparer <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a href="#calculatrices" class="quick-tool-card reveal" data-tool-tab="mortgage">
+          <div>
+            <div class="quick-tool-top">
+              <span class="quick-tool-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+              <span class="quick-tool-status">Mensuel</span>
+            </div>
+            <h3 class="quick-tool-name">Hypothèque locale</h3>
+            <p class="quick-tool-desc">Paiement hypothécaire, taxes municipales estimées, assurance prêt et scénario par ville.</p>
+          </div>
+          <span class="quick-tool-link">Estimer <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+
+      <div class="tool-calculators reveal" id="calculatrices">
+        <div class="tool-tabs">
+          <button class="tool-tab active" type="button" data-tool-tab="welcome">Taxe de bienvenue</button>
+          <button class="tool-tab" type="button" data-tool-tab="taxes">Taxes municipales</button>
+          <button class="tool-tab" type="button" data-tool-tab="mortgage">Hypothèque locale</button>
+        </div>
+
+        <div class="tool-panel active" data-tool-panel="welcome">
+          <div class="tool-form">
+            <div class="tool-field">
+              <label for="welcome-city">Ville</label>
+              <select id="welcome-city"></select>
+            </div>
+            <div class="tool-field">
+              <label for="welcome-price">Prix d'achat ou base d'imposition</label>
+              <input id="welcome-price" type="number" min="0" step="1000" value="650000">
+            </div>
+            <div class="tool-note">Le calcul utilise la base d'imposition entrée. En pratique, la base est le plus élevé entre le prix payé, le prix indiqué à l'acte et la valeur marchande uniformisée.</div>
+          </div>
+          <div class="tool-result">
+            <div>
+              <div class="tool-result-label">Droit de mutation estimé</div>
+              <div class="tool-result-main" id="welcome-total">$0</div>
+            </div>
+            <div class="tool-breakdown" id="welcome-breakdown"></div>
+            <div class="tool-source" id="welcome-source"></div>
+          </div>
+        </div>
+
+        <div class="tool-panel" data-tool-panel="taxes">
+          <div class="tool-form">
+            <div class="tool-field">
+              <label for="tax-value">Valeur au rôle ou prix estimé</label>
+              <input id="tax-value" type="number" min="0" step="1000" value="650000">
+            </div>
+            <div class="tool-field">
+              <label for="tax-type">Type de propriété</label>
+              <select id="tax-type">
+                <option value="house">Unifamiliale / 1 à 2 logements</option>
+                <option value="condo">Condo</option>
+              </select>
+            </div>
+            <div class="tool-field">
+              <label for="tax-city-a">Ville A</label>
+              <select id="tax-city-a"></select>
+            </div>
+            <div class="tool-field">
+              <label for="tax-city-b">Ville B</label>
+              <select id="tax-city-b"></select>
+            </div>
+            <label class="tool-check"><input id="tax-pool" type="checkbox"> Inclure piscine résidentielle si la ville l'applique</label>
+          </div>
+          <div class="tool-result">
+            <div>
+              <div class="tool-result-label">Différence annuelle estimée</div>
+              <div class="tool-result-main" id="tax-diff">$0</div>
+            </div>
+            <div class="tool-result-grid">
+              <div class="tool-result-item"><span id="tax-city-a-label">Ville A</span><strong id="tax-a">$0</strong></div>
+              <div class="tool-result-item"><span id="tax-city-b-label">Ville B</span><strong id="tax-b">$0</strong></div>
+              <div class="tool-result-item"><span>Mensuel A</span><strong id="tax-a-month">$0</strong></div>
+              <div class="tool-result-item"><span>Mensuel B</span><strong id="tax-b-month">$0</strong></div>
+            </div>
+            <div class="tool-breakdown" id="tax-breakdown"></div>
+            <div class="tool-source" id="tax-source"></div>
+          </div>
+        </div>
+
+        <div class="tool-panel" data-tool-panel="mortgage">
+          <div class="tool-form">
+            <div class="tool-field">
+              <label for="mortgage-city">Ville</label>
+              <select id="mortgage-city"></select>
+            </div>
+            <div class="tool-field">
+              <label for="mortgage-price">Prix d'achat</label>
+              <input id="mortgage-price" type="number" min="0" step="1000" value="650000">
+            </div>
+            <div class="tool-field">
+              <label for="mortgage-down">Mise de fonds</label>
+              <input id="mortgage-down" type="number" min="0" step="1000" value="65000">
+            </div>
+            <div class="tool-field">
+              <label for="mortgage-rate">Taux hypothécaire annuel (%)</label>
+              <input id="mortgage-rate" type="number" min="0" step="0.01" value="4.49">
+            </div>
+            <div class="tool-field">
+              <label for="mortgage-years">Amortissement</label>
+              <select id="mortgage-years">
+                <option value="25">25 ans</option>
+                <option value="30">30 ans</option>
+              </select>
+            </div>
+          </div>
+          <div class="tool-result">
+            <div>
+              <div class="tool-result-label">Coût mensuel local estimé</div>
+              <div class="tool-result-main" id="mortgage-monthly">$0</div>
+            </div>
+            <div class="tool-result-grid">
+              <div class="tool-result-item"><span>Hypothèque</span><strong id="mortgage-payment">$0</strong></div>
+              <div class="tool-result-item"><span>Taxes municipales</span><strong id="mortgage-taxes">$0</strong></div>
+              <div class="tool-result-item"><span>Prime assur. prêt</span><strong id="mortgage-insurance">$0</strong></div>
+              <div class="tool-result-item"><span>Prêt estimé</span><strong id="mortgage-loan">$0</strong></div>
+            </div>
+            <div class="tool-breakdown" id="mortgage-breakdown"></div>
+            <div class="tool-source" id="mortgage-source"></div>
+            <a href="#contact" class="tool-cta">Valider avec un courtier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION STRIP ===== -->
+  <section class="mission" id="mission">
+    <div class="container">
+      <div class="mission-inner">
+        <div class="mission-item reveal">
+          <div class="mission-number">15</div>
+          <div class="mission-label">Villes desservies</div>
+        </div>
+        <div class="mission-divider"></div>
+        <div class="mission-item reveal">
+          <div class="mission-number">25+</div>
+          <div class="mission-label">Années d'expertise locale</div>
+        </div>
+        <div class="mission-divider"></div>
+        <div class="mission-item reveal">
+          <div class="mission-number">350K+</div>
+          <div class="mission-label">Résidents dans notre territoire</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CITY GUIDES ===== -->
+  <section class="guides" id="guides">
+    <div class="container">
+      <div class="guides-header">
+        <div class="section-eyebrow reveal">Nos courtiers, vos villes</div>
+        <h2 class="section-heading reveal">On connaît chaque <em>quartier</em></h2>
+        <p class="section-intro reveal">Nos courtiers vivent et travaillent dans ces villes. Ils connaissent le marché, les écoles, les parcs et les événements du coin, et ils sont là pour vous accompagner.</p>
+      </div>
+
+      <div class="city-grid">
+
+        <!-- FEATURED: Blainville -->
+        <a href="guide-blainville.html" class="city-card featured reveal">
+          <div class="city-card-image">
+            <img src="images/villes/blainville/blainville2.jpg" alt="Blainville, Québec — vue aérienne">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Blainville</h3>
+            <p class="city-card-tagline">Pourquoi les familles adorent Blainville : le guide complet pour s'y installer en 2026.</p>
+          </div>
+        </a>
+
+        <!-- Sainte-Thérèse -->
+        <a href="guide-stetherese.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/stetherese/Village-VST-d34f2a1762ebdc1f8a3c032e4f48b60e.jpg" alt="Sainte-Thérèse — Vieux-Village">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Sainte-Thérèse</h3>
+            <p class="city-card-tagline">Cœur historique et culturel des Basses-Laurentides</p>
+          </div>
+        </a>
+
+        <!-- Lorraine -->
+        <a href="guide-lorraine.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/lorraine/lorraine1.jpg" alt="Lorraine — automne aérien">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Lorraine</h3>
+            <p class="city-card-tagline">La ville-jardin, entre prestige résidentiel et nature</p>
+          </div>
+        </a>
+
+        <!-- Rosemère -->
+        <a href="guide-rosemere.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/rosemere/rosemere1.jpg" alt="Rosemère — quartier de prestige">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Rosemère</h3>
+            <p class="city-card-tagline">L'élégance résidentielle aux Basses-Laurentides</p>
+          </div>
+        </a>
+
+        <!-- Boisbriand -->
+        <a href="guide-boisbriand.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/boisbriand/Boisbriand_QC_2.jpg" alt="Boisbriand">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Boisbriand</h3>
+            <p class="city-card-tagline">Le carrefour dynamique des Basses-Laurentides</p>
+          </div>
+        </a>
+
+        <!-- Bois-des-Filion -->
+        <a href="guide-boisdesfillions.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/boisdesfillions/Image_DecouvrezBDF_1600x1000.jpg" alt="Bois-des-Filion">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Bois-des-Filion</h3>
+            <p class="city-card-tagline">Une ville compacte et conviviale</p>
+          </div>
+        </a>
+
+        <!-- Saint-Eustache -->
+        <a href="guide-steustache.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/steustache/Saint-Eustache_-_Vue_aérienne_(2).jpg" alt="Saint-Eustache">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Saint-Eustache</h3>
+            <p class="city-card-tagline">Le pôle régional du nord-ouest</p>
+          </div>
+        </a>
+
+        <!-- Deux-Montagnes -->
+        <a href="guide-deuxmontagnes.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/deuxmontagnes/ville-deux-montagnes.webp" alt="Deux-Montagnes">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Deux-Montagnes</h3>
+            <p class="city-card-tagline">Au bord du lac, terminus du REM</p>
+          </div>
+        </a>
+
+        <!-- Sainte-Marthe-sur-le-Lac -->
+        <a href="guide-stemarthe.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/stemarthe/Sainte-Marthe-sur-le-Lac_-_Vue_a_rienne__1_.jpg" alt="Sainte-Marthe-sur-le-Lac">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Sainte-Marthe-sur-le-Lac</h3>
+            <p class="city-card-tagline">Ville en pleine transformation, au bord du lac</p>
+          </div>
+        </a>
+
+        <!-- Oka -->
+        <a href="guide-oka.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/oka/2021-Loik-Monette-Oka-le-plus-beau-scaled.jpg" alt="Oka">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Oka</h3>
+            <p class="city-card-tagline">Entre parc national, abbaye et lac</p>
+          </div>
+        </a>
+
+        <!-- Pointe-Calumet -->
+        <a href="guide-pointecalumet.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/pointecalumet/super-aqua-club-pointe-calumet.webp" alt="Pointe-Calumet">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Pointe-Calumet</h3>
+            <p class="city-card-tagline">Une petite ville d'eau et de loisirs</p>
+          </div>
+        </a>
+
+        <!-- Mirabel -->
+        <a href="guide-mirabel.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/mirabel/Couverture_1620x675.jpg" alt="Mirabel">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Mirabel</h3>
+            <p class="city-card-tagline">La plus vaste ville du Québec</p>
+          </div>
+        </a>
+
+        <!-- Saint-Janvier -->
+        <a href="guide-st-janvier.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/st-janvier/mirabel1.jpg" alt="Saint-Janvier (Mirabel)">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Saint-Janvier</h3>
+            <p class="city-card-tagline">Le pôle vivant de Mirabel</p>
+          </div>
+        </a>
+
+        <!-- Sainte-Anne-des-Plaines -->
+        <a href="guide-steannedesplaines.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/steannedesplaines/territoire-eglise-champs-sadp.png" alt="Sainte-Anne-des-Plaines">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Sainte-Anne-des-Plaines</h3>
+            <p class="city-card-tagline">Caractère rural, à 30 min de Montréal</p>
+          </div>
+        </a>
+
+        <!-- Sainte-Sophie -->
+        <a href="guide-stesophie.html" class="city-card reveal">
+          <div class="city-card-image">
+            <img src="images/villes/stesophie/Sainte-Sophie.jpg" alt="Sainte-Sophie">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-arrow">→</div>
+          <div class="city-card-content">
+            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
+            <h3 class="city-card-name">Sainte-Sophie</h3>
+            <p class="city-card-tagline">Espaces verts et lacs des Laurentides</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUE PROPOSITION ===== -->
+  <section class="value" id="outils">
+    <div class="container">
+      <div class="guides-header">
+        <div class="section-eyebrow reveal">L'avantage Crystal</div>
+        <h2 class="section-heading reveal">Des courtiers outillés<br><em>pour performer.</em></h2>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-text reveal">
+          <h3>Nos courtiers ont un <em>avantage technologique</em></h3>
+          <p>RE/MAX Crystal investit dans des outils et des données que nos courtiers utilisent tous les jours. Résultat : ils connaissent leur marché en profondeur et offrent un service plus rapide et plus précis.</p>
+
+          <div class="value-features">
+            <div class="value-feature">
+              <span class="value-feature-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/><path d="M2 20h20"/></svg></span>
+              <div class="value-feature-text">
+                <h5>Données de marché en temps réel</h5>
+                <p>Nos courtiers accèdent aux prix médians, aux délais de vente et aux tendances par quartier, mis à jour chaque mois.</p>
+              </div>
+            </div>
+            <div class="value-feature">
+              <span class="value-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div class="value-feature-text">
+                <h5>Outils IA exclusifs</h5>
+                <p>Générateur PDF, carte à proximité, amélioration photo : des outils que la compétition n'a pas.</p>
+              </div>
+            </div>
+            <div class="value-feature">
+              <span class="value-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg></span>
+              <div class="value-feature-text">
+                <h5>Expertise locale vérifiable</h5>
+                <p>Chaque courtier est associé à ses villes. Nos guides montrent qu'on connaît le terrain, pas seulement le marché.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="value-image-wrap reveal">
+          <video
+            src="images/galas/gala-web.mp4"
+            poster="images/galas/gala-poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Gala RE/MAX Crystal — célébration des courtiers"></video>
+          <div class="value-image-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL / REELS ===== -->
+  <section class="social" id="reseaux">
+    <div class="container">
+      <div class="social-header">
+        <div class="section-eyebrow reveal">Sur les réseaux</div>
+        <h2 class="section-heading reveal">Notre présence sur les<br><em>réseaux sociaux</em></h2>
+        <p class="social-intro reveal">Ventes, coulisses, vie d'agence : on partage le quotidien de nos courtiers et de leurs quartiers, semaine après semaine.</p>
+      </div>
+
+      <div class="reels-grid reveal">
+        <div class="reel-tile reel-tall"><video src="images/reels/reel-01.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile"><video src="images/reels/reel-02.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile reel-wide"><video src="images/reels/reel-03.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile reel-big"><video src="images/reels/reel-04.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile"><video src="images/reels/reel-05.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile reel-tall"><video src="images/reels/reel-06.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile"><video src="images/reels/reel-07.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile"><video src="images/reels/reel-08.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile reel-wide"><video src="images/reels/reel-09.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile reel-tall"><video src="images/reels/reel-10.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile"><video src="images/reels/reel-11.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="reel-tile"><video src="images/reels/reel-12.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+      </div>
+
+      <div class="social-follow reveal">
+        <span class="social-follow-label">Suivez-nous</span>
+        <a href="#" class="social-btn" aria-label="Instagram RE/MAX Crystal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="#" class="social-btn" aria-label="Facebook RE/MAX Crystal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section" id="contact">
+    <div class="container cta-content">
+      <div class="section-eyebrow reveal" style="text-align:center; color: var(--blue-light);">Prochaine étape</div>
+      <h2 class="cta-heading reveal">Parlons de votre <em>projet</em></h2>
+      <p class="cta-text reveal">Achat, vente ou simple question : nos courtiers connaissent votre ville et peuvent vous accompagner dès aujourd'hui.</p>
+      <div class="cta-buttons reveal">
+        <a href="#" class="btn btn-ghost">Évaluation gratuite</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name"><img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></div>
+          <p class="footer-brand-desc">Vos courtiers de confiance sur la Rive-Nord de Montréal. Ancrés dans le territoire, du premier rendez-vous à la signature.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Nos villes</h5>
+          <a href="guide-blainville.html">Vivre à Blainville</a>
+          <a href="guide-stetherese.html">Vivre à Sainte-Thérèse</a>
+          <a href="guide-lorraine.html">Vivre à Lorraine</a>
+          <a href="guide-rosemere.html">Vivre à Rosemère</a>
+          <a href="guide-boisbriand.html">Vivre à Boisbriand</a>
+          <a href="guide-boisdesfillions.html">Vivre à Bois-des-Filion</a>
+          <a href="guide-steustache.html">Vivre à Saint-Eustache</a>
+          <a href="guide-mirabel.html">Vivre à Mirabel</a>
+          <a href="guide-deuxmontagnes.html">Vivre à Deux-Montagnes</a>
+          <a href="guide-stemarthe.html">Vivre à Sainte-Marthe</a>
+          <a href="guide-oka.html">Vivre à Oka</a>
+          <a href="guide-pointecalumet.html">Vivre à Pointe-Calumet</a>
+          <a href="guide-st-janvier.html">Vivre à Saint-Janvier</a>
+          <a href="guide-steannedesplaines.html">Vivre à Ste-Anne-des-Plaines</a>
+          <a href="guide-stesophie.html">Vivre à Sainte-Sophie</a>
+        </div>
+        <div class="footer-col">
+          <h5>Nos outils</h5>
+          <a href="#">Générateur PDF</a>
+          <a href="#">Carte à proximité</a>
+          <a href="#">Amélioration photo</a>
+          <a href="#">Générateur de contenu</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="#">Bureau principal</a>
+          <a href="#">Nos courtiers</a>
+          <a href="#">Carrières</a>
+          <a href="#">Évaluation gratuite</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RE/MAX Crystal. Tous droits réservés. · agence.remaxcrystal.com</span>
+        <span>Site web par <a href="https://vpourdesign.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><strong>vpourdesign</strong></a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== LENIS =====
+    let lenis = null;
+    if (typeof Lenis !== 'undefined') {
+      try {
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+        });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+      } catch(e) { lenis = null; }
+    }
+
+    // ===== TOPBAR =====
+    ScrollTrigger.create({
+      start: 'top -80',
+      onUpdate: (self) => {
+        document.getElementById('topbar').classList.toggle('scrolled', self.progress > 0);
+      }
+    });
+
+    // ===== REVEALS =====
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 36 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          delay: el.closest('.city-grid, .mission-inner, .hero-cities-row')
+            ? (Array.from(el.parentElement.children).indexOf(el) * 0.08)
+            : 0
+        }
+      );
+    });
+
+    // ===== HERO ENTRANCE =====
+    gsap.fromTo('.hero-title',
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1.3, ease: 'power3.out', delay: 0.15 }
+    );
+    gsap.fromTo('.hero-eyebrow',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.05 }
+    );
+    gsap.fromTo('.hero-subtitle',
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.45 }
+    );
+    gsap.fromTo('.hero-cities-row',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.65 }
+    );
+    gsap.fromTo('.hero-cta-row',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.8 }
+    );
+
+    // ===== PARALLAX =====
+    gsap.to('.hero-image video, .hero-image img', {
+      y: 100, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+    });
+
+    // ===== LOCAL CALCULATORS =====
+    const money = (value) => new Intl.NumberFormat('fr-CA', {
+      style: 'currency',
+      currency: 'CAD',
+      maximumFractionDigits: 0
+    }).format(Number.isFinite(value) ? value : 0);
+
+    const preciseMoney = (value) => new Intl.NumberFormat('fr-CA', {
+      style: 'currency',
+      currency: 'CAD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(Number.isFinite(value) ? value : 0);
+
+    const cityData = {
+      blainville: {
+        name: 'Blainville',
+        mutation: [[62900, 0.005], [315000, 0.01], [750000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.466, condo: 0.503 },
+        fixedFees: 435,
+        poolFee: 50,
+        source: 'Ville de Blainville, Taxes et évaluation 2026',
+        sourceUrl: 'https://blainville.ca/ville/administration-municipale/taxes-et-evaluation',
+        note: 'Inclut les tarifications residentielles publiees: matieres residuelles et assainissement des eaux.'
+      },
+      steTherese: {
+        name: 'Sainte-Thérèse',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.456, condo: 0.455 },
+        fixedFees: 903,
+        poolFee: 0,
+        source: 'Ville de Sainte-Thérèse, Taxes, évaluation et droit de mutation 2026',
+        sourceUrl: 'https://www.sainte-therese.ca/services/services-aux-citoyens/taxes-evaluation-et-droit-de-mutation',
+        note: 'Inclut transport en commun, fonds infrastructures, eau potable, assainissement et matieres residuelles.'
+      },
+      rosemere: {
+        name: 'Rosemère',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.4975, condo: 0.4975 },
+        fixedFees: 0,
+        poolFee: 0,
+        source: 'Ville de Rosemère, Règlement 1016 - taxation 2026',
+        sourceUrl: 'https://www.ville.rosemere.qc.ca/taxation-et-tarification/',
+        note: 'Addition du taux residuel, du transport collectif et de la taxe speciale d infrastructures.'
+      },
+      lorraine: {
+        name: 'Lorraine',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.526, condo: 0.5532 },
+        fixedFees: 0,
+        poolFee: 0,
+        source: 'Ville de Lorraine, Budget municipal 2026',
+        sourceUrl: 'https://lorraine.ca/actualites/finances-et-taxation/le-budget-2026',
+        note: 'Le budget 2026 confirme les taux combinés. Certaines tarifications de services doivent être validées au compte réel.'
+      },
+      boisbriand: {
+        name: 'Boisbriand',
+        mutation: [[61500, 0.005], [307800, 0.01], [500000, 0.015], [800000, 0.02], [Infinity, 0.03]],
+        taxRates: { house: 0.5959, condo: 0.5959 },
+        fixedFees: 0,
+        poolFee: 0,
+        source: 'Ville de Boisbriand, Budget 2026 et page taxes municipales',
+        sourceUrl: 'https://www.ville.boisbriand.qc.ca/ville/administration-municipale/taxes-municipales-et-evaluation-fonciere',
+        note: 'Estimation basée sur la maison moyenne 2026 publiée. Les taux détaillés du règlement RV-1787 doivent être confirmés avant production.'
+      },
+      boisdesfillions: {
+        name: 'Bois-des-Filion',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.78, condo: 0.78 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Ville de Bois-des-Filion, Budget 2026',
+        sourceUrl: 'https://www.ville.bois-des-filion.qc.ca/services-aux-citoyens/taxes-et-evaluation/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      deuxmontagnes: {
+        name: 'Deux-Montagnes',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.85, condo: 0.85 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Ville de Deux-Montagnes, Budget 2026',
+        sourceUrl: 'https://www.ville.deux-montagnes.qc.ca/citoyens/finances/taxes-et-evaluation/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      mirabel: {
+        name: 'Mirabel',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.5512, condo: 0.5512 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Ville de Mirabel, Budget 2026',
+        sourceUrl: 'https://www.mirabel.ca/citoyens/services-aux-citoyens/taxes-et-evaluation/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      oka: {
+        name: 'Oka',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.69, condo: 0.69 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Municipalite d Oka, Budget 2026',
+        sourceUrl: 'https://www.municipalite.oka.qc.ca/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      pointecalumet: {
+        name: 'Pointe-Calumet',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.82, condo: 0.82 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Municipalite de Pointe-Calumet, Budget 2026',
+        sourceUrl: 'https://www.pointe-calumet.ca/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      stJanvier: {
+        name: 'Saint-Janvier (Mirabel)',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.5512, condo: 0.5512 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Ville de Mirabel, Budget 2026',
+        sourceUrl: 'https://www.mirabel.ca/citoyens/services-aux-citoyens/taxes-et-evaluation/',
+        note: 'Secteur de Mirabel. A confirmer.'
+      },
+      steAnneDesPlaines: {
+        name: 'Sainte-Anne-des-Plaines',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.75, condo: 0.75 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Ville de Sainte-Anne-des-Plaines, Budget 2026',
+        sourceUrl: 'https://www.villesadp.ca/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      steMarthe: {
+        name: 'Sainte-Marthe-sur-le-Lac',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.74, condo: 0.74 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Ville de Sainte-Marthe-sur-le-Lac, Budget 2026',
+        sourceUrl: 'https://www.ville.sainte-marthe-sur-le-lac.qc.ca/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      steSophie: {
+        name: 'Sainte-Sophie',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.66, condo: 0.66 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Municipalite de Sainte-Sophie, Budget 2026',
+        sourceUrl: 'https://www.sainte-sophie.ca/',
+        note: 'Estimation regionale 2026. A confirmer.'
+      },
+      steEustache: {
+        name: 'Saint-Eustache',
+        mutation: [[62900, 0.005], [315000, 0.01], [500000, 0.015], [Infinity, 0.03]],
+        taxRates: { house: 0.7965, condo: 0.7965 },
+        fixedFees: 0, poolFee: 0,
+        source: 'Ville de Saint-Eustache, Budget 2026',
+        sourceUrl: 'https://saint-eustache.ca/finances/taxes-municipales/',
+        note: 'Estimation 2026. A confirmer.'
+      }
+    };
+
+    function fillCitySelect(id, selected) {
+      const select = document.getElementById(id);
+      if (!select) return;
+      select.innerHTML = Object.entries(cityData).map(([key, city]) =>
+        `<option value="${key}"${key === selected ? ' selected' : ''}>${city.name}</option>`
+      ).join('');
+    }
+
+    fillCitySelect('welcome-city', 'blainville');
+    fillCitySelect('tax-city-a', 'blainville');
+    fillCitySelect('tax-city-b', 'steTherese');
+    fillCitySelect('mortgage-city', 'blainville');
+
+    function calculateBrackets(amount, brackets) {
+      let total = 0;
+      let previous = 0;
+      const rows = [];
+      brackets.forEach(([limit, rate]) => {
+        if (amount <= previous) return;
+        const taxable = Math.min(amount, limit) - previous;
+        if (taxable > 0) {
+          const tax = taxable * rate;
+          total += tax;
+          rows.push({ taxable, rate, tax });
+        }
+        previous = limit;
+      });
+      return { total, rows };
+    }
+
+    function municipalTax(cityKey, propertyValue, type, hasPool) {
+      const city = cityData[cityKey];
+      const rate = city.taxRates[type] || city.taxRates.house;
+      return (propertyValue / 100) * rate + city.fixedFees + (hasPool ? city.poolFee : 0);
+    }
+
+    function updateWelcomeTax() {
+      const cityKey = document.getElementById('welcome-city').value;
+      const city = cityData[cityKey];
+      const price = Number(document.getElementById('welcome-price').value || 0);
+      const calc = calculateBrackets(price, city.mutation);
+      document.getElementById('welcome-total').textContent = money(calc.total);
+      document.getElementById('welcome-breakdown').innerHTML = calc.rows.map(row =>
+        `<div>${money(row.taxable)} x ${(row.rate * 100).toFixed(row.rate >= 0.01 ? 1 : 1)} % = ${preciseMoney(row.tax)}</div>`
+      ).join('');
+      document.getElementById('welcome-source').innerHTML =
+        `Source: <a href="${city.sourceUrl}" target="_blank" rel="noopener">${city.source}</a><br>${city.note}`;
+    }
+
+    function updateMunicipalTaxes() {
+      const value = Number(document.getElementById('tax-value').value || 0);
+      const type = document.getElementById('tax-type').value;
+      const cityAKey = document.getElementById('tax-city-a').value;
+      const cityBKey = document.getElementById('tax-city-b').value;
+      const hasPool = document.getElementById('tax-pool').checked;
+      const cityA = cityData[cityAKey];
+      const cityB = cityData[cityBKey];
+      const taxA = municipalTax(cityAKey, value, type, hasPool);
+      const taxB = municipalTax(cityBKey, value, type, hasPool);
+      const diff = Math.abs(taxA - taxB);
+
+      document.getElementById('tax-diff').textContent = money(diff);
+      document.getElementById('tax-city-a-label').textContent = cityA.name;
+      document.getElementById('tax-city-b-label').textContent = cityB.name;
+      document.getElementById('tax-a').textContent = money(taxA);
+      document.getElementById('tax-b').textContent = money(taxB);
+      document.getElementById('tax-a-month').textContent = money(taxA / 12);
+      document.getElementById('tax-b-month').textContent = money(taxB / 12);
+      document.getElementById('tax-breakdown').innerHTML =
+        `<div>${cityA.name}: taux ${((cityA.taxRates[type] || cityA.taxRates.house)).toFixed(4)} $ / 100 $ + frais fixes connus ${money(cityA.fixedFees)}</div>
+         <div>${cityB.name}: taux ${((cityB.taxRates[type] || cityB.taxRates.house)).toFixed(4)} $ / 100 $ + frais fixes connus ${money(cityB.fixedFees)}</div>`;
+      document.getElementById('tax-source').innerHTML =
+        `Sources: <a href="${cityA.sourceUrl}" target="_blank" rel="noopener">${cityA.source}</a> et <a href="${cityB.sourceUrl}" target="_blank" rel="noopener">${cityB.source}</a><br>Note: ${cityA.note} ${cityB.note}`;
+    }
+
+    function cmhcPremiumRate(loanToValue) {
+      if (loanToValue <= 0.8) return 0;
+      if (loanToValue <= 0.85) return 0.024;
+      if (loanToValue <= 0.9) return 0.031;
+      if (loanToValue <= 0.95) return 0.04;
+      return null;
+    }
+
+    function monthlyMortgagePayment(principal, annualRate, years) {
+      const payments = years * 12;
+      const monthlyRate = Math.pow(1 + annualRate / 2, 2 / 12) - 1;
+      if (monthlyRate === 0) return principal / payments;
+      return principal * (monthlyRate * Math.pow(1 + monthlyRate, payments)) / (Math.pow(1 + monthlyRate, payments) - 1);
+    }
+
+    function updateMortgage() {
+      const cityKey = document.getElementById('mortgage-city').value;
+      const price = Number(document.getElementById('mortgage-price').value || 0);
+      const down = Number(document.getElementById('mortgage-down').value || 0);
+      const rate = Number(document.getElementById('mortgage-rate').value || 0) / 100;
+      const years = Number(document.getElementById('mortgage-years').value || 25);
+      const baseLoan = Math.max(price - down, 0);
+      const ltv = price > 0 ? baseLoan / price : 0;
+      const premiumRate = cmhcPremiumRate(ltv);
+      const premium = premiumRate === null ? 0 : baseLoan * premiumRate;
+      const totalLoan = baseLoan + premium;
+      const payment = premiumRate === null ? 0 : monthlyMortgagePayment(totalLoan, rate, years);
+      const taxes = municipalTax(cityKey, price, 'house', false) / 12;
+      const totalMonthly = payment + taxes;
+      const city = cityData[cityKey];
+
+      document.getElementById('mortgage-monthly').textContent = premiumRate === null ? 'Mise insuff.' : money(totalMonthly);
+      document.getElementById('mortgage-payment').textContent = premiumRate === null ? 'A valider' : money(payment);
+      document.getElementById('mortgage-taxes').textContent = money(taxes);
+      document.getElementById('mortgage-insurance').textContent = money(premium);
+      document.getElementById('mortgage-loan').textContent = money(totalLoan);
+      document.getElementById('mortgage-breakdown').innerHTML =
+        premiumRate === null
+          ? '<div>La mise de fonds est sous 5 %. Le scenario doit etre valide avec un preteur.</div>'
+          : `<div>Mise de fonds: ${(down / price * 100 || 0).toFixed(1)} %. Prime assurance pret estimee: ${(premiumRate * 100).toFixed(2)} %.</div><div>Les taxes municipales utilisent ${city.name} comme scenario local.</div>`;
+      document.getElementById('mortgage-source').innerHTML =
+        `Sources: <a href="https://www.canada.ca/fr/services/finance/outils.html" target="_blank" rel="noopener">ACFC / Canada.ca</a>, <a href="https://www.cmhc-schl.gc.ca/consommateurs/acheter-une-maison/assurance-pret-hypothecaire-pour-les-consommateurs/couts-de-lassurance-pret-hypothecaire-schl" target="_blank" rel="noopener">SCHL</a>, <a href="${city.sourceUrl}" target="_blank" rel="noopener">${city.source}</a>.`;
+    }
+
+    function activateTool(tabName) {
+      document.querySelectorAll('[data-tool-tab]').forEach(tab => {
+        if (tab.classList.contains('tool-tab')) tab.classList.toggle('active', tab.dataset.toolTab === tabName);
+      });
+      document.querySelectorAll('[data-tool-panel]').forEach(panel => {
+        panel.classList.toggle('active', panel.dataset.toolPanel === tabName);
+      });
+      setTimeout(() => ScrollTrigger.refresh(), 80);
+    }
+
+    document.querySelectorAll('.tool-tab').forEach(tab => {
+      tab.addEventListener('click', () => activateTool(tab.dataset.toolTab));
+    });
+
+    document.querySelectorAll('.quick-tool-card[data-tool-tab]').forEach(card => {
+      card.addEventListener('click', () => activateTool(card.dataset.toolTab));
+    });
+
+    ['welcome-city', 'welcome-price'].forEach(id => document.getElementById(id)?.addEventListener('input', updateWelcomeTax));
+    ['tax-value', 'tax-type', 'tax-city-a', 'tax-city-b', 'tax-pool'].forEach(id => document.getElementById(id)?.addEventListener('input', updateMunicipalTaxes));
+    ['mortgage-city', 'mortgage-price', 'mortgage-down', 'mortgage-rate', 'mortgage-years'].forEach(id => document.getElementById(id)?.addEventListener('input', updateMortgage));
+    ['welcome-city', 'tax-type', 'tax-city-a', 'tax-city-b', 'mortgage-city', 'mortgage-years'].forEach(id => document.getElementById(id)?.addEventListener('change', () => {
+      updateWelcomeTax();
+      updateMunicipalTaxes();
+      updateMortgage();
+    }));
+
+    updateWelcomeTax();
+    updateMunicipalTaxes();
+    updateMortgage();
+
+    // ===== SMOOTH ANCHORS =====
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          if (lenis) { lenis.scrollTo(target, { offset: -80 }); }
+          else { window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
+        }
+      });
+    });
+
+    // ===== REELS — play only when visible (perf) =====
+    const reelVideos = document.querySelectorAll('.reels-grid video');
+    if (reelVideos.length && 'IntersectionObserver' in window) {
+      const reelObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const v = entry.target;
+          if (entry.isIntersecting) { v.play().catch(() => {}); }
+          else { v.pause(); }
+        });
+      }, { threshold: 0.25 });
+      reelVideos.forEach(v => reelObserver.observe(v));
+    }
+  </script>
+  <script src="courtiers.js"></script>
+<!-- MEGA-MENU VILLES -->
+<div class="mm-overlay" id="mmOverlay" hidden>
+  <div class="mm-backdrop" data-mm-close></div>
+  <div class="mm-panel" role="dialog" aria-modal="true" aria-label="Toutes les villes">
+    <div class="mm-head">
+      <span class="mm-eyebrow">Toutes nos villes</span>
+      <button type="button" class="mm-close" data-mm-close aria-label="Fermer le menu">&#10005;</button>
+    </div>
+    <div class="mm-grid">
+      <span class="mm-cat">RE/MAX Crystal &middot; Basses-Laurentides &amp; Rive-Nord</span>
+      <a href="guide-blainville.html">Blainville</a>
+      <a href="guide-stetherese.html">Sainte-Thérèse</a>
+      <a href="guide-lorraine.html">Lorraine</a>
+      <a href="guide-rosemere.html">Rosemère</a>
+      <a href="guide-boisbriand.html">Boisbriand</a>
+      <a href="guide-boisdesfillions.html">Bois-des-Filion</a>
+      <a href="guide-steustache.html">Saint-Eustache</a>
+      <a href="guide-deuxmontagnes.html">Deux-Montagnes</a>
+      <a href="guide-stemarthe.html">Sainte-Marthe-sur-le-Lac</a>
+      <a href="guide-pointecalumet.html">Pointe-Calumet</a>
+      <a href="guide-oka.html">Oka</a>
+      <a href="guide-mirabel.html">Mirabel</a>
+      <a href="guide-st-janvier.html">Saint-Janvier</a>
+      <a href="guide-steannedesplaines.html">Ste-Anne-des-Plaines</a>
+      <a href="guide-stesophie.html">Sainte-Sophie</a>
+    </div>
+    <div class="mm-foot">
+      <a href="index.html">&#8592; Accueil</a>
+      <span>15 villes &middot; Basses-Laurentides &amp; Rive-Nord</span>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var ov=document.getElementById('mmOverlay'),tr=document.getElementById('mmTrigger');
+  if(!ov||!tr)return;
+  function open(){ov.hidden=false;requestAnimationFrame(function(){ov.classList.add('open');});document.body.classList.add('mm-lock');tr.setAttribute('aria-expanded','true');}
+  function close(){ov.classList.remove('open');document.body.classList.remove('mm-lock');tr.setAttribute('aria-expanded','false');setTimeout(function(){ov.hidden=true;},320);}
+  tr.addEventListener('click',function(){ov.hidden?open():close();});
+  ov.querySelectorAll('[data-mm-close]').forEach(function(el){el.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
+  var here=location.pathname.split('/').pop();
+  ov.querySelectorAll('.mm-grid a').forEach(function(a){if(a.getAttribute('href')===here)a.classList.add('mm-active');});
+})();
+</script>
+</body>
+</html>
