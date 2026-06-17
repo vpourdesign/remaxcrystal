@@ -183,7 +183,18 @@
   .hero-image video {
     width: 100%; height: 100%;
     object-fit: cover;
-    opacity: 0.4;
+    opacity: 0.5;
+    transform: scale(1.06);
+    animation: heroKenBurns 28s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroKenBurns {
+    from { transform: scale(1.06) translate3d(0, 0, 0); }
+    to   { transform: scale(1.14) translate3d(0, -1.4%, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-image img, .hero-image video { animation: none; transform: scale(1.06); }
   }
 
   .hero-image::after {
@@ -191,8 +202,9 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 100% 70% at 50% 30%, rgba(26,35,50,0.5), transparent),
-      linear-gradient(180deg, rgba(26,35,50,0.3) 0%, rgba(26,35,50,0.65) 50%, rgba(26,35,50,0.95) 100%);
+      radial-gradient(ellipse 120% 80% at 50% 16%, rgba(40,60,90,0.18), transparent 55%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, transparent 38%, rgba(13,21,36,0.58) 100%),
+      linear-gradient(180deg, rgba(20,30,46,0.42) 0%, rgba(20,30,46,0.62) 45%, rgba(16,25,40,0.97) 100%);
     z-index: 1;
   }
 
@@ -231,12 +243,12 @@
   }
 
   .hero-title {
-    font-size: clamp(3rem, 7.5vw, 7rem);
+    font-size: clamp(3.2rem, 8vw, 7.4rem);
     font-weight: 300;
     color: white;
-    line-height: 1.02;
-    letter-spacing: -0.04em;
-    margin-block-end: clamp(16px, 2.5vw, 32px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    margin-block-end: clamp(20px, 2.8vw, 34px);
   }
 
   .hero-title-sans {
@@ -250,8 +262,14 @@
     font-family: 'Raleway', sans-serif;
     font-style: italic;
     font-weight: 400;
-    color: var(--blue-pale);
     display: block;
+    font-size: 1.05em;
+    color: var(--blue-pale);
+    background: linear-gradient(105deg, #d4e4f5 0%, #7fb0e3 52%, #d4e4f5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-block-end: 0.08em;
   }
 
   .hero-title strong {
@@ -281,19 +299,22 @@
   .hero-city-tag {
     font-size: clamp(0.68rem, 0.85vw, 0.78rem);
     font-weight: 500;
-    color: rgba(255,255,255,0.7);
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 6px 16px;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 7px 17px;
     border-radius: 100px;
-    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.35s cubic-bezier(0.16,1,0.3,1), color 0.35s, border-color 0.35s, transform 0.35s cubic-bezier(0.16,1,0.3,1);
     cursor: pointer;
   }
 
   .hero-city-tag:hover {
-    background: rgba(53,120,196,0.2);
-    border-color: rgba(53,120,196,0.4);
+    background: rgba(53,120,196,0.22);
+    border-color: rgba(107,163,217,0.55);
     color: white;
+    transform: translateY(-2px);
   }
 
   .hero-cta-row {
@@ -322,10 +343,13 @@
   .btn:active { transform: translateY(0); }
 
   .btn-primary {
-    background: var(--blue-brand);
+    background: linear-gradient(135deg, #4a8fd6 0%, var(--blue-brand) 55%, #2f6cb4 100%);
     color: white;
+    box-shadow: 0 1px 2px rgba(13,21,36,0.2), 0 8px 24px rgba(53,120,196,0.28);
   }
-  .btn-primary:hover { box-shadow: 0 6px 24px rgba(53,120,196,0.35); }
+  .btn-primary:hover { box-shadow: 0 2px 6px rgba(13,21,36,0.25), 0 14px 40px rgba(53,120,196,0.45); }
+  .btn-primary svg { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+  .btn-primary:hover svg { transform: translateX(4px); }
 
   .btn-ghost {
     background: transparent;
@@ -1309,10 +1333,12 @@ body.mm-lock{overflow:hidden;}
     </div>
     <div class="topbar-nav">
       <button type="button" class="mm-trigger" id="mmTrigger" aria-haspopup="dialog" aria-expanded="false">Toutes les villes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-      <a href="#guides">Nos villes</a>
-      <a href="#mission">Notre expertise</a>
-      <a href="#outils-rapides">Nos outils</a>
-      <a href="#contact" class="topbar-cta">Nous joindre</a>
+      <a href="https://remaxcrystal.com/fr/carriere.html" target="_blank" rel="noopener">Carrière</a>
+      <a href="https://remaxcrystal.com/fr/" target="_blank" rel="noopener">Agence</a>
+      <a href="https://remaxcrystal.com/fr/nos-courtiers.html" target="_blank" rel="noopener">Équipe</a>
+      <a href="https://remaxcrystal.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés</a>
+      <a href="https://remaxcrystal.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
+      <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="topbar-cta">Contact</a>
     </div>
   </nav>
 
@@ -1360,8 +1386,7 @@ body.mm-lock{overflow:hidden;}
       </div>
 
       <div class="hero-cta-row reveal">
-        <a href="#guides" class="btn btn-primary">Trouver votre courtier local</a>
-        <a href="#contact" class="btn btn-ghost">Parler à un courtier</a>
+        <a href="#guides" class="btn btn-primary">Trouver votre courtier local <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
 
@@ -1446,7 +1471,6 @@ body.mm-lock{overflow:hidden;}
             </div>
             <div class="tool-breakdown" id="welcome-breakdown"></div>
             <div class="tool-source" id="welcome-source"></div>
-            <a href="#contact" class="tool-cta">Parler à un courtier</a>
           </div>
         </div>
 
@@ -1881,7 +1905,6 @@ body.mm-lock{overflow:hidden;}
       <h2 class="cta-heading reveal">Parlons de votre <em>projet</em></h2>
       <p class="cta-text reveal">Achat, vente ou simple question : nos courtiers connaissent votre ville et peuvent vous accompagner dès aujourd'hui.</p>
       <div class="cta-buttons reveal">
-        <a href="#" class="btn btn-primary">Parler à un courtier</a>
         <a href="#" class="btn btn-ghost">Évaluation gratuite</a>
       </div>
     </div>
@@ -1929,8 +1952,8 @@ body.mm-lock{overflow:hidden;}
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 RE/MAX Crystal. Tous droits réservés.</span>
-        <span>agence.remaxcrystal.com</span>
+        <span>&copy; 2026 RE/MAX Crystal. Tous droits réservés. · agence.remaxcrystal.com</span>
+        <span>Site web par <a href="https://vpourdesign.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><strong>vpourdesign</strong></a></span>
       </div>
     </div>
   </footer>
