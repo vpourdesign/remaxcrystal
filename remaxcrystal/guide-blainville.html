@@ -2442,94 +2442,33 @@ body.mm-lock{overflow:hidden;}
     </div>
   </section>
 
+  <style id="events-cta-style">
+    .events-cta{display:flex;align-items:center;gap:clamp(16px,2.5vw,30px);margin-block-start:clamp(26px,4vw,46px);padding:clamp(20px,3vw,32px) clamp(22px,3.5vw,40px);background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:20px;text-decoration:none;box-shadow:0 1px 2px rgba(26,35,50,.05),0 14px 34px rgba(26,50,80,.07);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,border-color .45s;}
+    .events-cta:hover{transform:translateY(-3px);border-color:var(--blue-pale);box-shadow:0 2px 4px rgba(26,35,50,.06),0 22px 48px rgba(26,50,80,.13);}
+    .events-cta-icon{flex-shrink:0;width:clamp(50px,6vw,66px);height:clamp(50px,6vw,66px);border-radius:16px;display:grid;place-items:center;background:linear-gradient(150deg,var(--blue-brand),var(--navy));color:#fff;box-shadow:0 8px 20px rgba(53,120,196,.28);}
+    .events-cta-icon svg{width:50%;height:50%;}
+    .events-cta-text{flex:1 1 auto;display:flex;flex-direction:column;gap:6px;min-width:0;}
+    .events-cta-text strong{font-family:'Raleway',sans-serif;font-weight:800;font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--text-dark);letter-spacing:-.02em;line-height:1.2;}
+    .events-cta-text span{color:var(--text-muted);font-size:clamp(.9rem,1.15vw,1.02rem);line-height:1.55;}
+    .events-cta-arrow{flex-shrink:0;color:var(--blue-brand);transition:transform .45s cubic-bezier(.16,1,.3,1);}
+    .events-cta:hover .events-cta-arrow{transform:translateX(7px);}
+    @media(max-width:600px){.events-cta{flex-wrap:wrap;gap:16px;}.events-cta-arrow{display:none;}}
+  </style>
   <!-- ===== 05 — ÉVÉNEMENTS ===== -->
   <section class="section" id="evenements">
     <div class="container">
       <div class="section-eyebrow reveal">04 — Événements</div>
       <h2 class="section-heading reveal">Événements <em>à venir</em></h2>
-      <p class="section-intro reveal">Blainville vibre au rythme de ses événements communautaires, culturels et sportifs tout au long de l'année.</p>
+      <p class="section-intro reveal">Concerts, festivals, marchés publics, activités familiales : Blainville tient à jour le calendrier officiel de tout ce qui se passe près de chez vous. Consultez-le pour ne rien manquer.</p>
 
-      <div class="events-list">
-
-        <div class="event-row reveal">
-          <div class="event-date">
-            <div class="event-date-day">17</div>
-            <div class="event-date-month">Mai</div>
-          </div>
-          <div class="event-info">
-            <div class="event-category">Festival</div>
-            <h3 class="event-title">Fête des voisins de Blainville</h3>
-            <p class="event-desc">Célébration communautaire dans plusieurs parcs de la ville. Activités familiales, musique et BBQ de quartier.</p>
-          </div>
-          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-
-        <div class="event-row reveal">
-          <div class="event-date">
-            <div class="event-date-day">7</div>
-            <div class="event-date-month">Juin</div>
-          </div>
-          <div class="event-info">
-            <div class="event-category">Marché</div>
-            <h3 class="event-title">Marché public de Blainville</h3>
-            <p class="event-desc">Tous les samedis d'été. Producteurs locaux, artisans, produits frais et ambiance conviviale au Vieux-Blainville.</p>
-          </div>
-          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-
-        <div class="event-row reveal">
-          <div class="event-date">
-            <div class="event-date-day">12</div>
-            <div class="event-date-month">Juil</div>
-          </div>
-          <div class="event-info">
-            <div class="event-category">Culture</div>
-            <h3 class="event-title">Série de spectacles en plein air</h3>
-            <p class="event-desc">Programmation musicale et théâtrale gratuite dans les parcs de Blainville. Chaque samedi soir de juillet.</p>
-          </div>
-          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-
-        <div class="event-row reveal">
-          <div class="event-date">
-            <div class="event-date-day">23</div>
-            <div class="event-date-month">Août</div>
-          </div>
-          <div class="event-info">
-            <div class="event-category">Sport</div>
-            <h3 class="event-title">Vélo-fête familiale</h3>
-            <p class="event-desc">Randonnée cycliste familiale à travers les plus beaux quartiers de Blainville. Parcours de 15 km avec animation.</p>
-          </div>
-          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-
-        <div class="event-row reveal">
-          <div class="event-date">
-            <div class="event-date-day">6</div>
-            <div class="event-date-month">Sept</div>
-          </div>
-          <div class="event-info">
-            <div class="event-category">Communauté</div>
-            <h3 class="event-title">Fête de la rentrée communautaire</h3>
-            <p class="event-desc">Journée portes ouvertes dans les installations municipales. Inscriptions aux activités d'automne et spectacles.</p>
-          </div>
-          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-
-        <div class="event-row reveal">
-          <div class="event-date">
-            <div class="event-date-day">6</div>
-            <div class="event-date-month">Déc</div>
-          </div>
-          <div class="event-info">
-            <div class="event-category">Fêtes</div>
-            <h3 class="event-title">Marché de Noël artisanal</h3>
-            <p class="event-desc">Artisans locaux, chocolat chaud, animation et défilé du Père Noël dans le Vieux-Blainville.</p>
-          </div>
-          <div class="event-arrow"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-
-      </div>
+      <a class="events-cta reveal" href="https://blainville.ca/evenements" target="_blank" rel="noopener">
+        <span class="events-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18"/><path d="M8 2.5v4M16 2.5v4"/><path d="M7.5 14h3M13.5 14h3M7.5 17.5h3"/></svg></span>
+        <span class="events-cta-text">
+          <strong>Calendrier officiel des événements — Blainville</strong>
+          <span>Consultez la programmation complète et toujours à jour sur le site officiel de la municipalité.</span>
+        </span>
+        <span class="events-cta-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
     </div>
   </section>
 
@@ -2542,44 +2481,19 @@ body.mm-lock{overflow:hidden;}
 
       <div class="parks-grid">
         <div class="park-card reveal">
-          <img src="images/lorraine1.jpg" alt="Parc équestre de Blainville">
-          <div class="park-overlay"></div>
-          <div class="park-info">
-            <h4>Parc équestre de Blainville</h4>
-            <p>Le joyau de la ville — équitation, sentiers et événements</p>
-          </div>
+          <img src="images/lorraine1.jpg" alt="Espace vert à Blainville">
         </div>
         <div class="park-card reveal">
-          <img src="images/boisbriand2.jpg" alt="Parc régional du Domaine Vert">
-          <div class="park-overlay"></div>
-          <div class="park-info">
-            <h4>Parc régional du Domaine Vert</h4>
-            <p>200 hectares — ski, raquette, vélo</p>
-          </div>
+          <img src="images/boisbriand2.jpg" alt="Nature à Blainville">
         </div>
         <div class="park-card reveal">
-          <img src="images/rosemere2.jpeg" alt="Parc de Fontainebleau">
-          <div class="park-overlay"></div>
-          <div class="park-info">
-            <h4>Parc de Fontainebleau</h4>
-            <p>Jeux d'eau, soccer et aire de pique-nique</p>
-          </div>
+          <img src="images/rosemere2.jpeg" alt="Parc à Blainville">
         </div>
         <div class="park-card reveal">
-          <img src="images/rosemere1.jpg" alt="Parc des Trembles">
-          <div class="park-overlay"></div>
-          <div class="park-info">
-            <h4>Parc des Trembles</h4>
-            <p>Sentiers boisés et aire de jeux</p>
-          </div>
+          <img src="images/rosemere1.jpg" alt="Sentiers boisés à Blainville">
         </div>
         <div class="park-card reveal">
-          <img src="images/stetherese2.jpg" alt="Piste du P'tit Train du Nord">
-          <div class="park-overlay"></div>
-          <div class="park-info">
-            <h4>Piste du P'tit Train du Nord</h4>
-            <p>Accès direct depuis Blainville</p>
-          </div>
+          <img src="images/stetherese2.jpg" alt="Piste cyclable à Blainville">
         </div>
       </div>
     </div>
@@ -2672,32 +2586,32 @@ body.mm-lock{overflow:hidden;}
           <tbody>
             <tr>
               <td><strong>Blainville</strong></td>
-              <td>0.72 $</td>
-              <td>3 600 $ / an</td>
+              <td>0,466 $</td>
+              <td>2 765 $ / an</td>
               <td><span class="badge badge-green">Inclus</span></td>
             </tr>
             <tr>
               <td>Sainte-Thérèse</td>
-              <td>0.81 $</td>
-              <td>4 050 $ / an</td>
+              <td>0,456 $</td>
+              <td>3 183 $ / an</td>
               <td><span class="badge badge-green">Inclus</span></td>
             </tr>
             <tr>
               <td>Lorraine</td>
-              <td>0.68 $</td>
-              <td>3 400 $ / an</td>
-              <td><span class="badge badge-gold">Extra 200 $/an</span></td>
-            </tr>
-            <tr>
-              <td>Rosemère</td>
-              <td>0.78 $</td>
-              <td>3 900 $ / an</td>
+              <td>0,526 $</td>
+              <td>3 126 $ / an</td>
               <td><span class="badge badge-green">Inclus</span></td>
             </tr>
             <tr>
+              <td>Rosemère</td>
+              <td>0,497 $</td>
+              <td>2 488 $ / an</td>
+              <td><span class="badge badge-green">Compte global</span></td>
+            </tr>
+            <tr>
               <td>Boisbriand</td>
-              <td>0.85 $</td>
-              <td>4 250 $ / an</td>
+              <td>0,511 $</td>
+              <td>3 059 $ / an</td>
               <td><span class="badge badge-green">Inclus</span></td>
             </tr>
           </tbody>
@@ -2735,12 +2649,12 @@ body.mm-lock{overflow:hidden;}
         </div>
         <div class="footer-col">
           <h5>Guides de villes</h5>
-          <a href="#">Vivre à Blainville</a>
-          <a href="#">Vivre à Sainte-Thérèse</a>
-          <a href="#">Vivre à Lorraine</a>
-          <a href="#">Vivre à Rosemère</a>
-          <a href="#">Vivre à Boisbriand</a>
-          <a href="#">Vivre à Bois-des-Filion</a>
+          <a href="guide-blainville.html">Vivre à Blainville</a>
+          <a href="guide-stetherese.html">Vivre à Sainte-Thérèse</a>
+          <a href="guide-lorraine.html">Vivre à Lorraine</a>
+          <a href="guide-rosemere.html">Vivre à Rosemère</a>
+          <a href="guide-boisbriand.html">Vivre à Boisbriand</a>
+          <a href="guide-boisdesfillions.html">Vivre à Bois-des-Filion</a>
         </div>
         <div class="footer-col">
           <h5>Outils</h5>

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "genereLe": "2026-07-13T14:30:00.000Z",
+  "slug": "genevieve-marchand",
+  "_note": "COURTIÈRE FICTIVE — page démo pour validation du gabarit. Ne pas publier.",
+  "identite": {
+    "type": "solo",
+    "nomComplet": "Geneviève Marchand",
+    "membresEquipe": [],
+    "titre": "Courtier immobilier résidentiel",
+    "permisOaciq": "D9876",
+    "anneeDebut": 2011,
+    "langues": ["Français", "Anglais"]
+  },
+  "territoire": {
+    "villePrincipale": "Deux-Montagnes",
+    "villesSecondaires": ["Saint-Eustache", "Sainte-Marthe-sur-le-Lac"],
+    "quartiers": "Grand-Moulin, secteur de la gare, Vieux-Saint-Eustache",
+    "lienTerritoire": "J'ai grandi à Deux-Montagnes, à trois rues de la gare Grand-Moulin. Mes parents y vivent encore, mes deux filles vont à l'école des Mésanges. Quand un client me demande où sont les parcs avec jeux d'eau ou quelle rue est tranquille le soir, je réponds de mémoire, pas avec Google Maps.",
+    "faitsLocaux": "Depuis l'arrivée du REM, les acheteurs de Montréal découvrent Deux-Montagnes : les maisons à distance de marche de la gare partent souvent en moins de deux semaines. Le bord de l'eau du lac des Deux Montagnes reste sous-estimé par rapport à Rosemère. À Sainte-Marthe-sur-le-Lac, les jeunes familles cherchent surtout dans le secteur des Promenades, près de la nouvelle école."
+  },
+  "servicesEtSpecialites": {
+    "clientele": "Les deux",
+    "specialites": ["Unifamiliale", "Premier acheteur", "Relocalisation"],
+    "services": ["Évaluation gratuite", "Mise en marché complète", "Photo / vidéo professionnelle", "Accompagnement acheteur", "Analyse comparative de marché"],
+    "servicesAutre": "Rapport mensuel du marché envoyé à mes vendeurs",
+    "plusValues": [
+      "Je réponds en moins de 2 heures, 7 jours sur 7",
+      "Photos et vidéo professionnelles incluses dans chaque mandat de vente",
+      "Analyse comparative complète remise dans les 48 heures suivant la première rencontre"
+    ]
+  },
+  "preuveSociale": {
+    "transactions": "Environ 320 transactions depuis 2011, une trentaine par année",
+    "prixEtReconnaissances": "Club 100 % RE/MAX (2019 à 2025), Palme d'excellence 2023",
+    "temoignages": [
+      {
+        "texte": "Geneviève a vendu notre maison de la rue du Lac en 9 jours, 12 000 $ au-dessus du prix demandé. Elle nous a expliqué chaque étape et on n'a jamais senti de pression.",
+        "nom": "M. et Mme Pelletier",
+        "ville": "Deux-Montagnes",
+        "consentement": true
+      },
+      {
+        "texte": "Premiers acheteurs, on ne connaissait rien. Elle a répondu à nos 100 questions, même un dimanche soir, et nous a trouvé notre jumelé à Sainte-Marthe dans notre budget.",
+        "nom": "Karim et Sophie",
+        "ville": "Sainte-Marthe-sur-le-Lac",
+        "consentement": true
+      },
+      {
+        "texte": "Relocalisés de Québec en plein hiver, tout s'est fait à distance : visites en vidéo, documents électroniques, remise des clés impeccable. Une vraie professionnelle.",
+        "nom": "Famille Bergeron",
+        "ville": "Saint-Eustache",
+        "consentement": true
+      }
+    ],
+    "liens": {
+      "googleBusiness": "https://g.page/exemple-genevieve-marchand",
+      "centris": "https://www.centris.ca/fr/courtier-immobilier/exemple",
+      "facebook": "https://www.facebook.com/exemple.gmarchand.immobilier",
+      "instagram": "https://www.instagram.com/exemple.gmarchand.immo",
+      "linkedin": "",
+      "tiktok": "",
+      "youtube": ""
+    }
+  },
+  "contenuBrut": {
+    "presentation": "Avant l'immobilier, j'ai travaillé huit ans comme conseillère en financement hypothécaire dans une caisse de Saint-Eustache. C'est là que j'ai compris que la plupart des gens n'ont pas besoin d'un vendeur, mais de quelqu'un qui traduit : les chiffres, les clauses, les délais. Je suis devenue courtière en 2011 pour faire exactement ça. Ma façon de travailler est simple : je dis ce que je ferais à votre place, même quand ce n'est pas ce que vous espérez entendre. Si votre maison a besoin de 2 000 $ de peinture avant les photos, je vous le dis. Si le condo que vous aimez est surévalué, je vous le dis aussi. Mes clients sont surtout des familles du secteur et des premiers acheteurs — beaucoup me sont référés par d'anciens clients, ce qui reste ma plus grande fierté. Je travaille seule, sans adjointe : quand vous m'appelez, c'est moi qui réponds, c'est moi qui fais vos visites et c'est moi qui négocie pour vous.",
+    "momentMarquant": "En 2022, une dame de 82 ans m'a confié la vente de la maison familiale de la rue Cedar, où elle vivait depuis 54 ans. On a pris trois semaines de plus que prévu pour qu'elle puisse trier ses souvenirs sans se presser. La maison s'est vendue à un jeune couple avec deux enfants — elle leur a laissé une lettre sur le comptoir avec l'histoire de la maison. Les deux familles sont restées en contact. C'est ce genre de transaction qui me rappelle pourquoi je fais ce métier.",
+    "faq": [
+      {
+        "question": "Combien vaut ma maison à Deux-Montagnes en ce moment ?",
+        "reponse": "Ça dépend surtout de votre secteur et de la distance de la gare REM. Je fais une évaluation gratuite sur place : vous repartez avec une fourchette de prix appuyée sur les ventes comparables des 6 derniers mois, en 48 heures."
+      },
+      {
+        "question": "Le REM a-t-il vraiment fait monter les prix à Deux-Montagnes ?",
+        "reponse": "Oui, surtout à distance de marche des gares Deux-Montagnes et Grand-Moulin. Depuis la mise en service, les propriétés bien situées se vendent plus vite que la moyenne du secteur. L'effet est réel, mais il varie beaucoup d'une rue à l'autre."
+      },
+      {
+        "question": "Combien de temps faut-il pour vendre dans le secteur ?",
+        "reponse": "Une propriété bien préparée et affichée au bon prix se vend généralement en 2 à 5 semaines à Deux-Montagnes et Sainte-Marthe-sur-le-Lac. Une maison surévaluée peut traîner des mois — c'est pour ça que je suis franche sur le prix dès le départ."
+      },
+      {
+        "question": "Travaillez-vous avec les premiers acheteurs ?",
+        "reponse": "C'est presque la moitié de ma clientèle. Mon passé en financement hypothécaire aide beaucoup : je vous explique la préapprobation, la mise de fonds, les droits de mutation et les programmes comme le RAP avant même la première visite."
+      },
+      {
+        "question": "Qu'est-ce qui est inclus quand je vends avec vous ?",
+        "reponse": "Photos et vidéo professionnelles, mise en marché sur Centris et les réseaux, visites accompagnées, négociation et suivi jusqu'au notaire. Vous recevez aussi un rapport chaque mois sur l'activité autour de votre propriété."
+      }
+    ]
+  },
+  "contact": {
+    "cellulaire": "450 555-0189",
+    "courriel": "genevieve.marchand@exemple-remax.com",
+    "bureau": {
+      "id": "saint-eustache",
+      "ville": "Saint-Eustache",
+      "adresse": "479 boul. Arthur-Sauvé",
+      "codePostal": "J7P 2B3",
+      "tel": "450 472-7220"
+    },
+    "ctaPrincipal": "evaluation"
+  },
+  "medias": {
+    "dossierCible": "images/courtiers/genevieve-marchand",
+    "portrait": {
+      "fichier": "images/courtiers/genevieve-marchand/portrait.jpg",
+      "nomOriginal": "portrait-demo.jpg",
+      "dataUrl": null,
+      "_note": "Démo : la page utilise un placeholder https://placehold.co en attendant une vraie photo."
+    },
+    "photoEquipe": null,
+    "photosLibres": [],
+    "video": "",
+    "consentement": true
+  }
+}

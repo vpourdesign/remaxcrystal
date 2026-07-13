@@ -2035,6 +2035,7 @@
 .mm-foot a{color:#3578c4;font-weight:600;text-decoration:none;}
 body.mm-lock{overflow:hidden;}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"RE/MAX Crystal","url":"https://www.remaxcrystal.com","telephone":"+1-450-430-4207","address":{"@type":"PostalAddress","streetAddress":"228 boul. du Curé-Labelle","addressLocality":"Sainte-Thérèse","addressRegion":"QC","postalCode":"J7E 2X7","addressCountry":"CA"},"areaServed":"Blainville","parentOrganization":{"@type":"Organization","name":"RE/MAX Québec","url":"https://www.remax-quebec.com"}}</script>
 </head>
 <body>
 
@@ -2126,16 +2127,20 @@ body.mm-lock{overflow:hidden;}
           <span class="toc-num">03</span>
           <span class="toc-label">Marché immobilier</span>
         </a>
-        <a href="#parcs" class="toc-item reveal">
+        <a href="#evenements" class="toc-item reveal">
           <span class="toc-num">04</span>
+          <span class="toc-label">Événements à venir</span>
+        </a>
+        <a href="#parcs" class="toc-item reveal">
+          <span class="toc-num">05</span>
           <span class="toc-label">Parcs & nature</span>
         </a>
         <a href="#transport" class="toc-item reveal">
-          <span class="toc-num">05</span>
+          <span class="toc-num">06</span>
           <span class="toc-label">Transport & accès</span>
         </a>
         <a href="#contact" class="toc-item reveal">
-          <span class="toc-num">06</span>
+          <span class="toc-num">07</span>
           <span class="toc-label">Contactez un expert</span>
         </a>
       </div>
@@ -2440,10 +2445,40 @@ body.mm-lock{overflow:hidden;}
     </div>
   </section>
 
-  <!-- ===== 04 — PARCS ===== -->
+  <style id="events-cta-style">
+    .events-cta{display:flex;align-items:center;gap:clamp(16px,2.5vw,30px);margin-block-start:clamp(26px,4vw,46px);padding:clamp(20px,3vw,32px) clamp(22px,3.5vw,40px);background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:20px;text-decoration:none;box-shadow:0 1px 2px rgba(26,35,50,.05),0 14px 34px rgba(26,50,80,.07);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,border-color .45s;}
+    .events-cta:hover{transform:translateY(-3px);border-color:var(--blue-pale);box-shadow:0 2px 4px rgba(26,35,50,.06),0 22px 48px rgba(26,50,80,.13);}
+    .events-cta-icon{flex-shrink:0;width:clamp(50px,6vw,66px);height:clamp(50px,6vw,66px);border-radius:16px;display:grid;place-items:center;background:linear-gradient(150deg,var(--blue-brand),var(--navy));color:#fff;box-shadow:0 8px 20px rgba(53,120,196,.28);}
+    .events-cta-icon svg{width:50%;height:50%;}
+    .events-cta-text{flex:1 1 auto;display:flex;flex-direction:column;gap:6px;min-width:0;}
+    .events-cta-text strong{font-family:'Raleway',sans-serif;font-weight:800;font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--text-dark);letter-spacing:-.02em;line-height:1.2;}
+    .events-cta-text span{color:var(--text-muted);font-size:clamp(.9rem,1.15vw,1.02rem);line-height:1.55;}
+    .events-cta-arrow{flex-shrink:0;color:var(--blue-brand);transition:transform .45s cubic-bezier(.16,1,.3,1);}
+    .events-cta:hover .events-cta-arrow{transform:translateX(7px);}
+    @media(max-width:600px){.events-cta{flex-wrap:wrap;gap:16px;}.events-cta-arrow{display:none;}}
+  </style>
+  <!-- ===== 05 — ÉVÉNEMENTS ===== -->
+  <section class="section" id="evenements">
+    <div class="container">
+      <div class="section-eyebrow reveal">04 — Événements</div>
+      <h2 class="section-heading reveal">Événements <em>à venir</em></h2>
+      <p class="section-intro reveal">Concerts, festivals, marchés publics, activités familiales : Sainte-Sophie tient à jour le calendrier officiel de tout ce qui se passe près de chez vous. Consultez-le pour ne rien manquer.</p>
+
+      <a class="events-cta reveal" href="https://www.stesophie.ca/evenements" target="_blank" rel="noopener">
+        <span class="events-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18"/><path d="M8 2.5v4M16 2.5v4"/><path d="M7.5 14h3M13.5 14h3M7.5 17.5h3"/></svg></span>
+        <span class="events-cta-text">
+          <strong>Calendrier officiel des événements — Sainte-Sophie</strong>
+          <span>Consultez la programmation complète et toujours à jour sur le site officiel de la municipalité.</span>
+        </span>
+        <span class="events-cta-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 06 — PARCS ===== -->
   <section class="section section-dark" id="parcs">
     <div class="container">
-      <div class="section-eyebrow reveal">04 — Nature</div>
+      <div class="section-eyebrow reveal">05 — Nature</div>
       <h2 class="section-heading reveal">Parcs & <em>espaces verts</em></h2>
       <p class="section-intro reveal">Le territoire de Sainte-Sophie offre un mélange unique de parcs municipaux et de grands espaces naturels.</p>
 
@@ -2467,7 +2502,7 @@ body.mm-lock{overflow:hidden;}
   <!-- ===== 07 — TRANSPORT ===== -->
   <section class="section" id="transport">
     <div class="container">
-      <div class="section-eyebrow reveal">05 — Transport & accès</div>
+      <div class="section-eyebrow reveal">06 — Transport & accès</div>
       <h2 class="section-heading reveal">Se déplacer depuis <em>Sainte-Sophie</em></h2>
       <p class="section-intro reveal">Sainte-Sophie est connectée à la 158 et à la 117, avec Saint-Jérôme à proximité immédiate.</p>
 
@@ -2550,14 +2585,14 @@ body.mm-lock{overflow:hidden;}
             </tr>
             <tr>
               <td>Mirabel</td>
-              <td>0,322 $</td>
-              <td>1 902 $ / an</td>
+              <td>0,317 $</td>
+              <td>1 877 $ / an</td>
               <td><span class="badge badge-green">Inclus</span></td>
             </tr>
             <tr>
               <td>Saint-Janvier (Mirabel)</td>
-              <td>0,322 $</td>
-              <td>1 902 $ / an</td>
+              <td>0,317 $</td>
+              <td>1 877 $ / an</td>
               <td><span class="badge badge-green">Inclus</span></td>
             </tr>
             <tr>
@@ -2577,7 +2612,7 @@ body.mm-lock{overflow:hidden;}
   <section class="cta-section section-dark" id="contact">
     <div class="cta-bg"></div>
     <div class="container cta-content">
-      <div class="section-eyebrow reveal" style="text-align:center;">06 — Prochaine étape</div>
+      <div class="section-eyebrow reveal" style="text-align:center;">07 — Prochaine étape</div>
       <h2 class="cta-heading reveal">Prêt à découvrir <em>Sainte-Sophie</em> ?</h2>
       <p class="cta-text reveal">Nos courtiers connaissent Sainte-Sophie — ses lacs, ses forêts, ses nouveaux quartiers. Parlons-en.</p>
       <div class="cta-buttons reveal">
@@ -2594,9 +2629,9 @@ body.mm-lock{overflow:hidden;}
           <div class="footer-brand-name"><img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></div>
           <p class="footer-brand-desc">Votre courtier au cœur des Laurentides. Expertise locale, résultats exceptionnels.</p>
           <address class="footer-address">
-            550 chemin du Coteau<br>
-            Terrebonne, Québec&nbsp;J6W&nbsp;5J7<br>
-            <a href="tel:4504714111">450&nbsp;471-4111</a>
+            228 boul. du Curé-Labelle<br>
+            Sainte-Thérèse, Québec&nbsp;J7E&nbsp;2X7<br>
+            <a href="tel:4504304207">450&nbsp;430-4207</a>
           </address>
           <img src="brand_assets/digital_ballon.png" alt="RE/MAX" class="footer-ballon">
         </div>
@@ -2628,7 +2663,7 @@ body.mm-lock{overflow:hidden;}
       </div>
       <div class="footer-bottom">
         <div class="footer-legal">
-          <span>&copy; 2026 RE/MAX D'ici — Franchisé indépendant et autonome de <a href="https://www.remax-quebec.com" target="_blank" rel="noopener">RE/MAX Québec</a> — Tous droits réservés</span>
+          <span>&copy; 2026 RE/MAX Crystal — Franchisé indépendant et autonome de <a href="https://www.remax-quebec.com" target="_blank" rel="noopener">RE/MAX Québec</a> — Tous droits réservés</span>
           <span class="footer-divider">·</span>
           <a href="politique-confidentialite.html">Politique de confidentialité</a>
           <span class="footer-divider">·</span>

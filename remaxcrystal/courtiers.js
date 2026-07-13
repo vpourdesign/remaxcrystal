@@ -96,6 +96,11 @@
     return results.slice(0, 6);
   }
 
+  /* ──── PAGES COURTIERS (maillage guides → pages) ──── */
+  /* COURTIER_PAGES:START — généré par build-courtiers.mjs, ne pas éditer */
+  const courtierPages = {};
+  /* COURTIER_PAGES:END */
+
   /* ──── RENDER STEPS ──── */
   function renderStep() {
     const body = document.getElementById('cm-body');
@@ -214,6 +219,7 @@
               <div class="cm-broker-name">${c.nom}</div>
               <div class="cm-broker-title">${c.titre}</div>
               ${c.cityListings ? `<div class="cm-broker-listings"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> ${c.cityListings} propriétés actives à ${filters.ville}</div>` : ''}
+              ${courtierPages[c.nom] ? `<a href="${courtierPages[c.nom]}" class="cm-broker-page">Voir sa page →</a>` : ''}
             </div>
             <div class="cm-broker-actions">
               <a href="tel:${c.tel.replace(/[^0-9+]/g,'')}" class="cm-btn-call" title="Appeler">
@@ -425,6 +431,12 @@
         color: #2daa6e; margin-top: 4px;
       }
       .cm-broker-listings svg { color: #2daa6e; }
+      .cm-broker-page {
+        display: inline-block; margin-top: 5px;
+        font-size: 0.72rem; font-weight: 700;
+        color: #3578c4; text-decoration: none;
+      }
+      .cm-broker-page:hover { text-decoration: underline; }
       .cm-broker-tags { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
       .cm-tag {
         font-size: 0.62rem; font-weight: 600;

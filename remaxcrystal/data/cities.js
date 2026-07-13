@@ -6,6 +6,7 @@ window.CITIES_DATA = {
 
   boisbriand: {
     slug: 'boisbriand',
+    eventsUrl: 'https://www.ville.boisbriand.qc.ca/evenements',
     name: 'Boisbriand',
     nameEm: 'Boisbriand',
     region: 'Basses-Laurentides',
@@ -64,6 +65,7 @@ window.CITIES_DATA = {
 
   boisdesfillions: {
     slug: 'boisdesfillions',
+    eventsUrl: 'https://villebdf.ca/calendrier',
     name: 'Bois-des-Filion',
     nameEm: 'Bois-des-Filion',
     region: 'Basses-Laurentides',
@@ -122,6 +124,7 @@ window.CITIES_DATA = {
 
   deuxmontagnes: {
     slug: 'deuxmontagnes',
+    eventsUrl: 'https://www.ville.deux-montagnes.qc.ca/evenements',
     name: 'Deux-Montagnes',
     nameEm: 'Deux-Montagnes',
     region: 'Basses-Laurentides',
@@ -136,7 +139,7 @@ window.CITIES_DATA = {
     introCaptionTitle: 'Bord du lac',
     introCaptionSub: 'Ambiance villégiature toute l\'année',
     stats: [
-      { value: '18 600+', label: 'Résidents' },
+      { value: '18 400+', label: 'Résidents' },
       { value: '20+', label: 'Parcs & espaces verts' },
       { value: '4', label: 'Écoles primaires' },
       { value: 'REM', label: 'Gare REM directe' }
@@ -173,13 +176,14 @@ window.CITIES_DATA = {
       { dest: 'Oka', car: '15 min', train: '—', dist: '12 km', access: 'Rte 344' }
     ],
     taxKey: 'deuxmontagnes',
-    taxCompare: ['deuxmontagnes', 'stemarthe', 'pointecalumet', 'steustache'],
+    taxCompare: ['deuxmontagnes', 'stemarthe', 'steustache'],
     ctaTagline: 'Nos courtiers connaissent Deux-Montagnes, ses berges et ses quartiers patrimoniaux. Parlons de votre projet.',
     seoKeywords: ['agence immobilière Deux-Montagnes','courtier immobilier Deux-Montagnes','maison à vendre Deux-Montagnes','vivre à Deux-Montagnes','REM Deux-Montagnes','guide Deux-Montagnes 2026']
   },
 
   lorraine: {
     slug: 'lorraine',
+    eventsUrl: 'https://lorraine.ca/evenements',
     name: 'Lorraine',
     nameEm: 'Lorraine',
     region: 'Basses-Laurentides',
@@ -194,7 +198,7 @@ window.CITIES_DATA = {
     introCaptionTitle: 'Identité forestière',
     introCaptionSub: 'Une ville-jardin pensée comme un parc',
     stats: [
-      { value: '9 800+', label: 'Résidents' },
+      { value: '9 700+', label: 'Résidents' },
       { value: '95 %', label: 'Couvert végétal' },
       { value: '2', label: 'Écoles primaires' },
       { value: 'Top 5', label: 'Villes prestigieuses QC' }
@@ -236,6 +240,7 @@ window.CITIES_DATA = {
 
   mirabel: {
     slug: 'mirabel',
+    eventsUrl: 'https://mirabel.ca/calendrier',
     name: 'Mirabel',
     nameEm: 'Mirabel',
     region: 'Laurentides',
@@ -294,6 +299,7 @@ window.CITIES_DATA = {
 
   oka: {
     slug: 'oka',
+    eventsUrl: 'https://municipalite.oka.qc.ca/evenements/',
     name: 'Oka',
     nameEm: 'Oka',
     region: 'Basses-Laurentides',
@@ -352,6 +358,7 @@ window.CITIES_DATA = {
 
   pointecalumet: {
     slug: 'pointecalumet',
+    eventsUrl: 'https://www.pointe-calumet.ca/calendrier/',
     name: 'Pointe-Calumet',
     nameEm: 'Pointe-Calumet',
     region: 'Basses-Laurentides',
@@ -366,7 +373,7 @@ window.CITIES_DATA = {
     introCaptionTitle: 'Ambiance vacances',
     introCaptionSub: 'Une ville d\'eau, d\'été et de loisirs',
     stats: [
-      { value: '6 600+', label: 'Résidents' },
+      { value: '6 400+', label: 'Résidents' },
       { value: 'Super', label: 'Aqua Club' },
       { value: 'Lac', label: 'des Deux Montagnes' },
       { value: '35 min', label: 'Montréal' }
@@ -407,6 +414,7 @@ window.CITIES_DATA = {
 
   rosemere: {
     slug: 'rosemere',
+    eventsUrl: 'https://www.ville.rosemere.qc.ca/calendrier-des-evenements-et-des-activites/',
     name: 'Rosemère',
     nameEm: 'Rosemère',
     region: 'Basses-Laurentides',
@@ -421,7 +429,7 @@ window.CITIES_DATA = {
     introCaptionTitle: 'Élégance résidentielle',
     introCaptionSub: 'Une ville prestigieuse aux Basses-Laurentides',
     stats: [
-      { value: '14 500+', label: 'Résidents' },
+      { value: '14 200+', label: 'Résidents' },
       { value: '25+', label: 'Parcs & espaces verts' },
       { value: '4', label: 'Écoles' },
       { value: 'Top 5', label: 'Villes prestigieuses QC' }
@@ -465,6 +473,7 @@ window.CITIES_DATA = {
 
   'st-janvier': {
     slug: 'st-janvier',
+    eventsUrl: 'https://mirabel.ca/calendrier',
     name: 'Saint-Janvier',
     nameEm: 'Saint-Janvier',
     fullName: 'Saint-Janvier (secteur de Mirabel)',
@@ -523,6 +532,7 @@ window.CITIES_DATA = {
 
   steannedesplaines: {
     slug: 'steannedesplaines',
+    eventsUrl: 'https://www.villesadp.ca/evenements',
     name: 'Sainte-Anne-des-Plaines',
     nameEm: 'Sainte-Anne-des-Plaines',
     region: 'Basses-Laurentides',
@@ -581,6 +591,7 @@ window.CITIES_DATA = {
 
   stemarthe: {
     slug: 'stemarthe',
+    eventsUrl: 'https://vsmsll.ca/evenements',
     name: 'Sainte-Marthe-sur-le-Lac',
     nameEm: 'Sainte-Marthe-sur-le-Lac',
     region: 'Basses-Laurentides',
@@ -632,13 +643,14 @@ window.CITIES_DATA = {
       { dest: 'Oka', car: '15 min', train: '—', dist: '13 km', access: 'Rte 344' }
     ],
     taxKey: 'stemarthe',
-    taxCompare: ['stemarthe', 'deuxmontagnes', 'pointecalumet', 'steustache'],
+    taxCompare: ['stemarthe', 'deuxmontagnes', 'steustache'],
     ctaTagline: 'Nos courtiers connaissent Sainte-Marthe-sur-le-Lac, ses berges et ses développements récents. Parlons de votre projet.',
     seoKeywords: ['agence immobilière Sainte-Marthe-sur-le-Lac','courtier immobilier Sainte-Marthe-sur-le-Lac','maison à vendre Sainte-Marthe-sur-le-Lac','vivre à Sainte-Marthe-sur-le-Lac','digue Sainte-Marthe','guide Sainte-Marthe 2026']
   },
 
   stesophie: {
     slug: 'stesophie',
+    eventsUrl: 'https://www.stesophie.ca/evenements',
     name: 'Sainte-Sophie',
     nameEm: 'Sainte-Sophie',
     region: 'Laurentides',
@@ -696,6 +708,7 @@ window.CITIES_DATA = {
 
   stetherese: {
     slug: 'stetherese',
+    eventsUrl: 'https://www.sainte-therese.ca/evenements',
     name: 'Sainte-Thérèse',
     nameEm: 'Sainte-Thérèse',
     region: 'Basses-Laurentides',
@@ -754,6 +767,7 @@ window.CITIES_DATA = {
 
   steustache: {
     slug: 'steustache',
+    eventsUrl: 'https://www.saint-eustache.ca/evenements',
     name: 'Saint-Eustache',
     nameEm: 'Saint-Eustache',
     region: 'Basses-Laurentides',

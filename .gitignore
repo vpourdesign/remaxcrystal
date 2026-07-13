@@ -11,6 +11,8 @@ __pycache__/
 
 # Backups locaux
 _backup-pre-remax-norms-2026-06-15/
+# Originaux non compressés des photos de villes D'ici (sauvegarde locale)
+remaxdici/images/_originals-villes-backup/
 
 # Sous-projet vidéo (dépôt git autonome, versionné séparément)
 presentation-client/

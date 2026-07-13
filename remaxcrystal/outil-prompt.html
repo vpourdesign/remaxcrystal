@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistant de rédaction pour courtiers — RE/MAX Crystal</title>
+<meta name="description" content="Préparez une consigne claire pour ChatGPT, Claude, Gemini ou Perplexity, adaptée aux besoins des courtiers immobiliers du Québec : annonce, courriel, vidéo, réseaux sociaux ou négociation.">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy-deep: #1a2332;
+    --navy: #1e3350;
+    --navy-mid: #264060;
+    --blue-brand: #3578c4;
+    --blue-light: #6ba3d9;
+    --blue-pale: #b0cfe8;
+    --cream: #f7f5f0;
+    --warm-white: #faf9f6;
+    --gold: #c4a245;
+    --text-dark: #1a1f2b;
+    --text-body: #3d4555;
+    --text-muted: #6b7385;
+    --surface-card: #f8f9fb;
+    --border-subtle: #e2e5eb;
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-card:
+      0 1px 2px rgba(26,35,50,0.05),
+      0 6px 18px rgba(26,35,50,0.07),
+      0 18px 48px rgba(26,35,50,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Raleway', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; cursor: pointer; }
+
+  .container { width: min(92%, 1280px); margin-inline: auto; }
+
+  :focus-visible {
+    outline: 3px solid var(--blue-brand);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ===== TOPBAR (identique au site) ===== */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: clamp(14px, 2vw, 20px) clamp(20px, 4vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+  }
+  .topbar.scrolled {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow: 0 1px 2px rgba(26,35,50,0.04), 0 4px 16px rgba(26,35,50,0.06);
+  }
+  .topbar-logo { display: block; height: clamp(28px, 3.5vw, 38px); position: relative; }
+  .topbar-logo img { height: 100%; width: auto; transition: opacity 0.4s var(--ease-spring); }
+  .topbar-logo .logo-white { opacity: 1; }
+  .topbar-logo .logo-dark { position: absolute; top: 0; left: 0; opacity: 0; }
+  .topbar.scrolled .topbar-logo .logo-white { opacity: 0; }
+  .topbar.scrolled .topbar-logo .logo-dark { opacity: 1; }
+  .topbar-nav { display: flex; gap: clamp(16px, 2.5vw, 32px); align-items: center; }
+  .topbar-nav a {
+    font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .topbar.scrolled .topbar-nav a { color: var(--text-muted); }
+  .topbar-nav a:hover { color: white; }
+  .topbar.scrolled .topbar-nav a:hover { color: var(--navy); }
+  .topbar-cta {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: white !important;
+    background: var(--blue-brand);
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+  }
+  .topbar-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(53,120,196,0.35); }
+  @media (max-width: 760px) { .topbar-nav a:not(.topbar-cta) { display: none; } }
+
+  /* ===== EN-TÊTE DE PAGE ===== */
+  .page-hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse 90% 120% at 85% -20%, rgba(53,120,196,0.22), transparent 55%),
+      radial-gradient(ellipse 70% 90% at 10% 110%, rgba(196,162,69,0.10), transparent 60%),
+      linear-gradient(165deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+    padding: clamp(120px, 16vw, 170px) 0 clamp(140px, 15vw, 180px);
+    text-align: center;
+    overflow: hidden;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: clamp(0.68rem, 1vw, 0.78rem);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue-pale);
+    margin-bottom: 26px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    width: 36px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-light));
+  }
+  .hero-eyebrow::after { background: linear-gradient(90deg, var(--blue-light), transparent); }
+  .page-hero h1 {
+    color: white;
+    font-size: clamp(2rem, 5.4vw, 3.6rem);
+    font-weight: 300;
+    max-width: 21ch;
+    margin-inline: auto;
+  }
+  .page-hero h1 em {
+    font-style: italic;
+    font-weight: 600;
+    background: linear-gradient(100deg, var(--blue-light), var(--blue-pale) 60%, var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .page-hero p {
+    color: rgba(255,255,255,0.72);
+    max-width: 52ch;
+    margin: 22px auto 0;
+    font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+    font-weight: 300;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    padding: 7px 16px;
+    border-radius: 100px;
+  }
+  .hero-badge svg { width: 14px; height: 14px; stroke: var(--gold); }
+
+  /* ===== ZONE OUTIL ===== */
+  .app-zone {
+    position: relative;
+    margin-top: clamp(-100px, -9vw, -70px);
+    padding-bottom: clamp(70px, 9vw, 120px);
+    z-index: 2;
+  }
+  .app-layout {
+    width: min(94%, 1260px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(18px, 2vw, 28px);
+    align-items: start;
+  }
+  .coach-panel {
+    grid-column: span 4;
+    position: sticky;
+    top: 92px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .coach-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,245,240,0.92));
+    border: 1px solid rgba(255,255,255,0.55);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+    padding: clamp(22px, 2.8vw, 30px);
+    backdrop-filter: blur(14px);
+  }
+  .coach-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-brand);
+    margin-bottom: 14px;
+  }
+  .coach-card h2 {
+    font-size: clamp(1.5rem, 2.7vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .coach-card p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-body);
+  }
+  .coach-step-label {
+    margin-top: 18px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .coach-step {
+    margin-top: 6px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.35;
+  }
+  .coach-notes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .coach-notes li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.88rem;
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+  .coach-notes li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-brand), var(--gold));
+  }
+  .coach-privacy h3 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .app-shell {
+    grid-column: span 8;
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  @media (max-width: 980px) {
+    .app-layout { grid-template-columns: 1fr; }
+    .coach-panel, .app-shell { grid-column: auto; }
+    .coach-panel { position: static; }
+  }
+
+  /* ── Barre de progression ── */
+  .progress {
+    position: sticky;
+    top: 82px;
+    z-index: 5;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4px;
+    padding: clamp(18px, 3vw, 26px) clamp(18px, 4vw, 40px) clamp(14px, 2.5vw, 20px);
+    border-bottom: 1px solid var(--border-subtle);
+    background: linear-gradient(180deg, #fdfdfc, var(--warm-white));
+  }
+  .progress-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    position: relative;
+    min-width: 0;
+  }
+  .progress-step::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: calc(-50% + 14px);
+    right: calc(50% + 14px);
+    height: 2px;
+    background: var(--border-subtle);
+    border-radius: 1px;
+    transition: background 0.4s var(--ease-spring);
+  }
+  .progress-step:first-child::before { display: none; }
+  .progress-step.done::before, .progress-step.current::before { background: var(--blue-brand); }
+  .progress-dot {
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--border-subtle);
+    transition: all 0.35s var(--ease-spring);
+    position: relative;
+    z-index: 1;
+  }
+  .progress-step.current .progress-dot {
+    border-color: var(--blue-brand);
+    background: var(--blue-brand);
+    box-shadow: 0 0 0 5px rgba(53,120,196,0.16);
+  }
+  .progress-step.done .progress-dot { border-color: var(--blue-brand); background: var(--blue-brand); }
+  .progress-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    transition: color 0.3s;
+  }
+  .progress-step.current .progress-label { color: var(--navy); }
+  .progress-step.done .progress-label { color: var(--blue-brand); }
+  @media (max-width: 520px) {
+    .progress-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .progress { padding-bottom: 18px; }
+  }
+
+  /* ── Journal de conversation ── */
+  .chat {
+    padding: clamp(20px, 4vw, 36px) clamp(16px, 4vw, 40px) clamp(16px, 3vw, 28px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 260px;
+  }
+  .bubble-row { display: flex; gap: 12px; align-items: flex-end; }
+  .bubble-row.from-user { justify-content: flex-end; }
+  .avatar {
+    width: 32px; height: 32px;
+    flex: 0 0 32px;
+    border-radius: 50%;
+    background: linear-gradient(150deg, var(--navy), var(--navy-mid));
+    display: grid;
+    place-items: center;
+    box-shadow: 0 2px 8px rgba(26,35,50,0.18);
+  }
+  .avatar img { width: 17px; height: auto; }
+  .bubble {
+    max-width: min(85%, 540px);
+    padding: 13px 18px;
+    border-radius: 16px;
+    font-size: 0.94rem;
+    animation: bubbleIn 0.3s var(--ease-spring) both;
+  }
+  @keyframes bubbleIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bubble { animation: none; }
+    * { transition-duration: 0.01ms !important; }
+  }
+  .bubble.bot {
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-bottom-left-radius: 5px;
+    color: var(--text-body);
+  }
+  .bubble.bot strong { color: var(--text-dark); }
+  .bubble.user {
+    background: var(--navy);
+    color: rgba(255,255,255,0.94);
+    border-bottom-right-radius: 5px;
+    font-weight: 500;
+  }
+  .bubble .aide {
+    display: block;
+    margin-top: 7px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .bubble .aide::before { content: '💡 '; }
+
+  /* ── Zone de saisie ── */
+  .input-zone {
+    padding: 6px clamp(16px, 4vw, 40px) clamp(22px, 4vw, 34px);
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    background: white;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: transform 0.25s var(--ease-spring), border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  }
+  .chip:hover {
+    border-color: var(--blue-brand);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(53,120,196,0.16);
+  }
+  .chip:active { transform: translateY(0); }
+  .chip.selected { background: var(--navy); border-color: var(--navy); color: white; }
+
+  /* Cartes (outils IA + objectifs) */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .card-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    background: white;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 15px 17px;
+    transition: transform 0.25s var(--ease-spring), border-color 0.25s, box-shadow 0.25s;
+  }
+  .card-btn:hover {
+    border-color: var(--blue-brand);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(53,120,196,0.14);
+  }
+  .card-btn .card-icon {
+    width: 42px; height: 42px;
+    flex: 0 0 42px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+  }
+  .card-btn .card-icon svg { width: 22px; height: 22px; }
+  .card-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-btn .card-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.94rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+  .card-btn .card-desc { font-size: 0.79rem; color: var(--text-muted); line-height: 1.45; margin-top: 2px; }
+
+  /* Champs texte */
+  .field { display: flex; flex-direction: column; gap: 12px; }
+  .field input[type="text"], .field textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background: white;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 13px 16px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .field textarea { min-height: 96px; resize: vertical; line-height: 1.6; }
+  .field textarea[aria-invalid="true"], .field input[aria-invalid="true"] { border-color: #c44536; box-shadow: 0 0 0 4px rgba(196,69,54,0.12); }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--blue-brand);
+    box-shadow: 0 0 0 4px rgba(53,120,196,0.13);
+  }
+  .field ::placeholder { color: #9aa1b0; }
+  .field-error {
+    font-size: 0.82rem;
+    color: #b63b31;
+    line-height: 1.5;
+  }
+  .field-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 26px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: transform 0.25s var(--ease-spring), box-shadow 0.25s, background 0.25s;
+  }
+  .btn-primary { background: var(--navy); color: white; }
+  .btn-primary:hover {
+    background: var(--navy-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30,51,80,0.28);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1.5px solid var(--border-subtle);
+  }
+  .btn-ghost:hover { color: var(--navy); border-color: var(--blue-pale); background: var(--surface-card); }
+  .btn svg { width: 15px; height: 15px; }
+
+  /* Bouton retour */
+  .back-row { padding: 0 clamp(16px, 4vw, 40px) 16px; }
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: color 0.25s, background 0.25s;
+  }
+  .btn-back:hover { color: var(--navy); background: var(--surface-card); }
+  .btn-back svg { width: 14px; height: 14px; }
+
+  /* ── Résultat ── */
+  .result { padding: clamp(24px, 4vw, 38px) clamp(16px, 4vw, 40px) clamp(26px, 4vw, 40px); }
+  .result, .recap, .prompt-card, .coach-card { scroll-margin-top: 112px; }
+  .result-head { text-align: center; margin-bottom: 26px; }
+  .result-head .result-check {
+    width: 52px; height: 52px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: linear-gradient(140deg, var(--blue-brand), var(--navy-mid));
+    display: grid;
+    place-items: center;
+    box-shadow: 0 8px 24px rgba(53,120,196,0.3);
+  }
+  .result-head .result-check svg { width: 24px; height: 24px; stroke: white; }
+  .result-head h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 700; }
+  .result-head p { color: var(--text-muted); font-size: 0.92rem; margin-top: 6px; }
+
+  /* Jauge */
+  .gauge { margin: 0 auto 28px; max-width: 480px; }
+  .gauge-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 9px;
+  }
+  .gauge-top .gauge-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .gauge-top .gauge-value {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--navy);
+  }
+  .gauge-value em { font-style: normal; color: var(--gold); }
+  .gauge-track {
+    height: 12px;
+    background: var(--cream);
+    border: 1px solid var(--border-subtle);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .gauge-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--blue-brand), var(--blue-light) 65%, var(--gold));
+    transition: width 1.1s var(--ease-spring);
+  }
+
+  /* Carte prompt */
+  .prompt-card {
+    position: relative;
+    background: var(--cream);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 22px 22px 20px;
+    margin-bottom: 12px;
+  }
+  .prompt-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 24px; right: 24px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, var(--blue-brand), var(--gold));
+  }
+  .prompt-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 620px) {
+    .prompt-card-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  .prompt-card-head .prompt-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .btn-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 9px 18px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.25s var(--ease-spring), box-shadow 0.25s;
+  }
+  .btn-copy:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(30,51,80,0.3); }
+  .btn-copy.copied { background: #2e7d4f; }
+  .btn-copy svg { width: 14px; height: 14px; }
+  .prompt-text {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--text-dark);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 340px;
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+
+  /* Sections explication / conseils */
+  .result-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 22px 0 26px;
+  }
+  @media (max-width: 640px) { .result-cols { grid-template-columns: 1fr; } }
+  .info-block {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .info-block h3 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-block h3 svg { width: 15px; height: 15px; stroke: var(--gold); flex: 0 0 15px; }
+  .info-block ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .info-block li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+  .info-block li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 9px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--blue-brand);
+    opacity: 0.75;
+  }
+
+  .result-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+  /* Récapitulatif (modifier mes réponses) */
+  .recap { margin-top: 26px; border-top: 1px dashed var(--border-subtle); padding-top: 20px; }
+  .recap summary {
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+  .recap summary::-webkit-details-marker { display: none; }
+  .recap summary:hover { color: var(--navy); background: var(--surface-card); }
+  .recap-list { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .recap-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+  .recap-item .recap-q { color: var(--text-muted); font-size: 0.78rem; }
+  .recap-item .recap-a { color: var(--text-dark); font-weight: 600; }
+  .recap-item button {
+    flex: 0 0 auto;
+    background: none;
+    border: none;
+    color: var(--blue-brand);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px 9px;
+    border-radius: 7px;
+  }
+  .recap-item button:hover { background: rgba(53,120,196,0.1); }
+
+  /* ===== SECTION RASSURANCE ===== */
+  .reassure { padding: 0 0 clamp(80px, 10vw, 120px); }
+  .reassure-grid {
+    width: min(94%, 980px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 720px) { .reassure-grid { grid-template-columns: 1fr; } }
+  .reassure-card {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 26px 26px 24px;
+    box-shadow: 0 1px 2px rgba(26,35,50,0.03), 0 8px 24px rgba(26,35,50,0.04);
+  }
+  .reassure-card .num {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .reassure-card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 8px; }
+  .reassure-card p { font-size: 0.86rem; line-height: 1.65; color: var(--text-muted); }
+
+  /* ===== FOOTER (identique au site) ===== */
+  .footer { background: var(--navy-deep); color: rgba(255,255,255,0.6); padding: clamp(50px, 7vw, 80px) 0 30px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: clamp(30px, 5vw, 60px); margin-bottom: 50px; }
+  @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand-name img { height: 34px; width: auto; margin-bottom: 16px; }
+  .footer-brand-desc { font-size: 0.88rem; line-height: 1.7; max-width: 34ch; }
+  .footer-col h5 {
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .footer-col a { display: block; font-size: 0.86rem; padding: 4px 0; transition: color 0.3s; }
+  .footer-col a:hover { color: var(--blue-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.09);
+    padding-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 0.78rem;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== TOPBAR ===== -->
+  <nav class="topbar" id="topbar">
+    <a href="index.html" class="topbar-logo" aria-label="Retour à l'accueil RE/MAX Crystal">
+      <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" class="logo-white">
+      <img src="brand_assets/Crystal-long-noir-crystal.png" alt="" class="logo-dark" aria-hidden="true">
+    </a>
+    <div class="topbar-nav">
+      <a href="index.html">Accueil</a>
+      <a href="https://remaxcrystal.com/fr/nos-courtiers.html" target="_blank" rel="noopener">Équipe</a>
+      <a href="https://remaxcrystal.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés</a>
+      <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="topbar-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ===== EN-TÊTE ===== -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-eyebrow">Outil exclusif — Courtiers</div>
+      <h1>Assistant de rédaction pour <em>courtiers immobiliers</em></h1>
+      <p>Répondez à quelques questions simples et obtenez une consigne claire à coller dans ChatGPT, Claude, Gemini ou Perplexity, pensée pour la réalité du courtage au Québec.</p>
+      <div class="hero-badges">
+        <span class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Environ 2 minutes</span>
+        <span class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Gratuit, rien à installer</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== OUTIL ===== -->
+  <main class="app-zone">
+    <div class="app-layout">
+      <aside class="coach-panel" aria-label="Repères Crystal">
+        <div class="coach-card">
+          <div class="coach-kicker">Le cadre Crystal</div>
+          <h2>Un bon texte commence par les bons faits.</h2>
+          <p>On cadre l’outil, l’objectif, puis les détails qui changent vraiment le résultat. L’idée est d’aller droit à l’essentiel, sans jargon.</p>
+          <div class="coach-step-label">Étape en cours</div>
+          <div class="coach-step" id="coachStep">Choisissez l’outil que vous utilisez.</div>
+          <ul class="coach-notes">
+            <li>Conçu pour le courtage immobilier au Québec.</li>
+            <li>Vous validez toujours les faits, le ton et la conformité.</li>
+            <li>Les meilleures sorties viennent de détails concrets, pas de généralités.</li>
+          </ul>
+        </div>
+        <div class="coach-card coach-privacy">
+          <h3>Confidentialité</h3>
+          <p>Évitez les noms complets, limites de négociation, numéros de dossier, coordonnées, motivations sensibles ou détails confidentiels. Privilégiez les initiales et les faits utiles.</p>
+        </div>
+      </aside>
+
+      <section class="app-shell" aria-label="Assistant de rédaction">
+        <ol class="progress" id="progress" aria-label="Progression"></ol>
+        <div class="sr-only" id="liveStatus" role="status" aria-live="polite"></div>
+        <div class="sr-only" id="copyStatus" role="status" aria-live="polite"></div>
+        <div class="chat" id="chat" role="log" aria-live="off" aria-label="Conversation avec l'assistant"></div>
+        <div class="back-row" id="backRow" hidden>
+          <button type="button" class="btn-back" id="btnBack">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+            Revenir à la question précédente
+          </button>
+        </div>
+        <div class="input-zone" id="inputZone"></div>
+        <div class="result" id="resultZone" hidden></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== RASSURANCE ===== -->
+  <section class="reassure" aria-label="Comment ça fonctionne">
+    <div class="reassure-grid">
+      <div class="reassure-card">
+        <div class="num">01 —</div>
+        <h3>Répondez simplement</h3>
+        <p>Des questions de courtier, pas de technicien : type de propriété, points forts, ton souhaité. Vous pouvez passer celles qui ne s'appliquent pas.</p>
+      </div>
+        <div class="reassure-card">
+          <div class="num">02 —</div>
+          <h3>Copiez votre consigne</h3>
+          <p>Nous assemblons vos réponses en une consigne nette, adaptée à l’outil que vous utilisez, prête à coller en un clic.</p>
+        </div>
+      <div class="reassure-card">
+        <div class="num">03 —</div>
+        <h3>Restez le professionnel</h3>
+        <p>L'outil rédige, vous validez. Relisez toujours le résultat : vous restez responsable de la conformité de vos communications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name"><img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></div>
+          <p class="footer-brand-desc">Vos courtiers de confiance sur la Rive-Nord de Montréal. Ancrés dans le territoire, du premier rendez-vous à la signature.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Nos outils</h5>
+          <a href="outil-prompt.html">Assistant de rédaction</a>
+          <a href="index.html#outils-rapides">Outils locaux</a>
+          <a href="index.html">Guides des villes</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener">Bureau principal</a>
+          <a href="https://remaxcrystal.com/fr/nos-courtiers.html" target="_blank" rel="noopener">Nos courtiers</a>
+          <a href="https://remaxcrystal.com/fr/carriere.html" target="_blank" rel="noopener">Carrières</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RE/MAX Crystal. Tous droits réservés. · agence.remaxcrystal.com</span>
+        <span>Site web par <a href="https://vpourdesign.com" target="_blank" rel="noopener" style="color:inherit;"><strong>vpourdesign</strong></a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/prompt-engine.js"></script>
+  <script src="data/prompt-templates.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    var E = window.PromptEngine;
+    var $chat = document.getElementById('chat');
+    var $input = document.getElementById('inputZone');
+    var $result = document.getElementById('resultZone');
+    var $progress = document.getElementById('progress');
+    var $backRow = document.getElementById('backRow');
+    var $coachStep = document.getElementById('coachStep');
+    var $liveStatus = document.getElementById('liveStatus');
+    var $copyStatus = document.getElementById('copyStatus');
+
+    function el(tag, cls, html) {
+      var x = document.createElement(tag);
+      if (cls) x.className = cls;
+      if (html !== undefined) x.innerHTML = html;
+      return x;
+    }
+    function texteSecurise(s) {
+      var d = document.createElement('div');
+      d.textContent = s == null ? '' : String(s);
+      return d.innerHTML;
+    }
+    function bulleBot(html) {
+      var row = el('div', 'bubble-row');
+      var av = el('div', 'avatar', '<img src="brand_assets/digital_ballon.png" alt="">');
+      var b = el('div', 'bubble bot', html);
+      row.appendChild(av); row.appendChild(b);
+      return row;
+    }
+
+    if (!E || typeof E.validateTemplates !== 'function' || !Array.isArray(window.PROMPT_TEMPLATES)) {
+      $chat.innerHTML = '';
+      $chat.appendChild(bulleBot('Le guide n’a pas pu se charger correctement pour le moment. Vérifiez les fichiers de données puis rechargez la page.'));
+      console.error('[Guide de prompting] PromptEngine ou PROMPT_TEMPLATES introuvable.');
+      return;
+    }
+
+    var validation = E.validateTemplates(window.PROMPT_TEMPLATES || []);
+    validation.erreurs.forEach(function (err) { console.error('[Guide de prompting] ' + err); });
+    var MODELES = validation.valides;
+    var PREFERS_REDUCED_MOTION = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+    function mouvementReduit() {
+      return !!(PREFERS_REDUCED_MOTION && PREFERS_REDUCED_MOTION.matches);
+    }
+    function comportementScroll() {
+      return mouvementReduit() ? 'auto' : 'smooth';
+    }
+    function scrollVers(noeud, block) {
+      if (noeud && typeof noeud.scrollIntoView === 'function') {
+        noeud.scrollIntoView({ behavior: comportementScroll(), block: block || 'nearest' });
+      }
+    }
+    function remonterOutil() {
+      var zone = document.querySelector('.app-zone');
+      if (!zone) return;
+      window.scrollTo({ top: Math.max(0, zone.offsetTop - 90), behavior: comportementScroll() });
+    }
+
+    /* ── Hook analytique optionnel (brancher GA4 plus tard) ──
+       window.onPromptToolEvent = function (name, payload) { ... } */
+    function emitEvent(name, payload) {
+      try {
+        if (typeof window.onPromptToolEvent === 'function') window.onPromptToolEvent(name, payload || {});
+      } catch (e) { /* le suivi ne doit jamais briser l'outil */ }
+    }
+
+    /* ════════════════════════════════════════════
+       ICÔNES (SVG inline, stroke currentColor)
+       ════════════════════════════════════════════ */
+    var ICONES_OUTIL = {
+      chatgpt: { fond: '#e7f6f1', couleur: '#10a37f', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/><path d="M12 8.2l3.3 1.9v3.8L12 15.8l-3.3-1.9v-3.8z"/></svg>' },
+      claude: { fond: '#faeee7', couleur: '#d97757', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 4v4M12 16v4M4 12h4M16 12h4M6.3 6.3l2.9 2.9M14.8 14.8l2.9 2.9M17.7 6.3l-2.9 2.9M9.2 14.8l-2.9 2.9"/></svg>' },
+      gemini: { fond: '#e9f0fc', couleur: '#3d6fd6', svg: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.6 5.5 4.5 9.4 10 10-5.5.6-9.4 4.5-10 10-.6-5.5-4.5-9.4-10-10 5.5-.6 9.4-4.5 10-10z"/></svg>' },
+      perplexity: { fond: '#e6f3f5', couleur: '#1f8a9d', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 7l6-4v5.5M12 7L6 3v5.5M12 12l7 4.5V11l-7-4M12 12l-7 4.5V11l7-4"/></svg>' },
+      autre: { fond: '#f0f1f4', couleur: '#4a5468', svg: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="18" cy="12" r="1.8"/></svg>' }
+    };
+
+    var ICONES_MODELE = {
+      maison: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/><path d="M10 19v-5h4v5"/></svg>',
+      courriel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+      video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>',
+      reseaux: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l16-6-3 14-5-4-3 3v-4z"/></svg>',
+      negociation: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7l5-2 5 2"/><path d="M4 13c0 1.7 1.3 3 3 3s3-1.3 3-3L7 7l-3 6zM14 13c0 1.7 1.3 3 3 3s3-1.3 3-3l-3-6-3 6z"/></svg>',
+      prospection: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg>'
+    };
+
+    var COULEURS_MODELE = ['#e9f0fc', '#faeee7', '#e7f6f1', '#fdf3e2', '#efe9fa', '#e6f3f5'];
+    var COULEURS_MODELE_FG = ['#3d6fd6', '#c06a4a', '#0f8c6c', '#b07d1e', '#7357c0', '#1f8a9d'];
+
+    /* ════════════════════════════════════════════
+       ÉTAT + RÉDUCTEUR (machine à états)
+       ════════════════════════════════════════════ */
+    var etatInitial = function () {
+      return {
+        phase: 'outil',          // outil → niveau → objectif → questions → clarifs → resultat
+        outil: null,
+        niveau: null,
+        modeleId: null,
+        qIndex: 0,
+        clarifs: null,           // clarifications sélectionnées (figées au moment du calcul)
+        cIndex: 0,
+        reponses: {},            // id de question → réponse
+        passees: {},             // id de question → true si passée volontairement
+        edition: null            // cible en cours de modification depuis le résultat
+      };
+    };
+    var etat = etatInitial();
+
+    function modeleParId(id) {
+      for (var i = 0; i < MODELES.length; i++) {
+        if (MODELES[i].id === id) return MODELES[i];
+      }
+      return null;
+    }
+    function modeleCourant() {
+      return modeleParId(etat.modeleId);
+    }
+    function modeleCourantDe(n) {
+      return modeleParId(n.modeleId) || { questions: [], clarifications: [] };
+    }
+    function modeleSupporteOutil(modele, outil) {
+      return !!(modele && Array.isArray(modele.outils) && modele.outils.indexOf(outil) !== -1);
+    }
+    function modelesCompatibles(outil) {
+      return MODELES.filter(function (modele) {
+        return !outil || modeleSupporteOutil(modele, outil);
+      });
+    }
+    function synchroniserClarifs(n) {
+      var modele = modeleCourantDe(n);
+      if (!modele || !modele.questions || modele.questions.length === 0) {
+        n.clarifs = null;
+        n.cIndex = 0;
+        return;
+      }
+      var clarifsRepondues = (n.clarifs || []).filter(function (id) {
+        return E.estRepondu(n.reponses[id]);
+      });
+      var clarifsSuggerees = [];
+      if (E.computeScore(modele, n.reponses).score < E.SEUIL_CLARIFICATION) {
+        clarifsSuggerees = E.selectClarifications(modele, n.reponses).map(function (c) { return c.questionId; });
+      }
+      var fusion = [];
+      clarifsRepondues.concat(clarifsSuggerees).forEach(function (id) {
+        if (fusion.indexOf(id) === -1) fusion.push(id);
+      });
+      n.clarifs = fusion.length ? fusion : null;
+      if (!n.clarifs) n.cIndex = 0;
+      else if (n.cIndex >= n.clarifs.length) n.cIndex = n.clarifs.length - 1;
+    }
+
+    function reduire(e, action) {
+      var n = JSON.parse(JSON.stringify(e));
+      var m;
+      var modeleActuel;
+      switch (action.type) {
+        case 'CHOISIR_OUTIL':
+          n.outil = action.valeur;
+          if (n.edition && n.edition.cible === 'outil') {
+            modeleActuel = modeleCourantDe(n);
+            if (modeleSupporteOutil(modeleActuel, action.valeur)) {
+              n.edition = null;
+              synchroniserClarifs(n);
+              n.phase = 'resultat';
+            } else {
+              n.modeleId = null;
+              n.qIndex = 0;
+              n.cIndex = 0;
+              n.phase = 'objectif';
+            }
+          } else {
+            n.phase = 'niveau';
+          }
+          emitEvent('outil_choisi', { outil: action.valeur });
+          break;
+        case 'CHOISIR_NIVEAU':
+          n.niveau = action.valeur;
+          if (n.edition && n.edition.cible === 'niveau') {
+            n.edition = null;
+            synchroniserClarifs(n);
+            n.phase = 'resultat';
+          } else {
+            n.phase = 'objectif';
+          }
+          emitEvent('niveau_choisi', { niveau: action.valeur });
+          break;
+        case 'CHOISIR_MODELE':
+          var memeModele = n.modeleId === action.valeur;
+          n.modeleId = action.valeur;
+          if (n.edition && n.edition.cible === 'objectif') {
+            if (memeModele) {
+              n.edition = null;
+              synchroniserClarifs(n);
+              n.phase = 'resultat';
+            } else {
+              n.phase = 'questions';
+              n.qIndex = 0;
+              n.clarifs = null;
+              n.cIndex = 0;
+              n.reponses = {};
+              n.passees = {};
+              n.edition = null;
+            }
+          } else {
+            n.phase = 'questions';
+            n.qIndex = 0;
+            n.clarifs = null;
+            n.cIndex = 0;
+          }
+          emitEvent('modele_choisi', { modele: action.valeur });
+          break;
+        case 'REPONDRE': {
+          n.reponses[action.id] = action.valeur;
+          delete n.passees[action.id];
+          if (n.edition) {
+            n.edition = null;
+            synchroniserClarifs(n);
+            n.phase = 'resultat';
+            break;
+          }
+          avancer(n);
+          break;
+        }
+        case 'PASSER': {
+          n.passees[action.id] = true;
+          delete n.reponses[action.id];
+          if (n.edition) {
+            n.edition = null;
+            synchroniserClarifs(n);
+            n.phase = 'resultat';
+            break;
+          }
+          avancer(n);
+          break;
+        }
+        case 'RECULER':
+          reculer(n);
+          break;
+        case 'MODIFIER_DEPUIS_RESULTAT':
+          m = action;
+          n.edition = m;
+          if (m.cible === 'outil') { n.phase = 'outil'; }
+          else if (m.cible === 'niveau') { n.phase = 'niveau'; }
+          else if (m.cible === 'objectif') { n.phase = 'objectif'; }
+          else if (m.cible === 'question') { n.phase = 'questions'; n.qIndex = m.index; }
+          else if (m.cible === 'clarif') { n.phase = 'clarifs'; n.cIndex = m.index; }
+          break;
+        case 'RECOMMENCER':
+          n = etatInitial();
+          emitEvent('recommence', {});
+          break;
+      }
+      return n;
+    }
+
+    /* Fait avancer l'état après une réponse (mutation du brouillon du réducteur). */
+    function avancer(n) {
+      var modele = null;
+      for (var i = 0; i < MODELES.length; i++) if (MODELES[i].id === n.modeleId) modele = MODELES[i];
+      if (n.phase === 'questions') {
+        if (n.qIndex + 1 < modele.questions.length) { n.qIndex += 1; return; }
+        /* Fin des questions : vérifier le score */
+        var s = E.computeScore(modele, n.reponses).score;
+        if (s < E.SEUIL_CLARIFICATION) {
+          var clarifs = E.selectClarifications(modele, n.reponses);
+          if (clarifs.length > 0) {
+            n.clarifs = clarifs.map(function (c) { return c.questionId; });
+            n.cIndex = 0;
+            n.phase = 'clarifs';
+            emitEvent('clarifications_proposees', { nombre: clarifs.length, score: s });
+            return;
+          }
+        }
+        n.phase = 'resultat';
+        return;
+      }
+      if (n.phase === 'clarifs') {
+        if (n.cIndex + 1 < n.clarifs.length) { n.cIndex += 1; return; }
+        synchroniserClarifs(n);
+        n.phase = 'resultat';
+      }
+    }
+
+    /* Recule d'une étape sans perdre les réponses. */
+    function reculer(n) {
+      if (n.edition) { n.edition = null; n.phase = 'resultat'; return; }
+      switch (n.phase) {
+        case 'niveau': n.phase = 'outil'; break;
+        case 'objectif': n.phase = 'niveau'; break;
+        case 'questions':
+          if (n.qIndex > 0) n.qIndex -= 1;
+          else n.phase = 'objectif';
+          break;
+        case 'clarifs':
+          if (n.cIndex > 0) n.cIndex -= 1;
+          else { n.phase = 'questions'; n.qIndex = Math.max(0, modeleCourantDe(n).questions.length - 1); }
+          break;
+        case 'resultat':
+          if (n.clarifs && n.clarifs.length > 0) { n.phase = 'clarifs'; n.cIndex = n.clarifs.length - 1; }
+          else { n.phase = 'questions'; n.qIndex = Math.max(0, modeleCourantDe(n).questions.length - 1); }
+          break;
+      }
+    }
+
+    function dispatch(action) {
+      etat = reduire(etat, action);
+      rendre();
+    }
+
+    /* ════════════════════════════════════════════
+       RENDU
+       ════════════════════════════════════════════ */
+    var ETAPES = [
+      { id: 'outil', label: 'Outil' },
+      { id: 'niveau', label: 'Aisance' },
+      { id: 'objectif', label: 'Objectif' },
+      { id: 'questions', label: 'Détails' },
+      { id: 'resultat', label: 'Consigne' }
+    ];
+    var NIVEAUX = [
+      { id: 'debutant', label: 'J’utilise l’IA rarement ou jamais' },
+      { id: 'intermediaire', label: 'Je m’en sers de temps en temps' },
+      { id: 'avance', label: 'Je l’utilise tous les jours' }
+    ];
+
+    function bulleUser(texte) {
+      var row = el('div', 'bubble-row from-user');
+      row.appendChild(el('div', 'bubble user', texteSecurise(texte)));
+      return row;
+    }
+
+    function indexEtapeCourante() {
+      if (etat.phase === 'outil') return 0;
+      if (etat.phase === 'niveau') return 1;
+      if (etat.phase === 'objectif') return 2;
+      if (etat.phase === 'questions' || etat.phase === 'clarifs') return 3;
+      return 4;
+    }
+
+    function rendreProgress() {
+      var cur = indexEtapeCourante();
+      $progress.innerHTML = '';
+      ETAPES.forEach(function (s, i) {
+        var li = el('li', 'progress-step' + (i < cur ? ' done' : i === cur ? ' current' : ''));
+        if (i === cur) li.setAttribute('aria-current', 'step');
+        li.setAttribute('aria-label', s.label);
+        li.appendChild(el('span', 'progress-dot'));
+        li.appendChild(el('span', 'progress-label', texteSecurise(s.label)));
+        $progress.appendChild(li);
+      });
+    }
+
+    function consigneEtapeCourante() {
+      var m = modeleCourant();
+      if (etat.phase === 'outil') return 'Choisissez l’outil que vous utilisez.';
+      if (etat.phase === 'niveau') return 'Indiquez votre niveau d’aisance.';
+      if (etat.phase === 'objectif') return 'Choisissez le type de texte à préparer.';
+      if (etat.phase === 'questions' && m) return 'Précisez le dossier : ' + m.questions[etat.qIndex].label;
+      if (etat.phase === 'clarifs' && m && etat.clarifs && etat.clarifs[etat.cIndex]) {
+        var c = trouverClarif(m, etat.clarifs[etat.cIndex]);
+        if (c) return 'Ajoutez un détail utile : ' + c.label;
+      }
+      return 'Votre consigne est prête à relire, copier ou ajuster.';
+    }
+
+    function annonceCourantePourLecteurs() {
+      var m = modeleCourant();
+      if (etat.phase === 'questions' && m) return m.questions[etat.qIndex].label;
+      if (etat.phase === 'clarifs' && m && etat.clarifs && etat.clarifs[etat.cIndex]) {
+        var c = trouverClarif(m, etat.clarifs[etat.cIndex]);
+        return c ? c.label : consigneEtapeCourante();
+      }
+      if (etat.phase === 'resultat') return 'Votre consigne est prête.';
+      return consigneEtapeCourante();
+    }
+
+    function mettreAJourCoachEtStatut() {
+      if ($coachStep) $coachStep.textContent = consigneEtapeCourante();
+      if ($liveStatus) $liveStatus.textContent = annonceCourantePourLecteurs();
+    }
+
+    /* Reconstruit le fil de conversation à partir de l'état (source de vérité unique). */
+    function rendreChat() {
+      $chat.innerHTML = '';
+      $chat.appendChild(bulleBot('Commençons. En quelques questions, je prépare une consigne claire, pensée pour votre réalité de courtier au Québec.'));
+
+      var m = modeleCourant();
+
+      if (etat.outil) {
+        $chat.appendChild(bulleBot('<strong>Quel outil utilisez-vous?</strong>'));
+        $chat.appendChild(bulleUser(E.TOOLS[etat.outil] ? E.TOOLS[etat.outil].nom : etat.outil));
+      }
+      if (etat.niveau) {
+        $chat.appendChild(bulleBot('<strong>À quel point êtes-vous à l’aise avec ce genre d’outil?</strong>'));
+        var nv = NIVEAUX.filter(function (n) { return n.id === etat.niveau; })[0];
+        $chat.appendChild(bulleUser(nv ? nv.label : etat.niveau));
+      }
+      if (m && (etat.phase === 'questions' || etat.phase === 'clarifs' || etat.phase === 'resultat')) {
+        $chat.appendChild(bulleBot('<strong>Que voulez-vous créer aujourd’hui?</strong>'));
+        $chat.appendChild(bulleUser(m.titre));
+      }
+
+      if (m && (etat.phase === 'questions' || etat.phase === 'clarifs' || etat.phase === 'resultat')) {
+        var borneQ = etat.phase === 'questions' ? etat.qIndex : m.questions.length;
+        m.questions.slice(0, borneQ).forEach(function (q) {
+          $chat.appendChild(bulleBot('<strong>' + texteSecurise(q.label) + '</strong>'));
+          if (E.estRepondu(etat.reponses[q.id])) $chat.appendChild(bulleUser(etat.reponses[q.id]));
+          else $chat.appendChild(bulleUser('(question passée)'));
+        });
+
+        if (etat.phase === 'questions') {
+          var q = m.questions[etat.qIndex];
+          var aide = q.aide ? '<span class="aide">' + texteSecurise(q.aide) + '</span>' : '';
+          $chat.appendChild(bulleBot('<strong>' + texteSecurise(q.label) + '</strong>' + aide));
+        }
+
+        if (etat.phase === 'clarifs' || (etat.phase === 'resultat' && etat.clarifs)) {
+          var clarifsAffichees = etat.phase === 'clarifs' ? etat.clarifs.slice(0, etat.cIndex) : etat.clarifs;
+          if (etat.clarifs && etat.clarifs.length > 0) {
+            $chat.appendChild(bulleBot('Quelques précisions peuvent encore améliorer le résultat. J’en ai retenu ' + etat.clarifs.length + ' à vérifier avec vous.'));
+          }
+          clarifsAffichees.forEach(function (cid) {
+            var c = trouverClarif(m, cid);
+            if (!c) return;
+            $chat.appendChild(bulleBot('<strong>' + texteSecurise(c.label) + '</strong>'));
+            if (E.estRepondu(etat.reponses[cid])) $chat.appendChild(bulleUser(etat.reponses[cid]));
+            else $chat.appendChild(bulleUser('(question passée)'));
+          });
+          if (etat.phase === 'clarifs') {
+            var cc = trouverClarif(m, etat.clarifs[etat.cIndex]);
+            if (cc) $chat.appendChild(bulleBot('<strong>' + texteSecurise(cc.label) + '</strong>'));
+          }
+        }
+      }
+
+      if (etat.phase === 'resultat') {
+        $chat.appendChild(bulleBot('Votre consigne est prête. Vous pouvez la relire, la copier ou ajuster une réponse.'));
+      }
+    }
+
+    function trouverClarif(m, id) {
+      var liste = m.clarifications || [];
+      for (var i = 0; i < liste.length; i++) if (liste[i].questionId === id) return liste[i];
+      return null;
+    }
+
+    /* ── Zone de saisie selon la phase ── */
+    function rendreInput() {
+      $input.innerHTML = '';
+      $result.hidden = true;
+      $input.hidden = false;
+      var m = modeleCourant();
+
+      if (etat.phase === 'outil') {
+        var cartes = el('div', 'cards');
+        ['chatgpt', 'claude', 'gemini', 'perplexity', 'autre'].forEach(function (id) {
+          var ic = ICONES_OUTIL[id];
+          var b = el('button', 'card-btn');
+          b.type = 'button';
+          b.innerHTML = '<span class="card-icon" style="background:' + ic.fond + ';color:' + ic.couleur + '">' + ic.svg + '</span><span class="card-copy"><span class="card-title">' + E.TOOLS[id].nom + '</span>' + (id === 'autre' ? '<span class="card-desc">Copilot, Mistral ou un autre assistant</span>' : '') + '</span>';
+          b.addEventListener('click', function () { dispatch({ type: 'CHOISIR_OUTIL', valeur: id }); });
+          cartes.appendChild(b);
+        });
+        $input.appendChild(cartes);
+        return;
+      }
+
+      if (etat.phase === 'niveau') {
+        var chips = el('div', 'chips');
+        NIVEAUX.forEach(function (n) {
+          var c = el('button', 'chip' + (etat.niveau === n.id ? ' selected' : ''), texteSecurise(n.label));
+          c.type = 'button';
+          c.addEventListener('click', function () { dispatch({ type: 'CHOISIR_NIVEAU', valeur: n.id }); });
+          chips.appendChild(c);
+        });
+        $input.appendChild(chips);
+        return;
+      }
+
+      if (etat.phase === 'objectif') {
+        var grille = el('div', 'cards');
+        var modeles = modelesCompatibles(etat.outil);
+        if (modeles.length === 0) {
+          $input.appendChild(el('div', 'bubble bot', 'Aucun modèle n’est prévu pour cet outil pour le moment. Choisissez-en un autre.'));
+          return;
+        }
+        modeles.forEach(function (mod, i) {
+          var b = el('button', 'card-btn');
+          b.type = 'button';
+          var ic = ICONES_MODELE[mod.icone] || ICONES_MODELE.maison;
+          var fond = COULEURS_MODELE[i % COULEURS_MODELE.length];
+          var fg = COULEURS_MODELE_FG[i % COULEURS_MODELE_FG.length];
+          b.innerHTML = '<span class="card-icon" style="background:' + fond + ';color:' + fg + '">' + ic + '</span><span class="card-copy"><span class="card-title">' + texteSecurise(mod.titre) + '</span><span class="card-desc">' + texteSecurise(mod.description) + '</span></span>';
+          b.addEventListener('click', function () { dispatch({ type: 'CHOISIR_MODELE', valeur: mod.id }); });
+          grille.appendChild(b);
+        });
+        $input.appendChild(grille);
+        return;
+      }
+
+      if (etat.phase === 'questions' && m) {
+        rendreQuestion(m.questions[etat.qIndex], false);
+        return;
+      }
+
+      if (etat.phase === 'clarifs' && m) {
+        var c = trouverClarif(m, etat.clarifs[etat.cIndex]);
+        if (c) rendreQuestion({ id: c.questionId, label: c.label, type: c.type || 'texte', placeholder: c.placeholder, obligatoire: false }, true);
+        return;
+      }
+
+      if (etat.phase === 'resultat') {
+        $input.hidden = true;
+        rendreResultat();
+      }
+    }
+
+    /* Affiche les contrôles pour une question (choix, texte ou texte long). */
+    function rendreQuestion(q, estClarif) {
+      var valeurActuelle = etat.reponses[q.id] || '';
+
+      if (q.type === 'choix') {
+        var chips = el('div', 'chips');
+        q.options.forEach(function (opt) {
+          var c = el('button', 'chip' + (valeurActuelle === opt ? ' selected' : ''), texteSecurise(opt));
+          c.type = 'button';
+          c.addEventListener('click', function () {
+            emitEvent('question_repondue', { id: q.id, type: 'choix' });
+            dispatch({ type: 'REPONDRE', id: q.id, valeur: opt });
+          });
+          chips.appendChild(c);
+        });
+        $input.appendChild(chips);
+        if (!q.obligatoire) $input.appendChild(boutonPasser(q.id));
+        return;
+      }
+
+      var field = el('div', 'field');
+      var ctrl;
+      if (q.type === 'texte_long') {
+        ctrl = document.createElement('textarea');
+        ctrl.rows = 3;
+        ctrl.maxLength = 1200;
+      } else {
+        ctrl = document.createElement('input');
+        ctrl.type = 'text';
+        ctrl.maxLength = 240;
+      }
+      ctrl.placeholder = q.placeholder || 'Écrivez votre réponse ici...';
+      ctrl.value = valeurActuelle;
+      ctrl.setAttribute('aria-label', q.label);
+      ctrl.required = !!q.obligatoire;
+      if (q.obligatoire) ctrl.setAttribute('aria-required', 'true');
+
+      var erreur = el('p', 'field-error');
+      erreur.hidden = true;
+      erreur.setAttribute('role', 'alert');
+
+      var actions = el('div', 'field-actions');
+      var ok = el('button', 'btn btn-primary', 'Continuer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>');
+      ok.type = 'button';
+
+      function soumettre() {
+        var v = ctrl.value.trim();
+        if (!v && q.obligatoire) {
+          ctrl.setAttribute('aria-invalid', 'true');
+          erreur.hidden = false;
+          erreur.textContent = 'Cette réponse est requise pour continuer.';
+          ctrl.focus();
+          return;
+        }
+        ctrl.removeAttribute('aria-invalid');
+        erreur.hidden = true;
+        if (!v) { dispatch({ type: 'PASSER', id: q.id }); return; }
+        emitEvent(estClarif ? 'clarification_repondue' : 'question_repondue', { id: q.id, type: q.type });
+        dispatch({ type: 'REPONDRE', id: q.id, valeur: v });
+      }
+      ok.addEventListener('click', soumettre);
+      ctrl.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' && (q.type !== 'texte_long' || ev.ctrlKey || ev.metaKey)) {
+          ev.preventDefault();
+          soumettre();
+        }
+      });
+
+      actions.appendChild(ok);
+      if (!q.obligatoire) actions.appendChild(boutonPasser(q.id, estClarif));
+      field.appendChild(ctrl);
+      field.appendChild(erreur);
+      field.appendChild(actions);
+      $input.appendChild(field);
+    }
+
+    function boutonPasser(id, estClarif) {
+      var b = el('button', 'btn btn-ghost', 'Passer cette question');
+      b.type = 'button';
+      b.addEventListener('click', function () {
+        emitEvent(estClarif ? 'clarification_passee' : 'question_passee', { id: id });
+        dispatch({ type: 'PASSER', id: id });
+      });
+      return b;
+    }
+
+    /* ── Résultat final ── */
+    function niveauJauge(score) {
+      if (score >= 85) return 'Excellent';
+      if (score >= 70) return 'Très solide';
+      if (score >= 50) return 'Bonne base';
+      return 'Bon départ';
+    }
+
+    function rendreResultat() {
+      var m = modeleCourant();
+      if (!m) return;
+      var prompt = E.adaptForTool(etat.outil, m, etat.reponses);
+      var score = E.computeScore(m, etat.reponses).score;
+      var conseils = E.getConseils(etat.outil, m, etat.niveau);
+      var explications = (m.explication || []).slice(0, 3);
+      var nomOutil = E.TOOLS[etat.outil] ? E.TOOLS[etat.outil].nom : 'votre outil';
+
+      emitEvent('prompt_genere', { modele: m.id, outil: etat.outil, score: score });
+
+      $result.hidden = false;
+      $result.innerHTML =
+        '<div class="result-head">' +
+          '<div class="result-check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+          '<h2 id="resultTitle" tabindex="-1">Votre consigne est prête.</h2>' +
+          '<p>Copiez-la dans ' + texteSecurise(nomOutil) + ', puis ajustez le texte final selon votre dossier.</p>' +
+        '</div>' +
+        '<div class="gauge">' +
+          '<div class="gauge-top"><span class="gauge-title">Niveau de précision</span><span class="gauge-value" id="gaugeValue"><em>' + niveauJauge(score) + '</em> · ' + score + '%</span></div>' +
+          '<div class="gauge-track"><div class="gauge-fill" id="gaugeFill" role="img" aria-label="Niveau de précision : ' + score + ' sur 100 — ' + niveauJauge(score) + '"></div></div>' +
+        '</div>' +
+        '<div class="prompt-card">' +
+          '<div class="prompt-card-head">' +
+            '<span class="prompt-tool">Prêt pour ' + texteSecurise(nomOutil) + '</span>' +
+            '<button type="button" class="btn-copy" id="btnCopy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copier la consigne</span></button>' +
+          '</div>' +
+          '<div class="prompt-text" id="promptText" tabindex="0">' + texteSecurise(prompt) + '</div>' +
+        '</div>' +
+        '<div class="result-cols">' +
+          '<div class="info-block"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>Pourquoi cette consigne fonctionne</h3><ul>' +
+            explications.map(function (x) { return '<li>' + texteSecurise(x) + '</li>'; }).join('') +
+          '</ul></div>' +
+          '<div class="info-block"><h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 3.7 10.7c-.6.5-.7 1.2-.7 2.3h-6c0-1.1-.1-1.8-.7-2.3A6 6 0 0 1 12 3z"/></svg>Conseils d’utilisation</h3><ul>' +
+            conseils.map(function (x) { return '<li>' + texteSecurise(x) + '</li>'; }).join('') +
+          '</ul></div>' +
+        '</div>' +
+        '<div class="result-actions">' +
+          '<button type="button" class="btn btn-primary" id="btnRestart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Créer une autre consigne</button>' +
+          '<button type="button" class="btn btn-ghost" id="btnEdit">Modifier mes réponses</button>' +
+        '</div>' +
+        '<details class="recap" id="recapZone"><summary>Voir le détail de mes réponses</summary><div class="recap-list" id="recapList"></div></details>';
+
+      /* Jauge animée */
+      var fill = document.getElementById('gaugeFill');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { fill.style.width = Math.max(6, score) + '%'; });
+      });
+
+      /* Copier */
+      var btnCopy = document.getElementById('btnCopy');
+      btnCopy.addEventListener('click', function () {
+        copierTexte(prompt, function (ok) {
+          if (!ok) {
+            /* Plan C : sélectionner le texte et guider l'utilisateur */
+            var zone = document.getElementById('promptText');
+            var plage = document.createRange();
+            plage.selectNodeContents(zone);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(plage);
+            var estMac = navigator.platform && navigator.platform.indexOf('Mac') !== -1;
+            btnCopy.querySelector('span').textContent = 'Faites ' + (estMac ? 'Cmd' : 'Ctrl') + '+C pour copier';
+            if ($copyStatus) $copyStatus.textContent = 'Le texte est sélectionné. Utilisez ' + (estMac ? 'Commande C' : 'Contrôle C') + ' pour le copier.';
+            setTimeout(function () { btnCopy.querySelector('span').textContent = 'Copier la consigne'; }, 4000);
+            return;
+          }
+          emitEvent('prompt_copie', { modele: m.id, outil: etat.outil });
+          if ($copyStatus) $copyStatus.textContent = 'La consigne a été copiée.';
+          btnCopy.classList.add('copied');
+          btnCopy.querySelector('span').textContent = 'Copiée';
+          btnCopy.querySelector('svg').outerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+          setTimeout(function () {
+            btnCopy.classList.remove('copied');
+            btnCopy.querySelector('span').textContent = 'Copier la consigne';
+            btnCopy.querySelector('svg').outerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+          }, 2200);
+        });
+      });
+
+      document.getElementById('btnRestart').addEventListener('click', function () {
+        dispatch({ type: 'RECOMMENCER' });
+        remonterOutil();
+      });
+      document.getElementById('btnEdit').addEventListener('click', function () {
+        var d = document.getElementById('recapZone');
+        d.open = true;
+        scrollVers(d, 'nearest');
+        var premierBouton = d.querySelector('button');
+        if (premierBouton) premierBouton.focus();
+      });
+
+      rendreRecap(m);
+    }
+
+    function rendreRecap(m) {
+      var liste = document.getElementById('recapList');
+      liste.innerHTML = '';
+
+      function valeurRecap(id) {
+        if (E.estRepondu(etat.reponses[id])) return etat.reponses[id];
+        if (etat.passees[id]) return '(question passée)';
+        return '(à préciser)';
+      }
+
+      function item(qLabel, valeur, action) {
+        var it = el('div', 'recap-item');
+        it.innerHTML = '<span><span class="recap-q">' + texteSecurise(qLabel) + '</span><br><span class="recap-a">' + texteSecurise(valeur) + '</span></span>';
+        var b = el('button', null, 'Modifier');
+        b.type = 'button';
+        b.addEventListener('click', function () { dispatch(action); });
+        it.appendChild(b);
+        liste.appendChild(it);
+      }
+
+      item('Outil utilisé', E.TOOLS[etat.outil] ? E.TOOLS[etat.outil].nom : etat.outil, { type: 'MODIFIER_DEPUIS_RESULTAT', cible: 'outil' });
+      var nv = NIVEAUX.filter(function (n) { return n.id === etat.niveau; })[0];
+      item('Votre aisance', nv ? nv.label : etat.niveau, { type: 'MODIFIER_DEPUIS_RESULTAT', cible: 'niveau' });
+      item('Objectif', m.titre, { type: 'MODIFIER_DEPUIS_RESULTAT', cible: 'objectif' });
+      m.questions.forEach(function (q, i) {
+        item(q.label, valeurRecap(q.id), { type: 'MODIFIER_DEPUIS_RESULTAT', cible: 'question', index: i });
+      });
+      (etat.clarifs || []).forEach(function (cid, i) {
+        var c = trouverClarif(m, cid);
+        if (c) item(c.label, valeurRecap(cid), { type: 'MODIFIER_DEPUIS_RESULTAT', cible: 'clarif', index: i });
+      });
+    }
+
+    function copierTexte(texte, cb) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texte).then(function () { cb(true); }, function () { copierFallback(texte, cb); });
+      } else {
+        copierFallback(texte, cb);
+      }
+    }
+    function copierFallback(texte, cb) {
+      var ta = document.createElement('textarea');
+      ta.value = texte;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      cb(ok);
+    }
+
+    function rendre() {
+      rendreProgress();
+      rendreChat();
+      rendreInput();
+      mettreAJourCoachEtStatut();
+      $backRow.hidden = (etat.phase === 'outil' || etat.phase === 'resultat');
+      /* Garder la conversation visible sur la dernière bulle */
+      var dernieres = $chat.querySelectorAll('.bubble-row');
+      if (dernieres.length > 3 && etat.phase !== 'resultat') {
+        scrollVers(dernieres[dernieres.length - 1], 'nearest');
+      }
+      if (etat.phase === 'resultat') {
+        scrollVers($result, 'start');
+      }
+
+      requestAnimationFrame(function () {
+        if (etat.phase === 'resultat') {
+          var titre = document.getElementById('resultTitle');
+          if (titre) titre.focus();
+          return;
+        }
+        var cible = $input.querySelector('textarea, input, button');
+        if (cible) cible.focus();
+      });
+    }
+
+    if (PREFERS_REDUCED_MOTION && typeof PREFERS_REDUCED_MOTION.addEventListener === 'function') {
+      PREFERS_REDUCED_MOTION.addEventListener('change', function () {
+        mettreAJourCoachEtStatut();
+      });
+    } else if (PREFERS_REDUCED_MOTION && typeof PREFERS_REDUCED_MOTION.addListener === 'function') {
+      PREFERS_REDUCED_MOTION.addListener(function () {
+        mettreAJourCoachEtStatut();
+      });
+    }
+
+    if ($copyStatus) {
+      $copyStatus.textContent = '';
+    }
+    if ($liveStatus) {
+      $liveStatus.textContent = '';
+    }
+    if ($coachStep) {
+      $coachStep.textContent = consigneEtapeCourante();
+    }
+
+    document.getElementById('btnBack').addEventListener('click', function () { dispatch({ type: 'RECULER' }); });
+
+    /* Topbar scrolled */
+    var topbar = document.getElementById('topbar');
+    function majTopbar() { topbar.classList.toggle('scrolled', window.scrollY > 60); }
+    window.addEventListener('scroll', majTopbar, { passive: true });
+    majTopbar();
+
+    /* Aucun modèle valide : message clair au lieu d'une page cassée */
+    if (MODELES.length === 0) {
+      $chat.innerHTML = '';
+      $chat.appendChild(bulleBot('Oups — aucun modèle n’est disponible pour le moment. Réessayez un peu plus tard.'));
+      console.error('[Guide de prompting] Aucun modèle valide. Vérifiez data/prompt-templates.js.');
+    } else {
+      rendre();
+    }
+  })();
+  </script>
+</body>
+</html>

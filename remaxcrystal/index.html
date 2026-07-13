@@ -1335,7 +1335,7 @@ body.mm-lock{overflow:hidden;}
       <button type="button" class="mm-trigger" id="mmTrigger" aria-haspopup="dialog" aria-expanded="false">Toutes les villes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
       <a href="https://remaxcrystal.com/fr/carriere.html" target="_blank" rel="noopener">Carrière</a>
       <a href="https://remaxcrystal.com/fr/" target="_blank" rel="noopener">Agence</a>
-      <a href="https://remaxcrystal.com/fr/nos-courtiers.html" target="_blank" rel="noopener">Équipe</a>
+      <a href="courtiers/index.html">Équipe</a>
       <a href="https://remaxcrystal.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés</a>
       <a href="https://remaxcrystal.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
       <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="topbar-cta">Contact</a>
@@ -1830,8 +1830,9 @@ body.mm-lock{overflow:hidden;}
             <div class="value-feature">
               <span class="value-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
               <div class="value-feature-text">
-                <h5>Outils IA exclusifs</h5>
-                <p>Générateur PDF, carte à proximité, amélioration photo : des outils que la compétition n'a pas.</p>
+                <h5>Assistant de rédaction exclusif</h5>
+                <p>Annonces, suivis, prospection, scripts vidéo et préparation de négociation : un seul outil pour cadrer vos demandes dans ChatGPT ou Claude avec des consignes plus nettes et plus utiles.</p>
+                <p><a href="outil-prompt.html" style="color:var(--blue-brand);font-weight:700;">Ouvrir l’outil de rédaction</a></p>
               </div>
             </div>
             <div class="value-feature">
@@ -1860,40 +1861,81 @@ body.mm-lock{overflow:hidden;}
     </div>
   </section>
 
-  <!-- ===== SOCIAL / REELS ===== -->
-  <section class="social" id="reseaux">
+    <style id="offices-style">
+    .offices-grid{display:grid;gap:clamp(20px,2.5vw,30px);grid-template-columns:repeat(auto-fit,minmax(290px,1fr));margin-block-start:clamp(36px,5vw,60px);}
+    .office-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border-subtle);border-radius:22px;overflow:hidden;box-shadow:0 1px 2px rgba(26,35,50,.04),0 16px 40px rgba(26,50,80,.07);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s;}
+    .office-card:hover{transform:translateY(-6px);box-shadow:0 2px 6px rgba(26,35,50,.06),0 28px 60px rgba(26,50,80,.15);}
+    .office-card-media{position:relative;aspect-ratio:16/11;overflow:hidden;background:var(--navy);}
+    .office-card-media img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1);}
+    .office-card:hover .office-card-media img{transform:scale(1.07);}
+    .office-card-tag{position:absolute;top:14px;left:14px;font-family:'Raleway',sans-serif;font-weight:800;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(26,35,50,.5);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px;}
+    .office-card-body{display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2.4vw,28px);flex:1;}
+    .office-card-city{font-family:'Raleway',sans-serif;font-weight:800;font-size:clamp(1.3rem,2vw,1.6rem);color:var(--text-dark);letter-spacing:-.02em;line-height:1.15;}
+    .office-card-addr{display:flex;gap:9px;color:var(--text-body);font-size:clamp(.9rem,1.1vw,.98rem);line-height:1.55;}
+    .office-card-addr svg{width:17px;height:17px;flex-shrink:0;color:var(--blue-brand);margin-top:3px;}
+    .office-card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-block-start:auto;padding-block-start:8px;}
+    .office-pill{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-weight:700;font-size:.86rem;text-decoration:none;border-radius:999px;padding:9px 16px;transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s,color .3s,border-color .3s;}
+    .office-pill svg{width:15px;height:15px;}
+    .office-pill-phone{background:var(--blue-brand);color:#fff;}
+    .office-pill-phone:hover{background:var(--navy);transform:translateY(-2px);}
+    .office-pill-map{background:transparent;color:var(--blue-brand);border:1px solid var(--border-subtle);}
+    .office-pill-map:hover{border-color:var(--blue-pale);background:var(--surface-card);transform:translateY(-2px);}
+    @media(max-width:560px){.office-card-actions{flex-direction:column;align-items:stretch;}.office-pill{justify-content:center;}}
+  </style>
+  <!-- ===== NOS BUREAUX ===== -->
+  <section class="social" id="bureaux">
     <div class="container">
       <div class="social-header">
-        <div class="section-eyebrow reveal">Sur les réseaux</div>
-        <h2 class="section-heading reveal">Notre présence sur les<br><em>réseaux sociaux</em></h2>
-        <p class="social-intro reveal">Ventes, coulisses, vie d'agence : on partage le quotidien de nos courtiers et de leurs quartiers, semaine après semaine.</p>
+        <div class="section-eyebrow reveal">Nos bureaux</div>
+        <h2 class="section-heading reveal">Trois bureaux <em>près de chez vous</em></h2>
+        <p class="social-intro reveal">Passez nous voir. Nos équipes vous accueillent à Sainte-Thérèse, Saint-Eustache et Sainte-Anne-des-Plaines.</p>
       </div>
 
-      <div class="reels-grid reveal">
-        <div class="reel-tile reel-tall"><video src="images/reels/reel-01.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile"><video src="images/reels/reel-02.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile reel-wide"><video src="images/reels/reel-03.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile reel-big"><video src="images/reels/reel-04.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile"><video src="images/reels/reel-05.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile reel-tall"><video src="images/reels/reel-06.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile"><video src="images/reels/reel-07.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile"><video src="images/reels/reel-08.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile reel-wide"><video src="images/reels/reel-09.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile reel-tall"><video src="images/reels/reel-10.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile"><video src="images/reels/reel-11.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-        <div class="reel-tile"><video src="images/reels/reel-12.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-      </div>
+      <div class="offices-grid">
+        <div class="office-card reveal">
+          <div class="office-card-media">
+            <img src="images/bureaux-web/bureau-stetherese.jpg" alt="Bureau RE/MAX Crystal à Sainte-Thérèse" loading="lazy">
+            <span class="office-card-tag">RE/MAX Crystal</span>
+          </div>
+          <div class="office-card-body">
+            <h3 class="office-card-city">Sainte-Thérèse</h3>
+            <p class="office-card-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>228 boul. du Curé-Labelle<br>Sainte-Thérèse (QC) J7E 2X7</span></p>
+            <div class="office-card-actions">
+              <a class="office-pill office-pill-phone" href="tel:4504304207"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> 450 430-4207</a>
+              <a class="office-pill office-pill-map" href="https://www.google.com/maps/search/?api=1&query=RE%2FMAX%20Crystal%20228%20boul.%20du%20Cur%C3%A9-Labelle%20Sainte-Th%C3%A9r%C3%A8se%20(QC)%20J7E%202X7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Itinéraire</a>
+            </div>
+          </div>
+        </div>
 
-      <div class="social-follow reveal">
-        <span class="social-follow-label">Suivez-nous</span>
-        <a href="#" class="social-btn" aria-label="Instagram RE/MAX Crystal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          Instagram
-        </a>
-        <a href="#" class="social-btn" aria-label="Facebook RE/MAX Crystal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          Facebook
-        </a>
+        <div class="office-card reveal">
+          <div class="office-card-media">
+            <img src="images/bureaux-web/bureau-steustache.jpg" alt="Bureau RE/MAX Crystal à Saint-Eustache" loading="lazy">
+            <span class="office-card-tag">RE/MAX Crystal</span>
+          </div>
+          <div class="office-card-body">
+            <h3 class="office-card-city">Saint-Eustache</h3>
+            <p class="office-card-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>479 boul. Arthur-Sauvé<br>Saint-Eustache (QC) J7P 2B3</span></p>
+            <div class="office-card-actions">
+              <a class="office-pill office-pill-phone" href="tel:4504727220"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> 450 472-7220</a>
+              <a class="office-pill office-pill-map" href="https://www.google.com/maps/search/?api=1&query=RE%2FMAX%20Crystal%20479%20boul.%20Arthur-Sauv%C3%A9%20Saint-Eustache%20(QC)%20J7P%202B3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Itinéraire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="office-card reveal">
+          <div class="office-card-media">
+            <img src="images/bureaux-web/bureau-steanne.jpg" alt="Bureau RE/MAX Crystal à Sainte-Anne-des-Plaines" loading="lazy">
+            <span class="office-card-tag">RE/MAX Crystal</span>
+          </div>
+          <div class="office-card-body">
+            <h3 class="office-card-city">Sainte-Anne-des-Plaines</h3>
+            <p class="office-card-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>140 boul. Sainte-Anne<br>Sainte-Anne-des-Plaines (QC) J5N 3P1</span></p>
+            <div class="office-card-actions">
+              <a class="office-pill office-pill-phone" href="tel:4509411234"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> 450 941-1234</a>
+              <a class="office-pill office-pill-map" href="https://www.google.com/maps/search/?api=1&query=RE%2FMAX%20Crystal%20140%20boul.%20Sainte-Anne%20Sainte-Anne-des-Plaines%20(QC)%20J5N%203P1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Itinéraire</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1938,6 +1980,7 @@ body.mm-lock{overflow:hidden;}
         </div>
         <div class="footer-col">
           <h5>Nos outils</h5>
+          <a href="outil-prompt.html">Assistant de rédaction</a>
           <a href="#">Générateur PDF</a>
           <a href="#">Carte à proximité</a>
           <a href="#">Amélioration photo</a>
@@ -1946,7 +1989,7 @@ body.mm-lock{overflow:hidden;}
         <div class="footer-col">
           <h5>Contact</h5>
           <a href="#">Bureau principal</a>
-          <a href="#">Nos courtiers</a>
+          <a href="courtiers/index.html">Nos courtiers</a>
           <a href="#">Carrières</a>
           <a href="#">Évaluation gratuite</a>
         </div>

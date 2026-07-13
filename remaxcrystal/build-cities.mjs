@@ -103,6 +103,30 @@ function buildIntro(paragraphs) {
   return paragraphs.map(p => `          <p>${escapeHtml(p)}</p>`).join('\n');
 }
 
+// Section Événements : invite à consulter le calendrier officiel de la ville
+function buildEventsSection(city) {
+  const url = escapeHtml(city.eventsUrl || '#');
+  const name = escapeHtml(city.name);
+  const cal = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18"/><path d="M8 2.5v4M16 2.5v4"/><path d="M7.5 14h3M13.5 14h3M7.5 17.5h3"/></svg>';
+  const arrow = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  return `<section class="section" id="evenements">
+    <div class="container">
+      <div class="section-eyebrow reveal">04 — Événements</div>
+      <h2 class="section-heading reveal">Événements <em>à venir</em></h2>
+      <p class="section-intro reveal">Concerts, festivals, marchés publics, activités familiales : ${name} tient à jour le calendrier officiel de tout ce qui se passe près de chez vous. Consultez-le pour ne rien manquer.</p>
+
+      <a class="events-cta reveal" href="${url}" target="_blank" rel="noopener">
+        <span class="events-cta-icon">${cal}</span>
+        <span class="events-cta-text">
+          <strong>Calendrier officiel des événements — ${name}</strong>
+          <span>Consultez la programmation complète et toujours à jour sur le site officiel de la municipalité.</span>
+        </span>
+        <span class="events-cta-arrow" aria-hidden="true">${arrow}</span>
+      </a>
+    </div>
+  </section>`;
+}
+
 function buildTocItems(hasEvents) {
   // hasEvents=false : on retire Événements et on renumérote
   if (hasEvents) return null;
@@ -118,16 +142,20 @@ function buildTocItems(hasEvents) {
           <span class="toc-num">03</span>
           <span class="toc-label">Marché immobilier</span>
         </a>
-        <a href="#parcs" class="toc-item reveal">
+        <a href="#evenements" class="toc-item reveal">
           <span class="toc-num">04</span>
+          <span class="toc-label">Événements à venir</span>
+        </a>
+        <a href="#parcs" class="toc-item reveal">
+          <span class="toc-num">05</span>
           <span class="toc-label">Parcs & nature</span>
         </a>
         <a href="#transport" class="toc-item reveal">
-          <span class="toc-num">05</span>
+          <span class="toc-num">06</span>
           <span class="toc-label">Transport & accès</span>
         </a>
         <a href="#contact" class="toc-item reveal">
-          <span class="toc-num">06</span>
+          <span class="toc-num">07</span>
           <span class="toc-label">Contactez un expert</span>
         </a>`;
 }
@@ -166,7 +194,7 @@ function buildSeoSchema(city) {
     }
     return Math.round(total);
   })();
-  const muniSample = houseRate ? Math.round((500000/100) * houseRate + (tax.fixedFees || 0)) : null;
+  const muniSample = (houseRate && !tax.hideMunicipalTax) ? Math.round((500000/100) * houseRate + (tax.fixedFees || 0)) : null;
   const courtierNote = city.brand === 'dici' ? "RE/MAX D'ici" : "RE/MAX Crystal";
 
   const faqEntries = [
@@ -390,10 +418,10 @@ ${buildQualityCards(city.qualityCards)}
     `<div class="stats-table-caption">Total résidentiel — ${escapeHtml(city.name)}</div>`
   );
 
-  // ===== Section 04 — ÉVÉNEMENTS : RETIRER complètement =====
+  // ===== Section 04 — ÉVÉNEMENTS : lien vers le calendrier officiel de la ville =====
   html = html.replace(
-    /<!-- ===== 05 — ÉVÉNEMENTS ===== -->[\s\S]*?<!-- ===== 06 — PARCS ===== -->/,
-    '<!-- ===== 04 — PARCS ===== -->'
+    /<section class="section" id="evenements">[\s\S]*?<\/section>/,
+    buildEventsSection(city)
   );
 
   // ===== Section PARCS (re-numérotée 04) =====
@@ -401,7 +429,7 @@ ${buildQualityCards(city.qualityCards)}
     /<section class="section section-dark" id="parcs">[\s\S]*?<\/section>/,
     `<section class="section section-dark" id="parcs">
     <div class="container">
-      <div class="section-eyebrow reveal">04 — Nature</div>
+      <div class="section-eyebrow reveal">05 — Nature</div>
       <h2 class="section-heading reveal">Parcs & <em>espaces verts</em></h2>
       <p class="section-intro reveal">${escapeHtml(city.parksIntro)}</p>
 
@@ -417,7 +445,7 @@ ${buildParkCards(city)}
     /<section class="section" id="transport">[\s\S]*?<\/section>\s*<!-- ===== CTA ===== -->/,
     `<section class="section" id="transport">
     <div class="container">
-      <div class="section-eyebrow reveal">05 — Transport & accès</div>
+      <div class="section-eyebrow reveal">06 — Transport & accès</div>
       <h2 class="section-heading reveal">Se déplacer depuis <em>${escapeHtml(city.nameEm)}</em></h2>
       <p class="section-intro reveal">${escapeHtml(city.transportIntro)}</p>
 
@@ -470,10 +498,7 @@ ${buildTaxComparativeRows(city)}
   );
 
   // ===== CTA — eyebrow numéro 06 + tagline + nom =====
-  html = html.replace(
-    /<div class="section-eyebrow reveal" style="text-align:center;">07 — Prochaine étape<\/div>/,
-    `<div class="section-eyebrow reveal" style="text-align:center;">06 — Prochaine étape</div>`
-  );
+  // Le CTA garde le numéro 07 (Événements réintégré à 04).
   html = html.replace(
     /<h2 class="cta-heading reveal">Prêt à découvrir <em>Blainville<\/em> \?<\/h2>/,
     `<h2 class="cta-heading reveal">Prêt à découvrir <em>${escapeHtml(city.nameEm)}</em> ?</h2>`
@@ -502,7 +527,7 @@ ${buildTaxComparativeRows(city)}
           <a href="guide-mirabel.html">Vivre à Mirabel</a>
           <a href="guide-deuxmontagnes.html">Vivre à Deux-Montagnes</a>`;
   html = html.replace(
-    /<a href="#">Vivre à Blainville<\/a>[\s\S]*?<a href="#">Vivre à Bois-des-Filion<\/a>/,
+    /<a href="[^"]*">Vivre à Blainville<\/a>[\s\S]*?<a href="[^"]*">Vivre à Bois-des-Filion<\/a>/,
     footerGuides
   );
 
@@ -529,6 +554,27 @@ ${buildTaxComparativeRows(city)}
     calcReplacement
   );
   html = html.replace(/blainvilleData/g, 'cityCalcData');
+
+  // ===== Taux municipal non vérifié (t.hideMunicipalTax) :
+  //       retirer toutes les taxes municipales de la page =====
+  if (t.hideMunicipalTax) {
+    // Copy d'intro des outils
+    html = html.replace(/Trois calculateurs rapides/, 'Deux calculateurs rapides');
+    // Onglet + panneau « Taxes municipales »
+    html = html.replace(/\s*<button class="tool-tab" type="button" data-tool-tab="taxes">Taxes municipales<\/button>/, '');
+    html = html.replace(/<div class="tool-panel" data-tool-panel="taxes">[\s\S]*?(?=<div class="tool-panel" data-tool-panel="mortgage">)/, '');
+    // Hypothèque : exclure les taxes municipales du coût mensuel
+    html = html.replace(/const taxes = municipalTax\(price, 'house', false\) \/ 12;/, 'const taxes = 0;');
+    html = html.replace(/\s*<div class="tool-result-item"><span>Taxes municipales<\/span><strong id="mortgage-taxes">\$0<\/strong><\/div>/, '');
+    html = html.replace(/\s*document\.getElementById\('mortgage-taxes'\)\.textContent = money\(taxes\);/, '');
+    html = html.replace(/<div>Les taxes municipales utilisent le scénario [^<]*<\/div>/, '');
+    html = html.replace(/Coût mensuel local estimé/, 'Paiement hypothécaire estimé');
+    // Init : ne pas appeler updateMunicipalTaxes (éléments absents)
+    html = html.replace(/\n\s*updateMunicipalTaxes\(\);/, '');
+    // Table « Taxes municipales & coûts de vie — Comparatif »
+    html = html.replace(/\s*<!-- TABLE: Taxes & Coûts -->[\s\S]*?<\/p>\s*<\/div>/, '');
+  }
+
   // Note scénario hypothèque
   html = html.replace(
     /Les taxes municipales utilisent le scénario Blainville\./,
