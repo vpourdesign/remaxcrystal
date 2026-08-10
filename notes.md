@@ -1,6 +1,46 @@
 # Notes — REMAX Crystal
 
+## 🔍 Précisions
+
+- [2026-07-13] **Ne pas pousser (git push) le projet pages courtiers tant qu'il n'est pas final.** Le système formulaire + générateur (courtier-formulaire.html, courtiers/, build-courtiers.mjs) reste local : la page fred-et-max.html contient des données de test (courriel vinilavoie@gmail.com, témoignages placeholder) et la démo Geneviève Marchand est fictive. Vincent donnera le GO.
+
 ## ✅ À faire (backlog général)
+
+### Suite à l'audit de la cliente (reçu 2026-08-10) — guides des villes Crystal + D'ici
+
+**À corriger (défauts réels, vérifiés dans nos fichiers) :**
+- [ ] Liens morts `href="#"` : 8 par page × 29 pages (colonnes footer « Outils » et « Contact ») + 1 CTA « Voir les propriétés à [Ville] » sur chaque guide + « Évaluation gratuite » sur les 2 accueils. ~270 liens qui ne mènent nulle part.
+- [ ] `politique-confidentialite.html` et `conditions-utilisation.html` n'existent pas → 404 depuis le footer de 15 pages Crystal. (Déjà noté au 2026-06-15, toujours ouvert.)
+- [ ] Footer D'ici : aucun lien légal ni mention « Franchisé indépendant et autonome de RE/MAX Québec » (Crystal les a). Asymétrie entre les deux sites.
+- [x] [2026-08-10] **6** images cassées dans `guide-blainville.html` corrigées (et non 5 : `stetherese2.jpg` avait échappé au premier scan). La galerie « Parcs » pointait vers des photos de Lorraine, Boisbriand, Rosemère et Sainte-Thérèse — remplacées par les vraies photos Blainville (`images/villes/blainville/parc1…parc5.jpg`, photos officielles de la Ville, filigrane Blainville) + `blainville1.jpg` pour l'intro. Alts réécrits d'après le contenu réel de chaque photo.
+  - ⚠️ Reste à trancher : la légende de l'image d'intro dit « Le Vieux-Blainville — Un quartier en pleine revitalisation » alors que la photo est l'Hôtel de Ville. Même incohérence dans `blainvilletest.html`. Copie à ajuster, décision de Vincent.
+- [ ] `guide-blainville.html` n'a jamais reçu la passe SEO : pas de canonical, pas d'`og:`/`twitter:`, pas de `keywords`, ancien format de `<title>`. Les 14 autres guides Crystal l'ont.
+- [ ] Les deux `index.html` (Crystal et D'ici) : zéro balise Open Graph et zéro canonical. Partage Facebook = aucun aperçu, sur un compte d'agence immobilière.
+- [ ] `og:image` en chemin relatif partout → ne fonctionne pas au partage. Passer en URL absolue.
+- [ ] Format de téléphone incohérent (même point que la cliente) : guides = `450-430-4207`, accueils = `450 430-4207`. Choisir `450 430-4207` partout (affichage) et garder `tel:4504304207`.
+- [ ] `450 941-1234` pour le bureau Sainte-Anne-des-Plaines (`remaxcrystal/index.html`) — ressemble à un numéro placeholder, **à valider avec Mehdi**.
+- [ ] Apostrophes droites (`'`) partout au lieu des courbes (`’`) — ~350 à 500 par page. Uniformiser.
+- [ ] Aucun `robots.txt` sur les deux sites ; aucun `sitemap.xml` pour D'ici.
+- [ ] `sitemap.xml` Crystal contient `courtiers/fred-et-max.html` (page de données de test) — à retirer avant tout déploiement.
+- [ ] Doublon SEO potentiel : `guide-mirabel.html` et `guide-st-janvier.html` (Saint-Janvier est un secteur de Mirabel). Vérifier la cannibalisation.
+
+**Footer retravaillé [2026-08-10] — 29 pages (15 guides Crystal + accueil, 12 guides D'ici + accueil) :**
+- [x] Logo aligné sur le texte de la colonne. Les boîtes DOM étaient déjà à la même position : le décalage venait de la transparence intégrée aux PNG (`Crystal-long-blanc-crystal.png` 83/1500 = 5,53 % ; `diciblanc.png` 124/1600 = 7,75 %). Compensé en CSS via `--footer-logo-h` + `margin-inline-start` négatif proportionnel (−0,314 × hauteur pour Crystal, −0,296 pour D'ici). Écart résiduel mesuré : 0,03px et 0,01px.
+- [x] Padding du footer élargi : `clamp(28px, 7vw, 76px)` au lieu du `clamp(20px, 6vw, 48px)` global.
+- [x] Ballon RE/MAX du bas de la colonne de gauche retiré (27 pages ; les 2 accueils ne l'avaient pas).
+- [x] Textes des menus grossis : liens 0,82 → 0,9rem, titres de colonne 0,72 → 0,78rem.
+- ⚠️ **Conformité RE/MAX** : ce ballon avait été ajouté le 2026-06-15 au titre des normes de la bannière (voir plus bas). Le ballon du topbar reste en place sur toutes les pages, donc la marque RE/MAX demeure présente — mais si les normes exigent le ballon *en pied de page*, il faudra le remettre. À valider avec Mehdi.
+- ⚠️ Le footer est maintenant en retrait de ~28px de plus que les sections au-dessus (76px vs 48px), les deux utilisant `.container`. Voulu, mais si l'alignement vertical avec le contenu au-dessus est préférable, il faut plutôt élargir le padding global.
+- Script : `fix_footer.py` (scratchpad de session, idempotent, `--apply` pour écrire). `blainvilletest.html` et `outil-prompt.html` volontairement exclus (fichier de test et outil interne).
+
+**Ajouts demandés par la cliente — reportés, on n'ajoute rien pour l'instant :**
+- [ ] Preuves sociales : avis Google, nombre de transactions, nombre de courtiers, années d'existence, prix remportés.
+- [ ] Photos bureaux / équipe / événements / implication communautaire.
+- [ ] Vidéo de présentation Mehdi et Denis.
+- [ ] Section « Pourquoi choisir RE/MAX Crystal / D'ici? », valeurs, histoire de l'agence.
+- [ ] Contenu SEO additionnel : FAQ, blogue, guides vendeurs et acheteurs (lead magnets).
+
+**Ne s'applique pas à nous :** le bug « Votre message a été envoyé avec succès » affiché sans soumission, les incohérences 250 / 300 courtiers et 5 emplacements, la faute « en tout confiance », « près 40 ans », « au coeur », « support » → « soutien », « qu'a lieu » → « qu'a eu lieu », les libellés de boutons courtiers et les formats de courriel. Tout ça vient des sites plateforme `agence.remaxcrystal.com` / `agence.remaxdici.com` (RE/MAX Québec), pas de nos guides. Aucune de ces chaînes n'existe dans notre code.
 
 - [ ] Enhance Google Photo
 - [ ] Map attraits

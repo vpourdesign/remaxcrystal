@@ -75,8 +75,10 @@
   a { text-decoration: none; color: inherit; }
 
   .container {
-    width: min(90%, 1280px);
+    width: 100%;
+    max-width: 1280px !important;
     margin-inline: auto;
+    padding-inline: clamp(20px, 6vw, 48px);
   }
 
   .container-narrow {
@@ -201,7 +203,36 @@
 
     .topbar-cta::after { display: none !important; }
 
-    /* ===== HERO ===== */
+    /* ===== MOBILE HAMBURGER ===== */
+  .nav-burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .nav-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: #fff;
+    transition: background 0.4s cubic-bezier(0.16,1,0.3,1),
+                transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                opacity 0.25s;
+  }
+  .topbar.scrolled .nav-burger span { background: var(--navy, #1e3350); }
+  .nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+  .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ===== HERO ===== */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -1870,6 +1901,10 @@
       color: #8090a2;
     }
 
+    .footer .container {
+      padding-inline: clamp(28px, 7vw, 76px);
+    }
+
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1884,9 +1919,13 @@
     }
 
     .footer-brand-name img {
-      height: clamp(30px, 3.5vw, 40px);
+      --footer-logo-h: clamp(30px, 3.5vw, 40px);
+      height: var(--footer-logo-h);
       width: auto;
       display: block;
+      /* le PNG a une marge transparente a gauche : on la compense
+         pour aligner le logo sur le texte de la colonne */
+      margin-inline-start: calc(var(--footer-logo-h) * -0.314);
     }
 
     .footer-brand-name-legacy-span {
@@ -1901,7 +1940,7 @@
 
     .footer-col h5 {
       font-family: 'Open Sans', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #5e7080;
       text-transform: uppercase;
@@ -1911,7 +1950,7 @@
 
     .footer-col a {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       color: #8a9bac;
       margin-block-end: 10px;
       transition: color 0.3s;
@@ -1947,12 +1986,6 @@
     .footer-address a { color: #b0cfe8; }
     .footer-address a:hover { color: var(--blue-light); }
 
-    .footer-ballon {
-      height: 46px;
-      width: auto;
-      opacity: 0.92;
-      margin-block-start: 6px;
-    }
 
     .footer-bottom {
       gap: 16px;
@@ -1995,6 +2028,7 @@
       .school-meta, .school-row > :last-child { grid-column: 2; }
       .hero-title { max-width: 100%; }
       .topbar-nav { display: none; }
+    .nav-burger { display: inline-flex; }
     }
 
     @media (max-width: 600px) {
@@ -2024,6 +2058,10 @@
 .mm-close:hover{background:#f1efe9;border-color:#cdd2da;}
 .mm-cat{grid-column:1/-1;font-family:'Raleway',sans-serif;font-weight:800;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:#7a8294;margin:10px 0 2px;display:flex;align-items:center;gap:10px;}
 .mm-cat::after{content:"";flex:1;height:1px;background:#e2e5eb;}
+.mm-navlinks{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-block:20px 0;}
+.mm-navlinks a{display:flex;align-items:center;justify-content:center;text-align:center;background:#fff;border:1px solid #e2e5eb;border-radius:12px;padding:14px 16px;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.01em;color:#1a1f2b;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;}
+.mm-navlinks a:hover{transform:translateY(-2px);border-color:#b0cfe8;box-shadow:0 10px 26px rgba(35,50,70,0.1);}
+.mm-navlinks a.mm-nav-cta{background:#3578c4;border-color:#3578c4;color:#fff;grid-column:1/-1;}
 .mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .mm-grid a{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid #e2e5eb;border-radius:12px;padding:14px 17px;font-family:'Raleway',sans-serif;font-weight:600;font-size:0.94rem;color:#1a1f2b;letter-spacing:-0.01em;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;}
 .mm-grid a::after{content:"\2192";color:#3578c4;opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s;}
@@ -2034,6 +2072,8 @@
 .mm-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-block-start:clamp(16px,2.4vw,24px);padding-block-start:16px;border-top:1px solid #e2e5eb;font-size:0.84rem;color:#6b7385;}
 .mm-foot a{color:#3578c4;font-weight:600;text-decoration:none;}
 body.mm-lock{overflow:hidden;}
+@media(max-width:900px){.mm-navlinks{display:grid;}.mm-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:430px){.mm-grid{grid-template-columns:1fr;}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"RE/MAX Crystal","url":"https://www.remaxcrystal.com","telephone":"+1-450-430-4207","address":{"@type":"PostalAddress","streetAddress":"228 boul. du Curé-Labelle","addressLocality":"Sainte-Thérèse","addressRegion":"QC","postalCode":"J7E 2X7","addressCountry":"CA"},"areaServed":"Blainville","parentOrganization":{"@type":"Organization","name":"RE/MAX Québec","url":"https://www.remax-quebec.com"}}</script>
 </head>
@@ -2067,6 +2107,9 @@ body.mm-lock{overflow:hidden;}
       <a href="https://remaxcrystal.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
       <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="topbar-cta">Contact</a>
     </div>
+    <button type="button" class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mmOverlay">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- ===== HERO ===== -->
@@ -2558,7 +2601,6 @@ body.mm-lock{overflow:hidden;}
             Sainte-Thérèse, Québec&nbsp;J7E&nbsp;2X7<br>
             <a href="tel:4504304207">450&nbsp;430-4207</a>
           </address>
-          <img src="brand_assets/digital_ballon.png" alt="RE/MAX" class="footer-ballon">
         </div>
         <div class="footer-col">
           <h5>Guides de villes</h5>
@@ -2885,6 +2927,14 @@ body.mm-lock{overflow:hidden;}
       <a href="guide-steannedesplaines.html">Ste-Anne-des-Plaines</a>
       <a href="guide-stesophie.html">Sainte-Sophie</a>
     </div>
+    <nav class="mm-navlinks" aria-label="Navigation principale">
+      <a href="https://remaxcrystal.com/fr/carriere.html" target="_blank" rel="noopener">Carrière</a>
+      <a href="https://remaxcrystal.com/fr/" target="_blank" rel="noopener">Agence</a>
+      <a href="https://remaxcrystal.com/fr/nos-courtiers.html" target="_blank" rel="noopener">Équipe</a>
+      <a href="https://remaxcrystal.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés</a>
+      <a href="https://remaxcrystal.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
+      <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="mm-nav-cta">Contact</a>
+    </nav>
     <div class="mm-foot">
       <a href="index.html">&#8592; Accueil</a>
       <span>15 villes &middot; Basses-Laurentides &amp; Rive-Nord</span>
@@ -2893,12 +2943,16 @@ body.mm-lock{overflow:hidden;}
 </div>
 <script>
 (function(){
-  var ov=document.getElementById('mmOverlay'),tr=document.getElementById('mmTrigger');
-  if(!ov||!tr)return;
-  function open(){ov.hidden=false;requestAnimationFrame(function(){ov.classList.add('open');});document.body.classList.add('mm-lock');tr.setAttribute('aria-expanded','true');}
-  function close(){ov.classList.remove('open');document.body.classList.remove('mm-lock');tr.setAttribute('aria-expanded','false');setTimeout(function(){ov.hidden=true;},320);}
-  tr.addEventListener('click',function(){ov.hidden?open():close();});
+  var ov=document.getElementById('mmOverlay'),tr=document.getElementById('mmTrigger'),bg=document.getElementById('navBurger');
+  if(!ov)return;
+  function setExpanded(v){if(tr)tr.setAttribute('aria-expanded',v);if(bg){bg.setAttribute('aria-expanded',v);bg.classList.toggle('is-open',v==='true');}}
+  function open(){ov.hidden=false;requestAnimationFrame(function(){ov.classList.add('open');});document.body.classList.add('mm-lock');setExpanded('true');}
+  function close(){ov.classList.remove('open');document.body.classList.remove('mm-lock');setExpanded('false');setTimeout(function(){ov.hidden=true;},320);}
+  function toggle(){ov.hidden?open():close();}
+  if(tr)tr.addEventListener('click',toggle);
+  if(bg)bg.addEventListener('click',toggle);
   ov.querySelectorAll('[data-mm-close]').forEach(function(el){el.addEventListener('click',close);});
+  ov.querySelectorAll('.mm-navlinks a, .mm-grid a').forEach(function(a){a.addEventListener('click',close);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
   var here=location.pathname.split('/').pop();
   ov.querySelectorAll('.mm-grid a').forEach(function(a){if(a.getAttribute('href')===here)a.classList.add('mm-active');});
