@@ -2304,7 +2304,7 @@ body.mm-lock{overflow:hidden;}
         </div>
 
         <div class="intro-image-wrap reveal">
-          <img src="images/villes/terrebonne/terrebonne-1.jpg" alt="Hôtel de ville patrimonial de Terrebonne">
+          <img src="images/villes/terrebonne/terrebonne-1.jpg" alt="Hôtel de ville patrimonial de Terrebonne" loading="lazy">
           <div class="intro-image-overlay"></div>
           <div class="intro-image-caption">
             <h4>Le Vieux-Terrebonne</h4>
@@ -2490,7 +2490,48 @@ body.mm-lock{overflow:hidden;}
     .events-cta-arrow{flex-shrink:0;color:var(--blue-brand);transition:transform .45s cubic-bezier(.16,1,.3,1);}
     .events-cta:hover .events-cta-arrow{transform:translateX(7px);}
     @media(max-width:600px){.events-cta{flex-wrap:wrap;gap:16px;}.events-cta-arrow{display:none;}}
-  </style>
+  
+    /* ===== SIGNATURE VPOURDESIGN (reprise de daynak.ca) ===== */
+    .footer-credit {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.25);
+    }
+    .footer-credit > a {
+      display: block;
+      flex: 0 0 auto;
+      line-height: 0;
+    }
+    .footer-credit > span { flex: 0 0 auto; }
+    .vp-logo {
+      height: 52px;
+      width: auto;
+      flex: 0 0 auto;
+      cursor: pointer;
+      animation: vpFloat 3s ease-in-out infinite, vpGlow 3s ease-in-out infinite;
+    }
+    .vp-logo:hover {
+      animation: none;
+      filter: invert(1) brightness(1.4) drop-shadow(0 0 18px rgba(200, 170, 110, 0.9));
+      transform: scale(1.07) translateY(-2px);
+      transition: filter 0.3s, transform 0.3s;
+    }
+    @keyframes vpFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+    @keyframes vpGlow {
+      0%, 100% { filter: invert(1) brightness(0.7) drop-shadow(0 0 0 rgba(200, 170, 110, 0)); }
+      50%      { filter: invert(1) brightness(1.25) drop-shadow(0 0 14px rgba(200, 170, 110, 0.6)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .vp-logo { animation: none; filter: invert(1) brightness(0.85); }
+    }
+</style>
   <!-- ===== 05 — ÉVÉNEMENTS ===== -->
   <section class="section" id="evenements">
     <div class="container">
@@ -2518,16 +2559,16 @@ body.mm-lock{overflow:hidden;}
 
       <div class="parks-grid">
         <div class="park-card reveal">
-          <img src="images/villes/terrebonne/terrebonne-2.jpg" alt="Parc de l&#39;Île-des-Moulins">
+          <img src="images/villes/terrebonne/terrebonne-2.jpg" alt="Parc de l&#39;Île-des-Moulins" loading="lazy">
         </div>
         <div class="park-card reveal">
-          <img src="images/villes/terrebonne/terrebonne-3.jpg" alt="Île-des-Moulins, Terrebonne">
+          <img src="images/villes/terrebonne/terrebonne-3.jpg" alt="Île-des-Moulins, Terrebonne" loading="lazy">
         </div>
         <div class="park-card reveal">
-          <img src="images/villes/terrebonne/terrebonne-4.jpg" alt="Parc des Pionniers">
+          <img src="images/villes/terrebonne/terrebonne-4.jpg" alt="Parc des Pionniers" loading="lazy">
         </div>
         <div class="park-card reveal">
-          <img src="images/villes/terrebonne/terrebonne-5.jpg" alt="Parc des Vignobles">
+          <img src="images/villes/terrebonne/terrebonne-5.jpg" alt="Parc des Vignobles" loading="lazy">
         </div>
       </div>
     </div>
@@ -2665,6 +2706,7 @@ body.mm-lock{overflow:hidden;}
           <address class="footer-address">
             Au service de toute la région de<br>
             Lanaudière, Québec<br>
+            <a href="tel:4504715503">(450)&nbsp;471-5503</a><br>
             <a href="https://agence.remaxdici.com" target="_blank" rel="noopener">agence.remaxdici.com</a>
           </address>
         </div>
@@ -2703,7 +2745,8 @@ body.mm-lock{overflow:hidden;}
           <a href="index.html#contact">Conditions d'utilisation</a>
         </div>
         <div class="footer-credit">
-          Site web par <a href="https://vpourdesign.com" target="_blank" rel="noopener"><strong>vpourdesign</strong></a>
+          <span>Stratégie web</span>
+          <a href="https://www.vpourdesign.com" target="_blank" rel="noopener"><img class="vp-logo" src="brand_assets/logo-vpourdesign.png" alt="vpourdesign" width="71" height="52"></a>
         </div>
       </div>
     </div>
