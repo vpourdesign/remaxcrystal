@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Assistant de rédaction pour courtiers — RE/MAX Crystal</title>
 <meta name="description" content="Préparez une consigne claire pour ChatGPT, Claude, Gemini ou Perplexity, adaptée aux besoins des courtiers immobiliers du Québec : annonce, courriel, vidéo, réseaux sociaux ou négociation.">
+<meta name="robots" content="noindex, nofollow">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -31,7 +32,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { font-size: 16px; scroll-behavior: smooth; }
+  html { font-size: 16px; scroll-behavior: smooth; scroll-padding-top: 176px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   body {
@@ -579,7 +580,8 @@
 
   /* ── Résultat ── */
   .result { padding: clamp(24px, 4vw, 38px) clamp(16px, 4vw, 40px) clamp(26px, 4vw, 40px); }
-  .result, .recap, .prompt-card, .coach-card { scroll-margin-top: 112px; }
+  .result, .recap, .prompt-card, .coach-card { scroll-margin-top: 12px; }
+  .bubble-row, .input-zone { scroll-margin-top: 12px; }
   .result-head { text-align: center; margin-bottom: 26px; }
   .result-head .result-check {
     width: 52px; height: 52px;
@@ -1723,6 +1725,8 @@
       cb(ok);
     }
 
+    var premierRendu = true;
+
     function rendre() {
       rendreProgress();
       rendreChat();
@@ -1745,7 +1749,13 @@
           return;
         }
         var cible = $input.querySelector('textarea, input, button');
-        if (cible) cible.focus();
+        if (cible) {
+          /* Au premier rendu, on ne fait pas sauter la page vers le formulaire :
+             la premiere bulle resterait cachee sous la barre de progression. */
+          try { cible.focus({ preventScroll: premierRendu }); }
+          catch (e) { cible.focus(); }
+        }
+        premierRendu = false;
       });
     }
 

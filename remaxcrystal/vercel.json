@@ -2,7 +2,22 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": false,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/guideprompt", "destination": "/outil-prompt.html" }
+  ],
   "headers": [
+    {
+      "source": "/guideprompt",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/outil-prompt.html",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [
