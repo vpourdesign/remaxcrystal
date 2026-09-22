@@ -498,20 +498,7 @@ ${buildTaxComparativeRows(city)}
   <!-- ===== CTA ===== -->`
   );
 
-  // ===== CTA — eyebrow numéro 06 + tagline + nom =====
-  // Le CTA garde le numéro 07 (Événements réintégré à 04).
-  html = html.replace(
-    /<h2 class="cta-heading reveal">Prêt à découvrir <em>Blainville<\/em> \?<\/h2>/,
-    `<h2 class="cta-heading reveal">Prêt à découvrir <em>${escapeHtml(city.nameEm)}</em> ?</h2>`
-  );
-  html = html.replace(
-    /<p class="cta-text reveal">Nos courtiers connaissent[^<]*<\/p>/,
-    `<p class="cta-text reveal">${escapeHtml(city.ctaTagline)}</p>`
-  );
-  html = html.replace(
-    /<a href="#" class="btn btn-ghost">Voir les propriétés à Blainville<\/a>/,
-    `<a href="#" class="btn btn-ghost">Voir les propriétés à ${escapeHtml(city.name)}</a>`
-  );
+  // (Section CTA « Prêt à découvrir » retirée du gabarit le 2026-09-22 : aucune destination réelle.)
 
   // ===== FOOTER : brand desc + liens guides =====
   html = html.replace(

@@ -1436,9 +1436,6 @@ body.mm-lock{overflow:hidden;}
         <a href="guide-stesophie.html" class="hero-city-tag">Sainte-Sophie</a>
       </div>
 
-      <div class="hero-cta-row reveal">
-        <a href="#guides" class="btn btn-primary">Trouver votre courtier local <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
     </div>
 
     <div class="hero-scroll-hint" style="display:none;">
@@ -2030,20 +2027,8 @@ body.mm-lock{overflow:hidden;}
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="cta-section" id="contact">
-    <div class="container cta-content">
-      <div class="section-eyebrow reveal" style="text-align:center; color: var(--blue-light);">Prochaine étape</div>
-      <h2 class="cta-heading reveal">Parlons de votre <em>projet</em></h2>
-      <p class="cta-text reveal">Achat, vente ou simple question : nos courtiers connaissent votre ville et peuvent vous accompagner dès aujourd'hui.</p>
-      <div class="cta-buttons reveal">
-        <a href="#" class="btn btn-ghost">Évaluation gratuite</a>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== FOOTER ===== -->
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -2158,10 +2143,6 @@ body.mm-lock{overflow:hidden;}
     gsap.fromTo('.hero-cities-row',
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.65 }
-    );
-    gsap.fromTo('.hero-cta-row',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.8 }
     );
 
     // ===== PARALLAX =====
