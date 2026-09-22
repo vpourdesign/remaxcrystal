@@ -177,7 +177,7 @@ function buildSeoSchema(city) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type':'ListItem', position:1, name:'Accueil', item: `${baseUrl}/` },
-      { '@type':'ListItem', position:2, name:'Guides de villes', item: `${baseUrl}/#villes` },
+      { '@type':'ListItem', position:2, name:'Guides de villes', item: `${baseUrl}/#guides` },
       { '@type':'ListItem', position:3, name: city.name, item: `${baseUrl}/guide-${city.fileSlug}.html` }
     ]
   };
@@ -264,7 +264,8 @@ function generateCity(city) {
   }
   const t = tax || { mutation: [[62900,0.005],[315000,0.01],[500000,0.015],[Infinity,0.03]], taxRates:{house:0.6,condo:0.6}, fixedFees:0, poolFee:0, source:'À confirmer', sourceUrl:'#', note:'Estimation régionale 2026.' };
 
-  let html = TEMPLATE;
+  // Le gabarit Blainville porte sa propre canonique : on la retire, chaque guide reçoit la sienne plus bas.
+  let html = TEMPLATE.replace(/<link rel="canonical"[^>]*>\n?/, '');
 
   // ===== HEAD : title + meta description + SEO additions =====
   const title = `Agence immobilière ${city.name} ${city.brandName} | Vivre à ${city.name} en 2026 — Guide complet`;
@@ -640,8 +641,8 @@ ${buildTaxComparativeRows(city)}
   );
 
   // Liens légaux -> page d'accueil D'ici (pas de pages dédiées sur ce site)
-  html = html.replace(/<a href="politique-confidentialite\.html">/g, '<a href="index.html#contact">');
-  html = html.replace(/<a href="conditions-utilisation\.html">/g, '<a href="index.html#contact">');
+  html = html.replace(/<a href="https:\/\/remaxcrystal\.com\/fr\/politique-confidentialite\.html"[^>]*>/g, '<a href="index.html#contact">');
+  html = html.replace(/<a href="https:\/\/remaxcrystal\.com\/fr\/conditions-d-utilisation\.html"[^>]*>/g, '<a href="index.html#contact">');
 
   return html;
 }
