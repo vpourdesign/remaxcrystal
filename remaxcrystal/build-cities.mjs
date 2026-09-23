@@ -51,7 +51,7 @@ function buildQualityCards(cards) {
   return cards.map(c =>
 `        <div class="ql-card reveal">
           <span class="ql-icon">${ICONS[c.icon] || ICONS.park}</span>
-          <h4>${escapeHtml(c.title)}</h4>
+          <h3>${escapeHtml(c.title)}</h3>
           <p>${escapeHtml(c.text)}</p>
           <div class="ql-value">${escapeHtml(c.value)}</div>
         </div>`).join('\n');
@@ -224,7 +224,7 @@ function buildSeoSchema(city) {
     },
     {
       q: `Quels services et commodités trouve-t-on à ${city.name} ?`,
-      a: `${city.name} offre ${(city.quality || []).map(q => q.title.toLowerCase()).slice(0,3).join(', ')} parmi ses principaux atouts pour les familles et les acheteurs. Consultez notre guide complet pour une vue détaillée des écoles, parcs, transport et qualité de vie.`
+      a: `${city.name} offre ${(city.quality || []).length ? (city.quality || []).map(q => q.title.toLowerCase()).slice(0,3).join(', ') + ' parmi ses principaux atouts' : 'plusieurs atouts'} pour les familles et les acheteurs. Consultez notre guide complet pour une vue détaillée des écoles, parcs, transport et qualité de vie.`
     }
   ].filter(Boolean);
 
@@ -249,8 +249,10 @@ function buildSeoSchema(city) {
     description: `Guide complet ${city.name} 2026 : marché immobilier, taxes, écoles, parcs, transport — par ${courtierNote}.`
   };
 
-  return `<script type="application/ld+json">${JSON.stringify(realEstateAgent)}</script>
-<script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>
+  // Pas de RealEstateAgent par ville : l'agence n'a pas de succursale dans chaque ville desservie.
+  // L'agence réelle (3 bureaux) est décrite sur l'accueil (@id #organisation) et dans le pied de page.
+  void realEstateAgent;
+  return `<script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>
 <script type="application/ld+json">${JSON.stringify(faqPage)}</script>
 <script type="application/ld+json">${JSON.stringify(place)}</script>`;
 }
@@ -375,7 +377,7 @@ ${buildIntro(city.intro)}
           <img src="${city.introImage}" alt="${escapeHtml(city.introImageAlt)}">
           <div class="intro-image-overlay"></div>
           <div class="intro-image-caption">
-            <h4>${escapeHtml(city.introCaptionTitle)}</h4>
+            <h3>${escapeHtml(city.introCaptionTitle)}</h3>
             <p>${escapeHtml(city.introCaptionSub)}</p>
           </div>
         </div>
@@ -452,7 +454,7 @@ ${buildParkCards(city)}
 
       <div class="table-wrap reveal">
         <div class="table-header">
-          <h4>Temps de trajet depuis ${escapeHtml(city.name)}</h4>
+          <h3>Temps de trajet depuis ${escapeHtml(city.name)}</h3>
           <span class="table-badge">En conditions normales</span>
         </div>
         <table class="data-table">
@@ -474,7 +476,7 @@ ${buildTransportRows(city.transportTable)}
       <!-- TABLE: Taxes & Coûts -->
       <div class="table-wrap reveal" style="margin-block-start: clamp(24px, 3vw, 40px);">
         <div class="table-header">
-          <h4>Taxes municipales & coûts de vie — Comparatif</h4>
+          <h3>Taxes municipales & coûts de vie — Comparatif</h3>
           <span class="table-badge">Données 2026</span>
         </div>
         <table class="data-table">

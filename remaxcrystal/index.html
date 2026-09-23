@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://agence.remaxcrystal.com/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","@id":"https://agence.remaxcrystal.com/#organisation","name":"RE/MAX Crystal","url":"https://www.remaxcrystal.com","logo":"https://agence.remaxcrystal.com/brand_assets/Crystal-long-noir-crystal.png","telephone":"+1-450-430-4207","address":{"@type":"PostalAddress","streetAddress":"228 boul. du Curé-Labelle","addressLocality":"Sainte-Thérèse","addressRegion":"QC","postalCode":"J7E 2X7","addressCountry":"CA"},"areaServed":[{"@type":"City","name":"Blainville"},{"@type":"City","name":"Sainte-Thérèse"},{"@type":"City","name":"Lorraine"},{"@type":"City","name":"Rosemère"},{"@type":"City","name":"Boisbriand"},{"@type":"City","name":"Bois-des-Filion"},{"@type":"City","name":"Saint-Eustache"},{"@type":"City","name":"Deux-Montagnes"},{"@type":"City","name":"Sainte-Marthe-sur-le-Lac"},{"@type":"City","name":"Oka"},{"@type":"City","name":"Pointe-Calumet"},{"@type":"City","name":"Mirabel"},{"@type":"City","name":"Saint-Janvier"},{"@type":"City","name":"Sainte-Anne-des-Plaines"},{"@type":"City","name":"Sainte-Sophie"}],"department":[{"@type":"RealEstateAgent","name":"RE/MAX Crystal — bureau de Saint-Eustache","telephone":"+1-450-472-7220","address":{"@type":"PostalAddress","streetAddress":"479 boul. Arthur-Sauvé","addressLocality":"Saint-Eustache","addressRegion":"QC","postalCode":"J7P 2B3","addressCountry":"CA"}},{"@type":"RealEstateAgent","name":"RE/MAX Crystal — bureau de Sainte-Anne-des-Plaines","telephone":"+1-450-941-1234","address":{"@type":"PostalAddress","streetAddress":"140 boul. Sainte-Anne","addressLocality":"Sainte-Anne-des-Plaines","addressRegion":"QC","postalCode":"J5N 3P1","addressCountry":"CA"}}],"parentOrganization":{"@type":"Organization","name":"RE/MAX Québec","url":"https://www.remax-quebec.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"RE/MAX Crystal — Guides de villes","url":"https://agence.remaxcrystal.com/","inLanguage":"fr-CA","publisher":{"@id":"https://agence.remaxcrystal.com/#organisation"}}</script>
 <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="brand_assets/favicon-192.png">
 <link rel="apple-touch-icon" href="brand_assets/apple-touch-icon.png">
 <meta name="google-site-verification" content="V3fNLR-VYKxrsbGZbQt66vjUVvYmfNoisal4rOF9S60" />
 <title>RE/MAX Crystal — L'agence qui connaît vos quartiers</title>
 <meta name="description" content="RE/MAX Crystal est l'agence immobilière de référence dans les Basses-Laurentides. Découvrez nos guides de vie pour Blainville, Sainte-Thérèse, Lorraine, Rosemère, Boisbriand et Bois-des-Filion.">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/bundled/lenis.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap"></noscript>
 
 <style>
   :root {
@@ -1035,7 +1036,7 @@
     stroke-linejoin: round;
   }
 
-  .value-feature-text h5 {
+  .value-feature-text h4 {
     font-family: 'Open Sans', sans-serif;
     font-size: 0.88rem;
     font-weight: 600;
@@ -1273,11 +1274,11 @@
     max-width: 30ch;
   }
 
-  .footer-col h5 {
+  .footer-col h2 {
     font-family: 'Open Sans', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
-    color: #5e7080;
+    color: #7f8f9f;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-block-end: 16px;
@@ -1297,7 +1298,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.72rem;
-    color: #4f5f70;
+    color: #7a8a9a;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -1328,6 +1329,16 @@
 
   /* Reveal base */
   .reveal { opacity: 0; transform: translateY(32px); }
+
+  /* ===== HERO : entrée en CSS, visible sans attendre GSAP (LCP) ===== */
+  @keyframes heroIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  .hero .reveal { opacity: 1; transform: none; animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero .hero-eyebrow { animation-delay: 0.05s; }
+  .hero .hero-title { animation-delay: 0.12s; }
+  .hero .hero-subtitle { animation-delay: 0.25s; }
+  .hero .hero-cities-row, .hero .hero-stats { animation-delay: 0.4s; }
+  @media (prefers-reduced-motion: reduce) { .hero .reveal { animation: none; } }
+  .hero-image picture { display: contents; }
 </style>
 <style id="mm-style">
 .mm-trigger{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.02em;background:#3578c4;color:#fff;border:none;border-radius:999px;padding:9px 18px;cursor:pointer;transition:background .25s,transform .25s;}
@@ -1363,6 +1374,7 @@ body.mm-lock{overflow:hidden;}
 @media(max-width:900px){.mm-navlinks{display:grid;}.mm-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:430px){.mm-grid{grid-template-columns:1fr;}}
 </style>
+<style id="tw-base">*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}</style>
 </head>
 <body>
 
@@ -1378,8 +1390,8 @@ body.mm-lock{overflow:hidden;}
   <nav class="topbar" id="topbar">
     <div class="topbar-brand">
       <div class="topbar-logo">
-        <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" class="logo-white">
-        <img src="brand_assets/Crystal-long-noir-crystal.png" alt="RE/MAX Crystal" class="logo-dark">
+        <img src="brand_assets/Crystal-long-blanc-crystal.webp" alt="RE/MAX Crystal" class="logo-white">
+        <img src="brand_assets/Crystal-long-noir-crystal.webp" alt="RE/MAX Crystal" class="logo-dark">
       </div>
     </div>
     <div class="topbar-nav">
@@ -1400,7 +1412,7 @@ body.mm-lock{overflow:hidden;}
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-image">
-      <img src="images-opt/hero.jpg" alt="Vue aérienne des Basses-Laurentides" fetchpriority="high" decoding="async">
+      <picture><source media="(orientation: portrait)" srcset="images-opt/hero-portrait.webp"><img src="images-opt/hero.webp" alt="Vue aérienne des Basses-Laurentides" fetchpriority="high" decoding="async"></picture>
     </div>
     <div class="hero-noise" style="filter: url(#noise);"></div>
 
@@ -1643,7 +1655,7 @@ body.mm-lock{overflow:hidden;}
         <!-- FEATURED: Blainville -->
         <a href="guide-blainville.html" class="city-card featured reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/blainville-blainville2.jpg" decoding="async" alt="Blainville, Québec — vue aérienne" loading="lazy">
+            <img src="images-opt/cards/blainville-blainville2.webp" decoding="async" alt="Blainville, Québec — vue aérienne" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1657,7 +1669,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Sainte-Thérèse -->
         <a href="guide-stetherese.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/stetherese-village-vst-d34f2a1762ebdc1f8a3c032e4f48b60e.jpg" decoding="async" alt="Sainte-Thérèse — Vieux-Village" loading="lazy">
+            <img src="images-opt/cards/stetherese-village-vst-d34f2a1762ebdc1f8a3c032e4f48b60e.webp" decoding="async" alt="Sainte-Thérèse — Vieux-Village" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1671,7 +1683,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Lorraine -->
         <a href="guide-lorraine.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/lorraine-lorraine1.jpg" decoding="async" alt="Lorraine — automne aérien" loading="lazy">
+            <img src="images-opt/cards/lorraine-lorraine1.webp" decoding="async" alt="Lorraine — automne aérien" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1699,7 +1711,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Boisbriand -->
         <a href="guide-boisbriand.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/boisbriand-boisbriand-qc-2.jpg" decoding="async" alt="Boisbriand" loading="lazy">
+            <img src="images-opt/cards/boisbriand-boisbriand-qc-2.webp" decoding="async" alt="Boisbriand" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1713,7 +1725,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Bois-des-Filion -->
         <a href="guide-boisdesfillions.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/boisdesfillions-image-decouvrezbdf-1600x1000.jpg" decoding="async" alt="Bois-des-Filion" loading="lazy">
+            <img src="images-opt/cards/boisdesfillions-image-decouvrezbdf-1600x1000.webp" decoding="async" alt="Bois-des-Filion" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1727,7 +1739,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Saint-Eustache -->
         <a href="guide-steustache.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/steustache-saint-eustache-vue-aerienne-2.jpg" decoding="async" alt="Saint-Eustache" loading="lazy">
+            <img src="images-opt/cards/steustache-saint-eustache-vue-aerienne-2.webp" decoding="async" alt="Saint-Eustache" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1741,7 +1753,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Deux-Montagnes -->
         <a href="guide-deuxmontagnes.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/deuxmontagnes-ville-deux-montagnes.jpg" decoding="async" alt="Deux-Montagnes" loading="lazy">
+            <img src="images-opt/cards/deuxmontagnes-ville-deux-montagnes.webp" decoding="async" alt="Deux-Montagnes" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1755,7 +1767,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Sainte-Marthe-sur-le-Lac -->
         <a href="guide-stemarthe.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/stemarthe-sainte-marthe-sur-le-lac-vue-a-rienne-1.jpg" decoding="async" alt="Sainte-Marthe-sur-le-Lac" loading="lazy">
+            <img src="images-opt/cards/stemarthe-sainte-marthe-sur-le-lac-vue-a-rienne-1.webp" decoding="async" alt="Sainte-Marthe-sur-le-Lac" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1769,7 +1781,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Oka -->
         <a href="guide-oka.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/oka-2021-loik-monette-oka-le-plus-beau-scaled.jpg" decoding="async" alt="Oka" loading="lazy">
+            <img src="images-opt/cards/oka-2021-loik-monette-oka-le-plus-beau-scaled.webp" decoding="async" alt="Oka" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1783,7 +1795,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Pointe-Calumet -->
         <a href="guide-pointecalumet.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/pointecalumet-super-aqua-club-pointe-calumet.jpg" decoding="async" alt="Pointe-Calumet" loading="lazy">
+            <img src="images-opt/cards/pointecalumet-super-aqua-club-pointe-calumet.webp" decoding="async" alt="Pointe-Calumet" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1797,7 +1809,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Mirabel -->
         <a href="guide-mirabel.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/mirabel-couverture-1620x675.jpg" decoding="async" alt="Mirabel" loading="lazy">
+            <img src="images-opt/cards/mirabel-couverture-1620x675.webp" decoding="async" alt="Mirabel" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1825,7 +1837,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Sainte-Anne-des-Plaines -->
         <a href="guide-steannedesplaines.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/steannedesplaines-territoire-eglise-champs-sadp.jpg" decoding="async" alt="Sainte-Anne-des-Plaines" loading="lazy">
+            <img src="images-opt/cards/steannedesplaines-territoire-eglise-champs-sadp.webp" decoding="async" alt="Sainte-Anne-des-Plaines" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1839,7 +1851,7 @@ body.mm-lock{overflow:hidden;}
         <!-- Sainte-Sophie -->
         <a href="guide-stesophie.html" class="city-card reveal">
           <div class="city-card-image">
-            <img src="images-opt/cards/stesophie-sainte-sophie.jpg" decoding="async" alt="Sainte-Sophie" loading="lazy">
+            <img src="images-opt/cards/stesophie-sainte-sophie.webp" decoding="async" alt="Sainte-Sophie" loading="lazy">
           </div>
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
@@ -1871,21 +1883,21 @@ body.mm-lock{overflow:hidden;}
             <div class="value-feature">
               <span class="value-feature-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/><path d="M2 20h20"/></svg></span>
               <div class="value-feature-text">
-                <h5>Données de marché en temps réel</h5>
+                <h4>Données de marché en temps réel</h4>
                 <p>Nos courtiers accèdent aux prix médians, aux délais de vente et aux tendances par quartier, mis à jour chaque mois.</p>
               </div>
             </div>
             <div class="value-feature">
               <span class="value-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
               <div class="value-feature-text">
-                <h5>Assistant de rédaction exclusif</h5>
+                <h4>Assistant de rédaction exclusif</h4>
                 <p>Annonces, suivis, prospection, scripts vidéo et préparation de négociation : un seul outil pour cadrer vos demandes dans ChatGPT ou Claude avec des consignes plus nettes et plus utiles.</p>
               </div>
             </div>
             <div class="value-feature">
               <span class="value-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg></span>
               <div class="value-feature-text">
-                <h5>Expertise locale vérifiable</h5>
+                <h4>Expertise locale vérifiable</h4>
                 <p>Chaque courtier est associé à ses villes. Nos guides montrent qu'on connaît le terrain, pas seulement le marché.</p>
               </div>
             </div>
@@ -1895,7 +1907,7 @@ body.mm-lock{overflow:hidden;}
         <div class="value-image-wrap reveal">
           <video
             data-lazy-src="images/galas/gala-web.mp4"
-            poster="images/galas/gala-poster.jpg"
+            data-poster="images/galas/gala-poster.jpg"
             muted
             loop
             playsinline
@@ -1936,7 +1948,7 @@ body.mm-lock{overflow:hidden;}
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.5);
     }
     .footer-credit > a {
       display: block;
@@ -1981,7 +1993,7 @@ body.mm-lock{overflow:hidden;}
       <div class="offices-grid">
         <div class="office-card reveal">
           <div class="office-card-media">
-            <img src="images-opt/cards/bureaux-web-bureau-stetherese.jpg" decoding="async" alt="Bureau RE/MAX Crystal à Sainte-Thérèse" loading="lazy">
+            <img src="images-opt/cards/bureaux-web-bureau-stetherese.webp" decoding="async" alt="Bureau RE/MAX Crystal à Sainte-Thérèse" loading="lazy">
             <span class="office-card-tag">RE/MAX Crystal</span>
           </div>
           <div class="office-card-body">
@@ -1996,7 +2008,7 @@ body.mm-lock{overflow:hidden;}
 
         <div class="office-card reveal">
           <div class="office-card-media">
-            <img src="images-opt/cards/bureaux-web-bureau-steustache.jpg" decoding="async" alt="Bureau RE/MAX Crystal à Saint-Eustache" loading="lazy">
+            <img src="images-opt/cards/bureaux-web-bureau-steustache.webp" decoding="async" alt="Bureau RE/MAX Crystal à Saint-Eustache" loading="lazy">
             <span class="office-card-tag">RE/MAX Crystal</span>
           </div>
           <div class="office-card-body">
@@ -2032,11 +2044,11 @@ body.mm-lock{overflow:hidden;}
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand-name"><img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></div>
+          <div class="footer-brand-name"><img src="brand_assets/Crystal-long-blanc-crystal.webp" alt="RE/MAX Crystal"></div>
           <p class="footer-brand-desc">Vos courtiers de confiance sur la Rive-Nord de Montréal. Ancrés dans le territoire, du premier rendez-vous à la signature.</p>
         </div>
         <div class="footer-col">
-          <h5>Nos villes</h5>
+          <h2>Nos villes</h2>
           <a href="guide-blainville.html">Vivre à Blainville</a>
           <a href="guide-stetherese.html">Vivre à Sainte-Thérèse</a>
           <a href="guide-lorraine.html">Vivre à Lorraine</a>
@@ -2054,7 +2066,7 @@ body.mm-lock{overflow:hidden;}
           <a href="guide-stesophie.html">Vivre à Sainte-Sophie</a>
         </div>
         <div class="footer-col">
-          <h5>Nos outils</h5>
+          <h2>Nos outils</h2>
           <a href="#">Assistant de rédaction</a>
           <a href="#">Générateur PDF</a>
           <a href="#">Carte à proximité</a>
@@ -2062,7 +2074,7 @@ body.mm-lock{overflow:hidden;}
           <a href="#">Générateur de contenu</a>
         </div>
         <div class="footer-col">
-          <h5>Contact</h5>
+          <h2>Contact</h2>
           <a href="#">Bureau principal</a>
           <a href="courtiers/index.html">Nos courtiers</a>
           <a href="#">Carrières</a>
@@ -2073,12 +2085,15 @@ body.mm-lock{overflow:hidden;}
         <span>&copy; 2026 RE/MAX Crystal. Tous droits réservés. · agence.remaxcrystal.com</span>
         <div class="footer-credit">
           <span>Stratégie web</span>
-          <a href="https://www.vpourdesign.com" target="_blank" rel="noopener"><img class="vp-logo" src="brand_assets/logo-vpourdesign.png" alt="vpourdesign" width="71" height="52"></a>
+          <a href="https://www.vpourdesign.com" target="_blank" rel="noopener"><img class="vp-logo" src="brand_assets/logo-vpourdesign.webp" alt="vpourdesign" width="71" height="52"></a>
         </div>
       </div>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/bundled/lenis.min.js"></script>
   <script>
     // ===== LENIS =====
     let lenis = null;
@@ -2109,6 +2124,7 @@ body.mm-lock{overflow:hidden;}
     gsap.registerPlugin(ScrollTrigger);
 
     document.querySelectorAll('.reveal').forEach((el) => {
+      if (el.closest('.hero')) return; // hero animé en CSS
       gsap.fromTo(el,
         { opacity: 0, y: 36 },
         {
@@ -2128,23 +2144,6 @@ body.mm-lock{overflow:hidden;}
     });
 
     // ===== HERO ENTRANCE =====
-    gsap.fromTo('.hero-title',
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1.3, ease: 'power3.out', delay: 0.15 }
-    );
-    gsap.fromTo('.hero-eyebrow',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.05 }
-    );
-    gsap.fromTo('.hero-subtitle',
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.45 }
-    );
-    gsap.fromTo('.hero-cities-row',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.65 }
-    );
-
     // ===== PARALLAX =====
     gsap.to('.hero-image video, .hero-image img', {
       y: 100, ease: 'none',
@@ -2546,7 +2545,7 @@ body.mm-lock{overflow:hidden;}
   (() => {
     const vids = document.querySelectorAll('video[data-lazy-src]');
     if (!vids.length) return;
-    const load = (v) => { v.src = v.dataset.lazySrc; v.removeAttribute('data-lazy-src'); v.play().catch(() => {}); };
+    const load = (v) => { if (v.dataset.poster) v.poster = v.dataset.poster; v.src = v.dataset.lazySrc; v.removeAttribute('data-lazy-src'); v.play().catch(() => {}); };
     if (!('IntersectionObserver' in window)) { vids.forEach(load); return; }
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });

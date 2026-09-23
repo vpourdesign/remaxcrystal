@@ -52,7 +52,7 @@ function buildQualityCards(cards) {
   return cards.map(c =>
 `        <div class="ql-card reveal">
           <span class="ql-icon">${ICONS[c.icon] || ICONS.park}</span>
-          <h4>${escapeHtml(c.title)}</h4>
+          <h3>${escapeHtml(c.title)}</h3>
           <p>${escapeHtml(c.text)}</p>
           <div class="ql-value">${escapeHtml(c.value)}</div>
         </div>`).join('\n');
@@ -376,7 +376,7 @@ ${buildIntro(city.intro)}
           <img src="${city.introImage}" alt="${escapeHtml(city.introImageAlt)}">
           <div class="intro-image-overlay"></div>
           <div class="intro-image-caption">
-            <h4>${escapeHtml(city.introCaptionTitle)}</h4>
+            <h3>${escapeHtml(city.introCaptionTitle)}</h3>
             <p>${escapeHtml(city.introCaptionSub)}</p>
           </div>
         </div>
@@ -453,7 +453,7 @@ ${buildParkCards(city)}
 
       <div class="table-wrap reveal">
         <div class="table-header">
-          <h4>Temps de trajet depuis ${escapeHtml(city.name)}</h4>
+          <h3>Temps de trajet depuis ${escapeHtml(city.name)}</h3>
           <span class="table-badge">En conditions normales</span>
         </div>
         <table class="data-table">
@@ -475,7 +475,7 @@ ${buildTransportRows(city.transportTable)}
       <!-- TABLE: Taxes & Coûts -->
       <div class="table-wrap reveal" style="margin-block-start: clamp(24px, 3vw, 40px);">
         <div class="table-header">
-          <h4>Taxes municipales & coûts de vie — Comparatif</h4>
+          <h3>Taxes municipales & coûts de vie — Comparatif</h3>
           <span class="table-badge">Données 2026</span>
         </div>
         <table class="data-table">
