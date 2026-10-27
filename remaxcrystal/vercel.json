@@ -3,7 +3,8 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/guideprompt", "destination": "/outil-prompt.html" }
+    { "source": "/guideprompt", "destination": "/outil-prompt.html" },
+    { "source": "/formulaire", "destination": "/courtier-formulaire.html" }
   ],
   "headers": [
     {
@@ -14,6 +15,18 @@
     },
     {
       "source": "/outil-prompt.html",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/formulaire",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/courtier-formulaire.html",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
