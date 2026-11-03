@@ -1069,6 +1069,11 @@
       border-bottom: none;
     }
 
+    @media (max-width: 720px) {
+      .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .data-table th, .data-table td { white-space: nowrap; }
+    }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -2283,7 +2288,6 @@ body.mm-lock{overflow:hidden;}
             </div>
             <div class="tool-breakdown" id="mortgage-breakdown"></div>
             <div class="tool-source" id="mortgage-source"></div>
-            <a href="#contact" class="tool-cta">Valider avec un courtier</a>
           </div>
         </div>
       </div>
@@ -2376,7 +2380,7 @@ body.mm-lock{overflow:hidden;}
       <p class="section-intro reveal">Activité résidentielle à Blainville selon les dernières statistiques publiées par Centris. Les chiffres comparent le trimestre courant à la même période l'an dernier, et présentent le cumul des quatre derniers trimestres.</p>
 
       <div class="stats-meta reveal">
-        <span><strong data-meta="quarterLabel">2ᵉ trimestre 2026</strong> · Total résidentiel</span>
+        <span><strong data-meta="quarterLabel">3ᵉ trimestre 2026</strong> · Total résidentiel</span>
         <span>Mis à jour le <span data-meta="updatedFr">—</span></span>
         <span>Source : <a data-meta="centrisUrl" href="https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/blainville" target="_blank" rel="noopener">Centris — Statistiques immobilières</a></span>
       </div>
@@ -2387,7 +2391,7 @@ body.mm-lock{overflow:hidden;}
           <thead>
             <tr>
               <th rowspan="2">Indicateur</th>
-              <th colspan="2" class="col-group" data-meta="quarterLabel">2ᵉ trimestre 2026</th>
+              <th colspan="2" class="col-group" data-meta="quarterLabel">3ᵉ trimestre 2026</th>
               <th colspan="2" class="col-group col-divider" data-meta="cumulPeriod">Cumul 4 derniers trimestres</th>
             </tr>
             <tr class="row-sub">
@@ -2404,8 +2408,8 @@ body.mm-lock{overflow:hidden;}
                 <span class="stats-row-label">Ventes</span>
                 <span class="stats-row-sublabel">Propriétés vendues durant la période</span>
               </td>
-              <td class="stats-value" data-label="Valeur T2" data-stat="ventes.q">—</td>
-              <td data-label="Variation T2">
+              <td class="stats-value" data-label="Valeur T3" data-stat="ventes.q">—</td>
+              <td data-label="Variation T3">
                 <span class="stat-trend trend-stable">
                   <span class="stat-arrow">—</span>
                   <span data-stat="ventes.qVar">—</span>
@@ -2426,8 +2430,8 @@ body.mm-lock{overflow:hidden;}
                 <span class="stats-row-label">Nouvelles inscriptions</span>
                 <span class="stats-row-sublabel">Propriétés ajoutées au marché</span>
               </td>
-              <td class="stats-value" data-label="Valeur T2" data-stat="inscriptions.q">—</td>
-              <td data-label="Variation T2">
+              <td class="stats-value" data-label="Valeur T3" data-stat="inscriptions.q">—</td>
+              <td data-label="Variation T3">
                 <span class="stat-trend trend-stable">
                   <span class="stat-arrow">—</span>
                   <span data-stat="inscriptions.qVar">—</span>
@@ -2448,8 +2452,8 @@ body.mm-lock{overflow:hidden;}
                 <span class="stats-row-label">Inscriptions en vigueur</span>
                 <span class="stats-row-sublabel">Propriétés actuellement à vendre</span>
               </td>
-              <td class="stats-value" data-label="Valeur T2" data-stat="envigueur.q">—</td>
-              <td data-label="Variation T2">
+              <td class="stats-value" data-label="Valeur T3" data-stat="envigueur.q">—</td>
+              <td data-label="Variation T3">
                 <span class="stat-trend trend-stable">
                   <span class="stat-arrow">—</span>
                   <span data-stat="envigueur.qVar">—</span>
@@ -2470,8 +2474,8 @@ body.mm-lock{overflow:hidden;}
                 <span class="stats-row-label">Volume résidentiel</span>
                 <span class="stats-row-sublabel">Valeur totale des transactions (en milliers&nbsp;$)</span>
               </td>
-              <td class="stats-value" data-label="Valeur T2"><span data-stat="volume.q">—</span><span class="stats-value-suffix">k$</span></td>
-              <td data-label="Variation T2">
+              <td class="stats-value" data-label="Valeur T3"><span data-stat="volume.q">—</span><span class="stats-value-suffix">k$</span></td>
+              <td data-label="Variation T3">
                 <span class="stat-trend trend-stable">
                   <span class="stat-arrow">—</span>
                   <span data-stat="volume.qVar">—</span>
@@ -2668,44 +2672,51 @@ body.mm-lock{overflow:hidden;}
           <thead>
             <tr>
               <th>Ville</th>
-              <th>Taux de taxation (par 100 $)</th>
-              <th>Taxe sur maison de 500 000 $</th>
-              <th>Eau & services</th>
+              <th>Taux (par 100 $)</th>
+              <th>Taxe foncière</th>
+              <th>Tarifs fixes</th>
+              <th>Total sur 500 000 $</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Blainville</strong></td>
               <td>0,466 $</td>
-              <td>2 765 $ / an</td>
-              <td><span class="badge badge-green">Inclus</span></td>
+              <td>2 330 $</td>
+              <td>435 $</td>
+              <td><strong>2 765 $ / an</strong></td>
             </tr>
             <tr>
               <td>Sainte-Thérèse</td>
               <td>0,456 $</td>
-              <td>3 183 $ / an</td>
-              <td><span class="badge badge-green">Inclus</span></td>
+              <td>2 280 $</td>
+              <td>903 $</td>
+              <td><strong>3 183 $ / an</strong></td>
             </tr>
             <tr>
               <td>Lorraine</td>
               <td>0,526 $</td>
-              <td>3 126 $ / an</td>
-              <td><span class="badge badge-green">Inclus</span></td>
+              <td>2 630 $</td>
+              <td>496 $</td>
+              <td><strong>3 126 $ / an</strong></td>
             </tr>
             <tr>
               <td>Rosemère</td>
-              <td>0,497 $</td>
-              <td>2 488 $ / an</td>
-              <td><span class="badge badge-green">Compte global</span></td>
+              <td>0,4975 $</td>
+              <td>2 488 $</td>
+              <td>0 $</td>
+              <td><strong>2 488 $ / an</strong></td>
             </tr>
             <tr>
               <td>Boisbriand</td>
-              <td>0,511 $</td>
-              <td>3 059 $ / an</td>
-              <td><span class="badge badge-green">Inclus</span></td>
+              <td>0,5113 $</td>
+              <td>2 557 $</td>
+              <td>502 $</td>
+              <td><strong>3 059 $ / an</strong></td>
             </tr>
           </tbody>
         </table>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0; padding: 14px clamp(16px, 2vw, 24px) 16px;">Calcul pour une unifamiliale évaluée à 500 000 $ : taxe foncière (taux × 5 000) + tarifs fixes annuels par logement (eau, égouts, matières résiduelles, etc. selon la ville). Des taxes de secteur peuvent s'ajouter selon l'adresse.</p>
       </div>
     </div>
   </section>
@@ -2742,7 +2753,6 @@ body.mm-lock{overflow:hidden;}
         <div class="footer-col">
           <h2>Contact</h2>
           <a href="#">Bureau principal</a>
-          <a href="#">Nos courtiers</a>
           <a href="#">Carrières</a>
           <a href="#">Évaluation gratuite</a>
         </div>
@@ -3004,7 +3014,6 @@ body.mm-lock{overflow:hidden;}
       }
     });
   </script>
-  <script src="courtiers.js"></script>
   <script src="data/market-stats.js"></script>
   <script src="data/market-render.js"></script>
 <!-- MEGA-MENU VILLES -->

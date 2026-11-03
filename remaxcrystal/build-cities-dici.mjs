@@ -78,23 +78,22 @@ function buildTransportRows(rows) {
 }
 
 function buildTaxComparativeRows(city) {
+  const nf = new Intl.NumberFormat('fr-CA');
   const rows = city.taxCompare.map((key, i) => {
     const t = TAXES[key];
     if (!t) return '';
-    const rate = (t.taxRates.house * 1).toFixed(4).replace(/0+$/,'').replace(/\.$/,'');
-    const rateDisplay = parseFloat(t.taxRates.house).toFixed(3).replace('.', ',');
-    const annual = Math.round(500000 / 100 * t.taxRates.house + (t.fixedFees || 0));
-    const annualDisplay = new Intl.NumberFormat('fr-CA').format(annual);
-    const services = (t.fixedFees && t.fixedFees > 0)
-      ? `<span class="badge badge-green">Inclus</span>`
-      : `<span class="badge badge-green">Compte global</span>`;
+    // Taux affiché au complet (ex. 0,4975) pour que taux × 5 000 = taxe foncière affichée
+    const rateDisplay = String(t.taxRates.house).replace('.', ',');
+    const fonciere = Math.round(500000 / 100 * t.taxRates.house);
+    const fixed = t.fixedFees || 0;
     const isCurrent = (key === city.taxKey);
     const nameCell = isCurrent ? `<strong>${escapeHtml(t.name)}</strong>` : escapeHtml(t.name);
     return `            <tr>
               <td>${nameCell}</td>
               <td>${rateDisplay} $</td>
-              <td>${annualDisplay} $ / an</td>
-              <td>${services}</td>
+              <td>${nf.format(fonciere)} $</td>
+              <td>${nf.format(fixed)} $</td>
+              <td><strong>${nf.format(fonciere + fixed)} $ / an</strong></td>
             </tr>`;
   }).join('\n');
   return rows;
@@ -209,7 +208,7 @@ function buildSeoSchema(city) {
     },
     {
       q: `Qui est le meilleur courtier immobilier à ${city.name} ?`,
-      a: `${courtierNote} est l'agence immobilière de référence à ${city.name} et dans les Laurentides. Nos courtiers connaissent chaque quartier, suivent les statistiques Centris locales en temps réel et accompagnent autant les acheteurs que les vendeurs avec des outils numériques exclusifs.`
+      a: `${courtierNote} est l'agence immobilière de référence à ${city.name} et dans Lanaudière. Nos courtiers connaissent chaque quartier, suivent les statistiques Centris locales en temps réel et accompagnent autant les acheteurs que les vendeurs avec des outils numériques exclusifs.`
     },
     {
       q: `Pourquoi habiter à ${city.name} ?`,
@@ -482,16 +481,18 @@ ${buildTransportRows(city.transportTable)}
           <thead>
             <tr>
               <th>Ville</th>
-              <th>Taux de taxation (par 100 $)</th>
-              <th>Taxe sur maison de 500 000 $</th>
-              <th>Eau & services</th>
+              <th>Taux (par 100 $)</th>
+              <th>Taxe foncière</th>
+              <th>Tarifs fixes</th>
+              <th>Total sur 500 000 $</th>
             </tr>
           </thead>
           <tbody>
 ${buildTaxComparativeRows(city)}
           </tbody>
         </table>
-        <p style="font-size: 0.8em; color: var(--text-muted); margin-top: 12px;">Source : ${escapeHtml(t.source)}. ${escapeHtml(t.note || '')}</p>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0; padding: 14px clamp(16px, 2vw, 24px) 0;">Calcul pour une unifamiliale évaluée à 500 000 $ : taxe foncière (taux × 5 000) + tarifs fixes annuels par logement (eau, égouts, matières résiduelles, etc. selon la ville). Des taxes de secteur peuvent s'ajouter selon l'adresse.</p>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0; padding: 8px clamp(16px, 2vw, 24px) 16px;">Source : ${escapeHtml(t.source)}. ${escapeHtml(t.note || '')}</p>
       </div>
     </div>
   </section>

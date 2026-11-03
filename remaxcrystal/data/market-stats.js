@@ -12,10 +12,10 @@
 
 window.MARKET_STATS = {
   meta: {
-    quarter: "T2 2026",
-    quarterLabel: "2ᵉ trimestre 2026",
+    quarter: "T3 2026",
+    quarterLabel: "3ᵉ trimestre 2026",
     cumulPeriod: "Cumul 4 derniers trimestres",
-    updated: "2026-07-15",
+    updated: "2026-10-07",
     sourceLabel: "Centris — Statistiques immobilières",
     sourceBaseUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres"
   },
@@ -28,10 +28,10 @@ window.MARKET_STATS = {
       brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/blainville",
       residential: {
-        ventes:       { q: 262,    qVar: 7,  cumul: 858,    cumulVar: 1  },
-        inscriptions: { q: 350,    qVar: 0,  cumul: 1255,   cumulVar: 10 },
-        envigueur:    { q: 267,    qVar: 21, cumul: 238,    cumulVar: 15 },
-        volume:       { q: 207498, qVar: 18, cumul: 664159, cumulVar: 7  }
+        ventes:       { q: 185,    qVar: -4,   cumul: 849,    cumulVar: -3   },
+        inscriptions: { q: 293,    qVar: -2,   cumul: 1245,   cumulVar: 3    },
+        envigueur:    { q: 232,    qVar: 8,    cumul: 242,    cumulVar: 16   },
+        volume:       { q: 160974, qVar: 7,    cumul: 675346, cumulVar: 3    }
       }
     },
 
@@ -39,113 +39,113 @@ window.MARKET_STATS = {
       name: "Boisbriand", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/boisbriand",
       residential: {
-        ventes:       { q: 62,    qVar: -51, cumul: 244,    cumulVar: -23 },
-        inscriptions: { q: 124,   qVar: -7,  cumul: 389,    cumulVar: -8  },
-        envigueur:    { q: 108,   qVar: 16,  cumul: 75,     cumulVar: -14 },
-        volume:       { q: 40350, qVar: -42, cumul: 152096, cumulVar: -17 }
+        ventes:       { q: 71,     qVar: -7,   cumul: 238,    cumulVar: -32  },
+        inscriptions: { q: 112,    qVar: 31,   cumul: 412,    cumulVar: -5   },
+        envigueur:    { q: 93,     qVar: 43,   cumul: 82,     cumulVar: -3   },
+        volume:       { q: 46278,  qVar: -3,   cumul: 150564, cumulVar: -26  }
       }
     },
     boisdesfillions: {
       name: "Bois-des-Filion", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/bois-des-filion",
       residential: {
-        ventes:       { q: 44,    qVar: -15, cumul: 173,   cumulVar: 8  },
-        inscriptions: { q: 71,    qVar: 39,  cumul: 228,   cumulVar: 14 },
-        envigueur:    { q: 42,    qVar: 7,   cumul: 37,    cumulVar: -2 },
-        volume:       { q: 22805, qVar: -18, cumul: 92843, cumulVar: 15 }
+        ventes:       { q: 34,     qVar: -17,  cumul: 166,    cumulVar: -2   },
+        inscriptions: { q: 74,     qVar: 19,   cumul: 240,    cumulVar: 9    },
+        envigueur:    { q: 55,     qVar: 30,   cumul: 41,     cumulVar: 5    },
+        volume:       { q: 16972,  qVar: -25,  cumul: 86882,  cumulVar: -2   }
       }
     },
     deuxmontagnes: {
       name: "Deux-Montagnes", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/deux-montagnes",
       residential: {
-        ventes:       { q: 78,    qVar: 36, cumul: 230,    cumulVar: 21 },
-        inscriptions: { q: 97,    qVar: 40, cumul: 306,    cumulVar: 24 },
-        envigueur:    { q: 59,    qVar: 25, cumul: 50,     cumulVar: 4  },
-        volume:       { q: 46091, qVar: 45, cumul: 127566, cumulVar: 30 }
+        ventes:       { q: 40,     qVar: -2,   cumul: 229,    cumulVar: 19   },
+        inscriptions: { q: 74,     qVar: 39,   cumul: 325,    cumulVar: 32   },
+        envigueur:    { q: 64,     qVar: 72,   cumul: 56,     cumulVar: 24   },
+        volume:       { q: 25806,  qVar: 19,   cumul: 131769, cumulVar: 29   }
       }
     },
     lorraine: {
       name: "Lorraine", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/lorraine",
       residential: {
-        // Petite municipalité — Centris supprime une variation trimestrielle (« ** » → null)
-        ventes:       { q: 36,    qVar: -7,   cumul: 120,    cumulVar: -5  },
-        inscriptions: { q: 47,    qVar: -2,   cumul: 161,    cumulVar: -10 },
-        envigueur:    { q: 29,    qVar: null, cumul: 31,     cumulVar: -18 },
-        volume:       { q: 29064, qVar: -15,  cumul: 104300, cumulVar: -3  }
+        // Données partielles : Centris indique « ** » (volume de transactions insuffisant) pour certaines valeurs → null
+        ventes:       { q: 21,     qVar: null, cumul: 110,    cumulVar: -19  },
+        inscriptions: { q: 39,     qVar: -9,   cumul: 157,    cumulVar: -14  },
+        envigueur:    { q: 29,     qVar: null, cumul: 29,     cumulVar: null },
+        volume:       { q: null,   qVar: null, cumul: 96508,  cumulVar: -16  }
       }
     },
     oka: {
       name: "Oka", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/oka",
       residential: {
-        // Données partielles — Centris indique « ** » (volume de transactions insuffisant) pour plusieurs variations trimestrielles
-        ventes:       { q: 11,   qVar: null, cumul: 46,    cumulVar: -19 },
-        inscriptions: { q: 19,   qVar: null, cumul: 75,    cumulVar: -21 },
-        envigueur:    { q: 23,   qVar: null, cumul: 23,    cumulVar: null },
-        volume:       { q: null, qVar: null, cumul: 26876, cumulVar: -23 }
+        // Données partielles : Centris indique « ** » (volume de transactions insuffisant) pour certaines valeurs → null
+        ventes:       { q: 6,      qVar: null, cumul: 41,     cumulVar: -24  },
+        inscriptions: { q: 22,     qVar: null, cumul: 73,     cumulVar: -25  },
+        envigueur:    { q: 22,     qVar: null, cumul: 22,     cumulVar: null },
+        volume:       { q: null,   qVar: null, cumul: 23481,  cumulVar: -28  }
       }
     },
     pointecalumet: {
       name: "Pointe-Calumet", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/pointe-calumet",
       residential: {
-        // Données partielles — Centris indique « ** » (volume de transactions insuffisant) pour certaines variations
-        ventes:       { q: 28,   qVar: null, cumul: 96,    cumulVar: -2  },
-        inscriptions: { q: 39,   qVar: 2,    cumul: 138,   cumulVar: -12 },
-        envigueur:    { q: 31,   qVar: 0,    cumul: 28,    cumulVar: null },
-        volume:       { q: null, qVar: null, cumul: 43498, cumulVar: 10  }
+        // Données partielles : Centris indique « ** » (volume de transactions insuffisant) pour certaines valeurs → null
+        ventes:       { q: 19,     qVar: null, cumul: 92,     cumulVar: -7   },
+        inscriptions: { q: 28,     qVar: null, cumul: 136,    cumulVar: -8   },
+        envigueur:    { q: 28,     qVar: null, cumul: 29,     cumulVar: null },
+        volume:       { q: null,   qVar: null, cumul: 42640,  cumulVar: 1    }
       }
     },
     rosemere: {
       name: "Rosemère", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/rosemere",
       residential: {
-        ventes:       { q: 59,    qVar: 15, cumul: 194,    cumulVar: 4  },
-        inscriptions: { q: 86,    qVar: 7,  cumul: 304,    cumulVar: 9  },
-        envigueur:    { q: 82,    qVar: 30, cumul: 68,     cumulVar: 4  },
-        volume:       { q: 47217, qVar: 3,  cumul: 169689, cumulVar: 16 }
+        ventes:       { q: 38,     qVar: -32,  cumul: 176,    cumulVar: -15  },
+        inscriptions: { q: 67,     qVar: -6,   cumul: 296,    cumulVar: 3    },
+        envigueur:    { q: 70,     qVar: 18,   cumul: 70,     cumulVar: 11   },
+        volume:       { q: 33459,  qVar: -36,  cumul: 150531, cumulVar: -13  }
       }
     },
     steannedesplaines: {
       name: "Sainte-Anne-des-Plaines", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/sainte-anne-des-plaines",
       residential: {
-        ventes:       { q: 44,    qVar: -13, cumul: 166,   cumulVar: -20 },
-        inscriptions: { q: 59,    qVar: -10, cumul: 230,   cumulVar: -7  },
-        envigueur:    { q: 55,    qVar: 30,  cumul: 49,    cumulVar: 0   },
-        volume:       { q: 23340, qVar: -11, cumul: 86345, cumulVar: -17 }
+        ventes:       { q: 31,     qVar: -20,  cumul: 158,    cumulVar: -19  },
+        inscriptions: { q: 58,     qVar: 9,    cumul: 235,    cumulVar: -2   },
+        envigueur:    { q: 61,     qVar: 48,   cumul: 54,     cumulVar: 20   },
+        volume:       { q: 16478,  qVar: -14,  cumul: 83652,  cumulVar: -13  }
       }
     },
     stemarthe: {
       name: "Sainte-Marthe-sur-le-Lac", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/sainte-marthe-sur-le-lac",
       residential: {
-        ventes:       { q: 106,   qVar: 0,  cumul: 344,    cumulVar: -4 },
-        inscriptions: { q: 156,   qVar: 40, cumul: 501,    cumulVar: 5  },
-        envigueur:    { q: 101,   qVar: 27, cumul: 81,     cumulVar: -4 },
-        volume:       { q: 57234, qVar: 1,  cumul: 183761, cumulVar: -2 }
+        ventes:       { q: 71,     qVar: 10,   cumul: 350,    cumulVar: 0    },
+        inscriptions: { q: 119,    qVar: 4,    cumul: 505,    cumulVar: 6    },
+        envigueur:    { q: 96,     qVar: 35,   cumul: 87,     cumulVar: 7    },
+        volume:       { q: 39716,  qVar: 16,   cumul: 189057, cumulVar: 0    }
       }
     },
     stetherese: {
       name: "Sainte-Thérèse", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/sainte-therese",
       residential: {
-        ventes:       { q: 95,    qVar: -18, cumul: 348,    cumulVar: -3  },
-        inscriptions: { q: 123,   qVar: -8,  cumul: 455,    cumulVar: -3  },
-        envigueur:    { q: 77,    qVar: 2,   cumul: 72,     cumulVar: -16 },
-        volume:       { q: 55629, qVar: -8,  cumul: 191628, cumulVar: 4   }
+        ventes:       { q: 70,     qVar: -9,   cumul: 341,    cumulVar: -9   },
+        inscriptions: { q: 116,    qVar: 12,   cumul: 467,    cumulVar: -2   },
+        envigueur:    { q: 89,     qVar: 28,   cumul: 77,     cumulVar: -6   },
+        volume:       { q: 44327,  qVar: 10,   cumul: 195771, cumulVar: 0    }
       }
     },
     steustache: {
       name: "Saint-Eustache", region: "Laurentides", brand: "crystal",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/saint-eustache",
       residential: {
-        ventes:       { q: 180,    qVar: 9,  cumul: 572,    cumulVar: 4  },
-        inscriptions: { q: 223,    qVar: 12, cumul: 781,    cumulVar: 9  },
-        envigueur:    { q: 144,    qVar: 14, cumul: 129,    cumulVar: 6  },
-        volume:       { q: 103395, qVar: 16, cumul: 320793, cumulVar: 11 }
+        ventes:       { q: 100,    qVar: -13,  cumul: 555,    cumulVar: 0    },
+        inscriptions: { q: 179,    qVar: 0,    cumul: 779,    cumulVar: 3    },
+        envigueur:    { q: 142,    qVar: 26,   cumul: 136,    cumulVar: 14   },
+        volume:       { q: 54697,  qVar: -16,  cumul: 309857, cumulVar: 3    }
       }
     },
 
@@ -154,10 +154,10 @@ window.MARKET_STATS = {
       name: "Mirabel", region: "Laurentides", brand: "dici",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/mirabel",
       residential: {
-        ventes:       { q: 294,    qVar: 5,  cumul: 953,    cumulVar: -1 },
-        inscriptions: { q: 413,    qVar: 7,  cumul: 1430,   cumulVar: 5  },
-        envigueur:    { q: 313,    qVar: 10, cumul: 283,    cumulVar: 1  },
-        volume:       { q: 189849, qVar: 14, cumul: 600641, cumulVar: 4  }
+        ventes:       { q: 173,    qVar: -15,  cumul: 918,    cumulVar: -6   },
+        inscriptions: { q: 370,    qVar: 23,   cumul: 1483,   cumulVar: 9    },
+        envigueur:    { q: 307,    qVar: 18,   cumul: 293,    cumulVar: 6    },
+        volume:       { q: 113490, qVar: -9,   cumul: 587067, cumulVar: 0    }
       }
     },
     "st-janvier": {
@@ -165,20 +165,20 @@ window.MARKET_STATS = {
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/mirabel",
       residential: {
         // Pas de page Centris dédiée pour Saint-Janvier — données reflètent Mirabel (secteur englobant)
-        ventes:       { q: 294,    qVar: 5,  cumul: 953,    cumulVar: -1 },
-        inscriptions: { q: 413,    qVar: 7,  cumul: 1430,   cumulVar: 5  },
-        envigueur:    { q: 313,    qVar: 10, cumul: 283,    cumulVar: 1  },
-        volume:       { q: 189849, qVar: 14, cumul: 600641, cumulVar: 4  }
+        ventes:       { q: 173,    qVar: -15,  cumul: 918,    cumulVar: -6   },
+        inscriptions: { q: 370,    qVar: 23,   cumul: 1483,   cumulVar: 9    },
+        envigueur:    { q: 307,    qVar: 18,   cumul: 293,    cumulVar: 6    },
+        volume:       { q: 113490, qVar: -9,   cumul: 587067, cumulVar: 0    }
       }
     },
     stesophie: {
       name: "Sainte-Sophie", region: "Laurentides", brand: "dici",
       centrisUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres/laurentides/sainte-sophie",
       residential: {
-        ventes:       { q: 64,    qVar: -16, cumul: 273,    cumulVar: -4 },
-        inscriptions: { q: 118,   qVar: 25,  cumul: 400,    cumulVar: 0  },
-        envigueur:    { q: 90,    qVar: 18,  cumul: 68,     cumulVar: -6 },
-        volume:       { q: 33639, qVar: -15, cumul: 140860, cumulVar: 0  }
+        ventes:       { q: 65,     qVar: -2,   cumul: 271,    cumulVar: -8   },
+        inscriptions: { q: 104,    qVar: 14,   cumul: 406,    cumulVar: 3    },
+        envigueur:    { q: 82,     qVar: 34,   cumul: 72,     cumulVar: 1    },
+        volume:       { q: 34348,  qVar: 2,    cumul: 141765, cumulVar: -3   }
       }
     }
   }
