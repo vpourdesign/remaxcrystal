@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "genereLe": "2026-11-04T23:46:29.951Z",
+  "slug": "vincent-lavoie",
+  "identite": {
+    "type": "solo",
+    "nomComplet": "Vincent Lavoie",
+    "membresEquipe": [],
+    "titre": "Courtier immobilier résidentiel",
+    "permisOaciq": "341534",
+    "anneeDebut": 2004,
+    "langues": [
+      "Français",
+      "Anglais"
+    ]
+  },
+  "territoire": {
+    "villePrincipale": "Lorraine",
+    "villesSecondaires": [
+      "Boisbriand",
+      "Rosemère"
+    ],
+    "quartiers": "Lorraine en-haut, boisbriand-sur-le-lac",
+    "lienTerritoire": "Je suis né à rosemère et j'habite à lorriane",
+    "faitsLocaux": "Les prix des bungalows sont baordable. J'aime aussi les parcs gigantesques"
+  },
+  "servicesEtSpecialites": {
+    "clientele": "Les deux",
+    "specialites": [
+      "Unifamiliale",
+      "Condo"
+    ],
+    "services": [
+      "Évaluation gratuite",
+      "Mise en marché complète",
+      "Photo / vidéo professionnelle",
+      "Home staging"
+    ],
+    "servicesAutre": "",
+    "plusValues": [
+      "Réponse rapie",
+      "Suivi serré",
+      "dispo 7 jours"
+    ]
+  },
+  "preuveSociale": {
+    "transactions": "500 ventes en carrières",
+    "prixEtReconnaissances": "Sherman 5 années consécutives",
+    "temoignages": [
+      {
+        "texte": "test 1 de v",
+        "nom": "Vincent Lavoie",
+        "ville": "Lorraine",
+        "consentement": true
+      },
+      {
+        "texte": "test 2 de v",
+        "nom": "Vincent Lavoie",
+        "ville": "Lorraine",
+        "consentement": true
+      },
+      {
+        "texte": "test 3 de v",
+        "nom": "Vincent Lavoie",
+        "ville": "Lorraine",
+        "consentement": true
+      }
+    ],
+    "liens": {
+      "googleBusiness": "https://share.google/wpaT3skyKPoMZgByy",
+      "centris": "",
+      "facebook": "https://www.facebook.com/FredetmaxRemax/",
+      "instagram": "https://www.instagram.com/fred.et.max_remax/",
+      "linkedin": "https://www.linkedin.com/company/%C3%A9quipe-fred-et-max-courtiers-immobiliers",
+      "tiktok": "",
+      "youtube": ""
+    }
+  },
+  "contenuBrut": {
+    "presentation": "Courtier qui traite les clients bien.",
+    "momentMarquant": "J'ai fait une belle ventes",
+    "faq": [
+      {
+        "question": "1",
+        "reponse": "2"
+      },
+      {
+        "question": "1",
+        "reponse": "2"
+      },
+      {
+        "question": "1",
+        "reponse": "2"
+      }
+    ]
+  },
+  "contact": {
+    "cellulaire": "5145675763",
+    "courriel": "vinilavoie@gmail.com",
+    "bureau": {
+      "id": "sainte-therese",
+      "ville": "Sainte-Thérèse",
+      "adresse": "228 boul. du Curé-Labelle",
+      "codePostal": "J7E 2X7",
+      "tel": "450 430-4207"
+    },
+    "ctaPrincipal": "courriel"
+  },
+  "medias": {
+    "dossierCible": "images/courtiers/vincent-lavoie",
+    "portrait": {
+      "fichier": "images/courtiers/vincent-lavoie/portrait.jpg",
+      "nomOriginal": "team1.jpg"
+    },
+    "photoEquipe": null,
+    "photosLibres": [
+      {
+        "fichier": "images/courtiers/vincent-lavoie/photo-1.jpg",
+        "nomOriginal": "duo1.jpg"
+      },
+      {
+        "fichier": "images/courtiers/vincent-lavoie/photo-2.jpg",
+        "nomOriginal": "team4.jpg"
+      },
+      {
+        "fichier": "images/courtiers/vincent-lavoie/photo-3.jpg",
+        "nomOriginal": "team2.jpg"
+      },
+      {
+        "fichier": "images/courtiers/vincent-lavoie/photo-4.jpg",
+        "nomOriginal": "team3.jpg"
+      }
+    ],
+    "video": "https://www.youtube.com/shorts/08sCBA9KSp4",
+    "consentement": true
+  },
+  "resumeMarkdown": "# Fiche courtier — Vincent Lavoie\n\n**Type :** Courtier solo\n**Titre :** Courtier immobilier résidentiel · Permis OACIQ 341534\n**Expérience :** depuis 2004 (~22 ans) · Langues : Français, Anglais\n\n## Territoire\n- Ville principale : **Lorraine**\n- Villes secondaires : Boisbriand, Rosemère\n- Quartiers : Lorraine en-haut, boisbriand-sur-le-lac\n- Lien au territoire : Je suis né à rosemère et j'habite à lorriane\n- Faits locaux : Les prix des bungalows sont baordable. J'aime aussi les parcs gigantesques\n\n## Services\n- Clientèle : Les deux\n- Spécialités : Unifamiliale, Condo\n- Services : Évaluation gratuite, Mise en marché complète, Photo / vidéo professionnelle, Home staging\n- Plus-values : Réponse rapie | Suivi serré | dispo 7 jours\n\n## Preuve sociale\n- Transactions : 500 ventes en carrières\n- Prix : Sherman 5 années consécutives\n- Témoignages : 3 (consentement : oui)\n\n## Contenu brut\n### Présentation\nCourtier qui traite les clients bien.\n### Moment marquant\nJ'ai fait une belle ventes\n### FAQ\n- **Q :** 1\n  **R :** 2\n- **Q :** 1\n  **R :** 2\n- **Q :** 1\n  **R :** 2\n\n## Contact\n- Cell : 5145675763 · Courriel : vinilavoie@gmail.com\n- Bureau : Sainte-Thérèse, 228 boul. du Curé-Labelle\n- CTA principal : courriel\n\n## Médias\n- Portrait : images/courtiers/vincent-lavoie/portrait.jpg\n- Photos libres : 4\n- Vidéo : https://www.youtube.com/shorts/08sCBA9KSp4",
+  "agence": "crystal",
+  "recuLe": "2026-11-04T23:46:30.646Z"
+}
