@@ -20,7 +20,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&family=Open+Sans:wght@500;600&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet">
 
 <!-- ============ JSON-LD (SEO + GEO) ============ -->
 <script type="application/ld+json">
@@ -207,14 +207,55 @@ a { color: inherit; }
 /* ---------- bandeau démo ---------- */
 .demo { background: var(--brume); color: var(--encre); text-align: center; font-size: var(--fs-petit); font-weight: 500; padding: 9px var(--marge); }
 
-/* ---------- topbar ---------- */
-.topbar { position: sticky; top: 0; z-index: 40; background: var(--marine); }
-.topbar .wrap { height: var(--topbar); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.topbar img { height: 30px; width: auto; }
-.topbar nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 36px); }
-.topbar nav a { color: var(--creme-70); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--t) ease; }
-.topbar nav a:hover { color: var(--creme); }
-.topbar nav .btn { min-height: 42px; padding: 0 22px; color: var(--marine); font-size: 0.92rem; }
+/* ---------- menu du site (identique à agence.remaxcrystal.com) ---------- */
+.topbar { position: sticky; top: 0; z-index: 100; height: var(--topbar); background: var(--marine); display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(20px, 4vw, 48px); font-family: 'Open Sans', sans-serif; }
+.topbar-logo { display: block; height: clamp(28px, 3.5vw, 38px); }
+.topbar-logo img { height: 100%; width: auto; display: block; }
+.topbar-nav { display: flex; gap: clamp(16px, 2.5vw, 32px); align-items: center; }
+.topbar-nav a { font-size: clamp(0.72rem, 0.9vw, 0.82rem); font-weight: 500; color: rgba(250,249,240,0.7); letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; position: relative; transition: color 0.3s; }
+.topbar-nav a:hover { color: var(--creme); }
+.topbar-nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #3578c4; border-radius: 1px; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.topbar-nav a:hover::after { width: 100%; }
+.topbar-cta { font-size: 0.78rem !important; font-weight: 600 !important; color: #fff !important; background: #3578c4; padding: 8px 20px; border-radius: 6px; }
+.topbar-cta::after { display: none !important; }
+.nav-burger { display: none; width: 44px; height: 44px; padding: 0; border: none; background: transparent; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+.nav-burger span { display: block; width: 24px; height: 2px; border-radius: 2px; background: var(--creme); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.25s; }
+.nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.is-open span:nth-child(2) { opacity: 0; }
+.nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 900px) { .topbar-nav { display: none; } .nav-burger { display: inline-flex; } }
+.mm-trigger{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.02em;background:#3578c4;color:#fff;border:none;border-radius:999px;padding:9px 18px;cursor:pointer;transition:background .25s,transform .25s;}
+.mm-trigger:hover{background:#2b66ab;transform:translateY(-1px);}
+.mm-trigger svg{width:14px;height:14px;}
+.mm-overlay{position:fixed;inset:0;z-index:2000;}
+.mm-overlay[hidden]{display:none;}
+.mm-backdrop{position:absolute;inset:0;background:rgba(20,29,42,0.55);backdrop-filter:blur(3px);opacity:0;transition:opacity .3s ease;}
+.mm-overlay.open .mm-backdrop{opacity:1;}
+.mm-panel{position:relative;background:#faf9f6;width:100%;max-height:92vh;overflow-y:auto;border-radius:0 0 22px 22px;box-shadow:0 24px 60px rgba(20,29,42,0.3);transform:translateY(-20px);opacity:0;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .3s;padding:clamp(18px,3vw,38px) clamp(20px,5vw,70px) clamp(24px,4vw,44px);}
+.mm-overlay.open .mm-panel{transform:none;opacity:1;}
+.mm-head{display:flex;align-items:center;justify-content:space-between;margin-block-end:clamp(12px,2vw,22px);}
+.mm-eyebrow{font-family:'Raleway',sans-serif;font-weight:800;font-size:0.74rem;letter-spacing:0.18em;text-transform:uppercase;color:#3578c4;display:inline-flex;align-items:center;gap:10px;}
+.mm-eyebrow::before{content:"";width:26px;height:2px;background:#c4a245;}
+.mm-close{background:none;border:1px solid #e2e5eb;border-radius:50%;width:38px;height:38px;font-size:1rem;color:#1a1f2b;cursor:pointer;transition:background .2s,border-color .2s;flex-shrink:0;}
+.mm-close:hover{background:#f1efe9;border-color:#cdd2da;}
+.mm-cat{grid-column:1/-1;font-family:'Raleway',sans-serif;font-weight:800;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:#7a8294;margin:10px 0 2px;display:flex;align-items:center;gap:10px;}
+.mm-cat::after{content:"";flex:1;height:1px;background:#e2e5eb;}
+.mm-navlinks{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-block:20px 0;}
+.mm-navlinks a{display:flex;align-items:center;justify-content:center;text-align:center;background:#fff;border:1px solid #e2e5eb;border-radius:12px;padding:14px 16px;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.01em;color:#1a1f2b;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;}
+.mm-navlinks a:hover{transform:translateY(-2px);border-color:#b0cfe8;box-shadow:0 10px 26px rgba(35,50,70,0.1);}
+.mm-navlinks a.mm-nav-cta{background:#3578c4;border-color:#3578c4;color:#fff;grid-column:1/-1;}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.mm-grid a{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid #e2e5eb;border-radius:12px;padding:14px 17px;font-family:'Raleway',sans-serif;font-weight:600;font-size:0.94rem;color:#1a1f2b;letter-spacing:-0.01em;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;}
+.mm-grid a::after{content:"\2192";color:#3578c4;opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s;}
+.mm-grid a:hover{transform:translateY(-3px);border-color:#b0cfe8;box-shadow:0 10px 26px rgba(35,50,70,0.1);}
+.mm-grid a:hover::after{opacity:1;transform:none;}
+.mm-grid a.mm-active{border-color:#3578c4;box-shadow:inset 0 0 0 1px #3578c4;}
+.mm-grid a.mm-soon{color:#7a8294;border-style:dashed;}
+.mm-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-block-start:clamp(16px,2.4vw,24px);padding-block-start:16px;border-top:1px solid #e2e5eb;font-size:0.84rem;color:#6b7385;}
+.mm-foot a{color:#3578c4;font-weight:600;text-decoration:none;}
+body.mm-lock{overflow:hidden;}
+@media(max-width:900px){.mm-navlinks{display:grid;}.mm-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:430px){.mm-grid{grid-template-columns:1fr;}}
 
 /* ---------- fil d'Ariane ---------- */
 .ariane { padding-block: 20px 0; font-size: var(--fs-petit); color: var(--gris-note); }
@@ -410,8 +451,6 @@ a { color: inherit; }
   .fiche div:nth-child(n+3) { border-top: 1px solid var(--brume); }
 }
 @media (max-width: 680px) {
-  .topbar nav a:not(.btn) { display: none; }
-  .topbar img { height: 24px; }
   .hero-photo { grid-column: 1 / span 12; }
   .hero-photo::before { inset: 12px -12px -12px 12px; }
   .faits { grid-template-columns: 1fr; }
@@ -434,16 +473,17 @@ a { color: inherit; }
   <!-- PAGE DÉMO : retirer ce bandeau sur une vraie page -->
   <div class="demo">Page démo : Geneviève Marchand est une courtière fictive qui sert de gabarit aux pages de courtiers.</div>
 
-  <header class="topbar">
-    <div class="wrap">
-      <a href="../index.html"><img src="../brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal, accueil" width="240" height="40"></a>
-      <nav aria-label="Navigation de la page">
-        <a href="index.html">Nos courtiers</a>
-        <a href="#territoire">Secteurs</a>
-        <a href="#faq">Questions</a>
-        <a href="#contact" class="btn btn-creme">Me joindre</a>
-      </nav>
-    </div>
+  <header class="topbar" id="topbar">
+    <a class="topbar-logo" href="../index.html"><img src="../brand_assets/Crystal-long-blanc-crystal.webp" alt="RE/MAX Crystal, accueil" width="240" height="40"></a>
+    <nav class="topbar-nav" aria-label="Navigation principale">
+      <button type="button" class="mm-trigger" id="mmTrigger" aria-haspopup="dialog" aria-expanded="false">Toutes les villes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <a href="https://remaxcrystal.com/fr/carriere.html" target="_blank" rel="noopener">Carrière</a>
+      <a href="https://remaxcrystal.com/fr/" target="_blank" rel="noopener">Agence</a>
+      <a href="https://remaxcrystal.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés</a>
+      <a href="https://remaxcrystal.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
+      <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="topbar-cta">Contact</a>
+    </nav>
+    <button type="button" class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mmOverlay"><span></span><span></span><span></span></button>
   </header>
 
   <main id="contenu">
@@ -464,7 +504,7 @@ a { color: inherit; }
           <!-- Paragraphe d'entité (GEO) : qui, quoi, où, depuis quand. Citable tel quel. -->
           <p class="lead entite">Geneviève Marchand est courtier immobilier résidentiel chez RE/MAX Crystal, active à Deux-Montagnes depuis 2011, ainsi qu'à Saint-Eustache et Sainte-Marthe-sur-le-Lac. Native du secteur Grand-Moulin, elle a réalisé environ 320 transactions, surtout auprès de familles et de premiers acheteurs.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-plein">Demander une évaluation gratuite</a>
+            <a href="mailto:genevieve.marchand@exemple-remax.com?subject=Demande%20d%27%C3%A9valuation%20gratuite" class="btn btn-plein">Demander une évaluation gratuite</a>
             <a href="tel:+14505550189" class="btn btn-ligne"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>450 555-0189</a>
           </div>
         </div>
@@ -734,5 +774,61 @@ a { color: inherit; }
       </div>
     </div>
   </footer>
+<!-- MEGA-MENU VILLES -->
+<div class="mm-overlay" id="mmOverlay" hidden>
+  <div class="mm-backdrop" data-mm-close></div>
+  <div class="mm-panel" role="dialog" aria-modal="true" aria-label="Toutes les villes">
+    <div class="mm-head">
+      <span class="mm-eyebrow">Toutes nos villes</span>
+      <button type="button" class="mm-close" data-mm-close aria-label="Fermer le menu">&#10005;</button>
+    </div>
+    <div class="mm-grid">
+      <span class="mm-cat">RE/MAX Crystal &middot; Basses-Laurentides &amp; Rive-Nord</span>
+      <a href="../guide-blainville.html">Blainville</a>
+      <a href="../guide-stetherese.html">Sainte-Thérèse</a>
+      <a href="../guide-lorraine.html">Lorraine</a>
+      <a href="../guide-rosemere.html">Rosemère</a>
+      <a href="../guide-boisbriand.html">Boisbriand</a>
+      <a href="../guide-boisdesfillions.html">Bois-des-Filion</a>
+      <a href="../guide-steustache.html">Saint-Eustache</a>
+      <a href="../guide-deuxmontagnes.html">Deux-Montagnes</a>
+      <a href="../guide-stemarthe.html">Sainte-Marthe-sur-le-Lac</a>
+      <a href="../guide-pointecalumet.html">Pointe-Calumet</a>
+      <a href="../guide-oka.html">Oka</a>
+      <a href="../guide-mirabel.html">Mirabel</a>
+      <a href="../guide-st-janvier.html">Saint-Janvier</a>
+      <a href="../guide-steannedesplaines.html">Ste-Anne-des-Plaines</a>
+      <a href="../guide-stesophie.html">Sainte-Sophie</a>
+    </div>
+    <nav class="mm-navlinks" aria-label="Navigation principale">
+      <a href="https://remaxcrystal.com/fr/carriere.html" target="_blank" rel="noopener">Carrière</a>
+      <a href="https://remaxcrystal.com/fr/" target="_blank" rel="noopener">Agence</a>
+      <a href="https://remaxcrystal.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés</a>
+      <a href="https://remaxcrystal.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
+      <a href="https://remaxcrystal.com/fr/contact.html" target="_blank" rel="noopener" class="mm-nav-cta">Contact</a>
+    </nav>
+    <div class="mm-foot">
+      <a href="../index.html">&#8592; Accueil</a>
+      <span>15 villes &middot; Basses-Laurentides &amp; Rive-Nord</span>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var ov=document.getElementById('mmOverlay'),tr=document.getElementById('mmTrigger'),bg=document.getElementById('navBurger');
+  if(!ov)return;
+  function setExpanded(v){if(tr)tr.setAttribute('aria-expanded',v);if(bg){bg.setAttribute('aria-expanded',v);bg.classList.toggle('is-open',v==='true');}}
+  function open(){ov.hidden=false;requestAnimationFrame(function(){ov.classList.add('open');});document.body.classList.add('mm-lock');setExpanded('true');}
+  function close(){ov.classList.remove('open');document.body.classList.remove('mm-lock');setExpanded('false');setTimeout(function(){ov.hidden=true;},320);}
+  function toggle(){ov.hidden?open():close();}
+  if(tr)tr.addEventListener('click',toggle);
+  if(bg)bg.addEventListener('click',toggle);
+  ov.querySelectorAll('[data-mm-close]').forEach(function(el){el.addEventListener('click',close);});
+  ov.querySelectorAll('.mm-navlinks a, .mm-grid a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
+  var here=location.pathname.split('/').pop();
+  ov.querySelectorAll('.mm-grid a').forEach(function(a){if(a.getAttribute('href')===here)a.classList.add('mm-active');});
+})();
+</script>
 </body>
 </html>
