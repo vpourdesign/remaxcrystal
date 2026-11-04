@@ -36,9 +36,9 @@ Dans tout ce qui suit, remplace `remaxcrystal/`, le domaine, « RE/MAX Crystal �
 4. **Bio réécrite** : 600-900 mots uniques, rédigés à partir de la matière brute (`contenuBrut.presentation`, `contenuBrut.momentMarquant`, `territoire.lienTerritoire`). Ton professionnel-chaleureux, français québécois. L'anecdote (`momentMarquant`) va dans un encadré distinct.
 5. **Panorama de la ville principale** (`section.panorama`, juste avant le territoire) : la photo principale du guide de la ville, prise dans `data/courtiers-config.js` (`VILLES[].photo`, `photoAlt`, et `photoPortrait` s'il existe), avec un bandeau marine qui nomme la ville et donne une phrase sur le lien du courtier avec elle. Jamais une autre photo, jamais une photo de stock.
 6. **Section territoire** : la ville principale domine (~70 % du contenu géo). Intègre naturellement les 2 villes secondaires. Utilise les `territoire.faitsLocaux` du courtier — c'est SA lecture du marché, pas une description générique de la ville. **Liens internes vers les guides** des 3 villes (`../guide-*.html`), ville principale étiquetée « Ville principale ». Les cartes des villes secondaires portent chacune la photo principale de leur guide (`img.ville-photo`, même source `VILLES[].photo`).
-7. **Services** : liste structurée `<ul>` (vendeurs / acheteurs selon `clientele`), jamais un mur de texte.
+7. **Services** : titre fixe « Vendre ou acheter avec moi » (« avec nous » pour une équipe). Liste structurée `<ul>` (vendeurs / acheteurs selon `clientele`), jamais un mur de texte.
 8. **Engagements** (bande marine `.chap.bande.sombre`) : les `plusValues` reformulées, chacune ouverte par son fait clé en Anton (`.chiffre` : « < 2 h », « 48 h », « Inclus »…). Pas de numéros 01/02/03 : ce n'est pas une séquence.
-9. **Témoignages** : réels seulement (ceux du JSON avec `consentement: true`), avec nom + ville. Aucun témoignage inventé, jamais.
+9. **Témoignages** : titre fixe « Mes clients, dans leurs mots » (« Nos clients » pour une équipe). Réels seulement (ceux du JSON avec `consentement: true`), avec nom + ville. Aucun témoignage inventé, jamais.
 10. **FAQ** : accordéon `<details>/<summary>`, 3-5 Q/R **réécrites** depuis `contenuBrut.faq`. Chaque réponse doit être **autonome et compréhensible hors contexte** (nomme le courtier ou la ville dans la réponse — citabilité IA).
 11. **Inscriptions** : lien vers `preuveSociale.liens.centris` (bouton), s'il existe.
 12. **CTA final + coordonnées complètes** : NAP identique partout (page, JSON-LD, fiche Google) — cellulaire, courriel, bureau d'attache (adresse exacte de `contact.bureau`), permis OACIQ.
@@ -72,7 +72,7 @@ Dans tout ce qui suit, remplace `remaxcrystal/`, le domaine, « RE/MAX Crystal �
 
 - **Interdiction de réutiliser des tournures de phrases d'une autre page courtier.** Le gabarit visuel est commun ; la rédaction repart de zéro depuis la matière brute de CE courtier. Avant d'écrire, relis les pages existantes dans `courtiers/` pour savoir ce qu'il faut éviter.
 - **Varie l'ordre des sections 4 à 9** d'une page à l'autre quand le contenu s'y prête (ex. : un courtier à forte preuve sociale → témoignages avant le territoire ; un courtier hyper-local → territoire juste après le hero).
-- Varie aussi : la formulation du paragraphe d'entité, les titres de sections (`s-title`), les eyebrows, le texte des CTA.
+- Varie aussi : la formulation du paragraphe d'entité, les titres de sections (`s-title`, sauf les deux titres fixes des Services et des Témoignages), les eyebrows, le texte des CTA.
 - **Auto-vérification finale** : pour chaque phrase complète de la page, demande-toi si elle pourrait apparaître telle quelle sur la page d'un autre courtier. Si oui, réécris-la. Puis lance `node build-courtiers.mjs` — le détecteur de duplication doit afficher 0.
 
 ### 5. Look & qualité
