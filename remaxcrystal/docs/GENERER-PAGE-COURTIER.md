@@ -22,7 +22,7 @@ Tu vas générer la page d'un courtier RE/MAX Crystal à partir du JSON fourni �
 Dans tout ce qui suit, remplace `remaxcrystal/`, le domaine, « RE/MAX Crystal » (`memberOf`, footer, textes) et le logo par ceux de l'agence de la fiche. Les villes, guides et bureaux viennent de `<dossier>/data/courtiers-config.js`. Pour D'ici, le gabarit visuel reste `remaxcrystal/courtiers/genevieve-marchand.html` (mêmes tokens, les deux sites partagent la charte RE/MAX); on change seulement la marque, le logo, les liens et le NAP.
 
 - Site 100 % statique, dossier `remaxcrystal/`. La page va dans `remaxcrystal/courtiers/{slug}.html` (le `slug` est dans le JSON — URL stable : on ne la change **jamais**, même si le courtier élargit son territoire).
-- **Gabarit visuel de référence : `courtiers/genevieve-marchand.html`.** Reprends sa structure HTML/CSS (tokens Crystal : Raleway + Open Sans, navy `#1e3350`, bleu `#3578c4`, or `#c4a245`), mais **réécris 100 % du contenu texte** (voir règles anti-duplication).
+- **Gabarit visuel de référence : `courtiers/genevieve-marchand.html`.** Reprends **tel quel** son `<style>` et sa structure HTML (design system `design-system/DESIGN.md` : Anton + Montserrat, crème `#FAF9F0`, marine `#1C315E`, encre `#151A2E`, rouge `#EF2525` pour une seule donnée, brume `#E0E3E8`; grille 12 colonnes, titres de section dans un rail collant à gauche), mais **réécris 100 % du contenu texte** (voir règles anti-duplication). Ne modifie pas le CSS d'une page à l'autre : seules les classes existantes servent. Retire le bandeau `.demo` et passe `robots` à `index, follow`.
 - Domaine : `https://agence.remaxcrystal.com`. Chemins relatifs depuis `courtiers/` : `../brand_assets/…`, `../guide-*.html`.
 - Les guides de villes existants sont listés dans `data/courtiers-config.js` (`VILLES` : nom → fichier guide). Le NAP des bureaux y est aussi (`BUREAUX`) — utilise-le tel quel, sans le modifier.
 - Après génération, lance `node remaxcrystal/build-courtiers.mjs` (Crystal) ou `node remaxcrystal/build-courtiers.mjs --site remaxdici` (D'ici) : il régénère le hub `/courtiers/`, le sitemap, le maillage guides→courtiers, valide le SEO et **détecte les phrases dupliquées entre pages** (le build échoue s'il y en a).
@@ -30,16 +30,18 @@ Dans tout ce qui suit, remplace `remaxcrystal/`, le domaine, « RE/MAX Crystal �
 ### 1. Structure de la page (ordre de base — à varier, voir 4)
 
 1. **Topbar + fil d'Ariane visible** : Accueil → Nos courtiers → {Nom}.
-2. **Hero** : portrait, nom, titre OACIQ exact + numéro de permis, ville principale dans le H1, CTA principal (selon `contact.ctaPrincipal` : évaluation / appel / courriel), téléphone cliquable (`tel:`), 3 chips de faits chiffrés.
+2. **Hero** : titre OACIQ exact + permis en `.label`, H1 en deux parties (`.nom` en Anton, `.role` « courtier immobilier à {Ville} »; ville dans `.insec`), portrait, CTA principal (selon `contact.ctaPrincipal` : évaluation / appel / courriel), téléphone cliquable (`tel:`), et, sous le hero, une **bande de faits** (`dl.faits`, trois `div` avec `dt` libellé et `dd` chiffre) : des faits chiffrés du JSON seulement. Le filet rouge sous le premier chiffre est automatique. Un chiffre approximatif s'écrit avec un « + » après (« 320+ »), jamais avec un tilde.
+   Puis la **fiche** (`section.fiche`, 4 repères : secteurs, langues, bureau d'attache, reconnaissances ou permis s'il n'y a pas de reconnaissance).
 3. **Paragraphe d'entité (crucial GEO)** — dans le hero, juste sous le titre. Première phrase qui dit **qui, quoi, où, depuis quand** : « {Nom} est {titre exact} chez RE/MAX Crystal, actif à {Ville} et ses environs depuis {année}. » **Varie la formulation à chaque courtier**, mais reste factuel, en une phrase citable telle quelle par une IA. Ajoute 1-2 phrases de faits (transactions, ancrage local).
 4. **Bio réécrite** : 600-900 mots uniques, rédigés à partir de la matière brute (`contenuBrut.presentation`, `contenuBrut.momentMarquant`, `territoire.lienTerritoire`). Ton professionnel-chaleureux, français québécois. L'anecdote (`momentMarquant`) va dans un encadré distinct.
-5. **Section territoire** : la ville principale domine (~70 % du contenu géo). Intègre naturellement les 2 villes secondaires. Utilise les `territoire.faitsLocaux` du courtier — c'est SA lecture du marché, pas une description générique de la ville. **Liens internes vers les guides** des 3 villes (`../guide-*.html`), ville principale étiquetée « Ville principale ».
-6. **Services** : liste structurée `<ul>` (vendeurs / acheteurs selon `clientele`), jamais un mur de texte.
-7. **Plus-values** : 3 cartes numérotées, reprenant `plusValues` (reformulées, pas copiées-collées).
-8. **Témoignages** : réels seulement (ceux du JSON avec `consentement: true`), avec nom + ville. Aucun témoignage inventé, jamais.
-9. **FAQ** : accordéon `<details>/<summary>`, 3-5 Q/R **réécrites** depuis `contenuBrut.faq`. Chaque réponse doit être **autonome et compréhensible hors contexte** (nomme le courtier ou la ville dans la réponse — citabilité IA).
-10. **Inscriptions** : lien vers `preuveSociale.liens.centris` (bouton), s'il existe.
-11. **CTA final + coordonnées complètes** : NAP identique partout (page, JSON-LD, fiche Google) — cellulaire, courriel, bureau d'attache (adresse exacte de `contact.bureau`), permis OACIQ.
+5. **Panorama de la ville principale** (`section.panorama`, juste avant le territoire) : la photo principale du guide de la ville, prise dans `data/courtiers-config.js` (`VILLES[].photo`, `photoAlt`, et `photoPortrait` s'il existe), avec un bandeau marine qui nomme la ville et donne une phrase sur le lien du courtier avec elle. Jamais une autre photo, jamais une photo de stock.
+6. **Section territoire** : la ville principale domine (~70 % du contenu géo). Intègre naturellement les 2 villes secondaires. Utilise les `territoire.faitsLocaux` du courtier — c'est SA lecture du marché, pas une description générique de la ville. **Liens internes vers les guides** des 3 villes (`../guide-*.html`), ville principale étiquetée « Ville principale ». Les cartes des villes secondaires portent chacune la photo principale de leur guide (`img.ville-photo`, même source `VILLES[].photo`).
+7. **Services** : liste structurée `<ul>` (vendeurs / acheteurs selon `clientele`), jamais un mur de texte.
+8. **Engagements** (bande marine `.chap.bande.sombre`) : les `plusValues` reformulées, chacune ouverte par son fait clé en Anton (`.chiffre` : « < 2 h », « 48 h », « Inclus »…). Pas de numéros 01/02/03 : ce n'est pas une séquence.
+9. **Témoignages** : réels seulement (ceux du JSON avec `consentement: true`), avec nom + ville. Aucun témoignage inventé, jamais.
+10. **FAQ** : accordéon `<details>/<summary>`, 3-5 Q/R **réécrites** depuis `contenuBrut.faq`. Chaque réponse doit être **autonome et compréhensible hors contexte** (nomme le courtier ou la ville dans la réponse — citabilité IA).
+11. **Inscriptions** : lien vers `preuveSociale.liens.centris` (bouton), s'il existe.
+12. **CTA final + coordonnées complètes** : NAP identique partout (page, JSON-LD, fiche Google) — cellulaire, courriel, bureau d'attache (adresse exacte de `contact.bureau`), permis OACIQ.
 
 ### 2. SEO technique (obligatoire)
 
@@ -75,9 +77,11 @@ Dans tout ce qui suit, remplace `remaxcrystal/`, le domaine, « RE/MAX Crystal �
 
 ### 5. Look & qualité
 
-- Palette et composants du gabarit Crystal (pas de rouge RE/MAX dominant — le site utilise navy/bleu/or).
+- Palette et composants du design system seulement. Le rouge n'apparaît qu'une fois : la première barre de faits. Chaque section est un `section.chap` avec `.chap-tete` (H2 Anton + une phrase) et `.chap-corps`; entre deux chapitres crème, le filet de 3 px se pose tout seul. Alternance : crème, bande marine (engagements), crème, bande brume (témoignages), crème, contact marine.
+- Photos libres et vidéo : décommente les blocs « GABARIT OPTIONNEL » du gabarit (galerie, vidéo) et place-les après le territoire.
 - Responsive 360 px → desktop. Accessibilité AA : contrastes, `aria-label` sur les navs, `prefers-reduced-motion` respecté (déjà dans le gabarit).
-- Core Web Vitals : pas de JS superflu (seul l'IntersectionObserver du gabarit), images dimensionnées, une seule police-family par rôle.
+- Core Web Vitals : aucun JavaScript (le gabarit n'en a pas), images dimensionnées, deux familles de polices seulement (Anton, Montserrat 400/500/600).
+- Témoignages : jamais d'étoiles ni de note, le JSON n'en contient pas.
 
 ### 6. Après la génération
 

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Design system RE/MAX Crystal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--rc-creme); color: var(--rc-ardoise);
+    font-family: var(--rc-font-texte); font-size: var(--rc-fs-texte); line-height: var(--rc-lh-texte);
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--rc-bleu); }
+  :focus-visible { outline: 2px solid var(--rc-bleu); outline-offset: 3px; }
+
+  .wrap { max-width: var(--rc-conteneur); margin-inline: auto; padding-inline: var(--rc-3); }
+
+  /* ---------- en-tête ---------- */
+  .top { display: flex; justify-content: space-between; align-items: center; padding-block: var(--rc-3); }
+  .top img { height: 34px; width: auto; }
+  .top span { font-size: var(--rc-fs-note); color: var(--rc-gris-note); font-weight: 500; }
+
+  .intro { text-align: center; padding-block: var(--rc-8) var(--rc-6); }
+  .intro h1 {
+    font-family: var(--rc-font-affiche); font-weight: 400; text-transform: uppercase;
+    font-size: var(--rc-fs-affiche); line-height: var(--rc-lh-affiche); letter-spacing: var(--rc-track-affiche);
+    color: var(--rc-encre); margin: 0 0 var(--rc-3);
+  }
+  .intro p { max-width: 46ch; margin: 0 auto; }
+
+  /* ---------- section ---------- */
+  section { padding-block: var(--rc-12); border-top: 1px solid var(--rc-brume); }
+  h2 {
+    font-family: var(--rc-font-affiche); font-weight: 400; text-transform: uppercase;
+    font-size: var(--rc-fs-titre); line-height: 1; color: var(--rc-encre); margin: 0 0 var(--rc-2);
+  }
+  .lead { max-width: var(--rc-mesure); margin: 0 0 var(--rc-6); }
+
+  /* ---------- publications 4:5 ---------- */
+  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--rc-4); padding-bottom: var(--rc-12); }
+  .post-fig { margin: 0; }
+  .post-fig figcaption { margin-top: var(--rc-2); font-size: 0.9rem; }
+  .post-fig figcaption b { color: var(--rc-encre); font-weight: 600; }
+
+  .post {
+    container-type: inline-size; position: relative; aspect-ratio: 4 / 5; overflow: hidden;
+    background: var(--rc-creme); outline: 1px solid var(--rc-brume);
+  }
+  /* 1cqw = 10.8 px d'une publication 1080 px de large */
+  .p-titre {
+    position: absolute; inset-inline: 9cqw; text-align: center;
+    font-family: var(--rc-font-affiche); text-transform: uppercase; color: var(--rc-encre);
+    font-size: 13.9cqw; line-height: var(--rc-lh-affiche); letter-spacing: var(--rc-track-affiche); margin: 0;
+  }
+  .p-texte { position: absolute; inset-inline: 10cqw; text-align: center; margin: 0; font-size: 3.5cqw; line-height: 1.45; color: var(--rc-ardoise); }
+  .p-photo {
+    position: absolute; inset-inline: 0; bottom: 0; background: var(--rc-brume);
+    display: grid; place-items: center; color: var(--rc-gris-note); font-size: 2.4cqw; font-weight: 500;
+  }
+  .p-languette {
+    position: absolute; right: 0; bottom: 0; width: 27cqw; height: 15cqw;
+    border-top-left-radius: 2.6cqw;
+    display: grid; place-items: center; background: var(--rc-creme);
+  }
+  .p-languette img { width: 21cqw; height: auto; }
+  .p-languette.marine { background: var(--rc-marine); }
+
+  /* annonce */
+  .annonce .p-titre { top: 19%; font-size: 9cqw; }
+  .annonce .p-texte { top: 29%; font-size: 3.2cqw; }
+  .annonce .p-photo { top: 44%; }
+
+  /* bienvenue */
+  .bienvenue .p-photo { top: 0; bottom: 7%; }
+  .p-bandeau {
+    position: absolute; inset-inline: 10cqw; top: 64%; padding: 3.4cqw 4cqw 3cqw;
+    background: var(--rc-marine); border-radius: 1.7cqw; text-align: center; color: var(--rc-creme);
+  }
+  .p-bandeau .nom { display: block; font-weight: 600; text-transform: uppercase; letter-spacing: var(--rc-track-sous); font-size: 3.4cqw; }
+  .p-bandeau .mot { display: block; font-family: var(--rc-font-affiche); text-transform: uppercase; font-size: 11cqw; line-height: 1; margin-top: 0.6cqw; }
+  .p-pied {
+    position: absolute; inset-inline: 0; bottom: 0; height: 7%; display: flex; align-items: center;
+    padding-inline: 9cqw 29cqw; font-weight: 600; text-transform: uppercase; letter-spacing: var(--rc-track-sous); font-size: 2.3cqw; white-space: nowrap;
+  }
+  .bienvenue .p-pied { background: var(--rc-creme); color: var(--rc-marine); }
+
+  /* statistiques */
+  .stats .p-titre { top: 11%; font-size: 11cqw; }
+  .stats .p-date { position: absolute; inset-inline: 0; top: 22%; text-align: center; font-weight: 500; text-transform: uppercase; letter-spacing: var(--rc-track-sous); color: var(--rc-marine); font-size: 4.4cqw; margin: 0; }
+  .p-grille { position: absolute; left: 36%; right: 16%; top: 35%; bottom: 26%; display: flex; justify-content: space-between; }
+  .p-grille i { width: 2px; background: var(--rc-brume); }
+  .p-barres { position: absolute; inset-inline: 10cqw 8cqw; top: 41%; display: grid; gap: 4cqw; }
+  .p-piste { position: relative; height: 13.5cqw; border-radius: var(--rc-r-pilule); background: var(--rc-brume); }
+  .p-barre {
+    position: absolute; inset-block: 0; left: 0; border-radius: var(--rc-r-pilule);
+    display: flex; align-items: center; gap: 4cqw; padding-left: 7cqw; color: var(--rc-creme);
+    box-shadow: var(--rc-ombre-barre); transform-origin: left center;
+  }
+  .p-barre b { font-family: var(--rc-font-affiche); font-weight: 400; font-size: 9.5cqw; line-height: 1; font-variant-numeric: tabular-nums; }
+  .p-barre span { font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 2.9cqw; }
+  .p-barre.rouge { background: var(--rc-rouge); width: 88%; }
+  .p-barre.marine { background: var(--rc-marine); width: 93%; }
+  .p-note { position: absolute; left: 9cqw; right: 30cqw; bottom: 9.5%; margin: 0; font-size: 1.6cqw; font-weight: 500; text-transform: uppercase; color: var(--rc-gris-note); line-height: 1.3; }
+  .stats .p-pied { background: var(--rc-marine); color: var(--rc-creme); height: 9%; }
+  .stats .p-languette { bottom: 9%; height: 13cqw; }
+
+  /* ---------- couleur ---------- */
+  .dosage { display: flex; height: 64px; border-radius: var(--rc-r-pilule); overflow: hidden; margin-bottom: var(--rc-6); outline: 1px solid var(--rc-brume); }
+  .dosage div { display: flex; align-items: center; padding-inline: var(--rc-3); font-weight: 600; font-size: 0.85rem; }
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--rc-3); }
+  .sw { border: 1px solid var(--rc-brume); border-radius: var(--rc-r-bandeau); overflow: hidden; background: var(--rc-creme); }
+  .sw .c { height: 96px; }
+  .sw .t { padding: var(--rc-2); }
+  .sw .t b { display: block; color: var(--rc-encre); font-weight: 600; }
+  .sw .t code { font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .sw .t small { display: block; color: var(--rc-gris-note); margin-top: 4px; font-size: 0.82rem; line-height: 1.4; }
+
+  /* ---------- typo ---------- */
+  .typo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--rc-8); align-items: start; }
+  .specimen-affiche { font-family: var(--rc-font-affiche); text-transform: uppercase; color: var(--rc-encre); font-size: clamp(4rem, 11vw, 8.5rem); line-height: 0.9; margin: 0 0 var(--rc-2); }
+  .specimen-sous { font-weight: 600; text-transform: uppercase; letter-spacing: var(--rc-track-sous); color: var(--rc-marine); font-size: 1.2rem; margin: 0 0 var(--rc-2); }
+  .meta { color: var(--rc-gris-note); font-size: 0.9rem; margin: 0; }
+  .echelle { list-style: none; margin: 0; padding: 0; }
+  .echelle li { display: grid; grid-template-columns: 7rem 1fr; gap: var(--rc-2); align-items: baseline; padding-block: var(--rc-2); border-bottom: 1px solid var(--rc-brume); }
+  .echelle li > span:first-child { font-size: 0.85rem; color: var(--rc-gris-note); font-variant-numeric: tabular-nums; }
+
+  /* ---------- composants ---------- */
+  .comps { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--rc-6) var(--rc-8); }
+  .comp h3 { font-size: 1rem; font-weight: 600; color: var(--rc-encre); margin: 0 0 var(--rc-1); }
+  .comp p { margin: 0 0 var(--rc-3); font-size: 0.95rem; }
+  .demo-barre { position: relative; height: 72px; border-radius: var(--rc-r-pilule); background: var(--rc-brume); }
+  .demo-barre .p-barre { padding-left: 32px; gap: 20px; }
+  .demo-barre .p-barre b { font-size: 3rem; }
+  .demo-barre .p-barre span { font-size: 0.85rem; }
+  .demo-bandeau { background: var(--rc-marine); color: var(--rc-creme); border-radius: var(--rc-r-bandeau); text-align: center; padding: 22px 24px 18px; }
+  .demo-bandeau .nom { display: block; font-weight: 600; text-transform: uppercase; letter-spacing: var(--rc-track-sous); font-size: 0.95rem; }
+  .demo-bandeau .mot { display: block; font-family: var(--rc-font-affiche); text-transform: uppercase; font-size: 3.2rem; line-height: 1; }
+  .demo-languette { position: relative; height: 150px; background: var(--rc-brume); border-radius: var(--rc-r-bandeau); overflow: hidden; }
+  .demo-languette .tab { position: absolute; right: 0; bottom: 0; width: 210px; height: 120px; background: var(--rc-creme); border-top-left-radius: var(--rc-r-languette); display: grid; place-items: center; }
+  .demo-languette .tab img { width: 150px; height: auto; }
+  .btn {
+    display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border: 0; border-radius: var(--rc-r-pilule);
+    background: var(--rc-marine); color: var(--rc-creme); font: 600 1rem var(--rc-font-texte); cursor: pointer;
+    transition: background-color var(--rc-t-couleur) ease;
+  }
+  .btn:hover { background: var(--rc-encre); }
+  .btn:active { background: var(--rc-ardoise); }
+  .btn.secondaire { background: transparent; color: var(--rc-marine); box-shadow: inset 0 0 0 2px var(--rc-marine); margin-left: var(--rc-2); }
+  .btn.secondaire:hover { background: var(--rc-marine); color: var(--rc-creme); }
+  .demo-pied { background: var(--rc-marine); color: var(--rc-creme); padding: 20px 28px; font-weight: 600; text-transform: uppercase; letter-spacing: var(--rc-track-sous); font-size: 0.95rem; }
+  .demo-note { font-size: var(--rc-fs-note); font-weight: 500; text-transform: uppercase; color: var(--rc-gris-note); margin: 0; }
+
+  /* ---------- interdits ---------- */
+  .bans { columns: 2; column-gap: var(--rc-8); padding: 0; margin: 0; list-style: none; }
+  .bans li { break-inside: avoid; padding: 12px 0 12px 32px; position: relative; border-bottom: 1px solid var(--rc-brume); }
+  .bans li::before { content: ""; position: absolute; left: 0; top: 21px; width: 16px; height: 3px; background: var(--rc-rouge); }
+
+  footer.site { background: var(--rc-marine); color: var(--rc-creme); }
+  footer.site .wrap { display: flex; justify-content: space-between; gap: var(--rc-3); flex-wrap: wrap; padding-block: var(--rc-4); font-weight: 600; text-transform: uppercase; letter-spacing: var(--rc-track-sous); font-size: 0.9rem; }
+  footer.site span:last-child { font-weight: 500; text-transform: none; letter-spacing: 0; opacity: 0.75; }
+
+  @media (max-width: 900px) {
+    .posts { grid-template-columns: 1fr 1fr; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .typo, .comps { grid-template-columns: 1fr; }
+    .bans { columns: 1; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding-inline: 16px; }
+    .posts { grid-template-columns: 1fr; }
+    section { padding-block: var(--rc-8); }
+    .dosage div { padding-inline: 10px; font-size: 0.72rem; }
+    .btn.secondaire { margin: var(--rc-2) 0 0; }
+  }
+</style>
+</head>
+<body>
+  <header class="wrap top">
+    <img src="../brand_assets/Crystal-long-noir-crystal.png" alt="RE/MAX Crystal">
+    <span>Design system, novembre 2026</span>
+  </header>
+
+  <main>
+    <div class="wrap intro">
+      <h1>Crème, marine,<br>un chiffre en rouge</h1>
+      <p>Le système visuel de RE/MAX Crystal, tiré des publications de l'agence. Les trois gabarits ci-dessous servent de base à toute nouvelle publication.</p>
+    </div>
+
+    <div class="wrap posts">
+      <figure class="post-fig">
+        <div class="post annonce" aria-label="Gabarit annonce">
+          <p class="p-titre">On recule l'heure!</p>
+          <p class="p-texte">Petit rappel : le changement d'heure aura lieu dans la nuit du samedi 31 octobre au dimanche 1er novembre.</p>
+          <div class="p-photo">Photo</div>
+          <div class="p-languette"><img src="../brand_assets/Crystal-long-noir-crystal.png" alt="RE/MAX Crystal"></div>
+        </div>
+        <figcaption><b>Annonce.</b> Titre et une phrase en haut, photo en bas, logo dans sa languette crème.</figcaption>
+      </figure>
+
+      <figure class="post-fig">
+        <div class="post bienvenue" aria-label="Gabarit bienvenue">
+          <div class="p-photo">Photo de la personne</div>
+          <div class="p-bandeau"><span class="nom">Prénom Nom</span><span class="mot">Bienvenue</span></div>
+          <div class="p-pied">Une région · Une équipe · Des résultats</div>
+          <div class="p-languette"><img src="../brand_assets/Crystal-long-noir-crystal.png" alt="RE/MAX Crystal"></div>
+        </div>
+        <figcaption><b>Bienvenue.</b> Photo pleine page, bandeau marine pour le texte, signature sur la bande crème.</figcaption>
+      </figure>
+
+      <figure class="post-fig">
+        <div class="post stats" aria-label="Gabarit statistiques">
+          <p class="p-titre">Statistiques</p>
+          <p class="p-date">Juin 2026</p>
+          <div class="p-grille" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="p-barres">
+            <div class="p-piste"><div class="p-barre rouge"><b>4 080</b><span>Nombre de ventes*</span></div></div>
+            <div class="p-piste"><div class="p-barre marine"><b>4 519</b><span>Nombre d'inscriptions*</span></div></div>
+          </div>
+          <p class="p-note">*Nombre de transactions cumulées du 1er janvier au 30 juin 2026 pour l'agence RE/MAX D'ici et RE/MAX Crystal</p>
+          <div class="p-languette marine"><img src="../brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></div>
+          <div class="p-pied">Une région · Une équipe · Des résultats</div>
+        </div>
+        <figcaption><b>Statistiques.</b> Une barre rouge, les autres marine, toujours une note de source.</figcaption>
+      </figure>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <h2>Couleur</h2>
+        <p class="lead">Crème partout, marine pour encadrer, rouge pour pointer. La barre ci-dessous montre le dosage d'une publication type.</p>
+        <div class="dosage" role="img" aria-label="Dosage : crème 62 %, marine 24 %, brume 8 %, rouge 6 %">
+          <div style="flex:62;background:var(--rc-creme);color:var(--rc-encre)">Crème 62 %</div>
+          <div style="flex:24;background:var(--rc-marine);color:var(--rc-creme)">Marine 24 %</div>
+          <div style="flex:8;background:var(--rc-brume);color:var(--rc-encre)">8 %</div>
+          <div style="flex:6;background:var(--rc-rouge)"></div>
+        </div>
+        <div class="swatches">
+          <div class="sw"><div class="c" style="background:var(--rc-creme)"></div><div class="t"><b>Crème</b><code>#FAF9F0</code><small>Fond de tout. Jamais de blanc pur.</small></div></div>
+          <div class="sw"><div class="c" style="background:var(--rc-marine)"></div><div class="t"><b>Marine</b><code>#1C315E</code><small>Bandeaux, pied, barre principale, boutons.</small></div></div>
+          <div class="sw"><div class="c" style="background:var(--rc-encre)"></div><div class="t"><b>Encre</b><code>#151A2E</code><small>Titres d'affiche sur crème.</small></div></div>
+          <div class="sw"><div class="c" style="background:var(--rc-rouge)"></div><div class="t"><b>Rouge RE/MAX</b><code>#EF2525</code><small>Une seule donnée par visuel.</small></div></div>
+          <div class="sw"><div class="c" style="background:var(--rc-brume)"></div><div class="t"><b>Brume</b><code>#E0E3E8</code><small>Pistes, filets, bordures.</small></div></div>
+          <div class="sw"><div class="c" style="background:var(--rc-ardoise)"></div><div class="t"><b>Ardoise</b><code>#3D4555</code><small>Texte courant.</small></div></div>
+          <div class="sw"><div class="c" style="background:var(--rc-gris-note)"></div><div class="t"><b>Gris note</b><code>#656571</code><small>Notes de source, mentions.</small></div></div>
+          <div class="sw"><div class="c" style="background:var(--rc-bleu)"></div><div class="t"><b>Bleu Crystal</b><code>#3578C4</code><small>Liens et focus, sur le web seulement.</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap typo">
+        <div>
+          <h2>Typographie</h2>
+          <p class="specimen-affiche">Vendu en 9 jours</p>
+          <p class="specimen-sous">Montserrat 600 pour les noms et les dates</p>
+          <p>Montserrat 400 pour le texte. Une phrase par idée, centrée dans les publications, alignée à gauche sur le web.</p>
+          <p class="meta">Anton et Montserrat remplacent les polices d'origine des publications. Si l'agence fournit ses fichiers, ils prennent leur place.</p>
+        </div>
+        <ul class="echelle" aria-label="Échelle pour une publication de 1080 px">
+          <li><span>Affiche 150 px</span><span style="font-family:var(--rc-font-affiche);font-size:2.4rem;line-height:1;color:var(--rc-encre);text-transform:uppercase">Bienvenue</span></li>
+          <li><span>Chiffre 110 px</span><span style="font-family:var(--rc-font-affiche);font-size:2rem;line-height:1;color:var(--rc-encre);font-variant-numeric:tabular-nums">4 519</span></li>
+          <li><span>Sous-titre 40 px</span><span style="font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--rc-marine)">Juin 2026</span></li>
+          <li><span>Texte 38 px</span><span>Le changement d'heure aura lieu dimanche.</span></li>
+          <li><span>Signature 30 px</span><span style="font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:.85rem;color:var(--rc-marine)">Une région · Une équipe · Des résultats</span></li>
+          <li><span>Note 17 px</span><span style="font-weight:500;text-transform:uppercase;font-size:.72rem;color:var(--rc-gris-note)">*Transactions cumulées du 1er janvier au 30 juin 2026</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Composants</h2>
+        <p class="lead">Les pièces qui reviennent d'une publication à l'autre, dessinées une fois.</p>
+        <div class="comps">
+          <div class="comp">
+            <h3>Barre de donnée</h3>
+            <p>Pilule sur une piste Brume plus longue. Chiffre en Anton, libellé en Montserrat. Rouge pour la première, marine pour les suivantes.</p>
+            <div class="demo-barre" data-barres><div class="p-barre rouge"><b>4 080</b><span>Nombre de ventes*</span></div></div>
+          </div>
+          <div class="comp">
+            <h3>Bandeau nom</h3>
+            <p>Seule façon de poser du texte sur une photo. Nom en petites capitales, mot d'affiche dessous.</p>
+            <div class="demo-bandeau"><span class="nom">Prénom Nom</span><span class="mot">Bienvenue</span></div>
+          </div>
+          <div class="comp">
+            <h3>Languette du logo</h3>
+            <p>Coin inférieur droit, seul le coin haut gauche arrondi. Crème avec le logo noir, ou marine avec le logo blanc.</p>
+            <div class="demo-languette"><div class="tab"><img src="../brand_assets/Crystal-long-noir-crystal.png" alt="RE/MAX Crystal"></div></div>
+          </div>
+          <div class="comp">
+            <h3>Boutons (web)</h3>
+            <p>Pilule marine; le secondaire est un contour. Le texte dit ce qui se passe au clic.</p>
+            <button class="btn" type="button">Demander une évaluation</button><button class="btn secondaire" type="button">Voir les guides</button>
+          </div>
+          <div class="comp">
+            <h3>Pied signature</h3>
+            <p>Bande marine pleine largeur qui ferme la publication.</p>
+            <div class="demo-pied">Une région · Une équipe · Des résultats</div>
+          </div>
+          <div class="comp">
+            <h3>Note de source</h3>
+            <p>Obligatoire dès qu'un chiffre est montré. Juste au-dessus du pied.</p>
+            <p class="demo-note">*Nombre de transactions cumulées du 1er janvier au 30 juin 2026 pour l'agence RE/MAX D'ici et RE/MAX Crystal</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Ce qu'on ne fait jamais</h2>
+        <ul class="bans">
+          <li>Blanc pur ou noir pur.</li>
+          <li>Le rouge en grand aplat, en texte courant ou sur plus d'une donnée.</li>
+          <li>Dégradés, ombres douces sous les cartes, verre dépoli, textures.</li>
+          <li>Un titre d'affiche en casse normale ou en italique.</li>
+          <li>Un mot isolé mis en couleur dans un titre.</li>
+          <li>Du texte directement sur une photo, sans bandeau marine.</li>
+          <li>Un chiffre sans note de source.</li>
+          <li>Le logo hors de sa languette, recoloré ou déformé.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap"><span>Une région · Une équipe · Des résultats</span><span>Détails et valeurs : DESIGN.md et tokens.css</span></div>
+  </footer>
+
+</body>
+</html>

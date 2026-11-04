@@ -1,5 +1,7 @@
 # DESIGN.md
 
+Design system de la marque (couleurs, typo, composants, gabarits de publication) : `design-system/DESIGN.md`. Ce fichier-ci ne couvre que la mise en page de l'outil de prompt.
+
 ## Layout & grid
 
 - Grille retenue : 12 colonnes.

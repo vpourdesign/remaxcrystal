@@ -1,0 +1,51 @@
+/* ============================================================
+   RE/MAX Crystal — tokens du design system
+   Source : design-system/DESIGN.md
+   Polices : <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+   ============================================================ */
+:root {
+  /* Couleur */
+  --rc-creme:      #FAF9F0;  /* fond */
+  --rc-marine:     #1C315E;  /* identité, bandeaux, pied */
+  --rc-encre:      #151A2E;  /* titres d'affiche */
+  --rc-rouge:      #EF2525;  /* une seule donnée par visuel */
+  --rc-brume:      #E0E3E8;  /* pistes, filets, bordures */
+  --rc-ardoise:    #3D4555;  /* texte courant */
+  --rc-gris-note:  #656571;  /* notes, mentions */
+  --rc-bleu:       #3578C4;  /* liens et focus, web seulement */
+
+  /* Typo */
+  --rc-font-affiche: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --rc-font-texte:   'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  --rc-fs-affiche:   clamp(2.75rem, 7vw, 5.5rem);
+  --rc-fs-chiffre:   clamp(2.25rem, 5vw, 4rem);
+  --rc-fs-titre:     clamp(1.75rem, 3.2vw, 2.5rem);
+  --rc-fs-sous:      clamp(0.95rem, 1.4vw, 1.15rem);
+  --rc-fs-texte:     clamp(1rem, 1.2vw, 1.125rem);
+  --rc-fs-note:      clamp(0.7rem, 0.8vw, 0.78rem);
+
+  --rc-lh-affiche:   0.92;
+  --rc-lh-texte:     1.5;
+  --rc-track-affiche: -0.005em;
+  --rc-track-sous:   0.04em;
+
+  /* Espace (unité 8) */
+  --rc-1: 8px;  --rc-2: 16px; --rc-3: 24px; --rc-4: 32px;
+  --rc-6: 48px; --rc-8: 64px; --rc-12: 96px; --rc-16: 128px;
+  --rc-conteneur: 1160px;
+  --rc-mesure: 65ch;
+
+  /* Forme */
+  --rc-r-pilule: 999px;
+  --rc-r-bandeau: 18px;
+  --rc-r-languette: 28px;   /* coin haut gauche seulement */
+
+  /* La seule ombre permise : barre qui en chevauche une autre */
+  --rc-ombre-barre: 0 6px 0 -2px color-mix(in oklch, var(--rc-encre) 18%, transparent);
+
+  /* Mouvement */
+  --rc-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --rc-t-couleur: 200ms;
+  --rc-t-barre: 700ms;
+}

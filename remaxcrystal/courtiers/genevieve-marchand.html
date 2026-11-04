@@ -6,19 +6,21 @@
 <title>Geneviève Marchand | Courtier immobilier à Deux-Montagnes</title>
 <!-- DÉMO (courtière fictive) : cette page est en noindex. Pour une vraie page, remplacer par "index, follow". -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Geneviève Marchand, courtier immobilier RE/MAX Crystal à Deux-Montagnes depuis 2011. ~320 transactions, réponse en moins de 2 h. Évaluation gratuite en 48 h.">
+<meta name="description" content="Geneviève Marchand, courtier immobilier RE/MAX Crystal à Deux-Montagnes depuis 2011. 320+ transactions, réponse en moins de 2 h. Évaluation gratuite en 48 h.">
 <link rel="canonical" href="https://agence.remaxcrystal.com/courtiers/genevieve-marchand.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Geneviève Marchand — Courtier immobilier à Deux-Montagnes | RE/MAX Crystal">
+<meta property="og:title" content="Geneviève Marchand, courtier immobilier à Deux-Montagnes | RE/MAX Crystal">
 <meta property="og:description" content="Courtière depuis 2011 à Deux-Montagnes, Saint-Eustache et Sainte-Marthe-sur-le-Lac. Environ 320 transactions, réponse en moins de 2 heures.">
 <meta property="og:image" content="https://agence.remaxcrystal.com/images/courtiers/genevieve-marchand/portrait.jpg">
 <meta property="og:url" content="https://agence.remaxcrystal.com/courtiers/genevieve-marchand.html">
 <meta property="og:locale" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- ============ JSON-LD (SEO + GEO) ============ -->
 <script type="application/ld+json">
@@ -119,428 +121,618 @@
   ]
 }
 </script>
-
 <style>
-  :root {
-    --navy-deep:#1a2332; --navy:#1e3350; --navy-mid:#264060;
-    --blue-brand:#3578c4; --blue-light:#6ba3d9; --blue-pale:#b0cfe8;
-    --cream:#f7f5f0; --warm-white:#faf9f6; --gold:#c4a245;
-    --text-dark:#1a1f2b; --text-body:#3d4555; --text-muted:#6b7385;
-    --surface-card:#f8f9fb; --border-subtle:#e2e5eb;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { font-size:16px; scroll-behavior:smooth; }
-  body { font-family:'Open Sans',sans-serif; background:var(--warm-white); color:var(--text-body); line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-  h1,h2,h3,h4,h5 { font-family:'Raleway',sans-serif; color:var(--text-dark); line-height:1.08; letter-spacing:-0.03em; }
-  em { font-style:italic; color:var(--blue-brand); }
-  img { display:block; max-width:100%; }
-  a { text-decoration:none; color:inherit; }
-  .container { width:min(90%,1180px); margin-inline:auto; }
-  .section { padding-block: clamp(56px,8vw,104px); }
-  .eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:'Raleway',sans-serif; font-size:0.74rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue-brand); margin-block-end:16px; }
-  .eyebrow::before { content:""; width:26px; height:2px; background:var(--gold); }
-  .s-title { font-size:clamp(1.9rem,4vw,3rem); font-weight:300; letter-spacing:-0.035em; margin-block-end:18px; }
-  .lead { font-size:clamp(1rem,1.3vw,1.14rem); color:var(--text-body); max-width:64ch; }
-  p+p { margin-block-start:1em; }
+/* ============================================================
+   GABARIT PAGE COURTIER, design system RE/MAX Crystal
+   (remaxcrystal/design-system/DESIGN.md). Tokens collés ici pour
+   que la page reste autonome. Grille 12 colonnes, rail collant.
+   ============================================================ */
+:root {
+  --creme: #FAF9F0; --marine: #1C315E; --encre: #151A2E; --rouge: #EF2525;
+  --brume: #E0E3E8; --ardoise: #3D4555; --gris-note: #656571; --bleu: #3578C4;
+  --creme-70: color-mix(in oklch, var(--creme) 70%, transparent);
+  --creme-20: color-mix(in oklch, var(--creme) 20%, transparent);
 
-  /* demo ribbon */
-  .demo-ribbon { background:var(--gold); color:var(--navy-deep); text-align:center; font-size:0.78rem; font-weight:700; padding:7px 14px; letter-spacing:0.04em; }
+  --affiche: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --texte: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 
-  /* topbar */
-  .topbar { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:16px clamp(20px,5vw,56px); background:rgba(26,35,50,0.92); backdrop-filter:blur(10px); }
-  .topbar img { height:26px; }
-  .topbar-nav { display:flex; gap:26px; align-items:center; }
-  .topbar-nav a { color:rgba(255,255,255,0.82); font-size:0.86rem; font-weight:500; }
-  .topbar-nav a.cta { background:var(--blue-brand); color:#fff; padding:9px 18px; border-radius:999px; font-weight:600; }
-  @media (max-width:760px){ .topbar-nav a:not(.cta){ display:none; } }
+  /* Hiérarchie : Anton (affiche) > Montserrat 600 > 500 > 400 */
+  --fs-nom:     clamp(2.6rem, 5vw, 4.4rem);
+  --fs-h2:      clamp(1.9rem, 2.8vw, 2.6rem);
+  --fs-chiffre: clamp(1.9rem, 2.8vw, 2.5rem);
+  --fs-h3:      clamp(1.2rem, 1.6vw, 1.45rem);
+  --fs-lead:    clamp(1.05rem, 1.25vw, 1.18rem);
+  --fs-corps:   clamp(1rem, 1.05vw, 1.0625rem);
+  --fs-label:   0.78rem;
+  --fs-petit:   0.875rem;
 
-  /* breadcrumb */
-  .crumbs { background:var(--cream); border-bottom:1px solid var(--border-subtle); font-size:0.8rem; }
-  .crumbs .container { display:flex; gap:8px; align-items:center; padding-block:10px; color:var(--text-muted); flex-wrap:wrap; }
-  .crumbs a { color:var(--blue-brand); font-weight:600; }
-  .crumbs span[aria-hidden] { color:var(--border-subtle); }
+  --conteneur: 1240px;
+  --gout: clamp(16px, 2vw, 28px);
+  --marge: clamp(16px, 4vw, 48px);
+  --chap: clamp(64px, 8vw, 112px);
+  --topbar: 72px;
 
-  /* hero */
-  .hero { background:linear-gradient(160deg,var(--navy-deep),var(--navy) 60%,#15212f); color:#fff; padding-block:clamp(48px,7vw,88px); position:relative; overflow:hidden; }
-  .hero::after { content:""; position:absolute; inset:0; background:radial-gradient(900px 420px at 85% 10%,rgba(53,120,196,0.25),transparent 60%); pointer-events:none; }
-  .hero-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(32px,5vw,64px); align-items:center; }
-  .hero-eyebrow { color:var(--blue-light); }
-  .hero h1 { color:#fff; font-weight:300; font-size:clamp(2.4rem,5.5vw,4.2rem); letter-spacing:-0.04em; }
-  .hero h1 strong { font-weight:700; }
-  .hero-role { font-family:'Raleway',sans-serif; font-size:clamp(1rem,1.5vw,1.2rem); color:var(--blue-pale); margin-block-start:10px; font-weight:500; }
-  .hero-entity { margin-block-start:20px; max-width:56ch; color:rgba(255,255,255,0.85); font-weight:300; font-size:clamp(0.98rem,1.3vw,1.1rem); }
-  .hero-chips { display:flex; gap:14px; flex-wrap:wrap; margin-block-start:26px; }
-  .chip { display:flex; flex-direction:column; padding:12px 20px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:12px; }
-  .chip b { font-family:'Raleway',sans-serif; font-weight:300; font-size:1.7rem; color:#fff; letter-spacing:-0.03em; line-height:1; }
-  .chip span { font-size:0.74rem; color:rgba(255,255,255,0.66); margin-block-start:5px; letter-spacing:0.02em; }
-  .hero-cta { display:flex; gap:14px; flex-wrap:wrap; margin-block-start:30px; }
-  .btn { display:inline-block; padding:13px 26px; border-radius:999px; font-weight:600; font-family:'Raleway',sans-serif; font-size:0.9rem; transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; }
-  .btn-primary { background:var(--blue-brand); color:#fff; }
-  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(53,120,196,0.4); }
-  .btn-ghost { border:1px solid rgba(255,255,255,0.3); color:#fff; }
-  .btn-ghost:hover { background:rgba(255,255,255,0.08); }
-  .hero-photo { position:relative; border-radius:18px; overflow:hidden; aspect-ratio:3/4; max-width:420px; justify-self:end; box-shadow:0 12px 48px rgba(0,0,0,0.34); }
-  .hero-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
-  .hero-permit { margin-block-start:14px; font-size:0.76rem; color:rgba(255,255,255,0.55); letter-spacing:0.03em; }
-  @media (max-width:840px){ .hero-grid{ grid-template-columns:1fr; } .hero-photo{ order:-1; justify-self:start; max-width:300px; } }
+  --r-ui: 4px; --r-bloc: 6px;
+  --t: 200ms;
+}
 
-  /* stats strip */
-  .stripe { background:var(--cream); border-block:1px solid var(--border-subtle); }
-  .stripe-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(20px,4vw,48px); padding-block:clamp(34px,5vw,54px); text-align:center; }
-  .stat-num { font-family:'Raleway',sans-serif; font-weight:300; font-size:clamp(1.9rem,4vw,3rem); color:var(--navy); letter-spacing:-0.04em; }
-  .stat-num em { color:var(--blue-brand); }
-  .stat-label { font-size:0.8rem; color:var(--text-muted); margin-block-start:6px; }
-  @media (max-width:680px){ .stripe-grid{ grid-template-columns:repeat(2,1fr); } }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--topbar) + 24px); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--creme); color: var(--ardoise);
+  font: 400 var(--fs-corps)/1.7 var(--texte);
+  font-feature-settings: "kern"; text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; color: var(--encre); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--bleu); outline-offset: 3px; border-radius: 4px; }
+.sombre :focus-visible { outline-color: var(--creme); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.saut { position: absolute; left: 16px; top: -60px; z-index: 50; background: var(--encre); color: var(--creme); padding: 10px 16px; border-radius: var(--r-ui); font-weight: 600; }
+.saut:focus { top: 12px; }
 
-  /* about / bio */
-  .bio-grid { display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(36px,5vw,72px); align-items:start; }
-  .bio-side { position:sticky; top:96px; }
-  .bio-side h3 { font-size:clamp(1.4rem,2.4vw,2rem); font-weight:400; margin-block-end:14px; }
-  .bio-side h3 em { color:var(--blue-brand); }
-  .bio-langs { margin-block-start:18px; display:flex; gap:9px; flex-wrap:wrap; }
-  .bio-langs span { font-size:0.78rem; padding:6px 14px; border-radius:999px; background:#fff; border:1px solid var(--border-subtle); color:var(--text-body); }
-  .bio-text p { font-size:0.98rem; }
-  .bio-anecdote { margin-block-start:26px; background:var(--cream); border-left:3px solid var(--gold); border-radius:0 14px 14px 0; padding:22px 26px; }
-  .bio-anecdote h4 { font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--blue-brand); margin-block-end:10px; }
-  @media (max-width:840px){ .bio-grid{ grid-template-columns:1fr; } .bio-side{ position:static; } }
+.wrap { max-width: var(--conteneur); margin-inline: auto; padding-inline: var(--marge); }
+.grille { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gout); }
 
-  /* plus-values */
-  .pv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-block-start:clamp(34px,4vw,50px); }
-  .pv { background:#fff; border:1px solid var(--border-subtle); border-radius:14px; padding:28px 24px; box-shadow:0 1px 3px rgba(35,50,70,0.04),0 10px 30px rgba(35,50,70,0.05); }
-  .pv-no { font-family:'Raleway',sans-serif; font-weight:300; font-size:2rem; color:var(--blue-pale); line-height:1; margin-block-end:12px; }
-  .pv p { font-size:0.95rem; color:var(--text-dark); font-weight:600; line-height:1.5; }
-  @media (max-width:760px){ .pv-grid{ grid-template-columns:1fr; } }
+/* ---------- typo ---------- */
+.affiche { font-family: var(--affiche); font-weight: 400; text-transform: uppercase; letter-spacing: -0.005em; }
+.h2 { font-family: var(--affiche); font-weight: 400; text-transform: uppercase; font-size: var(--fs-h2); line-height: 1.05; letter-spacing: 0.005em; }
+.h3 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+.lead { font-size: var(--fs-lead); font-weight: 500; line-height: 1.5; color: var(--encre); }
+.label { font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--marine); }
+.mesure { max-width: 64ch; }
+.insec { white-space: nowrap; }
 
-  /* territoire */
-  .alt { background:var(--cream); }
-  .terr-grid { display:grid; grid-template-columns:1.15fr 0.85fr; gap:clamp(36px,5vw,64px); align-items:start; margin-block-start:clamp(28px,3vw,40px); }
-  .terr-facts { display:flex; flex-direction:column; gap:14px; }
-  .fact { display:flex; gap:13px; align-items:flex-start; background:#fff; border:1px solid var(--border-subtle); border-radius:12px; padding:16px 18px; }
-  .fact svg { width:20px; height:20px; flex-shrink:0; stroke:var(--blue-brand); fill:none; stroke-width:1.7; margin-top:4px; }
-  .fact p { font-size:0.92rem; }
-  .sector-grid { display:grid; gap:14px; }
-  .sector { position:relative; display:block; background:#fff; border:1px solid var(--border-subtle); border-radius:14px; padding:20px 22px; box-shadow:0 1px 3px rgba(35,50,70,0.04),0 10px 30px rgba(35,50,70,0.05); transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; }
-  .sector:hover { transform:translateY(-4px); box-shadow:0 4px 10px rgba(35,50,70,0.1),0 18px 44px rgba(35,50,70,0.14); }
-  .sector .tag { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue-brand); margin-block-end:6px; }
-  .sector h3 { font-size:1.15rem; font-weight:600; margin-block-end:4px; }
-  .sector p { font-size:0.86rem; color:var(--text-muted); }
-  .sector-link { margin-block-start:10px; font-size:0.82rem; font-weight:600; color:var(--blue-brand); display:inline-flex; align-items:center; gap:6px; }
-  @media (max-width:840px){ .terr-grid{ grid-template-columns:1fr; } }
+/* ---------- boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 50px; padding: 0 26px; border-radius: var(--r-ui); border: 0;
+  font: 600 1rem/1 var(--texte); text-decoration: none; cursor: pointer;
+  transition: background-color var(--t) ease, color var(--t) ease, box-shadow var(--t) ease;
+}
+.btn-plein { background: var(--marine); color: var(--creme); }
+.btn-plein:hover { background: var(--encre); }
+.btn-plein:active { background: var(--ardoise); }
+.btn-ligne { background: transparent; color: var(--marine); box-shadow: inset 0 0 0 2px var(--marine); }
+.btn-ligne:hover { background: var(--marine); color: var(--creme); }
+.btn-creme { background: var(--creme); color: var(--marine); }
+.btn-creme:hover { background: var(--brume); }
+.btn-ligne-creme { background: transparent; color: var(--creme); box-shadow: inset 0 0 0 2px var(--creme-70); }
+.btn-ligne-creme:hover { box-shadow: inset 0 0 0 2px var(--creme); background: var(--creme-20); }
+.btn svg { width: 18px; height: 18px; flex: none; }
 
-  /* services */
-  .svc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-block-start:clamp(34px,4vw,50px); }
-  .svc { background:#fff; border:1px solid var(--border-subtle); border-radius:14px; padding:28px; box-shadow:0 10px 30px rgba(35,50,70,0.05); }
-  .svc h3 { font-size:1.3rem; font-weight:600; margin-block-end:10px; }
-  .svc h3 em { color:var(--blue-brand); }
-  .svc ul { list-style:none; margin-block-start:14px; display:flex; flex-direction:column; gap:9px; }
-  .svc li { font-size:0.92rem; padding-left:24px; position:relative; }
-  .svc li::before { content:"✓"; position:absolute; left:0; color:var(--blue-brand); font-weight:700; }
-  @media (max-width:680px){ .svc-grid{ grid-template-columns:1fr; } }
+/* ---------- bandeau démo ---------- */
+.demo { background: var(--brume); color: var(--encre); text-align: center; font-size: var(--fs-petit); font-weight: 500; padding: 9px var(--marge); }
 
-  /* testimonials */
-  .quotes { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-block-start:clamp(34px,4vw,50px); }
-  .quote { background:#fff; border:1px solid var(--border-subtle); border-radius:14px; padding:26px; box-shadow:0 10px 30px rgba(35,50,70,0.05); }
-  .quote-stars { color:var(--gold); font-size:0.95rem; letter-spacing:2px; margin-block-end:12px; }
-  .quote p { font-size:0.92rem; color:var(--text-body); font-style:italic; }
-  .quote cite { display:block; margin-block-start:14px; font-style:normal; font-weight:600; color:var(--text-dark); font-size:0.86rem; }
-  @media (max-width:840px){ .quotes{ grid-template-columns:1fr; } }
+/* ---------- topbar ---------- */
+.topbar { position: sticky; top: 0; z-index: 40; background: var(--marine); }
+.topbar .wrap { height: var(--topbar); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.topbar img { height: 30px; width: auto; }
+.topbar nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 36px); }
+.topbar nav a { color: var(--creme-70); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--t) ease; }
+.topbar nav a:hover { color: var(--creme); }
+.topbar nav .btn { min-height: 42px; padding: 0 22px; color: var(--marine); font-size: 0.92rem; }
 
-  /* faq accordion */
-  .faq { max-width:840px; margin-block-start:clamp(30px,4vw,46px); }
-  .faq details { border-bottom:1px solid var(--border-subtle); }
-  .faq summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; padding-block:20px; font-family:'Raleway',sans-serif; font-weight:600; font-size:1.06rem; color:var(--text-dark); }
-  .faq summary::-webkit-details-marker { display:none; }
-  .faq summary::after { content:"+"; font-weight:300; font-size:1.5rem; color:var(--blue-brand); transition:transform .3s; flex-shrink:0; }
-  .faq details[open] summary::after { transform:rotate(45deg); }
-  .faq .faq-a { padding-block:0 22px; font-size:0.95rem; color:var(--text-body); max-width:70ch; }
+/* ---------- fil d'Ariane ---------- */
+.ariane { padding-block: 20px 0; font-size: var(--fs-petit); color: var(--gris-note); }
+.ariane ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 10px; }
+.ariane li + li::before { content: "/"; margin-right: 10px; color: var(--brume); }
+.ariane a { color: var(--ardoise); text-decoration: none; }
+.ariane a:hover { color: var(--marine); text-decoration: underline; text-underline-offset: 3px; }
 
-  /* inscriptions */
-  .listings { text-align:center; }
-  .listings .btn-primary { margin-block-start:22px; }
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(32px, 5vw, 72px) clamp(48px, 6vw, 80px); }
+.hero .grille { align-items: center; row-gap: 40px; }
+.hero-texte { grid-column: 1 / span 7; }
+.hero-texte .label { margin-bottom: 18px; }
+.hero h1 { color: var(--encre); }
+.hero h1 .nom { display: block; font-family: var(--affiche); font-weight: 400; text-transform: uppercase; font-size: var(--fs-nom); line-height: 1.05; letter-spacing: 0.005em; }
+.hero h1 .role { display: block; margin-top: 12px; font-size: clamp(1.15rem, 1.5vw, 1.35rem); font-weight: 600; line-height: 1.3; color: var(--marine); }
+.hero .entite { margin-top: 24px; max-width: 58ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
-  /* contact */
-  .contact { background:linear-gradient(160deg,var(--navy),var(--navy-deep)); color:#fff; text-align:center; }
-  .contact h2 { color:#fff; font-weight:300; font-size:clamp(2rem,4.5vw,3.2rem); letter-spacing:-0.035em; }
-  .contact h2 em { color:var(--blue-light); }
-  .contact p { color:rgba(255,255,255,0.8); max-width:54ch; margin-inline:auto; margin-block-start:16px; }
-  .contact-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-block-start:30px; }
-  .contact-info { margin-block-start:34px; font-size:0.9rem; color:rgba(255,255,255,0.7); line-height:1.9; }
-  .contact-info b { color:#fff; }
+.hero-photo { grid-column: 9 / span 4; margin: 0; position: relative; }
+.hero-photo::before { content: ""; position: absolute; inset: 20px -20px -20px 20px; background: var(--marine); border-radius: var(--r-ui); }
+.hero-photo .cadre { position: relative; aspect-ratio: 4 / 5; border-radius: var(--r-ui); overflow: hidden; background: var(--brume); }
+.hero-photo .cadre img { width: 100%; height: 100%; object-fit: cover; }
+.faits { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 24px 0 0; background: var(--marine); color: var(--creme); border-radius: var(--r-ui); }
+.faits > div { display: flex; flex-direction: column; gap: 8px; padding: 26px 32px 28px; }
+.faits > div + div { border-left: 1px solid var(--creme-20); }
+.faits dd { order: 1; margin: 0; font-family: var(--affiche); font-size: 2.3rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.faits dt { order: 2; font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.35; color: var(--creme-70); }
+.faits > div:first-child dd::after { content: ""; display: block; width: 36px; height: 3px; background: var(--rouge); margin-top: 12px; }
 
-  .footer { background:var(--navy-deep); color:rgba(255,255,255,0.5); padding-block:28px; font-size:0.8rem; }
-  .footer .container { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+/* ---------- fiche (repères) ---------- */
+.fiche { border-block: 1px solid var(--brume); }
+.fiche dl { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fiche div { padding: 26px var(--gout) 28px 0; }
+.fiche div + div { padding-left: var(--gout); border-left: 1px solid var(--brume); }
+.fiche dt { margin-bottom: 6px; }
+.fiche dd { margin: 0; font-weight: 500; color: var(--encre); line-height: 1.45; }
 
-  .reveal { opacity:0; transform:translateY(28px); transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1); }
-  .reveal.in { opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){ .reveal { opacity:1; transform:none; transition:none; } }
+/* ---------- chapitres ---------- */
+.chap { padding-block: var(--chap); }
+.chap:not(.bande):not(.bande-brume) + .chap:not(.bande):not(.bande-brume) { padding-top: 0; }
+.chap:not(.bande):not(.bande-brume) + .chap:not(.bande):not(.bande-brume) > .grille { padding-top: clamp(40px, 5vw, 64px); background: linear-gradient(var(--encre), var(--encre)) center top / calc(100% - 2 * var(--marge)) 3px no-repeat; }
+.chap-tete { grid-column: 1 / span 4; align-self: start; position: sticky; top: calc(var(--topbar) + 40px); }
+.chap-tete .h2 { margin-bottom: 16px; }
+.chap-tete p { font-size: var(--fs-petit); line-height: 1.6; max-width: 34ch; }
+.chap-corps { grid-column: 6 / span 7; }
+.chap-corps > * + * { margin-top: 1.25em; }
+.chap-corps p { max-width: 66ch; }
+
+/* bandes pleine largeur */
+.bande { background: var(--marine); color: var(--creme-70); }
+.bande .h2, .bande h3 { color: var(--creme); }
+.bande .chap-tete p { color: var(--creme-70); }
+.bande-brume { background: var(--brume); }
+
+/* ---------- à propos ---------- */
+.reperes { margin-top: 36px; display: grid; gap: 14px; }
+.reperes li { list-style: none; display: flex; gap: 12px; align-items: baseline; font-size: var(--fs-petit); font-weight: 500; color: var(--encre); }
+.reperes li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 0; background: var(--marine); transform: translateY(1px); }
+.reperes { padding: 0; }
+.recit {
+  margin-top: 48px !important; background: var(--marine); color: var(--creme-70);
+  border-radius: var(--r-bloc); padding: clamp(28px, 4vw, 48px);
+}
+.recit h3 { color: var(--creme); margin-bottom: 14px; }
+.recit p { max-width: 60ch; }
+
+/* ---------- engagements ---------- */
+.engagements { list-style: none; margin: 0; padding: 0; }
+.engagements li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gout); align-items: start; padding-block: 34px; border-top: 1px solid var(--creme-20); }
+.engagements li:last-child { border-bottom: 1px solid var(--creme-20); }
+.engagements .chiffre { font-family: var(--affiche); font-size: var(--fs-chiffre); line-height: 0.95; color: var(--creme); }
+.engagements h3 { font-size: var(--fs-h3); font-weight: 600; margin-bottom: 8px; line-height: 1.3; padding-top: 0.35em; }
+
+/* ---------- territoire ---------- */
+.constats { list-style: none; margin: 0; padding: 0; }
+.constats li { padding-block: 28px; border-top: 1px solid var(--brume); }
+.constats li:first-child { border-top: 0; padding-top: 0; }
+.constats h3 { margin-bottom: 10px; }
+.villes { margin-top: 56px !important; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.ville {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 0;
+  padding: 26px 28px; border-radius: var(--r-bloc); text-decoration: none;
+  box-shadow: inset 0 0 0 1px var(--brume); background: var(--creme);
+  transition: background-color var(--t) ease, box-shadow var(--t) ease;
+}
+.ville:hover { box-shadow: inset 0 0 0 2px var(--marine); }
+.ville .statut { font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gris-note); }
+.ville .nom-ville { display: block; font-family: var(--affiche); font-size: clamp(1.45rem, 2vw, 1.8rem); line-height: 1.05; text-transform: uppercase; color: var(--encre); margin-top: 10px; }
+.ville p { font-size: var(--fs-petit); line-height: 1.55; margin-top: 10px; }
+.ville .aller { font-weight: 600; font-size: var(--fs-petit); color: var(--marine); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.ville.principale { grid-column: 1 / -1; background: var(--marine); box-shadow: none; min-height: 0; }
+.ville.principale:hover { background: var(--encre); }
+.ville.principale .statut, .ville.principale p { color: var(--creme-70); }
+.ville.principale .nom-ville { color: var(--creme); font-size: clamp(1.9rem, 2.8vw, 2.4rem); }
+.ville.principale .aller { color: var(--creme); }
+
+/* photo de ville dans les cartes : pleine largeur en haut de la carte */
+.ville-photo { width: calc(100% + 56px); max-width: none; margin: -26px -28px 4px; aspect-ratio: 3 / 2; height: auto; object-fit: cover; background: var(--brume); }
+.ville:has(.ville-photo) { overflow: hidden; justify-content: flex-start; }
+.ville:has(.ville-photo) .aller { margin-top: auto; }
+
+/* ---------- panorama de la ville principale ---------- */
+.panorama { position: relative; }
+.panorama > img { width: 100%; height: clamp(280px, 34vw, 520px); object-fit: cover; background: var(--brume); }
+.panorama .wrap { margin-top: clamp(-96px, -6vw, -64px); position: relative; }
+.bandeau { display: inline-block; max-width: 520px; background: var(--marine); color: var(--creme-70); border-radius: var(--r-bloc); padding: clamp(22px, 2.6vw, 32px) clamp(24px, 3vw, 36px); }
+.bandeau .label { color: var(--creme-70); }
+.bandeau-ville { font-family: var(--affiche); font-weight: 400; text-transform: uppercase; font-size: clamp(1.9rem, 2.8vw, 2.5rem); line-height: 1.05; color: var(--creme); margin: 6px 0 8px; }
+.bandeau p:last-child { font-size: var(--fs-petit); line-height: 1.55; }
+
+/* ---------- services ---------- */
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 56px); }
+.services h3 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
+.services > div > p { font-size: var(--fs-petit); line-height: 1.6; margin-bottom: 18px; }
+.services ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--marine); }
+.services li { padding: 14px 0; border-bottom: 1px solid var(--brume); font-weight: 500; color: var(--encre); line-height: 1.45; }
+
+/* ---------- témoignages ---------- */
+.avis { list-style: none; margin: 0; padding: 0; }
+.avis li { padding-block: 36px; border-top: 1px solid color-mix(in oklch, var(--encre) 14%, transparent); }
+.avis li:first-child { border-top: 0; padding-top: 0; }
+.avis blockquote { margin: 0; position: relative; padding-left: clamp(40px, 4vw, 56px); }
+.avis blockquote::before { content: "«"; position: absolute; left: 0; top: -0.08em; font-family: var(--affiche); font-size: clamp(2.4rem, 3vw, 3rem); line-height: 1; color: var(--marine); }
+.avis blockquote p { font-size: clamp(1.08rem, 1.35vw, 1.25rem); font-weight: 500; line-height: 1.45; color: var(--encre); max-width: 40ch; }
+.avis footer { margin-top: 16px; font-size: var(--fs-petit); color: var(--ardoise); }
+.avis footer b { font-weight: 600; color: var(--encre); }
+
+/* ---------- FAQ ---------- */
+.faq { border-top: 2px solid var(--marine); }
+.faq details { border-bottom: 1px solid var(--brume); }
+.faq summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 24px 0; font-size: var(--fs-h3); font-weight: 600; line-height: 1.35; color: var(--encre);
+  transition: color var(--t) ease;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--marine); }
+.faq summary .signe { flex: none; width: 34px; height: 34px; border-radius: var(--r-ui); box-shadow: inset 0 0 0 2px var(--marine); position: relative; transition: background-color var(--t) ease; }
+.faq summary .signe::before, .faq summary .signe::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; margin: -1px 0 0 -7px; background: var(--marine); }
+.faq summary .signe::after { transform: rotate(90deg); }
+.faq details[open] .signe { background: var(--marine); }
+.faq details[open] .signe::before { background: var(--creme); }
+.faq details[open] .signe::after { display: none; }
+.faq .reponse { padding: 0 60px 28px 0; max-width: 66ch; }
+
+/* ---------- inscriptions ---------- */
+.inscriptions { margin-top: 56px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(28px, 4vw, 44px); border-radius: var(--r-bloc); box-shadow: inset 0 0 0 2px var(--marine); }
+.inscriptions .h3 { margin-bottom: 6px; }
+.inscriptions p { font-size: var(--fs-petit); max-width: 52ch; }
+
+/* ---------- contact ---------- */
+.contact { background: var(--marine); color: var(--creme-70); padding-block: var(--chap); }
+.contact .grille { row-gap: 48px; }
+.contact-appel { grid-column: 1 / span 7; }
+.contact-appel .h2 { color: var(--creme); font-size: clamp(2.2rem, 3.6vw, 3.2rem); margin-bottom: 18px; }
+.contact-appel .lead { color: var(--creme-70); max-width: 40ch; }
+.contact-appel .hero-actions { margin-top: 36px; }
+.nap { grid-column: 9 / span 4; align-self: end; margin: 0; font-style: normal; }
+.nap dl { margin: 0; }
+.nap div { padding-block: 16px; border-top: 1px solid var(--creme-20); }
+.nap dt { color: var(--creme-70); }
+.nap .label { color: var(--creme-70); }
+.nap dd { margin: 4px 0 0; color: var(--creme); font-weight: 500; line-height: 1.5; }
+.nap a { text-decoration: none; }
+.nap a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- pied ---------- */
+.pied { background: var(--encre); color: var(--creme-70); }
+.pied .signature { padding-block: 26px; border-bottom: 1px solid var(--creme-20); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--creme); font-size: 0.92rem; }
+.pied .legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; padding-block: 22px 28px; font-size: var(--fs-petit); }
+.pied .legal a { color: var(--creme); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- blocs optionnels du gabarit (galerie, vidéo) ---------- */
+.galerie { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.galerie figure { margin: 0; aspect-ratio: 4 / 3; border-radius: var(--r-bloc); overflow: hidden; background: var(--brume); }
+.galerie figure:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.galerie img { width: 100%; height: 100%; object-fit: cover; }
+.video { aspect-ratio: 16 / 9; border-radius: var(--r-bloc); overflow: hidden; background: var(--encre); }
+.video iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1080px) {
+  .hero-texte { grid-column: 1 / span 12; }
+  .hero-photo { grid-column: 1 / span 6; }
+  .faits dd { font-size: 2rem; }
+  .chap-tete { grid-column: 1 / span 12; position: static; margin-bottom: 40px; }
+  .chap-tete p { max-width: 60ch; }
+  .chap-corps { grid-column: 1 / span 12; }
+  .contact-appel, .nap { grid-column: 1 / span 12; }
+  .fiche dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fiche div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .fiche div:nth-child(n+3) { border-top: 1px solid var(--brume); }
+}
+@media (max-width: 680px) {
+  .topbar nav a:not(.btn) { display: none; }
+  .topbar img { height: 24px; }
+  .hero-photo { grid-column: 1 / span 12; }
+  .hero-photo::before { inset: 12px -12px -12px 12px; }
+  .faits { grid-template-columns: 1fr; }
+  .faits > div { padding: 20px 24px; }
+  .faits > div + div { border-left: 0; border-top: 1px solid var(--creme-20); }
+  .fiche dl { grid-template-columns: 1fr; }
+  .fiche div, .fiche div + div { padding: 18px 0; border-left: 0; }
+  .fiche div + div { border-top: 1px solid var(--brume); }
+  .engagements li { grid-template-columns: 1fr; gap: 10px; }
+  .villes, .services, .galerie { grid-template-columns: 1fr; }
+  .galerie figure:first-child { aspect-ratio: 4 / 3; }
+  .faq .reponse { padding-right: 0; }
+  .hero-actions .btn { width: 100%; }
+}
 </style>
 </head>
 <body>
+  <a class="saut" href="#contenu">Aller au contenu</a>
 
-  <div class="demo-ribbon">PAGE DÉMO — Geneviève Marchand est une courtière fictive servant à valider le gabarit.</div>
+  <!-- PAGE DÉMO : retirer ce bandeau sur une vraie page -->
+  <div class="demo">Page démo : Geneviève Marchand est une courtière fictive qui sert de gabarit aux pages de courtiers.</div>
 
-  <!-- topbar -->
-  <nav class="topbar">
-    <a href="../index.html"><img src="../brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></a>
-    <div class="topbar-nav">
-      <a href="index.html">Nos courtiers</a>
-      <a href="#territoire">Secteurs</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="cta">Me joindre</a>
-    </div>
-  </nav>
-
-  <!-- breadcrumb -->
-  <nav class="crumbs" aria-label="Fil d'Ariane">
-    <div class="container">
-      <a href="../index.html">Accueil</a>
-      <span aria-hidden="true">›</span>
-      <a href="index.html">Nos courtiers</a>
-      <span aria-hidden="true">›</span>
-      <span>Geneviève Marchand</span>
-    </div>
-  </nav>
-
-  <!-- hero -->
-  <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow hero-eyebrow reveal">Courtier immobilier · RE/MAX Crystal</div>
-        <h1 class="reveal">Geneviève <strong>Marchand</strong>, courtier immobilier à Deux&#8209;Montagnes</h1>
-        <div class="hero-role reveal">Courtier immobilier résidentiel — permis OACIQ D9876</div>
-        <!-- Paragraphe d'entité (GEO) : qui, quoi, où, depuis quand — citable tel quel -->
-        <p class="hero-entity reveal">Geneviève Marchand est courtier immobilier résidentiel chez RE/MAX Crystal, active à Deux-Montagnes depuis 2011, ainsi qu'à Saint-Eustache et Sainte-Marthe-sur-le-Lac. Native du secteur Grand-Moulin, elle a réalisé environ 320 transactions, principalement auprès de familles et de premiers acheteurs.</p>
-        <div class="hero-chips reveal">
-          <div class="chip"><b>15</b><span>Ans de courtage</span></div>
-          <div class="chip"><b>~320</b><span>Transactions depuis 2011</span></div>
-          <div class="chip"><b>&lt; 2 h</b><span>Délai de réponse, 7 j/7</span></div>
-        </div>
-        <div class="hero-cta reveal">
-          <a href="#contact" class="btn btn-primary">Demander une évaluation gratuite</a>
-          <a href="tel:+14505550189" class="btn btn-ghost">450 555-0189</a>
-        </div>
-        <div class="hero-permit reveal">Geneviève Marchand, courtier immobilier résidentiel · Permis OACIQ D9876 · RE/MAX Crystal, franchisé indépendant et autonome</div>
-      </div>
-      <div class="hero-photo reveal">
-        <img src="../images/courtiers/genevieve-marchand/portrait.jpg" alt="Geneviève Marchand, courtier immobilier à Deux-Montagnes" width="900" height="1200" fetchpriority="high">
-      </div>
+  <header class="topbar">
+    <div class="wrap">
+      <a href="../index.html"><img src="../brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal, accueil" width="240" height="40"></a>
+      <nav aria-label="Navigation de la page">
+        <a href="index.html">Nos courtiers</a>
+        <a href="#territoire">Secteurs</a>
+        <a href="#faq">Questions</a>
+        <a href="#contact" class="btn btn-creme">Me joindre</a>
+      </nav>
     </div>
   </header>
 
-  <!-- stats strip -->
-  <section class="stripe">
-    <div class="container stripe-grid">
-      <div class="reveal"><div class="stat-num">2011</div><div class="stat-label">Courtière depuis 15 ans</div></div>
-      <div class="reveal"><div class="stat-num">~320</div><div class="stat-label">Transactions réalisées</div></div>
-      <div class="reveal"><div class="stat-num">3</div><div class="stat-label">Villes desservies</div></div>
-      <div class="reveal"><div class="stat-num">100<em>%</em></div><div class="stat-label">Club 100 % RE/MAX, 2019-2025 · Palme d'excellence 2023</div></div>
-    </div>
-  </section>
+  <main id="contenu">
+    <nav class="wrap ariane" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="index.html">Nos courtiers</a></li>
+        <li aria-current="page">Geneviève Marchand</li>
+      </ol>
+    </nav>
 
-  <!-- bio (600-900 mots, réécrite depuis la matière brute) -->
-  <section class="section" id="apropos">
-    <div class="container bio-grid">
-      <div class="bio-side reveal">
-        <div class="eyebrow">À propos</div>
-        <h3>Huit ans de financement hypothécaire <em>avant</em> le courtage</h3>
-        <p class="lead">Une courtière qui traduit les chiffres, les clauses et les délais — et qui décroche elle-même son téléphone.</p>
-        <div class="bio-langs">
-          <span>Français</span><span>Anglais</span><span>Permis OACIQ D9876</span>
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="titre-page">
+      <div class="wrap grille">
+        <div class="hero-texte">
+          <p class="label">Courtier immobilier résidentiel · Permis OACIQ D9876</p>
+          <h1 id="titre-page"><span class="nom">Geneviève Marchand</span><span class="sr">, </span><span class="role">courtier immobilier à <span class="insec">Deux-Montagnes</span></span></h1>
+          <!-- Paragraphe d'entité (GEO) : qui, quoi, où, depuis quand. Citable tel quel. -->
+          <p class="lead entite">Geneviève Marchand est courtier immobilier résidentiel chez RE/MAX Crystal, active à Deux-Montagnes depuis 2011, ainsi qu'à Saint-Eustache et Sainte-Marthe-sur-le-Lac. Native du secteur Grand-Moulin, elle a réalisé environ 320 transactions, surtout auprès de familles et de premiers acheteurs.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-plein">Demander une évaluation gratuite</a>
+            <a href="tel:+14505550189" class="btn btn-ligne"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>450 555-0189</a>
+          </div>
+        </div>
+
+        <figure class="hero-photo">
+          <div class="cadre"><img src="../images/courtiers/genevieve-marchand/portrait.jpg" alt="Geneviève Marchand, courtier immobilier à Deux-Montagnes" width="900" height="1200" fetchpriority="high"></div>
+        </figure>
+        <!-- Bande de faits : trois faits chiffrés du JSON seulement. Le filet rouge marque le premier. -->
+        <dl class="faits">
+          <div><dt>Transactions depuis 2011</dt><dd>320+</dd></div>
+          <div><dt>De courtage dans le secteur</dt><dd>15 ans</dd></div>
+          <div><dt>Pour vous répondre, 7 jours sur 7</dt><dd>&lt; 2 h</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ FICHE : repères rapides ============ -->
+    <div class="wrap">
+      <section class="fiche" aria-label="En bref">
+        <dl>
+          <div><dt class="label">Secteurs</dt><dd>Deux-Montagnes, Saint-Eustache, Sainte-Marthe-sur-le-Lac</dd></div>
+          <div><dt class="label">Langues</dt><dd>Français, anglais</dd></div>
+          <div><dt class="label">Bureau d'attache</dt><dd>RE/MAX Crystal, Saint-Eustache</dd></div>
+          <div><dt class="label">Reconnaissances</dt><dd>Club 100 % RE/MAX 2019 à 2025, Palme d'excellence 2023</dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <!-- ============ À PROPOS (bio 600 à 900 mots, réécrite depuis la matière brute) ============ -->
+    <section class="chap" id="apropos" aria-labelledby="t-apropos">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-apropos">Huit ans de finance avant le courtage</h2>
+          <p>Une courtière qui traduit les chiffres, les clauses et les délais, et qui répond elle-même au téléphone.</p>
+        </div>
+        <div class="chap-corps">
+          <p class="lead">Avant de devenir courtière, Geneviève Marchand a passé huit ans comme conseillère en financement hypothécaire dans une caisse de Saint-Eustache.</p>
+          <p>C'est derrière ce bureau qu'elle a compris une chose qui guide encore sa pratique : la plupart des gens n'ont pas besoin qu'on leur vende quoi que ce soit. Ils ont besoin que quelqu'un leur traduise ce qui se passe, de la préapprobation aux clauses de l'offre jusqu'aux délais du notaire. Elle a obtenu son permis en 2011 pour faire exactement ce travail, du premier café à la remise des clés.</p>
+          <p>Sa méthode tient en une phrase qu'elle répète à chaque nouveau client : « Je vous dis ce que je ferais à votre place, même quand ce n'est pas ce que vous espérez entendre. » Si une maison a besoin de 2 000 $ de peinture avant la séance photo, elle le dit. Si le condo convoité est affiché au-dessus de sa valeur, elle le dit aussi, chiffres comparables à l'appui, dans les 48 heures qui suivent la première rencontre.</p>
+          <p>Geneviève travaille seule, sans adjointe, et c'est un choix : la personne qui répond au téléphone, celle qui fait visiter et celle qui négocie l'offre sont la même. Ses clients sont d'abord des familles des Basses-Laurentides et des premiers acheteurs, qui forment près de la moitié de sa clientèle. Son passé bancaire fait la différence auprès d'eux : mise de fonds, droits de mutation et RAP sont expliqués avant même la première visite. La majorité de ses mandats lui viennent de références d'anciens clients, après une trentaine de transactions par année depuis quinze ans.</p>
+          <p>Née et élevée à Deux-Montagnes, à trois rues de la gare Grand-Moulin, elle y élève aujourd'hui ses deux filles, qui fréquentent l'école des Mésanges. Quand un acheteur demande où sont les parcs avec jeux d'eau ou quelle rue reste tranquille le soir, la réponse vient de mémoire.</p>
+          <aside class="recit" aria-labelledby="t-recit">
+            <h3 class="h3" id="t-recit">Une vente qui la résume</h3>
+            <p>En 2022, une dame de 82 ans lui a confié la maison familiale de la rue Cedar, habitée pendant 54 ans. Plutôt que de précipiter la mise en marché, Geneviève a pris trois semaines de plus pour laisser sa cliente trier ses souvenirs. La maison est passée à un jeune couple avec deux enfants, et la vendeuse leur a laissé sur le comptoir une lettre qui raconte l'histoire des lieux. Les deux familles se donnent encore des nouvelles.</p>
+          </aside>
         </div>
       </div>
-      <div class="bio-text reveal">
-        <p>Avant de devenir courtière, Geneviève Marchand a passé huit ans comme conseillère en financement hypothécaire dans une caisse de Saint-Eustache. C'est derrière ce bureau qu'elle a compris une chose qui guide encore sa pratique : la plupart des gens n'ont pas besoin qu'on leur vende quoi que ce soit. Ils ont besoin que quelqu'un leur traduise ce qui se passe — la préapprobation, les clauses de l'offre, les délais du notaire. Elle a obtenu son permis en 2011 pour faire exactement ce travail de traduction, du premier café jusqu'à la remise des clés.</p>
-        <p>Sa méthode tient en une phrase qu'elle répète à chaque nouveau client : « Je vous dis ce que je ferais à votre place, même quand ce n'est pas ce que vous espérez entendre. » Concrètement, si une maison a besoin de 2 000 $ de peinture avant la séance photo, elle le dit. Si le condo convoité est affiché au-dessus de sa valeur réelle, elle le dit aussi — chiffres comparables à l'appui, remis dans les 48 heures suivant la première rencontre.</p>
-        <p>Geneviève travaille seule, sans adjointe, et c'est un choix assumé : la personne qui répond au téléphone, celle qui fait visiter et celle qui négocie l'offre sont la même. Ses clients sont d'abord des familles des Basses-Laurentides et des premiers acheteurs, qui représentent près de la moitié de sa clientèle. Son passé bancaire fait la différence auprès d'eux : mise de fonds, droits de mutation, RAP — tout est expliqué avant même la première visite. La majorité de ses mandats lui arrivent par référence d'anciens clients, sa plus grande fierté après une trentaine de transactions par année depuis quinze ans.</p>
-        <p>Née et élevée à Deux-Montagnes, à trois rues de la gare Grand-Moulin, elle y élève aujourd'hui ses deux filles, qui fréquentent l'école des Mésanges. Quand un acheteur lui demande où trouver les parcs avec jeux d'eau ou quelle rue reste tranquille le soir, la réponse vient de mémoire — pas d'une recherche rapide.</p>
-        <div class="bio-anecdote">
-          <h4>Une vente qui la résume</h4>
-          <p>En 2022, une dame de 82 ans lui a confié la maison familiale de la rue Cedar, habitée pendant 54 ans. Plutôt que de précipiter la mise en marché, Geneviève a pris trois semaines de plus pour laisser sa cliente trier ses souvenirs sans se presser. La maison est passée à un jeune couple avec deux enfants — et la vendeuse leur a laissé sur le comptoir une lettre racontant l'histoire des lieux. Les deux familles se donnent encore des nouvelles. C'est le genre de transaction qui, selon elle, explique pourquoi elle fait ce métier.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- plus-values -->
-  <section class="section alt" id="plusvalues">
-    <div class="container">
-      <div class="eyebrow reveal">Trois engagements</div>
-      <h2 class="s-title reveal">Concret et <em>vérifiable</em></h2>
-      <div class="pv-grid">
-        <div class="pv reveal"><div class="pv-no">01</div><p>Réponse en moins de 2 heures, 7 jours sur 7 — c'est elle qui décroche, pas une boîte vocale d'équipe.</p></div>
-        <div class="pv reveal"><div class="pv-no">02</div><p>Photos et vidéo professionnelles incluses dans chaque mandat de vente, sans supplément.</p></div>
-        <div class="pv reveal"><div class="pv-no">03</div><p>Analyse comparative complète remise dans les 48 heures suivant la première rencontre.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- territoire (ville principale dominante ~70 %) -->
-  <section class="section" id="territoire">
-    <div class="container">
-      <div class="eyebrow reveal">Son territoire</div>
-      <h2 class="s-title reveal">Deux-Montagnes, <em>vue de l'intérieur</em></h2>
-      <p class="lead reveal">Le marché de Deux-Montagnes a changé de vitesse avec le REM — et certaines rues en profitent beaucoup plus que d'autres. Voici ce que Geneviève observe sur le terrain.</p>
-      <div class="terr-grid">
-        <div class="terr-facts">
-          <div class="fact reveal"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/><path d="M6 19l-2 3"/><path d="M18 19l2 3"/></svg>
-            <p><b>L'effet REM est réel, mais inégal.</b> Depuis la mise en service, les maisons à distance de marche des gares Deux-Montagnes et Grand-Moulin partent souvent en moins de deux semaines, portées par les acheteurs venus de Montréal. Quelques rues plus loin, les délais redeviennent normaux — d'où l'importance d'évaluer rue par rue, pas ville par ville.</p></div>
-          <div class="fact reveal"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M5 12v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/><path d="M12 3v9"/><path d="M8 6l4-3 4 3"/></svg>
-            <p><b>Le bord de l'eau reste sous-estimé.</b> Les secteurs riverains du lac des Deux Montagnes offrent encore un rapport qualité-prix que Rosemère n'a plus. Pour les acheteurs qui veulent l'eau sans le prix des rives sud, c'est le meilleur compromis des Basses-Laurentides.</p></div>
-          <div class="fact reveal"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <p><b>À Sainte-Marthe-sur-le-Lac, les jeunes familles ciblent le secteur des Promenades,</b> près de la nouvelle école. À Saint-Eustache, le Vieux-Saint-Eustache attire une clientèle qui cherche du cachet à 25 minutes de Montréal. Geneviève suit ces trois marchés chaque semaine.</p></div>
+    <!-- ============ ENGAGEMENTS (bande marine) ============ -->
+    <section class="chap bande sombre" id="engagements" aria-labelledby="t-engagements">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-engagements">Trois engagements vérifiables</h2>
+          <p>Des promesses qu'on peut mesurer dès le premier appel.</p>
         </div>
-        <div class="sector-grid">
-          <a href="../guide-deuxmontagnes.html" class="sector reveal">
-            <span class="tag">Ville principale</span>
-            <h3>Deux-Montagnes</h3>
-            <p>Sa ville natale et le cœur de sa pratique : gare REM, bord de l'eau, quartier Grand-Moulin.</p>
-            <span class="sector-link">Guide complet de Deux-Montagnes →</span>
-          </a>
-          <a href="../guide-steustache.html" class="sector reveal">
-            <span class="tag">Ville secondaire</span>
-            <h3>Saint-Eustache</h3>
-            <p>Son bureau d'attache et le pôle régional — du Vieux-Saint-Eustache aux nouveaux développements.</p>
-            <span class="sector-link">Guide complet de Saint-Eustache →</span>
-          </a>
-          <a href="../guide-stemarthe.html" class="sector reveal">
-            <span class="tag">Ville secondaire</span>
-            <h3>Sainte-Marthe-sur-le-Lac</h3>
-            <p>Le marché des jeunes familles, entre les Promenades et le bord du lac.</p>
-            <span class="sector-link">Guide complet de Sainte-Marthe →</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- services -->
-  <section class="section alt" id="services">
-    <div class="container">
-      <div class="eyebrow reveal">Services</div>
-      <h2 class="s-title reveal">Vendre ou acheter avec <em>Geneviève</em></h2>
-      <div class="svc-grid">
-        <div class="svc reveal">
-          <h3>Pour les <em>vendeurs</em></h3>
-          <p>Un mandat complet, du prix juste au notaire — avec un rapport d'activité chaque mois.</p>
-          <ul>
-            <li>Évaluation gratuite de la valeur marchande, sur place</li>
-            <li>Analyse comparative de marché remise en 48 heures</li>
-            <li>Photos et vidéo professionnelles incluses</li>
-            <li>Mise en marché complète : Centris + réseaux sociaux</li>
-            <li>Rapport mensuel du marché autour de votre propriété</li>
-          </ul>
-        </div>
-        <div class="svc reveal">
-          <h3>Pour les <em>acheteurs</em></h3>
-          <p>Un accompagnement pensé pour les familles et les premiers acheteurs — finances comprises.</p>
-          <ul>
-            <li>Préparation financière : préapprobation, mise de fonds, RAP</li>
-            <li>Sélection ciblée selon le secteur, l'école, le budget</li>
-            <li>Visites accompagnées, en personne ou en vidéo</li>
-            <li>Négociation et vérifications jusqu'à la signature</li>
-            <li>Accompagnement relocalisation, même à distance</li>
+        <div class="chap-corps">
+          <ul class="engagements">
+            <li><span class="chiffre">&lt; 2 h</span><div><h3>Une réponse le jour même</h3><p>Moins de 2 heures, 7 jours sur 7. C'est elle qui répond, pas une boîte vocale d'équipe.</p></div></li>
+            <li><span class="chiffre">Inclus</span><div><h3>Photos et vidéo professionnelles</h3><p>Dans chaque mandat de vente, sans supplément.</p></div></li>
+            <li><span class="chiffre">48 h</span><div><h3>Une analyse comparative complète</h3><p>Remise dans les 48 heures qui suivent la première rencontre.</p></div></li>
           </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- témoignages -->
-  <section class="section" id="temoignages">
-    <div class="container">
-      <div class="eyebrow reveal">Témoignages</div>
-      <h2 class="s-title reveal">Des clients, <em>dans leurs mots</em></h2>
-      <div class="quotes">
-        <div class="quote reveal">
-          <div class="quote-stars">★★★★★</div>
-          <p>« Geneviève a vendu notre maison de la rue du Lac en 9 jours, 12 000 $ au-dessus du prix demandé. Elle nous a expliqué chaque étape et on n'a jamais senti de pression. »</p>
-          <cite>M. et Mme Pelletier — Deux-Montagnes</cite>
-        </div>
-        <div class="quote reveal">
-          <div class="quote-stars">★★★★★</div>
-          <p>« Premiers acheteurs, on ne connaissait rien. Elle a répondu à nos 100 questions, même un dimanche soir, et nous a trouvé notre jumelé à Sainte-Marthe dans notre budget. »</p>
-          <cite>Karim et Sophie — Sainte-Marthe-sur-le-Lac</cite>
-        </div>
-        <div class="quote reveal">
-          <div class="quote-stars">★★★★★</div>
-          <p>« Relocalisés de Québec en plein hiver, tout s'est fait à distance : visites en vidéo, documents électroniques, remise des clés impeccable. Une vraie professionnelle. »</p>
-          <cite>Famille Bergeron — Saint-Eustache</cite>
+    <!-- ============ PANORAMA : photo principale du guide de la ville principale
+         (data/courtiers-config.js, VILLES[].photo et photoAlt) ============ -->
+    <section class="panorama" aria-labelledby="t-panorama">
+      <img src="../images-opt/villes/deuxmontagnes/ville-deux-montagnes.webp" alt="Vue aérienne de Deux-Montagnes" width="1600" height="900" loading="lazy">
+      <div class="wrap">
+        <div class="bandeau">
+          <p class="label">Ville principale</p>
+          <h2 class="bandeau-ville" id="t-panorama">Deux-Montagnes</h2>
+          <p>Sa ville natale, et le cœur de sa pratique depuis 2011.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ (accordéon, réponses autoportantes pour la citabilité IA) -->
-  <section class="section alt" id="faq">
-    <div class="container">
-      <div class="eyebrow reveal">Questions fréquentes</div>
-      <h2 class="s-title reveal">Ce qu'on lui demande <em>chaque semaine</em></h2>
-      <div class="faq reveal">
-        <details>
-          <summary>Combien vaut ma maison à Deux-Montagnes en ce moment ?</summary>
-          <p class="faq-a">La valeur dépend surtout de votre secteur et de la distance des gares du REM. Geneviève Marchand offre une évaluation gratuite sur place : vous recevez en 48 heures une fourchette de prix appuyée sur les ventes comparables des 6 derniers mois à Deux-Montagnes.</p>
-        </details>
-        <details>
-          <summary>Le REM a-t-il vraiment fait monter les prix à Deux-Montagnes ?</summary>
-          <p class="faq-a">Oui, surtout à distance de marche des gares Deux-Montagnes et Grand-Moulin : depuis la mise en service du REM, les propriétés bien situées s'y vendent plus rapidement que la moyenne du secteur. L'effet est réel, mais il varie beaucoup d'une rue à l'autre.</p>
-        </details>
-        <details>
-          <summary>Combien de temps faut-il pour vendre dans le secteur ?</summary>
-          <p class="faq-a">Une propriété bien préparée et affichée au bon prix se vend généralement en 2 à 5 semaines à Deux-Montagnes et à Sainte-Marthe-sur-le-Lac. Une propriété surévaluée peut rester des mois sur le marché — c'est pourquoi Geneviève est franche sur le prix dès le départ.</p>
-        </details>
-        <details>
-          <summary>Travaille-t-elle avec les premiers acheteurs ?</summary>
-          <p class="faq-a">Oui : les premiers acheteurs représentent près de la moitié de la clientèle de Geneviève Marchand. Ancienne conseillère en financement hypothécaire, elle explique la préapprobation, la mise de fonds, les droits de mutation et les programmes comme le RAP avant même la première visite.</p>
-        </details>
-        <details>
-          <summary>Qu'est-ce qui est inclus dans un mandat de vente ?</summary>
-          <p class="faq-a">Chaque mandat de vente avec Geneviève Marchand inclut les photos et la vidéo professionnelles, la mise en marché sur Centris et les réseaux sociaux, les visites accompagnées, la négociation et le suivi jusqu'au notaire, plus un rapport mensuel sur l'activité du marché autour de votre propriété.</p>
-        </details>
+    <!-- ============ TERRITOIRE (ville principale ~70 % du contenu géo) ============ -->
+    <section class="chap" id="territoire" aria-labelledby="t-territoire">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-territoire"><span class="insec">Deux-Montagnes</span> vue de l'intérieur</h2>
+          <p>Le marché a changé de vitesse avec le REM, et certaines rues en profitent beaucoup plus que d'autres. Voici ce que Geneviève observe sur le terrain.</p>
+        </div>
+        <div class="chap-corps">
+          <ul class="constats">
+            <li><h3 class="h3">L'effet REM est réel, mais inégal</h3><p>Depuis la mise en service, les maisons à distance de marche des gares Deux-Montagnes et Grand-Moulin partent souvent en moins de deux semaines, portées par les acheteurs venus de Montréal. Quelques rues plus loin, les délais redeviennent normaux. D'où l'importance d'évaluer rue par rue, pas ville par ville.</p></li>
+            <li><h3 class="h3">Le bord de l'eau reste sous-estimé</h3><p>Les secteurs riverains du lac des Deux Montagnes offrent encore un rapport qualité-prix que Rosemère n'a plus. Pour les acheteurs qui veulent l'eau sans le prix des rives sud, c'est le meilleur compromis des Basses-Laurentides.</p></li>
+            <li><h3 class="h3">Deux marchés voisins à suivre</h3><p>À Sainte-Marthe-sur-le-Lac, les jeunes familles ciblent le secteur des Promenades, près de la nouvelle école. À Saint-Eustache, le Vieux-Saint-Eustache attire ceux qui cherchent du cachet à 25 minutes de Montréal. Geneviève suit ces trois marchés chaque semaine.</p></li>
+          </ul>
+          <div class="villes">
+            <a href="../guide-deuxmontagnes.html" class="ville principale">
+              <span><span class="statut">Ville principale</span><span class="nom-ville">Deux-Montagnes</span><p>Sa ville natale et le cœur de sa pratique : gare REM, bord de l'eau, quartier Grand-Moulin.</p></span>
+              <span class="aller">Lire le guide de Deux-Montagnes</span>
+            </a>
+            <a href="../guide-steustache.html" class="ville">
+              <img class="ville-photo" src="../images-opt/villes/steustache/Saint-Eustache_-_Vue_aérienne_(2).webp" alt="Vue aérienne de Saint-Eustache" width="1280" height="853" loading="lazy">
+              <span><span class="statut">Aussi desservie</span><span class="nom-ville">Saint-Eustache</span><p>Son bureau d'attache et le pôle régional, du Vieux-Saint-Eustache aux nouveaux quartiers.</p></span>
+              <span class="aller">Lire le guide</span>
+            </a>
+            <a href="../guide-stemarthe.html" class="ville">
+              <img class="ville-photo" src="../images-opt/villes/stemarthe/Sainte-Marthe-sur-le-Lac_-_Vue_a_rienne__1_.webp" alt="Vue aérienne de Sainte-Marthe-sur-le-Lac" width="1920" height="1280" loading="lazy">
+              <span><span class="statut">Aussi desservie</span><span class="nom-ville">Sainte-Marthe-sur-le-Lac</span><p>Le marché des jeunes familles, entre les Promenades et le bord du lac.</p></span>
+              <span class="aller">Lire le guide</span>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- inscriptions -->
-  <section class="section listings" id="inscriptions">
-    <div class="container">
-      <div class="eyebrow reveal" style="justify-content:center;">Propriétés</div>
-      <h2 class="s-title reveal">Ses inscriptions <em>en ce moment</em></h2>
-      <p class="lead reveal" style="margin-inline:auto;">Les propriétés à vendre de Geneviève Marchand sont affichées sur Centris et mises à jour en temps réel.</p>
-      <a class="btn btn-primary reveal" href="https://www.centris.ca/fr/courtier-immobilier/exemple" target="_blank" rel="noopener">Voir ses inscriptions sur Centris →</a>
-    </div>
-  </section>
-
-  <!-- contact / CTA final -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="eyebrow reveal" style="color:var(--blue-light);justify-content:center;">Parlons-en</div>
-      <h2 class="reveal">Que vaut votre propriété <em>aujourd'hui</em> ?</h2>
-      <p class="reveal">Évaluation gratuite, sur place, sans engagement — et une fourchette de prix documentée dans les 48 heures.</p>
-      <div class="contact-row reveal">
-        <a href="mailto:genevieve.marchand@exemple-remax.com?subject=Demande%20d%27%C3%A9valuation%20gratuite" class="btn btn-primary">Demander une évaluation gratuite</a>
-        <a href="tel:+14505550189" class="btn btn-ghost">450 555-0189</a>
+    <!-- ============ GABARIT OPTIONNEL : galerie (medias.photosLibres) ============
+         À insérer ici si la fiche a des photos libres. Une seule photo : retirer la grille.
+    <section class="chap" id="photos" aria-labelledby="t-photos">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-photos">Sur le terrain</h2>
+          <p>Une phrase qui situe les photos (propriétés vendues, secteur, courtier en action).</p>
+        </div>
+        <div class="chap-corps">
+          <div class="galerie">
+            <figure><img src="../images/courtiers/SLUG/photo-1.jpg" alt="Description précise, ville" loading="lazy" width="1400" height="1050"></figure>
+            <figure><img src="../images/courtiers/SLUG/photo-2.jpg" alt="Description précise, ville" loading="lazy" width="1400" height="1050"></figure>
+            <figure><img src="../images/courtiers/SLUG/photo-3.jpg" alt="Description précise, ville" loading="lazy" width="1400" height="1050"></figure>
+          </div>
+        </div>
       </div>
-      <div class="contact-info reveal">
-        <b>Geneviève Marchand, courtier immobilier résidentiel</b> · Permis OACIQ D9876<br>
-        RE/MAX Crystal — 479 boul. Arthur-Sauvé, Saint-Eustache (QC) J7P 2B3<br>
-        Cellulaire : 450 555-0189 · Bureau : 450 472-7220<br>
-        genevieve.marchand@exemple-remax.com
+    </section>
+    ============ GABARIT OPTIONNEL : vidéo (medias.video) ============
+    <section class="chap" id="video" aria-labelledby="t-video">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-video">En vidéo</h2>
+          <p>Une phrase qui dit ce que la vidéo montre et sa durée.</p>
+        </div>
+        <div class="chap-corps">
+          <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/ID_VIDEO" title="Présentation de NOM, courtier immobilier à VILLE" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    ============ FIN DES GABARITS OPTIONNELS ============ -->
 
-  <footer class="footer">
-    <div class="container">
-      <span>© 2026 RE/MAX Crystal — Franchisé indépendant et autonome de RE/MAX Québec</span>
-      <span><a href="index.html" style="color:inherit;text-decoration:underline;">Tous nos courtiers</a> · <a href="../index.html" style="color:inherit;text-decoration:underline;">Guides de villes</a></span>
+    <!-- ============ SERVICES ============ -->
+    <section class="chap" id="services" aria-labelledby="t-services">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-services">Vendre ou acheter avec elle</h2>
+          <p>Un mandat complet du prix juste jusqu'au notaire, et un accompagnement pensé pour les familles et les premiers acheteurs.</p>
+        </div>
+        <div class="chap-corps">
+          <div class="services">
+            <div>
+              <h3>Vendeurs</h3>
+              <p>Un mandat complet, avec un rapport d'activité chaque mois.</p>
+              <ul>
+                <li>Évaluation gratuite de la valeur marchande, sur place</li>
+                <li>Analyse comparative de marché remise en 48 heures</li>
+                <li>Photos et vidéo professionnelles incluses</li>
+                <li>Mise en marché complète : Centris et réseaux sociaux</li>
+                <li>Rapport mensuel du marché autour de votre propriété</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Acheteurs</h3>
+              <p>Les finances comprises, avant même la première visite.</p>
+              <ul>
+                <li>Préparation financière : préapprobation, mise de fonds, RAP</li>
+                <li>Sélection ciblée selon le secteur, l'école et le budget</li>
+                <li>Visites accompagnées, en personne ou en vidéo</li>
+                <li>Négociation et vérifications jusqu'à la signature</li>
+                <li>Accompagnement en relocalisation, même à distance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TÉMOIGNAGES (bande brume, réels seulement, avec consentement) ============ -->
+    <section class="chap bande-brume" id="temoignages" aria-labelledby="t-temoignages">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-temoignages">Ses clients, dans leurs mots</h2>
+          <p>Trois familles, trois situations : une vente rapide, un premier achat, une relocalisation à distance.</p>
+        </div>
+        <div class="chap-corps">
+          <ul class="avis">
+            <li><blockquote><p>Geneviève a vendu notre maison de la rue du Lac en 9 jours, 12 000 $ au-dessus du prix demandé. Elle nous a expliqué chaque étape et on n'a jamais senti de pression.</p><footer><b>M. et Mme Pelletier</b>, Deux-Montagnes</footer></blockquote></li>
+            <li><blockquote><p>Premiers acheteurs, on ne connaissait rien. Elle a répondu à nos 100 questions, même un dimanche soir, et nous a trouvé notre jumelé à Sainte-Marthe dans notre budget.</p><footer><b>Karim et Sophie</b>, Sainte-Marthe-sur-le-Lac</footer></blockquote></li>
+            <li><blockquote><p>Relocalisés de Québec en plein hiver, tout s'est fait à distance : visites en vidéo, documents électroniques, remise des clés impeccable. Une vraie professionnelle.</p><footer><b>Famille Bergeron</b>, Saint-Eustache</footer></blockquote></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ (réponses autoportantes, citabilité IA) ============ -->
+    <section class="chap" id="faq" aria-labelledby="t-faq">
+      <div class="wrap grille">
+        <div class="chap-tete">
+          <h2 class="h2" id="t-faq">Ce qu'on lui demande chaque semaine</h2>
+          <p>Les vraies questions reçues au téléphone, avec des réponses qui tiennent seules.</p>
+        </div>
+        <div class="chap-corps">
+          <div class="faq">
+            <details>
+              <summary>Combien vaut ma maison à Deux-Montagnes en ce moment ?<span class="signe" aria-hidden="true"></span></summary>
+              <p class="reponse">La valeur dépend surtout de votre secteur et de la distance des gares du REM. Geneviève Marchand offre une évaluation gratuite sur place : vous recevez en 48 heures une fourchette de prix appuyée sur les ventes comparables des 6 derniers mois à Deux-Montagnes.</p>
+            </details>
+            <details>
+              <summary>Le REM a-t-il vraiment fait monter les prix à Deux-Montagnes ?<span class="signe" aria-hidden="true"></span></summary>
+              <p class="reponse">Oui, surtout à distance de marche des gares Deux-Montagnes et Grand-Moulin : depuis la mise en service du REM, les propriétés bien situées s'y vendent plus rapidement que la moyenne du secteur. L'effet est réel, mais il varie beaucoup d'une rue à l'autre.</p>
+            </details>
+            <details>
+              <summary>Combien de temps faut-il pour vendre dans le secteur ?<span class="signe" aria-hidden="true"></span></summary>
+              <p class="reponse">Une propriété bien préparée et affichée au bon prix se vend généralement en 2 à 5 semaines à Deux-Montagnes et à Sainte-Marthe-sur-le-Lac. Une propriété surévaluée peut rester des mois sur le marché, c'est pourquoi Geneviève Marchand est franche sur le prix dès le départ.</p>
+            </details>
+            <details>
+              <summary>Travaille-t-elle avec les premiers acheteurs ?<span class="signe" aria-hidden="true"></span></summary>
+              <p class="reponse">Oui : les premiers acheteurs forment près de la moitié de la clientèle de Geneviève Marchand. Ancienne conseillère en financement hypothécaire, elle explique la préapprobation, la mise de fonds, les droits de mutation et les programmes comme le RAP avant même la première visite.</p>
+            </details>
+            <details>
+              <summary>Qu'est-ce qui est inclus dans un mandat de vente ?<span class="signe" aria-hidden="true"></span></summary>
+              <p class="reponse">Chaque mandat de vente avec Geneviève Marchand inclut les photos et la vidéo professionnelles, la mise en marché sur Centris et les réseaux sociaux, les visites accompagnées, la négociation et le suivi jusqu'au notaire, plus un rapport mensuel sur l'activité du marché autour de votre propriété.</p>
+            </details>
+          </div>
+          <div class="inscriptions" id="inscriptions">
+            <div>
+              <h3 class="h3">Ses propriétés à vendre</h3>
+              <p>Les inscriptions de Geneviève Marchand sont affichées sur Centris et mises à jour en temps réel.</p>
+            </div>
+            <a class="btn btn-ligne" href="https://www.centris.ca/fr/courtier-immobilier/exemple" target="_blank" rel="noopener">Voir sur Centris<span class="sr"> (nouvel onglet)</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT (bande marine, NAP identique partout) ============ -->
+    <section class="contact sombre" id="contact" aria-labelledby="t-contact">
+      <div class="wrap grille">
+        <div class="contact-appel">
+          <h2 class="h2" id="t-contact">Que vaut votre propriété aujourd'hui ?</h2>
+          <p class="lead">Une évaluation gratuite, sur place et sans engagement, avec une fourchette de prix documentée dans les 48 heures.</p>
+          <div class="hero-actions">
+            <a href="mailto:genevieve.marchand@exemple-remax.com?subject=Demande%20d%27%C3%A9valuation%20gratuite" class="btn btn-creme">Demander une évaluation gratuite</a>
+            <a href="tel:+14505550189" class="btn btn-ligne-creme">Appeler le 450 555-0189</a>
+          </div>
+        </div>
+        <address class="nap">
+          <dl>
+            <div><dt class="label">Courtier</dt><dd>Geneviève Marchand, courtier immobilier résidentiel<br>Permis OACIQ D9876</dd></div>
+            <div><dt class="label">Bureau</dt><dd>RE/MAX Crystal<br>479 boul. Arthur-Sauvé<br>Saint-Eustache (QC) J7P 2B3</dd></div>
+            <div><dt class="label">Téléphones</dt><dd>Cellulaire : <a href="tel:+14505550189">450 555-0189</a><br>Bureau : <a href="tel:+14504727220">450 472-7220</a></dd></div>
+            <div><dt class="label">Courriel</dt><dd><a href="mailto:genevieve.marchand@exemple-remax.com">genevieve.marchand@exemple-remax.com</a></dd></div>
+          </dl>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied sombre">
+    <div class="wrap">
+      <p class="signature">Une région · Une équipe · Des résultats</p>
+      <div class="legal">
+        <span>© 2026 RE/MAX Crystal, franchisé indépendant et autonome de RE/MAX Québec</span>
+        <span><a href="index.html">Tous nos courtiers</a> &nbsp; <a href="../index.html#guides">Guides de villes</a></span>
+      </div>
     </div>
   </footer>
-
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay=(i%3)*0.06+'s'; io.observe(el); });
-  </script>
 </body>
 </html>
