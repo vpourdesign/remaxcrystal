@@ -442,7 +442,7 @@
               <input type="file" id="portrait" accept="image/jpeg,image/png,image/webp">
               <div class="up-icon">📷</div>
               <div class="up-label">Choisir votre portrait</div>
-              <div class="up-specs">JPG, PNG ou WebP · minimum 1200 px de large · maximum 10 Mo</div>
+              <div class="up-specs">JPG, PNG ou WebP · la plus grande version que vous avez</div>
             </label>
             <div class="thumbs" id="portraitThumb"></div>
             <div class="file-err" id="portraitErr"></div>
@@ -454,7 +454,7 @@
               <input type="file" id="photoEquipe" accept="image/jpeg,image/png,image/webp">
               <div class="up-icon">👥</div>
               <div class="up-label">Choisir la photo ou le logo d'équipe</div>
-              <div class="up-specs">JPG, PNG ou WebP · maximum 10 Mo</div>
+              <div class="up-specs">JPG, PNG ou WebP</div>
             </label>
             <div class="thumbs" id="equipeThumb"></div>
           </div>
@@ -626,7 +626,7 @@
 
   /* ================= images ================= */
   // Compression client-side : réduit à maxW px, JPEG qualité q → dataURL.
-  const MAX_MB = 10;
+  const MAX_MB = 40;
   const images = { portrait: null, equipe: null, libres: [] };
 
   function readAndCompress(file, maxW, q) {
@@ -657,8 +657,8 @@
     const file = this.files[0]; if (!file) return;
     try {
       const res = await readAndCompress(file, 1600, 0.82);
-      if (res.largeurOriginale < 1200) {
-        err.textContent = `Ce portrait fait ${res.largeurOriginale} px de large — il en faut au moins 1200 pour un rendu net. Choisissez une version plus grande.`;
+      if (Math.min(res.largeurOriginale, res.hauteurOriginale) < 400) {
+        err.textContent = `Cette image est trop petite (${res.largeurOriginale} × ${res.hauteurOriginale} px) pour servir de portrait. Choisissez la photo d'origine plutôt qu'une capture ou une vignette.`;
         err.classList.add('show'); this.value = ''; return;
       }
       images.portrait = res;
