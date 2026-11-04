@@ -98,7 +98,9 @@
 
   /* ──── PAGES COURTIERS (maillage guides → pages) ──── */
   /* COURTIER_PAGES:START — généré par build-courtiers.mjs, ne pas éditer */
-  const courtierPages = {};
+  const courtierPages = {
+    "Vincent Lavoie": "courtiers/vincent-lavoie.html"
+  };
   /* COURTIER_PAGES:END */
 
   /* ──── RENDER STEPS ──── */
