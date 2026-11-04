@@ -6,11 +6,21 @@
    ============================================================ */
 window.COURTIERS_CONFIG = {
 
+  /* --- Agence (marque du formulaire, du hub /courtiers/ et des pages) --- */
+  AGENCE: {
+    id: 'crystal',
+    nom: 'RE/MAX Crystal',
+    region: 'Basses-Laurentides',
+    regionDe: 'des Basses-Laurentides',
+    logo: 'brand_assets/Crystal-long-blanc-crystal.png',
+    exemplesVilles: 'Blainville, Sainte-Thérèse, Deux-Montagnes, Saint-Eustache'
+  },
+
   /* --- Livraison du formulaire ---
-     WEBHOOK_URL : endpoint n8n (POST JSON). Laisser vide tant que
-     le workflow n8n n'est pas branché : le formulaire bascule alors
-     automatiquement sur le fallback (téléchargement JSON + courriel). */
-  WEBHOOK_URL: '',
+     API_URL : fonction Vercel (api/fiche.mjs) qui dépose la fiche et
+     ses photos dans GitHub sous forme de pull request. Si l'envoi
+     échoue, le formulaire télécharge le JSON et propose le courriel. */
+  API_URL: '/api/fiche',
   FALLBACK_EMAIL: 'info@vpourdesign.com',
 
   /* --- URLs absolues (canonical, og:url, JSON-LD, sitemap) --- */

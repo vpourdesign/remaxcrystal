@@ -12,11 +12,20 @@ Tu vas générer la page d'un courtier RE/MAX Crystal à partir du JSON fourni �
 
 ### 0. Contexte du repo
 
+**Deux sites, même méthode.** Le champ `agence` du JSON dit lequel :
+
+| `agence` | Dossier du site | Domaine | Marque, région | Logo (depuis `courtiers/`) |
+|---|---|---|---|---|
+| `crystal` (ou absent) | `remaxcrystal/` | `https://agence.remaxcrystal.com` | RE/MAX Crystal, Basses-Laurentides | `../brand_assets/Crystal-long-blanc-crystal.png` |
+| `dici` | `remaxdici/` | `https://agence.remaxdici.com` | RE/MAX D'ici, Lanaudière | `../brand_assets/diciblanc.png` |
+
+Dans tout ce qui suit, remplace `remaxcrystal/`, le domaine, « RE/MAX Crystal » (`memberOf`, footer, textes) et le logo par ceux de l'agence de la fiche. Les villes, guides et bureaux viennent de `<dossier>/data/courtiers-config.js`. Pour D'ici, le gabarit visuel reste `remaxcrystal/courtiers/genevieve-marchand.html` (mêmes tokens, les deux sites partagent la charte RE/MAX); on change seulement la marque, le logo, les liens et le NAP.
+
 - Site 100 % statique, dossier `remaxcrystal/`. La page va dans `remaxcrystal/courtiers/{slug}.html` (le `slug` est dans le JSON — URL stable : on ne la change **jamais**, même si le courtier élargit son territoire).
 - **Gabarit visuel de référence : `courtiers/genevieve-marchand.html`.** Reprends sa structure HTML/CSS (tokens Crystal : Raleway + Open Sans, navy `#1e3350`, bleu `#3578c4`, or `#c4a245`), mais **réécris 100 % du contenu texte** (voir règles anti-duplication).
 - Domaine : `https://agence.remaxcrystal.com`. Chemins relatifs depuis `courtiers/` : `../brand_assets/…`, `../guide-*.html`.
 - Les guides de villes existants sont listés dans `data/courtiers-config.js` (`VILLES` : nom → fichier guide). Le NAP des bureaux y est aussi (`BUREAUX`) — utilise-le tel quel, sans le modifier.
-- Après génération, lance `node build-courtiers.mjs` : il régénère le hub `/courtiers/`, le sitemap, le maillage guides→courtiers, valide le SEO et **détecte les phrases dupliquées entre pages** (le build échoue s'il y en a).
+- Après génération, lance `node remaxcrystal/build-courtiers.mjs` (Crystal) ou `node remaxcrystal/build-courtiers.mjs --site remaxdici` (D'ici) : il régénère le hub `/courtiers/`, le sitemap, le maillage guides→courtiers, valide le SEO et **détecte les phrases dupliquées entre pages** (le build échoue s'il y en a).
 
 ### 1. Structure de la page (ordre de base — à varier, voir 4)
 
@@ -73,7 +82,7 @@ Tu vas générer la page d'un courtier RE/MAX Crystal à partir du JSON fourni �
 ### 6. Après la génération
 
 1. `node build-courtiers.mjs` → corrige tout ⚠/✗ signalé (title trop long, duplication…).
-2. Ajoute la photo réelle dans `images/courtiers/{slug}/` si le JSON contient un `dataUrl` (le décoder) ou si elle a été fournie à part ; sinon garde le placeholder et signale-le.
+2. Photos : les fiches reçues par le formulaire ont déjà leurs photos dans `<dossier>/images/courtiers/{slug}/` (`portrait.jpg`, `equipe.jpg`, `photo-1.jpg`…, chemins dans `medias`). Utilise-les toutes : portrait dans le hero, photo d'équipe et photos libres dans une galerie ou à côté de la bio. Vidéo (`medias.video`, YouTube ou Vimeo) : intègre-la en `<iframe loading="lazy">` (youtube-nocookie.com pour YouTube) dans sa propre section. Ancienne fiche avec `dataUrl` : décode-la vers ces chemins. Aucune photo : garde le placeholder et signale-le.
 3. Vérifie le JSON-LD au https://search.google.com/test/rich-results (mentionne-le dans ton résumé).
 4. Présente un résumé : title (avec compte de caractères), meta description (compte), ordre des sections choisi et pourquoi, faits chiffrés mis en avant.
 

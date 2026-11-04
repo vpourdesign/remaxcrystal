@@ -127,6 +127,7 @@
   .success p { color:var(--text-body); max-width:52ch; margin:0 auto 10px; }
   .success .mailto { display:inline-block; margin-block-start:10px; color:var(--blue-brand); font-weight:600; text-decoration:underline; }
 
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
   .footer { background:var(--navy-deep); color:rgba(255,255,255,0.5); padding-block:26px; font-size:0.8rem; text-align:center; }
 </style>
 </head>
@@ -134,7 +135,7 @@
 
   <header class="form-hero">
     <div class="container">
-      <img src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal">
+      <img id="agenceLogo" src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal">
       <div class="eyebrow">Votre présence en ligne</div>
       <h1>Bâtissons <strong>votre page</strong> de courtier</h1>
       <p>Remplissez ce formulaire une seule fois — comptez 15 à 20 minutes. Avec vos réponses, nous créons votre page personnelle sur le site de l'agence : optimisée pour Google, citée par les moteurs de réponse IA (ChatGPT, Perplexity) et reliée aux guides de vos villes.</p>
@@ -476,7 +477,7 @@
 
           <div class="field full" style="margin-block-end:0;">
             <label class="consent"><input type="checkbox" id="consentement" name="consentement" required>
-              <span>J'autorise RE/MAX Crystal et V pour Design à utiliser mes textes, photos et témoignages pour créer et publier ma page de courtier sur le site de l'agence (remaxcrystal). <span class="req">*</span></span>
+              <span>J'autorise <span data-agence-nom>RE/MAX Crystal</span> et V pour Design à utiliser mes textes, photos et témoignages pour créer et publier ma page de courtier sur le site de l'agence. <span class="req">*</span></span>
             </label>
           </div>
         </fieldset>
@@ -485,7 +486,8 @@
 
         <div class="submit-row">
           <button type="submit" class="btn" id="submitBtn">Envoyer mes informations</button>
-          <div class="submit-hint">À l'envoi : vos réponses sont transmises à l'équipe et une copie de sauvegarde (fichier JSON) est téléchargée sur votre appareil.</div>
+          <div class="submit-hint">À l'envoi, vos réponses et vos photos sont transmises directement à l'équipe.</div>
+          <div class="hp" aria-hidden="true"><label for="siteWeb">Ne pas remplir</label><input type="text" id="siteWeb" name="siteWeb" tabindex="-1" autocomplete="off"></div>
         </div>
       </form>
 
@@ -493,14 +495,14 @@
       <div class="success" id="success">
         <div class="tick">✓</div>
         <h2>Merci ! C'est reçu.</h2>
-        <p id="successMsg">Vos informations ont été transmises. Une copie de sauvegarde (<strong id="fileName">courtier.json</strong>) a été téléchargée sur votre appareil.</p>
+        <p id="successMsg">Vos informations et vos photos ont été transmises à l'équipe.</p>
         <p>Prochaine étape : nous rédigeons votre page et vous la soumettons pour approbation avant mise en ligne. Rien n'est publié sans votre OK.</p>
         <a class="mailto" id="mailtoLink" style="display:none;" href="#">Envoyer le fichier par courriel →</a>
       </div>
     </div>
   </main>
 
-  <footer class="footer">© 2026 RE/MAX Crystal — Formulaire de création de page courtier · V pour Design</footer>
+  <footer class="footer">© 2026 <span data-agence-nom>RE/MAX Crystal</span> — Formulaire de création de page courtier · V pour Design</footer>
 
 <script src="data/courtiers-config.js"></script>
 <script>
@@ -508,7 +510,13 @@
   'use strict';
   const CFG = window.COURTIERS_CONFIG;
   const SCHEMA_VERSION = 1;
-  const DRAFT_KEY = 'remaxcrystal-courtier-brouillon-v1';
+  const AG = CFG.AGENCE;
+  const DRAFT_KEY = `${AG.id}-courtier-brouillon-v1`;
+  // Marque de l'agence (même fichier pour Crystal et D'ici, seule la config change)
+  document.title = `Votre page de courtier — Formulaire ${AG.nom}`;
+  document.querySelectorAll('[data-agence-nom]').forEach(el => { el.textContent = AG.nom; });
+  const logo = document.getElementById('agenceLogo');
+  if (logo) { logo.src = AG.logo; logo.alt = AG.nom; }
   const form = document.getElementById('courtierForm');
   const $ = (id) => document.getElementById(id);
 
@@ -647,7 +655,7 @@
     const err = $('portraitErr'); err.classList.remove('show');
     const file = this.files[0]; if (!file) return;
     try {
-      const res = await readAndCompress(file, 2000, 0.85);
+      const res = await readAndCompress(file, 1600, 0.82);
       if (res.largeurOriginale < 1200) {
         err.textContent = `Ce portrait fait ${res.largeurOriginale} px de large — il en faut au moins 1200 pour un rendu net. Choisissez une version plus grande.`;
         err.classList.add('show'); this.value = ''; return;
@@ -665,7 +673,7 @@
   $('photoEquipe').addEventListener('change', async function () {
     const file = this.files[0]; if (!file) return;
     try {
-      const res = await readAndCompress(file, 2000, 0.85);
+      const res = await readAndCompress(file, 1600, 0.82);
       images.equipe = res;
       $('equipeThumb').innerHTML = thumbHtml(res.dataUrl);
       $('equipeUpload').classList.add('has-file');
@@ -679,7 +687,7 @@
     const err = $('libresErr'); err.classList.remove('show');
     for (const file of [...this.files]) {
       if (images.libres.length >= 4) { err.textContent = 'Maximum 4 photos libres.'; err.classList.add('show'); break; }
-      try { images.libres.push(await readAndCompress(file, 1600, 0.8)); }
+      try { images.libres.push(await readAndCompress(file, 1400, 0.78)); }
       catch (e) { err.textContent = e.message; err.classList.add('show'); }
     }
     renderLibres(); this.value = '';
@@ -966,31 +974,32 @@
     btn.disabled = true; btn.textContent = 'Envoi en cours…';
 
     const payload = buildPayload();
+    payload.agence = AG.id;
+    payload.siteWeb = val('siteWeb'); // piège à robots, vide pour un humain
     const fileName = `courtier-${payload.slug}.json`;
+    const body = JSON.stringify(payload);
 
-    // 1. Copie de sauvegarde locale, toujours
-    download(fileName, JSON.stringify(payload, null, 2));
-
-    // 2. Webhook (n8n) si configuré, sinon fallback courriel
+    // 1. Envoi direct à l'équipe (fonction /api/fiche → pull request GitHub)
     let sent = false;
-    if (CFG.WEBHOOK_URL) {
+    if (CFG.API_URL && body.length < 4.2 * 1024 * 1024) {
       try {
-        const res = await fetch(CFG.WEBHOOK_URL, {
+        const res = await fetch(CFG.API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body
         });
         sent = res.ok;
       } catch (err) { sent = false; }
     }
 
-    // 3. Écran de confirmation
-    $('fileName').textContent = fileName;
-    const mailto = $('mailtoLink');
+    // 2. Échec seulement : copie locale + envoi par courriel
     if (!sent) {
-      $('successMsg').innerHTML = `Vos réponses ont été enregistrées dans le fichier <strong>${fileName}</strong>, téléchargé sur votre appareil. <b>Dernière étape :</b> envoyez ce fichier par courriel à l’équipe (bouton ci-dessous), en joignant le fichier téléchargé.`;
+      delete payload.siteWeb;
+      download(fileName, JSON.stringify(payload, null, 2));
+      $('successMsg').innerHTML = `L’envoi automatique n’a pas fonctionné, mais vos réponses sont sauvegardées dans le fichier <strong>${fileName}</strong>, téléchargé sur votre appareil. <b>Dernière étape :</b> envoyez ce fichier par courriel à l’équipe (bouton ci-dessous), en le joignant au message.`;
+      const mailto = $('mailtoLink');
       mailto.style.display = 'inline-block';
-      mailto.href = `mailto:${CFG.FALLBACK_EMAIL}?subject=${encodeURIComponent('Fiche courtier — ' + payload.identite.nomComplet)}&body=${encodeURIComponent('Bonjour,\n\nVoici ma fiche pour ma page de courtier RE/MAX Crystal.\nJ’ai joint le fichier ' + fileName + ' téléchargé depuis le formulaire.\n\n' + payload.identite.nomComplet)}`;
+      mailto.href = `mailto:${CFG.FALLBACK_EMAIL}?subject=${encodeURIComponent('Fiche courtier — ' + payload.identite.nomComplet)}&body=${encodeURIComponent('Bonjour,\n\nVoici ma fiche pour ma page de courtier ' + AG.nom + '.\nJ’ai joint le fichier ' + fileName + ' téléchargé depuis le formulaire.\n\n' + payload.identite.nomComplet)}`;
     }
     try { localStorage.removeItem(DRAFT_KEY); } catch (err) {}
     form.style.display = 'none';

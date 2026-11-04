@@ -8,17 +8,22 @@
       canonical, H1 unique, JSON-LD parsable, breadcrumb
    5. Détecte les phrases dupliquées entre pages courtiers (anti-duplication)
 
-   Usage : node build-courtiers.mjs
+   Usage : node build-courtiers.mjs                       (site Crystal)
+           node build-courtiers.mjs --site ../remaxdici   (site D'ici)
+   La marque (nom, région, logo) vient de <site>/data/courtiers-config.js.
    Les pages courtiers/<slug>.html elles-mêmes ne sont PAS générées ici :
    elles sont rédigées à neuf (voir docs/GENERER-PAGE-COURTIER.md).
    ============================================================ */
 
 import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
-const ROOT = path.dirname(fileURLToPath(import.meta.url));
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const siteArg = process.argv.indexOf('--site');
+const ROOT = siteArg > -1 ? path.resolve(process.argv[siteArg + 1]) : SCRIPT_DIR;
 const COURTIERS_DIR = path.join(ROOT, 'courtiers');
 const DATA_DIR = path.join(ROOT, 'data/courtiers');
 
@@ -32,11 +37,13 @@ function loadWindowData(filePath, key) {
 }
 const CFG = loadWindowData(path.join(ROOT, 'data/courtiers-config.js'), 'COURTIERS_CONFIG');
 const SITE = (process.env.SITE_BASE || CFG.SITE_BASE).replace(/\/$/, '');
+const AG = CFG.AGENCE;
+console.log(`Site : ${AG.nom} (${path.relative(process.cwd(), ROOT) || '.'})`);
 
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 // ---------- Charge les fiches courtiers ----------
-if (!fs.existsSync(DATA_DIR)) { console.error('Aucun dossier data/courtiers/.'); process.exit(1); }
+if (!fs.existsSync(DATA_DIR) || !fs.readdirSync(DATA_DIR).some(f => f.endsWith('.json'))) { console.log('Aucune fiche dans data/courtiers/ : rien à générer.'); process.exit(0); }
 const fiches = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json')).map(f => {
   const j = JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8'));
   if (j.schemaVersion !== 1) console.warn(`⚠ ${f} : schemaVersion ${j.schemaVersion} inattendu (attendu : 1).`);
@@ -71,7 +78,7 @@ function buildHub() {
   const cards = fiches.map(f => {
     const annees = f.identite.anneeDebut ? new Date().getFullYear() - f.identite.anneeDebut : null;
     const villes = [f.territoire.villePrincipale, ...f.territoire.villesSecondaires];
-    return `      <a class="bcard reveal" href="${f.slug}.html" data-villes="${escapeHtml(villes.join('|'))}">
+    return `      <a class="bcard reveal" href="/courtiers/${f.slug}.html" data-villes="${escapeHtml(villes.join('|'))}">
         <div class="bcard-photo"><img src="${escapeHtml(portraitSrc(f))}" alt="${escapeHtml(f.identite.nomComplet)}, courtier immobilier à ${escapeHtml(f.territoire.villePrincipale)}" loading="lazy"></div>
         <div class="bcard-body">
           ${isDemo(f) ? '<span class="bcard-demo">Démo</span>' : ''}
@@ -93,14 +100,14 @@ function buildHub() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos courtiers immobiliers — RE/MAX Crystal, Basses-Laurentides</title>
-<meta name="description" content="Trouvez votre courtier immobilier RE/MAX Crystal par ville : Blainville, Sainte-Thérèse, Deux-Montagnes, Saint-Eustache et toutes les Basses-Laurentides.">
-<link rel="canonical" href="${SITE}/courtiers/">
+<title>Nos courtiers immobiliers — ${AG.nom}, ${AG.region}</title>
+<meta name="description" content="Trouvez votre courtier immobilier ${escapeHtml(AG.nom)} par ville : ${escapeHtml(AG.exemplesVilles)} et toute la région ${escapeHtml(AG.regionDe)}.">
+<link rel="canonical" href="${SITE}/courtiers/index.html">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nos courtiers immobiliers — RE/MAX Crystal">
-<meta property="og:description" content="L'annuaire des courtiers RE/MAX Crystal, classés par ville des Basses-Laurentides.">
-<meta property="og:url" content="${SITE}/courtiers/">
+<meta property="og:title" content="Nos courtiers immobiliers — ${escapeHtml(AG.nom)}">
+<meta property="og:description" content="L'annuaire des courtiers ${escapeHtml(AG.nom)}, classés par ville ${escapeHtml(AG.regionDe)}.">
+<meta property="og:url" content="${SITE}/courtiers/index.html">
 <meta property="og:locale" content="fr_CA">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
@@ -109,7 +116,7 @@ ${JSON.stringify({
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE}/` },
-    { '@type': 'ListItem', position: 2, name: 'Nos courtiers', item: `${SITE}/courtiers/` }
+    { '@type': 'ListItem', position: 2, name: 'Nos courtiers', item: `${SITE}/courtiers/index.html` }
   ]
 }, null, 0)}
 </script>
@@ -176,7 +183,7 @@ ${JSON.stringify({
 </head>
 <body>
   <nav class="topbar">
-    <a href="../index.html"><img src="../brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal"></a>
+    <a href="../index.html"><img src="../${AG.logo}" alt="${escapeHtml(AG.nom)}"></a>
     <div class="topbar-nav">
       <a href="../index.html#guides">Guides de villes</a>
       <a href="../index.html#outils">Outils</a>
@@ -194,9 +201,9 @@ ${JSON.stringify({
 
   <header class="hero">
     <div class="container">
-      <div class="eyebrow">RE/MAX Crystal · Basses-Laurentides</div>
+      <div class="eyebrow">${escapeHtml(AG.nom)} · ${escapeHtml(AG.region)}</div>
       <h1>Nos <strong>courtiers</strong>, ville par ville</h1>
-      <p>Chaque courtier RE/MAX Crystal a sa page : son territoire, sa façon de travailler, ses résultats et les réponses aux questions qu'on lui pose vraiment. Filtrez par ville pour trouver le vôtre.</p>
+      <p>Chaque courtier ${escapeHtml(AG.nom)} a sa page : son territoire, sa façon de travailler, ses résultats et les réponses aux questions qu'on lui pose vraiment. Filtrez par ville pour trouver le vôtre.</p>
     </div>
   </header>
 
@@ -213,8 +220,8 @@ ${cards}
 
   <footer class="footer">
     <div class="container">
-      <span>© 2026 RE/MAX Crystal — Franchisé indépendant et autonome de RE/MAX Québec</span>
-      <span><a href="../index.html" style="text-decoration:underline;">agence.remaxcrystal.com</a></span>
+      <span>© 2026 ${escapeHtml(AG.nom)} — Franchisé indépendant et autonome de RE/MAX Québec</span>
+      <span><a href="../index.html" style="text-decoration:underline;">${SITE.replace(/^https?:\/\//, '')}</a></span>
     </div>
   </footer>
 
@@ -247,20 +254,29 @@ ${cards}
 }
 
 // ============================================================
-// 2. SITEMAP — sitemap.xml (site Crystal)
+// 2. SITEMAP — sitemap.xml du site
 // ============================================================
 function buildSitemap() {
   const today = new Date().toISOString().slice(0, 10);
+  // lastmod = date du dernier commit de la page (pas la date du build) : Google
+  // ignore les lastmod qui bougent sans changement réel. Fichier pas encore
+  // commité -> date du jour.
+  const lastmodOf = (loc) => {
+    const rel = loc.replace(`${SITE}/`, '') || 'index.html';
+    try {
+      return execFileSync('git', ['log', '-1', '--format=%cs', '--', rel], { cwd: ROOT, encoding: 'utf8' }).trim() || today;
+    } catch { return today; }
+  };
   const urls = [
     { loc: `${SITE}/`, priority: '1.0' },
-    { loc: `${SITE}/courtiers/`, priority: '0.8' },
+    { loc: `${SITE}/courtiers/index.html`, priority: '0.8' },
     ...CFG.VILLES.map(v => ({ loc: `${SITE}/${v.guide}`, priority: '0.8' })),
     ...fiches.filter(f => pageExists(f) && !pageIsNoindex(f))
       .map(f => ({ loc: `${SITE}/${pageOf(f)}`, priority: '0.7' }))
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${today}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}
+${urls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${lastmodOf(u.loc)}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}
 </urlset>
 `;
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml);
@@ -272,9 +288,15 @@ ${urls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${today}</lastmod><priority>
 // ============================================================
 function injectCourtierPages() {
   const jsPath = path.join(ROOT, 'courtiers.js');
+  if (!fs.existsSync(jsPath)) { console.log('· courtiers.js absent sur ce site : maillage du modal ignoré.'); return; }
   let js = fs.readFileSync(jsPath, 'utf8');
   const map = {};
-  fiches.filter(f => pageExists(f) && !isDemo(f)).forEach(f => { map[f.identite.nomComplet] = pageOf(f); });
+  fiches.filter(f => pageExists(f) && !isDemo(f)).forEach(f => {
+    map[f.identite.nomComplet] = pageOf(f);
+    // Équipe : chaque membre pointe aussi vers la page d'équipe
+    // (le roster du modal de jumelage liste les courtiers individuellement).
+    (f.identite.membresEquipe || []).forEach(m => { if (m.nom) map[m.nom] = pageOf(f); });
+  });
   const block = `/* COURTIER_PAGES:START — généré par build-courtiers.mjs, ne pas éditer */\n  const courtierPages = ${JSON.stringify(map, null, 2).replace(/\n/g, '\n  ')};\n  /* COURTIER_PAGES:END */`;
   if (js.includes('COURTIER_PAGES:START')) {
     js = js.replace(/\/\* COURTIER_PAGES:START[\s\S]*?COURTIER_PAGES:END \*\//, block);
@@ -327,9 +349,13 @@ function validatePages() {
 function checkDuplication() {
   const pages = fiches.filter(pageExists).map(f => ({
     slug: f.slug,
+    // nav/footer exclus : le chrome commun (topbar, fil d'Ariane, footer légal) est
+    // légitimement identique entre pages — seule la rédaction doit être unique.
     text: pageHtml(f)
       .replace(/<script[\s\S]*?<\/script>/g, ' ')
       .replace(/<style[\s\S]*?<\/style>/g, ' ')
+      .replace(/<nav[\s\S]*?<\/nav>/g, ' ')
+      .replace(/<footer[\s\S]*?<\/footer>/g, ' ')
       .replace(/<[^>]+>/g, ' ')
       .replace(/\s+/g, ' ')
   }));
