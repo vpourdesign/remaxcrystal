@@ -352,6 +352,8 @@ function checkDuplication() {
     // nav/footer exclus : le chrome commun (topbar, fil d'Ariane, footer légal) est
     // légitimement identique entre pages — seule la rédaction doit être unique.
     text: pageHtml(f)
+      .replace(/<!-- MEGA-MENU VILLES -->[\s\S]*?<\/script>/g, ' ')
+      .replace(/<header[\s\S]*?<\/header>/g, ' ')
       .replace(/<script[\s\S]*?<\/script>/g, ' ')
       .replace(/<style[\s\S]*?<\/style>/g, ' ')
       .replace(/<nav[\s\S]*?<\/nav>/g, ' ')
