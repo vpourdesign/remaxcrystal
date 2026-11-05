@@ -4,6 +4,8 @@
    Mise à jour : chaque trimestre, après publication Centris.
    1. Mettre à jour le bloc `meta` (quarter, updated, cumulPeriod).
    2. Pour chaque ville, mettre à jour les 4 champs résidentiels.
+   3. Lancer `node bake-guides.mjs` (dans remaxcrystal/) pour écrire
+      les chiffres dans le HTML des 27 guides (Google et IA).
    Source : https://www.centris.ca/fr/outils/statistiques-immobilieres/<region>/<ville>
    Onglet « Total résidentiel ».
    Valeurs « null » = donnée « ** » (volume insuffisant) chez

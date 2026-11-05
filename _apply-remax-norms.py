@@ -183,7 +183,7 @@ def build_json_ld(city_name: str) -> str:
 CITY_LABELS = {
     "guide-blainville.html": "Blainville",
     "guide-boisbriand.html": "Boisbriand",
-    "guide-boisdesfillions.html": "Bois-des-Filion",
+    "guide-boisdesfilion.html": "Bois-des-Filion",
     "guide-deuxmontagnes.html": "Deux-Montagnes",
     "guide-dici-charlemagne.html": "Charlemagne",
     "guide-dici-joliette.html": "Joliette",

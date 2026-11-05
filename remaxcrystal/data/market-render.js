@@ -80,7 +80,7 @@
         } else if (data.meta[key] !== undefined) {
           el.textContent = data.meta[key];
         } else if (key === 'updatedFr') {
-          const d = new Date(data.meta.updated);
+          const d = new Date(data.meta.updated + 'T12:00:00'); // midi local : évite le décalage d'un jour (UTC)
           el.textContent = d.toLocaleDateString('fr-CA', { year: 'numeric', month: 'long', day: 'numeric' });
         }
       });

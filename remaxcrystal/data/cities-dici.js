@@ -59,7 +59,7 @@ window.CITIES_DICI = {
     ],
     transportIntro: "Idéalement reliée à Montréal et à Laval, Terrebonne combine train de banlieue, réseau d'autobus exo et trois autoroutes majeures.",
     transportTable: [
-      { dest: 'Centre-ville de Montréal', car: '30 – 45 min', train: 'Train exo ~45 min', dist: '32 km', access: 'A-25 Sud' },
+      { dest: 'Centre-ville de Montréal', car: '30 – 45 min', train: 'Train exo + REM ~55 min', dist: '32 km', access: 'A-25 Sud' },
       { dest: 'Laval', car: '15 – 25 min', train: 'Bus exo', dist: '18 km', access: 'A-25 / A-440' },
       { dest: 'Aéroport YUL', car: '35 – 45 min', train: '—', dist: '45 km', access: 'A-25 / A-40' },
       { dest: 'Mascouche', car: '10 – 15 min', train: 'Train exo', dist: '10 km', access: 'A-25' },
@@ -95,16 +95,16 @@ window.CITIES_DICI = {
       { value: 'Gare exo', label: 'Train de banlieue' },
       { value: 'A-25 / A-640', label: 'Accès direct' }
     ],
-    tagline: "La ville-nature de Lanaudière, à 25 minutes de Montréal grâce au train de banlieue.",
+    tagline: "La ville-nature de Lanaudière, reliée au centre-ville de Montréal par le train exo et le REM.",
     intro: [
-      `Mascouche s'est imposée comme l'une des villes les plus attractives de la Rive-Nord : croissance soutenue, nouveaux quartiers résidentiels et un cadre de vie où la nature n'est jamais loin. Sa gare de train de banlieue exo la place à environ 25 minutes du centre-ville de Montréal.`,
+      `Mascouche s'est imposée comme l'une des villes les plus attractives de la Rive-Nord : croissance soutenue, nouveaux quartiers résidentiels et un cadre de vie où la nature n'est jamais loin. Sa gare exo la relie au centre-ville de Montréal en un peu plus d'une heure, avec correspondance au REM à Côte-de-Liesse.`,
       `Le Parc du Grand-Coteau, vaste poumon vert au cœur de la ville, résume bien l'esprit de Mascouche : ski de fond, glissades, sentiers et patinoire l'hiver, plein air et événements l'été. Le Domaine seigneurial de Mascouche rappelle quant à lui ses racines historiques.`,
       `Avec ses pôles commerciaux le long de la 25, ses écoles et son accès autoroutier direct, Mascouche séduit les familles qui cherchent l'espace et le calme sans renoncer à la proximité de la métropole.`
     ],
     qualityIntro: "Mascouche marie nature, services de proximité et accès rapide à Montréal — un équilibre recherché par les familles de la région.",
     qualityCards: [
       { icon: 'park', title: 'Parc du Grand-Coteau', text: 'Le grand parc-nature de la ville : ski de fond, glissades, patinoire, sentiers et activités familiales en toutes saisons.', value: 'Quatre saisons' },
-      { icon: 'transit', title: 'Train de banlieue exo', text: 'La gare de Mascouche relie le centre-ville de Montréal en environ 25 minutes, sans la voiture.', value: '~25 min Mtl' },
+      { icon: 'transit', title: 'Train de banlieue exo', text: 'Le train exo va jusqu\'à la station Côte-de-Liesse, où le REM prend le relais vers le centre-ville. Environ 1 h 05 de trajet, sans la voiture.', value: '~1 h 05 Mtl' },
       { icon: 'commerce', title: 'Commerces & services', text: 'Pôles commerciaux le long de la 25, épiceries, restaurants et services professionnels à distance de marche des quartiers.', value: 'Tout sur place' },
       { icon: 'sport', title: 'Sport & plein air', text: 'Arénas, complexe sportif, terrains et un réseau de pistes cyclables qui sillonne la ville et ses espaces verts.', value: 'Ville active' }
     ],
@@ -115,7 +115,7 @@ window.CITIES_DICI = {
     ],
     transportIntro: "Mascouche profite d'un atout rare dans Lanaudière : une gare de train de banlieue, doublée d'un accès direct aux autoroutes 25 et 640.",
     transportTable: [
-      { dest: 'Centre-ville de Montréal', car: '30 – 45 min', train: 'Train exo ~25 min', dist: '35 km', access: 'A-25 Sud' },
+      { dest: 'Centre-ville de Montréal', car: '30 – 45 min', train: 'Train exo + REM ~1 h 05', dist: '35 km', access: 'A-25 Sud' },
       { dest: 'Laval', car: '20 – 30 min', train: 'Bus exo', dist: '22 km', access: 'A-25 / A-440' },
       { dest: 'Terrebonne', car: '10 – 15 min', train: 'Train exo', dist: '10 km', access: 'A-25' },
       { dest: 'Aéroport YUL', car: '35 – 45 min', train: '—', dist: '46 km', access: 'A-25 / A-40' },
@@ -263,20 +263,20 @@ window.CITIES_DICI = {
       { value: '24 000+', label: 'Résidents' },
       { value: 'Rivière', label: "L'Assomption" },
       { value: 'Hector-Charland', label: 'Théâtre' },
-      { value: 'A-40 / A-540', label: 'Accès direct' }
+      { value: 'A-40 / R-343', label: 'Accès direct' }
     ],
     tagline: "La ville d'histoire et de culture, lovée dans une boucle de la rivière L'Assomption.",
     intro: [
       `L'Assomption est l'une des plus anciennes villes de Lanaudière, et cela se voit : son cœur historique, blotti dans une presqu'île formée par la rivière L'Assomption, aligne maisons patrimoniales, rues piétonnes et institutions réputées comme le Collège de L'Assomption.`,
       `La ville respire la culture. Le Théâtre Hector-Charland en fait l'un des pôles de diffusion les plus dynamiques de la région, tandis que le centre-ville mêle cafés, boutiques et événements qui rythment l'année.`,
-      `Entourée de campagne et de pistes cyclables, mais reliée à Montréal par les autoroutes 40 et 340, L'Assomption attire les familles qui cherchent le charme d'une ville d'histoire avec les services d'aujourd'hui.`
+      `Entourée de campagne et de pistes cyclables, mais reliée à Montréal par l'autoroute 40 et les routes 343 et 344, L'Assomption attire les familles qui cherchent le charme d'une ville d'histoire avec les services d'aujourd'hui.`
     ],
     qualityIntro: "Patrimoine vivant, culture et nature : L'Assomption offre un milieu de vie au caractère affirmé, rare dans la région.",
     qualityCards: [
       { icon: 'park', title: 'Rivière & nature', text: "La rivière L'Assomption enserre le centre-ville. Parc écologique, berges et pistes cyclables prolongent la ville dans la nature.", value: 'Parc écolo' },
       { icon: 'commerce', title: 'Cœur patrimonial', text: 'Vieux quartier, cafés, boutiques et le Collège de L\'Assomption composent un centre-ville plein de caractère.', value: 'Centre vivant' },
       { icon: 'sport', title: 'Culture & loisirs', text: 'Le Théâtre Hector-Charland, les festivals et les installations sportives animent la ville toute l\'année.', value: 'Hector-Charland' },
-      { icon: 'transit', title: 'Transport & accès', text: 'Accès aux autoroutes 40 et 340, à 35-40 minutes de Montréal, au cœur de Lanaudière.', value: '~40 min Mtl' }
+      { icon: 'transit', title: 'Transport & accès', text: 'Accès à l\'autoroute 40 et aux routes 343 et 344, à 35-40 minutes de Montréal, au cœur de Lanaudière.', value: '~40 min Mtl' }
     ],
     parksIntro: "Entre la boucle de la rivière et le Parc écologique, L'Assomption offre un réseau d'espaces verts qui ceinture son centre historique.",
     parks: [
@@ -284,7 +284,7 @@ window.CITIES_DICI = {
       { img: 'lassomption-4.jpg', title: "Parc écologique de L'Assomption" },
       { img: 'lassomption-2.jpg', title: 'Aire de jeux familiale' }
     ],
-    transportIntro: "Au cœur de Lanaudière, L'Assomption relie facilement Montréal et les pôles voisins par les autoroutes 40 et 340.",
+    transportIntro: "Au cœur de Lanaudière, L'Assomption relie facilement Montréal et les pôles voisins par l'autoroute 40 et les routes 343 et 344.",
     transportTable: [
       { dest: 'Centre-ville de Montréal', car: '35 – 50 min', train: 'Bus exo', dist: '42 km', access: 'A-40 Ouest' },
       { dest: 'Repentigny', car: '10 – 15 min', train: '—', dist: '12 km', access: 'A-40 / R-344' },

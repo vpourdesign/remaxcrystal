@@ -199,9 +199,9 @@ window.CITIES_DATA = {
     introCaptionSub: 'Une ville-jardin pensée comme un parc',
     stats: [
       { value: '9 700+', label: 'Résidents' },
-      { value: '95 %', label: 'Couvert végétal' },
+      { value: '10+ km', label: 'Sentiers' },
       { value: '2', label: 'Écoles primaires' },
-      { value: 'Top 5', label: 'Villes prestigieuses QC' }
+      { value: 'A-640', label: 'Accès direct' }
     ],
     tagline: 'Une ville-parc d\'exception, conçue comme un grand jardin résidentiel.',
     intro: [
@@ -211,7 +211,7 @@ window.CITIES_DATA = {
     ],
     qualityIntro: 'Lorraine se distingue par son urbanisme forestier, son caractère résidentiel exclusif et la qualité de ses installations.',
     qualityCards: [
-      { icon: 'park', title: 'Ville-jardin', text: 'Plus de 95 % de couvert végétal. Chaque rue est bordée d\'arbres matures. Aucune zone industrielle.', value: '95 % vert' },
+      { icon: 'park', title: 'Ville-jardin', text: 'Rues bordées d\'arbres matures, grands terrains boisés et aucune zone industrielle.', value: 'Arbres matures' },
       { icon: 'commerce', title: 'Tranquillité résidentielle', text: 'Aucun feu de circulation. Réseau routier sinueux pensé pour ralentir la circulation locale.', value: 'Zone 30 km/h' },
       { icon: 'sport', title: 'Sentiers & loisirs', text: 'Centre culturel Lorraine, sentiers boisés, terrains sportifs et parc-école.', value: '10+ km sentiers' },
       { icon: 'transit', title: 'Accès Rive-Nord', text: 'Connexion directe à la 640. Train EXO accessible à Sainte-Thérèse en moins de 5 min.', value: '40 min Mtl' }
@@ -260,7 +260,7 @@ window.CITIES_DATA = {
       { value: '15+', label: 'Écoles primaires' },
       { value: 'A-15 / A-50', label: 'Accès direct' }
     ],
-    tagline: 'La plus vaste ville du Québec : entre développement, agriculture et grands espaces.',
+    tagline: 'Près de 485 km² entre développement, agriculture et grands espaces.',
     intro: [
       `Mirabel est la plus grande ville en superficie au Québec — 485 km² qui regroupent secteurs urbains, zones agricoles, forêts et parcs industriels. Cette diversité géographique en fait une ville unique, où l'on peut choisir son style de vie.`,
       `Les secteurs Saint-Janvier, Saint-Augustin et Saint-Canut offrent des développements résidentiels modernes prisés par les jeunes familles. Saint-Benoît, Sainte-Scholastique et Saint-Hermas préservent un caractère rural et agricole.`,
@@ -387,7 +387,7 @@ window.CITIES_DATA = {
     qualityIntro: 'Pointe-Calumet, c\'est l\'esprit estival au quotidien, avec une vraie vie de quartier.',
     qualityCards: [
       { icon: 'park', title: 'Bord du lac', text: 'Accès au lac des Deux Montagnes, plages publiques et points d\'embarquement nautique.', value: 'Plage' },
-      { icon: 'sport', title: 'Super Aqua Club', text: 'Le plus grand parc aquatique du Québec — un point d\'ancrage régional emblématique.', value: 'Régional' },
+      { icon: 'sport', title: 'Super Aqua Club', text: 'L\'un des plus grands parcs aquatiques du Québec, un point d\'ancrage régional.', value: 'Régional' },
       { icon: 'commerce', title: 'Vie de village', text: 'Commerces de proximité, restos saisonniers et services essentiels en zone piétonne.', value: 'À pied' },
       { icon: 'transit', title: 'Accès rapide', text: 'À 5 min de la 640 et de Saint-Eustache. Connectivité à la rive-nord et à Montréal.', value: '35 min Mtl' }
     ],
@@ -432,7 +432,7 @@ window.CITIES_DATA = {
       { value: '14 200+', label: 'Résidents' },
       { value: '25+', label: 'Parcs & espaces verts' },
       { value: '4', label: 'Écoles' },
-      { value: 'Top 5', label: 'Villes prestigieuses QC' }
+      { value: 'Gare exo', label: 'Ligne Saint-Jérôme' }
     ],
     tagline: 'L\'élégance résidentielle aux Basses-Laurentides, entre fleurs, golf et rivière des Mille Îles.',
     intro: [
@@ -611,7 +611,7 @@ window.CITIES_DATA = {
       { value: 'REM', label: 'à proximité' },
       { value: '35 min', label: 'Montréal' }
     ],
-    tagline: 'Une ville en pleine transformation, au bord du lac et bientôt branchée au REM.',
+    tagline: 'Une ville en pleine transformation, au bord du lac et à quelques minutes du REM.',
     intro: [
       `Sainte-Marthe-sur-le-Lac connaît l'une des croissances démographiques les plus fortes des Basses-Laurentides. Sa position riveraine sur le lac des Deux Montagnes et la nouvelle digue piétonne en font une destination prisée.`,
       `La ville a investi massivement dans la requalification de ses berges depuis 2019. Le résultat : un parcours piéton-cycliste de plus de 7 km le long du lac, devenu un repère pour toute la région.`,
@@ -670,7 +670,7 @@ window.CITIES_DATA = {
       { value: 'Forêts', label: 'et lacs' },
       { value: '55 min', label: 'Montréal' }
     ],
-    tagline: 'Espaces verts, lacs et développements neufs au nord des Laurentides.',
+    tagline: 'Espaces verts, lacs et développements neufs dans le sud des Laurentides, voisine de Saint-Jérôme.',
     intro: [
       `Sainte-Sophie est l'une des municipalités les plus étendues des Laurentides. Forêts, lacs et terrains résidentiels y cohabitent — un milieu de vie pensé pour ceux qui cherchent l'espace.`,
       `La ville connaît une croissance soutenue depuis une décennie. Les nouveaux développements attirent des jeunes familles qui veulent profiter de la nature sans s'éloigner trop des grands axes.`,
