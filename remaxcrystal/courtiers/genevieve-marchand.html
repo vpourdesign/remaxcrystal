@@ -184,6 +184,11 @@ a { color: inherit; }
 .lead { font-size: var(--fs-lead); font-weight: 500; line-height: 1.5; color: var(--encre); }
 .label { font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--marine); }
 .mesure { max-width: 64ch; }
+/* texte courant justifié, avec césure pour éviter les trous entre les mots */
+main p { text-align: justify; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 10 4 4; }
+main p.label, .bandeau-ville { text-align: left; -webkit-hyphens: manual; hyphens: manual; }
+/* sur téléphone, la colonne est trop étroite : la justification creuserait des trous */
+@media (max-width: 480px) { main p { text-align: left; } }
 .insec { white-space: nowrap; }
 
 /* ---------- boutons ---------- */
@@ -279,6 +284,8 @@ body.mm-lock{overflow:hidden;}
 .hero-photo::before { content: ""; position: absolute; inset: 20px -20px -20px 20px; background: var(--marine); border-radius: var(--r-ui); }
 .hero-photo .cadre { position: relative; aspect-ratio: 4 / 5; border-radius: var(--r-ui); overflow: hidden; background: var(--brume); }
 .hero-photo .cadre img { width: 100%; height: 100%; object-fit: cover; }
+/* montgolfière RE/MAX : posée sur le coin haut gauche du portrait */
+.hero-photo .ballon { position: absolute; z-index: 2; top: clamp(-40px, -2.8vw, -26px); left: clamp(-40px, -2.8vw, -26px); width: clamp(64px, 6.6vw, 96px); height: auto; }
 .faits { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 24px 0 0; background: var(--marine); color: var(--creme); border-radius: var(--r-ui); }
 .faits > div { display: flex; flex-direction: column; gap: 8px; padding: 26px 32px 28px; }
 .faits > div + div { border-left: 1px solid var(--creme-20); }
@@ -300,6 +307,8 @@ body.mm-lock{overflow:hidden;}
 .chap:not(.bande):not(.bande-brume) + .chap:not(.bande):not(.bande-brume) > .grille { padding-top: clamp(40px, 5vw, 64px); background: linear-gradient(var(--encre), var(--encre)) center top / calc(100% - 2 * var(--marge)) 3px no-repeat; }
 .chap-tete { grid-column: 1 / span 4; align-self: start; position: sticky; top: calc(var(--topbar) + 40px); }
 .chap-tete .h2 { margin-bottom: 16px; }
+/* touche de rouge RE/MAX : filet sous chaque titre de section (même filet que la bande de faits) */
+.chap-tete .h2::after, .contact-appel .h2::after { content: ""; display: block; width: 36px; height: 3px; background: var(--rouge); margin-top: 14px; }
 .chap-tete p { font-size: var(--fs-petit); line-height: 1.6; max-width: 34ch; }
 .chap-corps { grid-column: 6 / span 7; }
 .chap-corps > * + * { margin-top: 1.25em; }
@@ -379,8 +388,8 @@ body.mm-lock{overflow:hidden;}
 .avis li { padding-block: 36px; border-top: 1px solid color-mix(in oklch, var(--encre) 14%, transparent); }
 .avis li:first-child { border-top: 0; padding-top: 0; }
 .avis blockquote { margin: 0; position: relative; padding-left: clamp(40px, 4vw, 56px); }
-.avis blockquote::before { content: "«"; position: absolute; left: 0; top: -0.08em; font-family: var(--affiche); font-size: clamp(2.4rem, 3vw, 3rem); line-height: 1; color: var(--marine); }
-.avis blockquote p { font-size: clamp(1.08rem, 1.35vw, 1.25rem); font-weight: 500; line-height: 1.45; color: var(--encre); max-width: 40ch; }
+.avis blockquote::before { content: "«"; position: absolute; left: 0; top: -0.08em; font-family: var(--affiche); font-size: clamp(2.4rem, 3vw, 3rem); line-height: 1; color: var(--rouge); }
+.avis blockquote p { font-size: clamp(1.08rem, 1.35vw, 1.25rem); font-weight: 500; line-height: 1.45; color: var(--encre); max-width: 54ch; }
 .avis footer { margin-top: 16px; font-size: var(--fs-petit); color: var(--ardoise); }
 .avis footer b { font-weight: 600; color: var(--encre); }
 
@@ -425,7 +434,8 @@ body.mm-lock{overflow:hidden;}
 
 /* ---------- pied ---------- */
 .pied { background: var(--encre); color: var(--creme-70); }
-.pied .signature { padding-block: 26px; border-bottom: 1px solid var(--creme-20); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--creme); font-size: 0.92rem; }
+.pied .signature { display: flex; align-items: center; gap: 14px; padding-block: 26px; border-bottom: 1px solid var(--creme-20); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--creme); font-size: 0.92rem; }
+.pied .signature img { flex: none; width: 26px; height: auto; }
 .pied .legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; padding-block: 22px 28px; font-size: var(--fs-petit); }
 .pied .legal a { color: var(--creme); text-decoration: underline; text-underline-offset: 3px; }
 
@@ -453,6 +463,7 @@ body.mm-lock{overflow:hidden;}
 @media (max-width: 680px) {
   .hero-photo { grid-column: 1 / span 12; }
   .hero-photo::before { inset: 12px -12px -12px 12px; }
+  .hero-photo .ballon { top: -22px; left: -10px; width: 60px; }
   .faits { grid-template-columns: 1fr; }
   .faits > div { padding: 20px 24px; }
   .faits > div + div { border-left: 0; border-top: 1px solid var(--creme-20); }
@@ -511,6 +522,7 @@ body.mm-lock{overflow:hidden;}
 
         <figure class="hero-photo">
           <div class="cadre"><img src="../images/courtiers/genevieve-marchand/portrait.jpg" alt="Geneviève Marchand, courtier immobilier à Deux-Montagnes" width="900" height="1200" fetchpriority="high"></div>
+          <img class="ballon" src="../brand_assets/ballon-240.webp" alt="" width="240" height="272" aria-hidden="true">
         </figure>
         <!-- Bande de faits : trois faits chiffrés du JSON seulement. Le filet rouge marque le premier. -->
         <dl class="faits">
@@ -767,7 +779,7 @@ body.mm-lock{overflow:hidden;}
 
   <footer class="pied sombre">
     <div class="wrap">
-      <p class="signature">Une région · Une équipe · Des résultats</p>
+      <p class="signature"><img src="../brand_assets/ballon-120.webp" alt="" width="120" height="136" aria-hidden="true" loading="lazy">Une région · Une équipe · Des résultats</p>
       <div class="legal">
         <span>© 2026 RE/MAX Crystal, franchisé indépendant et autonome de RE/MAX Québec</span>
         <span><a href="index.html">Tous nos courtiers</a> &nbsp; <a href="../index.html#guides">Guides de villes</a></span>

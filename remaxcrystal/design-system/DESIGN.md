@@ -22,7 +22,7 @@ Fichiers :
 | Fond | Crème | `#FAF9F0` | Fond de toutes les publications et des pages. Jamais de blanc pur. |
 | Identité | Marine | `#1C315E` | Bandeaux, pied de publication, barre de donnée principale, boutons. |
 | Titres | Encre | `#151A2E` | Titres d'affiche sur crème. |
-| Donnée | Rouge RE/MAX | `#EF2525` | Une seule donnée mise en avant par visuel (la première barre). Jamais en fond de grande surface, jamais pour du texte courant. |
+| Donnée | Rouge RE/MAX | `#EF2525` | Une seule donnée mise en avant par visuel (la première barre). Sur la page courtier (web), aussi en touches : filet de 36 × 3 px sous chaque titre de section, guillemets des témoignages (demande de la cliente, 2026-11-11). Jamais en fond de grande surface, jamais pour du texte courant. |
 | Structure | Brume | `#E0E3E8` | Pistes des barres, filets, lignes de grille, bordures. |
 | Texte | Ardoise | `#3D4555` | Texte courant. |
 | Texte discret | Gris note | `#656571` | Notes de bas, mentions légales, légendes. |
@@ -36,7 +36,7 @@ Règle de dosage : crème partout, marine pour encadrer, rouge pour pointer. Sur
 |---|---|---|---|
 | Affiche | **Anton** | 400 (c'est déjà un noir) | Capitales, interlettrage `-0.005em`, interligne `0.92`. Titres et chiffres. |
 | Sous-titre | **Montserrat** | 600 | Capitales, interlettrage `0.04em`. Nom d'une personne, date, libellé d'une donnée, signature. |
-| Texte | **Montserrat** | 400 / 500 | Casse normale, interligne `1.5`, centré dans les publications, aligné à gauche sur le web. |
+| Texte | **Montserrat** | 400 / 500 | Casse normale, interligne `1.5`, centré dans les publications, justifié avec césure sur le web (aligné à gauche sous 480 px), demande de la cliente du 2026-11-11. |
 
 Anton et Montserrat sont les équivalents libres (Google Fonts) les plus proches des polices des publications. Si l'agence fournit ses fichiers de police d'origine, ils remplacent ces deux familles sans rien changer d'autre.
 
@@ -56,7 +56,7 @@ Le site actuel utilise Raleway et Open Sans. Le système documente Anton + Monts
 
 - **Grille :** publications sur une grille de 12 colonnes à marges de 96 px; tout est centré sur l'axe vertical, sauf la languette du logo (coin inférieur droit).
 - **Archétype :** affiche en deux temps. Haut : message (titre + une phrase). Bas : preuve (photo, barres de données). Le pied marine porte la signature.
-- **Page de courtier (web)** : grille de 12 colonnes, layout à rail collant. Chaque chapitre : titre en Anton dans un rail à gauche (4 colonnes, `position: sticky`), contenu à droite (colonnes 6 à 12). Hero en split sobre (texte 7 colonnes, portrait 4 colonnes), nom sur une ligne, photo assise sur un socle marine décalé de 20 px, puis une bande de faits marine pleine largeur. Rayons : 4 px pour les boutons et la photo, 6 px pour les blocs. Aucune pilule sur le web. Ton corporatif : sur le web, Anton reste au service des titres (max 4,4 rem pour le nom, 2,6 rem pour les sections), jamais en affiche géante. Chapitres crème séparés par un filet encre de 3 px; bandes marine (engagements, contact) et brume (témoignages) pour rythmer. Gabarit : `courtiers/genevieve-marchand.html`.
+- **Page de courtier (web)** : grille de 12 colonnes, layout à rail collant. Chaque chapitre : titre en Anton dans un rail à gauche (4 colonnes, `position: sticky`), contenu à droite (colonnes 6 à 12). Hero en split sobre (texte 7 colonnes, portrait 4 colonnes), nom sur une ligne, photo assise sur un socle marine décalé de 20 px, puis une bande de faits marine pleine largeur. Rayons : 4 px pour les boutons et la photo, 6 px pour les blocs. Aucune pilule sur le web. Ton corporatif : sur le web, Anton reste au service des titres (max 4,4 rem pour le nom, 2,6 rem pour les sections), jamais en affiche géante. Chapitres crème séparés par un filet encre de 3 px; bandes marine (engagements, contact) et brume (témoignages) pour rythmer. Montgolfière RE/MAX (`brand_assets/ballon-240.webp`, tirée de `digital_ballon.png`) posée sur le coin haut gauche du portrait, et en petit devant la signature du pied. Gabarit : `courtiers/genevieve-marchand.html`.
 - **Photos de villes** : chaque guide de ville a une photo principale (hero), répertoriée dans `data/courtiers-config.js` (`VILLES[].photo`). C'est la seule image de ville admise sur le site : panorama pleine largeur sur les pages de courtiers, vignette dans les cartes de villes, fond possible d'une bande. Toujours la vraie photo du guide, jamais une photo de stock, jamais de texte posé dessus sans bandeau marine.
 - Interdits : titre aligné à gauche dans une publication, plus de deux niveaux de texte sous le titre, texte posé sur une photo sans bandeau marine.
 
