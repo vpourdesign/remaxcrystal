@@ -1,5 +1,5 @@
 /* ============================================================
-   TAX DATA — Données fiscales 2026 pour les 15 villes
+   TAX DATA, Données fiscales 2026 pour les 15 villes
    ------------------------------------------------------------
    Format par ville :
      mutation   : tranches [[seuil, taux], ...] (droit de mutation)
@@ -39,7 +39,7 @@ window.TAX_DATA = {
     taxRates: { house: 0.4975, condo: 0.4975 },
     fixedFees: 0,
     poolFee: 0,
-    source: 'Ville de Rosemère, Règlement 1016 — taxation 2026',
+    source: 'Ville de Rosemère, Règlement 1016, taxation 2026',
     sourceUrl: 'https://www.ville.rosemere.qc.ca/taxation-et-tarification/',
     note: 'Addition du taux résiduel, du transport collectif et de la taxe spéciale d\'infrastructures.'
   },
@@ -123,7 +123,7 @@ window.TAX_DATA = {
     poolFee: 0,
     source: 'Ville de Mirabel, Prévisions budgétaires 2026 (secteur Saint-Janvier)',
     sourceUrl: 'https://mirabel.ca/taxation',
-    note: 'Saint-Janvier est un secteur de Mirabel — même taux 2026 (0,267 $ général + 0,050 $ dette = 0,317 $) et tarif d\'eau 292 $. Taxes de secteur possibles selon l\'adresse.'
+    note: 'Saint-Janvier est un secteur de Mirabel, même taux 2026 (0,267 $ général + 0,050 $ dette = 0,317 $) et tarif d\'eau 292 $. Taxes de secteur possibles selon l\'adresse.'
   },
   steannedesplaines: {
     name: 'Sainte-Anne-des-Plaines',
@@ -175,7 +175,7 @@ window.TAX_DATA = {
     taxRates: { house: 0.6892, condo: 0.6892 },
     fixedFees: 386,
     poolFee: 50,
-    source: 'Ville de Terrebonne, Règlement 2528 — taxes et tarifs 2026',
+    source: 'Ville de Terrebonne, Règlement 2528, taxes et tarifs 2026',
     sourceUrl: 'https://terrebonne.ca/wp-content/uploads/2026/04/R2528-taux-taxes-tarifs-compensations-2026.pdf',
     note: 'Taux combiné : foncière générale 0,6417 $ + infrastructures (eau) 0,0350 $ + Fonds bleu 0,0125 $. Tarifs fixes : eau 240 $ + assainissement 146 $ (la compensation matières résiduelles 185 $ ne s\'applique qu\'au-delà du 1er logement). Piscine 50 $. Droit de mutation : 3 % au-delà de 500 000 $.'
   },
@@ -277,7 +277,7 @@ window.TAX_DATA = {
     poolFee: 100,
     source: 'Municipalité de Saint-Jacques, Règlement 018-2025 (taxation 2026)',
     sourceUrl: 'https://www.st-jacques.org/municipalite/administration/taxes-et-evaluation-fonciere',
-    note: 'Taux de base (catégorie résiduelle) 0,555 $ — les taxes spéciales d\'emprunt varient par secteur. Tarifs fixes : aqueduc 170 $ + égout 240 $ + matières résiduelles 130 $. Piscine 100 $. Droit de mutation : barème provincial standard (aucun règlement bonifié repéré).'
+    note: 'Taux de base (catégorie résiduelle) 0,555 $, les taxes spéciales d\'emprunt varient par secteur. Tarifs fixes : aqueduc 170 $ + égout 240 $ + matières résiduelles 130 $. Piscine 100 $. Droit de mutation : barème provincial standard (aucun règlement bonifié repéré).'
   },
   joliette: {
     name: 'Joliette',
@@ -287,6 +287,6 @@ window.TAX_DATA = {
     poolFee: 0,
     source: 'Ville de Joliette, Taux de taxation 2026',
     sourceUrl: 'https://www.joliette.ca/storage/app/media/la-ville/administration-et-finances/taxes-et-evaluation/taux-taxation-2026.pdf',
-    note: 'Taux résidentiel 0,549 $ (baisse vs 2025 reflétant le nouveau rôle, +45 % d\'évaluation moyenne). Tarifs fixes par logement : eau 154 $ + assainissement 77 $ + matières résiduelles 145 $. Droit de mutation : 3 % au-delà de 500 000 $ (confirmé, joliette.ca — seuils inférieurs indexés 2026).'
+    note: 'Taux résidentiel 0,549 $ (baisse vs 2025 reflétant le nouveau rôle, +45 % d\'évaluation moyenne). Tarifs fixes par logement : eau 154 $ + assainissement 77 $ + matières résiduelles 145 $. Droit de mutation : 3 % au-delà de 500 000 $ (confirmé, joliette.ca, seuils inférieurs indexés 2026).'
   }
 };

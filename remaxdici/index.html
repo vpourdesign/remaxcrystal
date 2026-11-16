@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="brand_assets/favicon-192.png">
 <link rel="apple-touch-icon" href="brand_assets/apple-touch-icon.png">
 <meta name="google-site-verification" content="pEll2esXIE9PZ0LVeegl87gXxyDLblkSStAP0RDSx1c" />
-<title>RE/MAX D'ici — L'agence qui connaît vos quartiers de Lanaudière</title>
+<title>RE/MAX D'ici | L'agence qui connaît vos quartiers de Lanaudière</title>
 <meta name="description" content="RE/MAX D'ici est l'agence immobilière de référence dans Lanaudière. Découvrez nos guides de vie pour Terrebonne, Mascouche, Repentigny, Joliette, L'Assomption et les villes de la région.">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -1362,6 +1362,24 @@ body.mm-lock{overflow:hidden;}
 @media(max-width:900px){.mm-navlinks{display:grid;}.mm-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:430px){.mm-grid{grid-template-columns:1fr;}}
 </style>
+
+  <style id="style-sobre">
+    /* Une seule typo par titre, pas d'ornements décoratifs */
+    h1 em, h2 em, h3 em, h4 em { font: inherit; color: inherit; display: inline; background: none; -webkit-text-fill-color: currentColor; }
+    .hero-scroll-hint, .hero-noise { display: none !important; }
+    .hero-stats { gap: clamp(20px, 3vw, 40px); }
+    .hero-stat-value { font-family: 'Open Sans', sans-serif; font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 600; letter-spacing: 0; line-height: 1.3; }
+    .hero-stat-label { text-transform: none; letter-spacing: 0; font-size: 0.85rem; font-weight: 400; color: #a9bccd; }
+    .ql-card .ql-value { font-family: 'Open Sans', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0; line-height: 1.4; color: var(--blue-pale); }
+    .events-cta .events-cta-icon { background: none; box-shadow: none; color: var(--blue-brand); border: 1px solid var(--border-subtle); border-radius: 6px; }
+    .footer-legal--accueil { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+    .footer-legal--accueil a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .mission { padding-block: clamp(32px, 4vw, 48px); }
+    .mission-phrase { margin: 0 auto; max-width: 62ch; text-align: center; font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.6; color: #c9d6e2; }
+    .mission-phrase strong { color: #faf9f6; font-weight: 600; }
+    .footer-legal button.lien-temoins, .footer button.lien-temoins, .pied button.lien-temoins { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+    button.lien-temoins:focus-visible { outline: 2px solid #6ba3d9; outline-offset: 2px; }
+  </style>
 </head>
 <body>
 
@@ -1399,21 +1417,12 @@ body.mm-lock{overflow:hidden;}
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-image">
-      <img src="images-opt/repentigny-hero.jpg" alt="Vue aérienne de Repentigny et du fleuve Saint-Laurent — RE/MAX D'ici">
+      <img src="images-opt/repentigny-hero.jpg" alt="Vue aérienne de Repentigny et du fleuve Saint-Laurent, RE/MAX D'ici">
     </div>
-    <div class="hero-noise" style="filter: url(#noise);"></div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow reveal">
-        <span class="hero-eyebrow-line"></span>
-        Agence immobilière — Lanaudière
-        <span class="hero-eyebrow-line"></span>
-      </div>
 
-      <h1 class="hero-title reveal">
-        <span class="hero-title-sans">Votre agence immobilière</span>
-        <em>locale.</em>
-      </h1>
+      <h1 class="hero-title reveal">Votre agence immobilière locale.</h1>
 
       <p class="hero-subtitle reveal">RE/MAX D'ici est enracinée dans chaque ville qu'elle dessert. Nos courtiers connaissent le marché, bien sûr, mais aussi le nom des rues, les bons parcs et l'école que vos enfants vont adorer.</p>
 
@@ -1445,8 +1454,7 @@ body.mm-lock{overflow:hidden;}
     <div class="container">
       <div class="quick-tools-head">
         <div>
-          <div class="section-eyebrow reveal">Outils locaux</div>
-          <h2 class="quick-tools-title reveal">Calculer le <em>coût réel</em></h2>
+          <h2 class="quick-tools-title reveal">Calculer le coût réel</h2>
         </div>
         <p class="quick-tools-copy reveal">Des calculateurs basés sur les données officielles des villes et du gouvernement du Québec, pour comparer rapidement un achat dans Lanaudière.</p>
       </div>
@@ -1454,10 +1462,6 @@ body.mm-lock{overflow:hidden;}
       <div class="quick-tools-grid">
         <a href="#calculatrices" class="quick-tool-card reveal" data-tool-tab="welcome">
           <div>
-            <div class="quick-tool-top">
-              <span class="quick-tool-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h4"/></svg></span>
-              <span class="quick-tool-status">Prioritaire</span>
-            </div>
             <h3 class="quick-tool-name">Taxe de bienvenue par ville</h3>
             <p class="quick-tool-desc">Prix d'achat, ville, tranches applicables et montant payable après la transaction.</p>
           </div>
@@ -1466,10 +1470,6 @@ body.mm-lock{overflow:hidden;}
 
         <a href="#calculatrices" class="quick-tool-card reveal" data-tool-tab="taxes">
           <div>
-            <div class="quick-tool-top">
-              <span class="quick-tool-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V7l6-4 6 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg></span>
-              <span class="quick-tool-status">Comparatif</span>
-            </div>
             <h3 class="quick-tool-name">Taxes municipales</h3>
             <p class="quick-tool-desc">Terrebonne, Mascouche, Repentigny, Joliette et nos autres villes comparées sur la même valeur.</p>
           </div>
@@ -1478,10 +1478,6 @@ body.mm-lock{overflow:hidden;}
 
         <a href="#calculatrices" class="quick-tool-card reveal" data-tool-tab="mortgage">
           <div>
-            <div class="quick-tool-top">
-              <span class="quick-tool-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-              <span class="quick-tool-status">Mensuel</span>
-            </div>
             <h3 class="quick-tool-name">Hypothèque locale</h3>
             <p class="quick-tool-desc">Paiement hypothécaire, taxes municipales estimées, assurance prêt et scénario par ville.</p>
           </div>
@@ -1605,22 +1601,7 @@ body.mm-lock{overflow:hidden;}
   <!-- ===== MISSION STRIP ===== -->
   <section class="mission" id="mission">
     <div class="container">
-      <div class="mission-inner">
-        <div class="mission-item reveal">
-          <div class="mission-number">12</div>
-          <div class="mission-label">Villes desservies</div>
-        </div>
-        <div class="mission-divider"></div>
-        <div class="mission-item reveal">
-          <div class="mission-number">25+</div>
-          <div class="mission-label">Années d'expertise locale</div>
-        </div>
-        <div class="mission-divider"></div>
-        <div class="mission-item reveal">
-          <div class="mission-number">380K+</div>
-          <div class="mission-label">Résidents dans notre territoire</div>
-        </div>
-      </div>
+      <p class="mission-phrase reveal"><strong>12 villes</strong> desservies, <strong>plus de 25 ans</strong> d'expertise locale et <strong>plus de 380 000 résidents</strong> sur notre territoire.</p>
     </div>
   </section>
 
@@ -1628,8 +1609,7 @@ body.mm-lock{overflow:hidden;}
   <section class="guides" id="guides">
     <div class="container">
       <div class="guides-header">
-        <div class="section-eyebrow reveal">Nos courtiers, vos villes</div>
-        <h2 class="section-heading reveal">On connaît chaque <em>quartier</em></h2>
+        <h2 class="section-heading reveal">On connaît chaque quartier</h2>
         <p class="section-intro reveal">Nos courtiers vivent et travaillent dans ces villes. Ils connaissent le marché, les écoles, les parcs et les événements du coin, et ils sont là pour vous accompagner.</p>
       </div>
 
@@ -1642,7 +1622,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Terrebonne</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Terrebonne.</p>
           </div>
@@ -1655,7 +1634,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Mascouche</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Mascouche.</p>
           </div>
@@ -1668,7 +1646,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Repentigny</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Repentigny.</p>
           </div>
@@ -1681,7 +1658,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Charlemagne</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Charlemagne.</p>
           </div>
@@ -1694,7 +1670,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">L'Assomption</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à L'Assomption.</p>
           </div>
@@ -1707,7 +1682,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">L'Épiphanie</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à L'Épiphanie.</p>
           </div>
@@ -1720,7 +1694,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Saint-Sulpice</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Saint-Sulpice.</p>
           </div>
@@ -1733,7 +1706,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Lavaltrie</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Lavaltrie.</p>
           </div>
@@ -1746,7 +1718,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Saint-Roch-de-l'Achigan</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Saint-Roch-de-l'Achigan.</p>
           </div>
@@ -1759,7 +1730,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Saint-Lin–Laurentides</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Saint-Lin–Laurentides.</p>
           </div>
@@ -1772,7 +1742,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Saint-Jacques</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Saint-Jacques.</p>
           </div>
@@ -1785,7 +1754,6 @@ body.mm-lock{overflow:hidden;}
           <div class="city-card-overlay"></div>
           <div class="city-card-arrow">→</div>
           <div class="city-card-content">
-            <div class="city-card-badge"><span class="city-card-badge-dot"></span> Guide disponible</div>
             <h3 class="city-card-name">Joliette</h3>
             <p class="city-card-tagline">Le guide complet pour s'installer à Joliette.</p>
           </div>
@@ -1798,32 +1766,28 @@ body.mm-lock{overflow:hidden;}
   <section class="value" id="outils">
     <div class="container">
       <div class="guides-header">
-        <div class="section-eyebrow reveal">L'avantage D'ici</div>
-        <h2 class="section-heading reveal">Des courtiers outillés<br><em>pour performer.</em></h2>
+        <h2 class="section-heading reveal">Des courtiers outillés<br>pour performer.</h2>
       </div>
 
       <div class="value-grid">
         <div class="value-text reveal">
-          <h3>Nos courtiers ont un <em>avantage technologique</em></h3>
+          <h3>Nos courtiers ont un avantage technologique</h3>
           <p>RE/MAX D'ici investit dans des outils et des données que nos courtiers utilisent tous les jours. Résultat : ils connaissent leur marché en profondeur et offrent un service plus rapide et plus précis.</p>
 
           <div class="value-features">
             <div class="value-feature">
-              <span class="value-feature-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/><path d="M2 20h20"/></svg></span>
               <div class="value-feature-text">
                 <h5>Données de marché en temps réel</h5>
                 <p>Nos courtiers accèdent aux prix médians, aux délais de vente et aux tendances par quartier, mis à jour chaque mois.</p>
               </div>
             </div>
             <div class="value-feature">
-              <span class="value-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
               <div class="value-feature-text">
                 <h5>Outils IA exclusifs</h5>
                 <p>Générateur PDF, carte à proximité, amélioration photo : des outils que la compétition n'a pas.</p>
               </div>
             </div>
             <div class="value-feature">
-              <span class="value-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg></span>
               <div class="value-feature-text">
                 <h5>Expertise locale vérifiable</h5>
                 <p>Chaque courtier est associé à ses villes. Nos guides montrent qu'on connaît le terrain, pas seulement le marché.</p>
@@ -1841,7 +1805,7 @@ body.mm-lock{overflow:hidden;}
             loop
             playsinline
             preload="metadata"
-            aria-label="Gala RE/MAX D'ici — célébration des courtiers"></video>
+            aria-label="Gala RE/MAX D'ici, célébration des courtiers"></video>
           <div class="value-image-overlay"></div>
         </div>
       </div>
@@ -1914,8 +1878,7 @@ body.mm-lock{overflow:hidden;}
   <section class="social" id="bureaux">
     <div class="container">
       <div class="social-header">
-        <div class="section-eyebrow reveal">Nos bureaux</div>
-        <h2 class="section-heading reveal">Deux bureaux <em>au cœur de Lanaudière</em></h2>
+        <h2 class="section-heading reveal">Deux bureaux au cœur de Lanaudière</h2>
         <p class="social-intro reveal">Passez nous voir. Nos équipes vous accueillent à Repentigny et à Terrebonne.</p>
       </div>
 
@@ -1923,7 +1886,6 @@ body.mm-lock{overflow:hidden;}
         <div class="office-card reveal">
           <div class="office-card-media">
             <img src="images-opt/bureaux/bureau-repentigny.jpg" alt="Bureau RE/MAX D'ici à Repentigny" loading="lazy">
-            <span class="office-card-tag">RE/MAX D'ici</span>
           </div>
           <div class="office-card-body">
             <h3 class="office-card-city">Repentigny</h3>
@@ -1938,7 +1900,6 @@ body.mm-lock{overflow:hidden;}
         <div class="office-card reveal">
           <div class="office-card-media">
             <img src="images/bureaux/bureau-terrebonne.jpg" alt="Bureau RE/MAX D'ici à Terrebonne" loading="lazy">
-            <span class="office-card-tag">RE/MAX D'ici</span>
           </div>
           <div class="office-card-body">
             <h3 class="office-card-city">Terrebonne</h3>
@@ -1991,7 +1952,13 @@ body.mm-lock{overflow:hidden;}
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 RE/MAX D'ici. Tous droits réservés. · agence.remaxdici.com</span>
+        <div class="footer-legal footer-legal--accueil">
+          <span>&copy; 2026 RE/MAX D'ici. Tous droits réservés. · agence.remaxdici.com</span>
+          <span class="footer-divider">·</span>
+          <a href="https://remaxdici.com/fr/politique-confidentialite.html" target="_blank" rel="noopener">Politique de confidentialité</a>
+          <span class="footer-divider">·</span>
+          <button type="button" class="lien-temoins" data-consent-open>Gérer les témoins</button>
+        </div>
         <span style="opacity:.6;">Photo d'en-tête : <a href="https://commons.wikimedia.org/wiki/File:Repentigny_-_Vue_a%C3%A9rienne_(1).jpg" target="_blank" rel="noopener" style="color:inherit;">Gabriel Picard, CC BY-SA 4.0</a></span>
         <div class="footer-credit">
           <span>Stratégie web</span>
@@ -2094,7 +2061,7 @@ body.mm-lock{overflow:hidden;}
         taxRates: { house: 0.6892, condo: 0.6892 },
         fixedFees: 386,
         poolFee: 50,
-        source: 'Ville de Terrebonne, Règlement 2528 — taxes et tarifs 2026',
+        source: 'Ville de Terrebonne, Règlement 2528, taxes et tarifs 2026',
         sourceUrl: 'https://terrebonne.ca/wp-content/uploads/2026/04/R2528-taux-taxes-tarifs-compensations-2026.pdf',
         note: 'Taux combiné : foncière générale 0,6417 $ + infrastructures (eau) 0,0350 $ + Fonds bleu 0,0125 $. Tarifs fixes : eau 240 $ + assainissement 146 $ (la compensation matières résiduelles 185 $ ne s\'applique qu\'au-delà du 1er logement). Piscine 50 $. Droit de mutation : 3 % au-delà de 500 000 $.'
       },
@@ -2196,7 +2163,7 @@ body.mm-lock{overflow:hidden;}
         poolFee: 100,
         source: 'Municipalité de Saint-Jacques, Règlement 018-2025 (taxation 2026)',
         sourceUrl: 'https://www.st-jacques.org/municipalite/administration/taxes-et-evaluation-fonciere',
-        note: 'Taux de base (catégorie résiduelle) 0,555 $ — les taxes spéciales d\'emprunt varient par secteur. Tarifs fixes : aqueduc 170 $ + égout 240 $ + matières résiduelles 130 $. Piscine 100 $. Droit de mutation : barème provincial standard (aucun règlement bonifié repéré).'
+        note: 'Taux de base (catégorie résiduelle) 0,555 $, les taxes spéciales d\'emprunt varient par secteur. Tarifs fixes : aqueduc 170 $ + égout 240 $ + matières résiduelles 130 $. Piscine 100 $. Droit de mutation : barème provincial standard (aucun règlement bonifié repéré).'
       },
       'joliette': {
         name: 'Joliette',
@@ -2206,7 +2173,7 @@ body.mm-lock{overflow:hidden;}
         poolFee: 0,
         source: 'Ville de Joliette, Taux de taxation 2026',
         sourceUrl: 'https://www.joliette.ca/storage/app/media/la-ville/administration-et-finances/taxes-et-evaluation/taux-taxation-2026.pdf',
-        note: 'Taux résidentiel 0,549 $ (baisse vs 2025 reflétant le nouveau rôle, +45 % d\'évaluation moyenne). Tarifs fixes par logement : eau 154 $ + assainissement 77 $ + matières résiduelles 145 $. Droit de mutation : 3 % au-delà de 500 000 $ (confirmé, joliette.ca — seuils inférieurs indexés 2026).'
+        note: 'Taux résidentiel 0,549 $ (baisse vs 2025 reflétant le nouveau rôle, +45 % d\'évaluation moyenne). Tarifs fixes par logement : eau 154 $ + assainissement 77 $ + matières résiduelles 145 $. Droit de mutation : 3 % au-delà de 500 000 $ (confirmé, joliette.ca, seuils inférieurs indexés 2026).'
       }
     };
 
@@ -2439,5 +2406,7 @@ body.mm-lock{overflow:hidden;}
   ov.querySelectorAll('.mm-grid a').forEach(function(a){if(a.getAttribute('href')===here)a.classList.add('mm-active');});
 })();
 </script>
+
+  <script src="consentement.js" data-agence="RE/MAX D&#39;ici" data-politique="https://remaxdici.com/fr/politique-confidentialite.html" defer></script>
 </body>
 </html>

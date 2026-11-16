@@ -1,5 +1,5 @@
 /* ============================================================
-   CITIES DICI — Contenu narratif des 12 guides de villes
+   CITIES DICI, Contenu narratif des 12 guides de villes
    RE/MAX D'ici · Lanaudière
    Utilisé par build-cities-dici.mjs pour générer
    ../remaxdici/guide-<fileSlug>.html
@@ -101,7 +101,7 @@ window.CITIES_DICI = {
       `Le Parc du Grand-Coteau, vaste poumon vert au cœur de la ville, résume bien l'esprit de Mascouche : ski de fond, glissades, sentiers et patinoire l'hiver, plein air et événements l'été. Le Domaine seigneurial de Mascouche rappelle quant à lui ses racines historiques.`,
       `Avec ses pôles commerciaux le long de la 25, ses écoles et son accès autoroutier direct, Mascouche séduit les familles qui cherchent l'espace et le calme sans renoncer à la proximité de la métropole.`
     ],
-    qualityIntro: "Mascouche marie nature, services de proximité et accès rapide à Montréal — un équilibre recherché par les familles de la région.",
+    qualityIntro: "Mascouche marie nature, services de proximité et accès rapide à Montréal, un équilibre recherché par les familles de la région.",
     qualityCards: [
       { icon: 'park', title: 'Parc du Grand-Coteau', text: 'Le grand parc-nature de la ville : ski de fond, glissades, patinoire, sentiers et activités familiales en toutes saisons.', value: 'Quatre saisons' },
       { icon: 'transit', title: 'Train de banlieue exo', text: 'Le train exo va jusqu\'à la station Côte-de-Liesse, où le REM prend le relais vers le centre-ville. Environ 1 h 05 de trajet, sans la voiture.', value: '~1 h 05 Mtl' },
@@ -211,7 +211,7 @@ window.CITIES_DICI = {
     ],
     tagline: "La plus petite ville de Lanaudière, nichée entre deux rivières aux portes de Montréal.",
     intro: [
-      `Charlemagne est une ville à échelle humaine, coincée entre la rivière L'Assomption et la rivière des Prairies, à la limite immédiate de l'île de Montréal. Son territoire compact en fait l'une des municipalités les plus accessibles de la région — tout est à quelques minutes.`,
+      `Charlemagne est une ville à échelle humaine, coincée entre la rivière L'Assomption et la rivière des Prairies, à la limite immédiate de l'île de Montréal. Son territoire compact en fait l'une des municipalités les plus accessibles de la région, tout est à quelques minutes.`,
       `Connue comme la ville natale de Céline Dion, Charlemagne cultive une fierté de quartier et une vie communautaire tissée serré. On y trouve l'essentiel : écoles, commerces de proximité, parcs et bord de l'eau.`,
       `Pour qui veut entrer dans Lanaudière tout en restant collé à Montréal, Charlemagne offre un rapport qualité-prix et un accès autoroutier (A-40) difficiles à battre.`
     ],
@@ -664,7 +664,7 @@ window.CITIES_DICI = {
     ],
     tagline: "La capitale culturelle de Lanaudière, vibrante de musique, d'art et de vie de centre-ville.",
     intro: [
-      `Joliette est le cœur urbain et culturel de Lanaudière. Ville-centre de la région, elle rayonne grâce au Festival de Lanaudière — le plus grand festival de musique classique au Canada — et au Musée d'art de Joliette, l'un des plus importants musées régionaux du Québec.`,
+      `Joliette est le cœur urbain et culturel de Lanaudière. Ville-centre de la région, elle rayonne grâce au Festival de Lanaudière, le plus grand festival de musique classique au Canada, et au Musée d'art de Joliette, l'un des plus importants musées régionaux du Québec.`,
       `Son centre-ville animé, ses rues arborées, sa cathédrale et la rivière L'Assomption qui le traverse donnent à Joliette une qualité de vie urbaine rare hors des grands centres. Cafés, terrasses, commerces et institutions de santé et d'éducation y sont concentrés.`,
       `Pôle de services pour toute la région, Joliette combine emplois, écoles, cégep et hôpital avec un coût de la vie attractif. La ville séduit autant les familles que ceux qui cherchent la vitalité d'un vrai centre-ville.`
     ],

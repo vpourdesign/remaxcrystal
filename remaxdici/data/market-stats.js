@@ -1,11 +1,11 @@
 /* ============================================================
-   MARKET STATS — RE/MAX D'ici · Lanaudière
+   MARKET STATS, RE/MAX D'ici · Lanaudière
    ------------------------------------------------------------
-   Source : Centris — Statistiques immobilières, onglet
+   Source : Centris, statistiques immobilières, onglet
    « Total résidentiel » (par municipalité, T3 2026).
    Mise à jour : chaque trimestre après publication Centris.
    Valeurs « null » = donnée « ** » (volume insuffisant) chez
-   Centris → affichée « — » dans le tableau.
+   Centris → affichée «, » dans le tableau.
    ============================================================ */
 
 window.MARKET_STATS = {
@@ -14,7 +14,7 @@ window.MARKET_STATS = {
     quarterLabel: "3ᵉ trimestre 2026",
     cumulPeriod: "Cumul 4 derniers trimestres",
     updated: "2026-10-07",
-    sourceLabel: "Centris — Statistiques immobilières",
+    sourceLabel: "Centris, statistiques immobilières",
     sourceBaseUrl: "https://www.centris.ca/fr/outils/statistiques-immobilieres"
   },
 

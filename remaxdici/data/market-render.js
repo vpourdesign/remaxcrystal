@@ -1,5 +1,5 @@
 /* ============================================================
-   MARKET RENDER — Injecte automatiquement les stats dans le DOM
+   MARKET RENDER, Injecte automatiquement les stats dans le DOM
    ------------------------------------------------------------
    Lit window.MARKET_STATS (défini dans data/market-stats.js)
    et remplit la section ayant l'attribut data-city="<slug>".

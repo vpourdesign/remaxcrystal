@@ -1,5 +1,5 @@
 /* ============================================================
-   EVENTS RENDER — Injecte automatiquement les événements
+   EVENTS RENDER, Injecte automatiquement les événements
    ------------------------------------------------------------
    Lit window.CITY_EVENTS (défini dans data/events.js) et
    remplit tout conteneur portant data-events-city="<slug>".

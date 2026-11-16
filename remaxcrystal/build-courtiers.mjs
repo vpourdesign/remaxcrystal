@@ -38,6 +38,10 @@ function loadWindowData(filePath, key) {
 const CFG = loadWindowData(path.join(ROOT, 'data/courtiers-config.js'), 'COURTIERS_CONFIG');
 const SITE = (process.env.SITE_BASE || CFG.SITE_BASE).replace(/\/$/, '');
 const AG = CFG.AGENCE;
+// Politique de confidentialité du site principal de l'agence (bannière Loi 25)
+const POLITIQUE = /d.ici/i.test(AG.nom)
+  ? 'https://remaxdici.com/fr/politique-confidentialite.html'
+  : 'https://remaxcrystal.com/fr/politique-confidentialite.html';
 console.log(`Site : ${AG.nom} (${path.relative(process.cwd(), ROOT) || '.'})`);
 
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -100,12 +104,12 @@ function buildHub() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos courtiers immobiliers — ${AG.nom}, ${AG.region}</title>
+<title>Nos courtiers immobiliers | ${AG.nom}, ${AG.region}</title>
 <meta name="description" content="Trouvez votre courtier immobilier ${escapeHtml(AG.nom)} par ville : ${escapeHtml(AG.exemplesVilles)} et toute la région ${escapeHtml(AG.regionDe)}.">
 <link rel="canonical" href="${SITE}/courtiers/index.html">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nos courtiers immobiliers — ${escapeHtml(AG.nom)}">
+<meta property="og:title" content="Nos courtiers immobiliers | ${escapeHtml(AG.nom)}">
 <meta property="og:description" content="L'annuaire des courtiers ${escapeHtml(AG.nom)}, classés par ville ${escapeHtml(AG.regionDe)}.">
 <meta property="og:url" content="${SITE}/courtiers/index.html">
 <meta property="og:locale" content="fr_CA">
@@ -215,13 +219,13 @@ ${filters}
     <div class="grid" id="grid">
 ${cards}
     </div>
-    <p class="empty" id="empty">Aucune page de courtier pour cette ville pour l'instant — <a href="../index.html#contact" style="color:var(--blue-brand);font-weight:600;">contactez l'agence</a>, on vous jumelle avec le bon courtier.</p>
+    <p class="empty" id="empty">Aucune page de courtier pour cette ville pour l'instant. <a href="../index.html#contact" style="color:var(--blue-brand);font-weight:600;">Contactez l'agence</a> et on vous jumelle avec le bon courtier.</p>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <span>© 2026 ${escapeHtml(AG.nom)} — Franchisé indépendant et autonome de RE/MAX Québec</span>
-      <span><a href="../index.html" style="text-decoration:underline;">${SITE.replace(/^https?:\/\//, '')}</a></span>
+      <span>© 2026 ${escapeHtml(AG.nom)}, franchisé indépendant et autonome de RE/MAX Québec</span>
+      <span><a href="../index.html" style="text-decoration:underline;">${SITE.replace(/^https?:\/\//, '')}</a> &nbsp; <button type="button" data-consent-open style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer;">Gérer les témoins</button></span>
     </div>
   </footer>
 
@@ -245,6 +249,8 @@ ${cards}
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay=(i%3)*0.05+'s'; io.observe(el); });
   </script>
+
+  <script src="../consentement.js" data-agence="${escapeHtml(AG.nom)}" data-politique="${POLITIQUE}" defer></script>
 </body>
 </html>
 `;

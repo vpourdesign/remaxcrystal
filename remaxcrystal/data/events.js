@@ -1,5 +1,5 @@
 /* ============================================================
-   CITY EVENTS — Source unique pour les guides de villes
+   CITY EVENTS, Source unique pour les guides de villes
    ------------------------------------------------------------
    Mise à jour AUTOMATIQUE : voir data/EVENTS-UPDATE.md
    (agent hebdomadaire qui lit les calendriers municipaux).
@@ -11,7 +11,7 @@
      title    : nom de l'événement
      desc     : 1-2 phrases
      sortDate : ISO, sert au tri ("2026-06-13")
-     expires  : ISO, dernier jour de validité — l'événement
+     expires  : ISO, dernier jour de validité, l'événement
                 disparaît automatiquement après cette date
      url      : lien officiel (optionnel)
 
@@ -30,7 +30,7 @@ window.CITY_EVENTS = {
       {
         day: "28", month: "Juin",
         category: "Culture",
-        title: "Exposition — Symphonie de couleurs et de lumière",
+        title: "Exposition, Symphonie de couleurs et de lumière",
         desc: "Les œuvres de Suzanne Voisard à la salle François-Cantin de la bibliothèque Paul-Mercier. Selon l'horaire de la bibliothèque.",
         sortDate: "2026-05-09", expires: "2026-06-28",
         url: "https://blainville.ca/evenements/exposition-symphonie-de-couleurs-et-de-lumiere-de-suzanne-voisard"
@@ -38,7 +38,7 @@ window.CITY_EVENTS = {
       {
         day: "11", month: "Oct",
         category: "Histoire",
-        title: "Exposition — Un village et ses obus : le Plan Bouchard",
+        title: "Exposition, Un village et ses obus : le Plan Bouchard",
         desc: "L'histoire militaire de Blainville durant la Seconde Guerre mondiale retracée au Micromusée du Plan Bouchard, les week-ends de 13 h à 16 h.",
         sortDate: "2026-05-16", expires: "2026-10-11",
         url: "https://blainville.ca/evenements/exposition-un-village-et-ses-obus-le-plan-bouchard-1941-1945"
@@ -46,7 +46,7 @@ window.CITY_EVENTS = {
       {
         day: "30", month: "Août",
         category: "Culture",
-        title: "Exposition — Ressemble à personne",
+        title: "Exposition, Ressemble à personne",
         desc: "Exposition jeunesse en art contemporain au Centre d'exposition de Blainville, avec ateliers créatifs libres (dessin et collage) jusqu'au 30 août.",
         sortDate: "2026-06-10", expires: "2026-08-30",
         url: "https://blainville.ca/evenements/exposition-ressemble-personne-une-expo-jeunesse-en-art-actuel"
@@ -70,7 +70,7 @@ window.CITY_EVENTS = {
       {
         day: "22", month: "Août",
         category: "Festival",
-        title: "Blainville en fête — 39e édition",
+        title: "Blainville en fête, 39e édition",
         desc: "Grande fête communautaire gratuite au Parc équestre avec Matt Lang en soirée, animation familiale, jeux gonflables, leçon de line dance et spectacle laser.",
         sortDate: "2026-08-22", expires: "2026-08-22",
         url: "https://blainville.ca/evenements/blainville-en-fete"
@@ -78,7 +78,7 @@ window.CITY_EVENTS = {
       {
         day: "25", month: "Oct",
         category: "Culture",
-        title: "Spectacle jeunesse — Les (in)séparables",
+        title: "Spectacle jeunesse, Les (in)séparables",
         desc: "Spectacle de théâtre jeunesse présenté par Odyscène au centre communautaire de Blainville, à 11 h.",
         sortDate: "2026-10-25", expires: "2026-10-25",
         url: "https://blainville.ca/evenements/spectacle-les-separables"
@@ -86,7 +86,7 @@ window.CITY_EVENTS = {
       {
         day: "13", month: "Déc",
         category: "Culture",
-        title: "Spectacle — Jazz-Noisette",
+        title: "Spectacle, Jazz-Noisette",
         desc: "Spectacle musical festif pour les familles présenté au centre communautaire dans le cadre de la programmation Odyscène, à 11 h.",
         sortDate: "2026-12-13", expires: "2026-12-13",
         url: "https://blainville.ca/evenements/spectacle-jazz-noisette"
@@ -97,7 +97,7 @@ window.CITY_EVENTS = {
       {
         day: "17", month: "Juin",
         category: "Vie municipale",
-        title: "Consultation — Projet résidentiel 156, rue Turgeon",
+        title: "Consultation, Projet résidentiel 156, rue Turgeon",
         desc: "Séance de consultation publique à l'hôtel de ville à 18 h concernant un projet de développement résidentiel.",
         sortDate: "2026-06-17", expires: "2026-06-17",
         url: "https://www.sainte-therese.ca/evenements"
@@ -113,7 +113,7 @@ window.CITY_EVENTS = {
       {
         day: "24", month: "Juin",
         category: "Fêtes",
-        title: "Fête nationale — Break Syndical",
+        title: "Fête nationale, Break Syndical",
         desc: "Grand spectacle de la Fête nationale avec Break Syndical au stationnement de l'hôtel de ville dès 17 h. Animation jeunesse en pré-spectacle. Entrée gratuite.",
         sortDate: "2026-06-24", expires: "2026-06-24",
         url: "https://www.sainte-therese.ca/evenements"
@@ -121,7 +121,7 @@ window.CITY_EVENTS = {
       {
         day: "24", month: "Juin",
         category: "Culture",
-        title: "Concert d'orgue — Église Sainte-Thérèse-d'Avila",
+        title: "Concert d'orgue, Église Sainte-Thérèse-d'Avila",
         desc: "Conférence sur l'instrument à 15 h et 16 h 30, suivie d'un concert d'orgue à 15 h 30 dans l'église historique.",
         sortDate: "2026-06-24", expires: "2026-06-24",
         url: "https://www.sainte-therese.ca/evenements"
@@ -129,7 +129,7 @@ window.CITY_EVENTS = {
       {
         day: "30", month: "Juin",
         category: "Culture",
-        title: "Spectacle en plein air — Damien Robitaille",
+        title: "Spectacle en plein air, Damien Robitaille",
         desc: "Concert gratuit au stationnement de l'hôtel de ville à 19 h 30, dans le cadre de la série Vivez l'été en musique.",
         sortDate: "2026-06-30", expires: "2026-06-30",
         url: "https://www.sainte-therese.ca/evenements"
@@ -137,7 +137,7 @@ window.CITY_EVENTS = {
       {
         day: "21", month: "Juil",
         category: "Festival",
-        title: "Vivez l'été en musique — Juillet",
+        title: "Vivez l'été en musique, Juillet",
         desc: "Concerts gratuits en plein air les 7, 14 et 21 juillet à 19 h 30 : Mathieu Grégoire, Annie Blanchard, Cuts Like a Knife.",
         sortDate: "2026-07-07", expires: "2026-07-21",
         url: "https://www.sainte-therese.ca/evenements"
@@ -145,7 +145,7 @@ window.CITY_EVENTS = {
       {
         day: "18", month: "Août",
         category: "Festival",
-        title: "Vivez l'été en musique — Juillet/Août",
+        title: "Vivez l'été en musique, Juillet/Août",
         desc: "Suite des concerts gratuits avec Yordan & The Cuban Martinez Show (28 juil.), Jordan Officer, Sarahmée et Mélissa Bédard (18 août).",
         sortDate: "2026-07-28", expires: "2026-08-18",
         url: "https://www.sainte-therese.ca/evenements"
@@ -196,7 +196,7 @@ window.CITY_EVENTS = {
       {
         day: "9", month: "Juil",
         category: "Communauté",
-        title: "Sortie à la carte — Parc Oméga",
+        title: "Sortie à la carte, Parc Oméga",
         desc: "Sortie familiale organisée par la ville au Parc Oméga, départ et retour au Centre récréatif de 9 h à 16 h.",
         sortDate: "2026-07-09", expires: "2026-07-09",
         url: "https://www.ville.boisbriand.qc.ca/evenements/sortie-en-famille/sortie-a-la-carte-parc-omega"
@@ -204,7 +204,7 @@ window.CITY_EVENTS = {
       {
         day: "10", month: "Août",
         category: "Culture",
-        title: "Série Beaux lundis — Spectacles au Parc Claude-Jasmin",
+        title: "Série Beaux lundis, Spectacles au Parc Claude-Jasmin",
         desc: "Cinq spectacles gratuits chaque lundi soir du 13 juillet au 10 août à 19 h 15. Annie Villeneuve lance la programmation.",
         sortDate: "2026-07-13", expires: "2026-08-10",
         url: "https://www.ville.boisbriand.qc.ca/evenements/beaux-lundis/annie-villeneuve"
@@ -220,7 +220,7 @@ window.CITY_EVENTS = {
       {
         day: "16", month: "Juil",
         category: "Culture",
-        title: "Concert en plein air — Claricordes",
+        title: "Concert en plein air, Claricordes",
         desc: "Concert gratuit au Parc des Francs-Bourgeois de 19 h à 19 h 50 dans le cadre de la programmation culturelle estivale.",
         sortDate: "2026-07-16", expires: "2026-07-16",
         url: "https://www.ville.boisbriand.qc.ca/evenements/activite-culturelle/concert-en-plein-air-claricordes"
@@ -247,7 +247,7 @@ window.CITY_EVENTS = {
       {
         day: "14", month: "Sept",
         category: "Culture",
-        title: "La Tournée festive — Petit Théâtre du Nord",
+        title: "La Tournée festive, Petit Théâtre du Nord",
         desc: "Spectacle théâtral itinérant dans les sept villes de la MRC Thérèse-De Blainville, alliant histoires et chansons sur l'histoire régionale.",
         sortDate: "2026-09-06", expires: "2026-09-14",
         url: "https://ville.bois-des-filion.qc.ca"
@@ -274,7 +274,7 @@ window.CITY_EVENTS = {
       {
         day: "1", month: "Oct",
         category: "Communauté",
-        title: "Concours photo — Calendrier 2027 : Évasions quotidiennes",
+        title: "Concours photo, Calendrier 2027 : Évasions quotidiennes",
         desc: "Concours photographique ouvert à tous jusqu'au 1er octobre. Les meilleures photos seront publiées dans le calendrier municipal 2027 de Deux-Montagnes.",
         sortDate: "2026-06-15", expires: "2026-10-01",
         url: "https://www.ville.deux-montagnes.qc.ca/evenements/vie-communautaire/concours-photo-calendrier-2027-evasions-quotidiennes-a-deux-montagnes"
@@ -282,7 +282,7 @@ window.CITY_EVENTS = {
       {
         day: "16", month: "Juin",
         category: "Culture",
-        title: "Atelier de céramique — Techniques de grattage",
+        title: "Atelier de céramique, Techniques de grattage",
         desc: "Atelier pratique de céramique pour adultes à la salle Annette-Savoie (bibliothèque) de 18 h à 20 h.",
         sortDate: "2026-06-16", expires: "2026-06-16",
         url: "https://www.ville.deux-montagnes.qc.ca/evenements/ateliers-et-conferences/atelier-de-ceramique-techniques-de-grattage"
@@ -290,7 +290,7 @@ window.CITY_EVENTS = {
       {
         day: "17", month: "Juin",
         category: "Culture",
-        title: "L'heure du conte — Les métiers",
+        title: "L'heure du conte, Les métiers",
         desc: "Heure du conte à la bibliothèque pour enfants de 3 à 6 ans (18 h 30 à 19 h 15), sur le thème des métiers.",
         sortDate: "2026-06-17", expires: "2026-06-17",
         url: "https://www.ville.deux-montagnes.qc.ca/evenements/bibliotheque/lheure-du-conte-les-metiers-2025-06-18"
@@ -306,7 +306,7 @@ window.CITY_EVENTS = {
       {
         day: "28", month: "Juin",
         category: "Communauté",
-        title: "Atelier — Bulles géantes",
+        title: "Atelier, Bulles géantes",
         desc: "Activité familiale en plein air pour tous les âges dans un parc de Deux-Montagnes, de 9 h à 12 h.",
         sortDate: "2026-06-28", expires: "2026-06-28",
         url: "https://www.ville.deux-montagnes.qc.ca/evenements/culture-et-divertissement/atelier-bulles-geantes"
@@ -314,7 +314,7 @@ window.CITY_EVENTS = {
       {
         day: "30", month: "Juin",
         category: "Culture",
-        title: "Atelier — Dessine-moi un légume",
+        title: "Atelier, Dessine-moi un légume",
         desc: "Atelier créatif pour enfants de 3 à 7 ans de 10 h 30 à 11 h 30, autour du jardin et des légumes.",
         sortDate: "2026-06-30", expires: "2026-06-30",
         url: "https://www.ville.deux-montagnes.qc.ca/evenements/ateliers-et-conferences/atelier-dessine-moi-un-legume"
@@ -322,7 +322,7 @@ window.CITY_EVENTS = {
       {
         day: "2", month: "Juil",
         category: "Culture",
-        title: "Atelier d'écriture — Plume et parasol",
+        title: "Atelier d'écriture, Plume et parasol",
         desc: "Atelier d'écriture créative pour adultes à la bibliothèque de 13 h 30 à 15 h, dans une ambiance estivale décontractée.",
         sortDate: "2026-07-02", expires: "2026-07-02",
         url: "https://www.ville.deux-montagnes.qc.ca/evenements/bibliotheque/atelier-decriture-plume-et-parasol-2026-07-02"
@@ -365,7 +365,7 @@ window.CITY_EVENTS = {
       {
         day: "29", month: "Août",
         category: "Festival",
-        title: "Fête de la famille — Thème Western",
+        title: "Fête de la famille, Thème Western",
         desc: "Grande fête familiale gratuite au Parc Lorraine sur le thème du Western, de 10 h à 22 h avec animations, jeux gonflables et spectacles en soirée.",
         sortDate: "2026-08-29", expires: "2026-08-29",
         url: "https://lorraine.ca/evenements/grands-evenements/fete-de-la-famille"
@@ -373,7 +373,7 @@ window.CITY_EVENTS = {
       {
         day: "27", month: "Sept",
         category: "Culture",
-        title: "Journées de la culture — 30e édition",
+        title: "Journées de la culture, 30e édition",
         desc: "Trois jours d'activités culturelles gratuites à Lorraine : visites guidées, contes, musique et ateliers artistiques dans le cadre de l'événement provincial.",
         sortDate: "2026-09-25", expires: "2026-09-27",
         url: "https://lorraine.ca/loisirs-et-culture/culture-et-evenements/journees-de-la-culture"
@@ -392,7 +392,7 @@ window.CITY_EVENTS = {
       {
         day: "28", month: "Juin",
         category: "Festival",
-        title: "Le Grand PoutineFest — Mirabel",
+        title: "Le Grand PoutineFest, Mirabel",
         desc: "Festival gastronomique dédié à la poutine au complexe Val-d'Espoir, avec spectacles de La Chicane et Éric Lapointe. Du 26 au 28 juin.",
         sortDate: "2026-06-26", expires: "2026-06-28",
         url: "https://legrandpoutinefest.ca/en/pages/mirabel"
@@ -443,7 +443,7 @@ window.CITY_EVENTS = {
       {
         day: "28", month: "Juin",
         category: "Festival",
-        title: "Le Grand PoutineFest — Saint-Janvier",
+        title: "Le Grand PoutineFest, Saint-Janvier",
         desc: "Festival gastronomique dédié à la poutine au complexe Val-d'Espoir, avec spectacles de La Chicane et Éric Lapointe. Du 26 au 28 juin.",
         sortDate: "2026-06-26", expires: "2026-06-28",
         url: "https://legrandpoutinefest.ca/en/pages/mirabel"
@@ -478,7 +478,7 @@ window.CITY_EVENTS = {
       {
         day: "6", month: "Sept",
         category: "Marché",
-        title: "Marché antique d'Oka — 4e édition",
+        title: "Marché antique d'Oka, 4e édition",
         desc: "Foire d'antiquités dans le cœur du village de 10 h 30 à 16 h 30 : meubles anciens, bijoux, œuvres d'art et trésors de seconde main.",
         sortDate: "2026-09-06", expires: "2026-09-06",
         url: "https://municipalite.oka.qc.ca/decouvrir/marche-antique-oka/"
@@ -529,7 +529,7 @@ window.CITY_EVENTS = {
       {
         day: "30", month: "Août",
         category: "Sport",
-        title: "Super Aqua Club — Saison estivale",
+        title: "Super Aqua Club, Saison estivale",
         desc: "Le plus grand parc aquatique du Québec est ouvert de juin à septembre avec plus de 46 attractions. Résidents de Pointe-Calumet : rabais de 40 % disponible.",
         sortDate: "2026-06-13", expires: "2026-08-30",
         url: "https://superaquaclub.com/en/visit/schedule-weather/"
@@ -580,7 +580,7 @@ window.CITY_EVENTS = {
       {
         day: "16", month: "Juin",
         category: "Culture",
-        title: "Blanc sur Blanc — 3e édition",
+        title: "Blanc sur Blanc, 3e édition",
         desc: "Événement culturel extérieur au Parc des Pionniers avec ateliers interactifs, souper blanc, expositions et musique d'ambiance. Organisé par le Regroupement des artistes de Rosemère.",
         sortDate: "2026-06-14", expires: "2026-06-16",
         url: "https://www.ville.rosemere.qc.ca/du-14-au-16-juin-a-rosemere---3e-edition-de-l---evenement-culturel-blanc-sur-blanc/"
@@ -588,7 +588,7 @@ window.CITY_EVENTS = {
       {
         day: "12", month: "Août",
         category: "Culture",
-        title: "Concerts d'été — Saison 2026",
+        title: "Concerts d'été, Saison 2026",
         desc: "Série de concerts musicaux en plein air les mercredis soirs à 19 h 30 sur le parterre extérieur du Service des loisirs, gratuits pour tous.",
         sortDate: "2026-06-29", expires: "2026-08-12",
         url: "https://www.ville.rosemere.qc.ca/concert-ete/"
@@ -596,7 +596,7 @@ window.CITY_EVENTS = {
       {
         day: "13", month: "Août",
         category: "Culture",
-        title: "Spectacle familial — Mario a un incroyable talent",
+        title: "Spectacle familial, Mario a un incroyable talent",
         desc: "Spectacle familial mêlant cirque et magie le samedi matin à 10 h 30 au parterre extérieur du Service des loisirs. Entrée gratuite.",
         sortDate: "2026-08-13", expires: "2026-08-13",
         url: "https://www.ville.rosemere.qc.ca/spectacle-familial-du-13-aout---mario-a-un-incroyable-talent/"
@@ -647,7 +647,7 @@ window.CITY_EVENTS = {
       {
         day: "3", month: "Juil",
         category: "Culture",
-        title: "Vendredis musicaux — Laurence Jalbert",
+        title: "Vendredis musicaux, Laurence Jalbert",
         desc: "Premier concert de la série des Vendredis musicaux gratuits au Parc Neuville avec la grande dame de la chanson québécoise Laurence Jalbert.",
         sortDate: "2026-07-03", expires: "2026-07-03",
         url: "https://www.villesadp.ca/fr/evenements/loisirs-et-culture/vendredis-musicaux-laurence-jalbert"
@@ -698,7 +698,7 @@ window.CITY_EVENTS = {
       {
         day: "9", month: "Juil",
         category: "Culture",
-        title: "The Breakfast Club — Hommage aux années 80",
+        title: "The Breakfast Club, Hommage aux années 80",
         desc: "Spectacle hommage aux années 80 à la Plage de la Sablière de 19 h à 20 h 30. Amenez votre chaise et votre glacière pour une soirée nostalgique au bord de l'eau.",
         sortDate: "2026-07-09", expires: "2026-07-09",
         url: "https://vsmsll.ca/evenements/spectacle/the-breakfast-club-hommage-aux-annees-80"
@@ -816,7 +816,7 @@ window.CITY_EVENTS = {
       {
         day: "20", month: "Sept",
         category: "Festival",
-        title: "Festival de la galette — 41e édition",
+        title: "Festival de la galette, 41e édition",
         desc: "Festival patrimonial emblématique dans le Vieux-Saint-Eustache avec gastronomie traditionnelle, musique live, artisans et parade des reconstituteurs historiques. Entrée gratuite.",
         sortDate: "2026-09-19", expires: "2026-09-20",
         url: "https://www.vieuxsainteustache.com/attrait/festival-de-la-galette-de-st-eustache/"

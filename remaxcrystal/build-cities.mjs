@@ -1,5 +1,5 @@
 /* ============================================================
-   BUILD CITIES — Génère guide-<slug>.html à partir du template
+   BUILD CITIES : génère guide-<slug>.html à partir du template
    guide-blainville.html en remplaçant le contenu narratif,
    les images, les données fiscales et la marque.
    Usage : node build-cities.mjs
@@ -50,7 +50,6 @@ function buildHeroStats(stats) {
 function buildQualityCards(cards) {
   return cards.map(c =>
 `        <div class="ql-card reveal">
-          <span class="ql-icon">${ICONS[c.icon] || ICONS.park}</span>
           <h3>${escapeHtml(c.title)}</h3>
           <p>${escapeHtml(c.text)}</p>
           <div class="ql-value">${escapeHtml(c.value)}</div>
@@ -110,14 +109,13 @@ function buildEventsSection(city) {
   const arrow = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
   return `<section class="section" id="evenements">
     <div class="container">
-      <div class="section-eyebrow reveal">04 — Événements</div>
-      <h2 class="section-heading reveal">Événements <em>à venir</em></h2>
+      <h2 class="section-heading reveal">Événements à venir</h2>
       <p class="section-intro reveal">Concerts, festivals, marchés publics, activités familiales : ${name} tient à jour le calendrier officiel de tout ce qui se passe près de chez vous. Consultez-le pour ne rien manquer.</p>
 
       <a class="events-cta reveal" href="${url}" target="_blank" rel="noopener">
         <span class="events-cta-icon">${cal}</span>
         <span class="events-cta-text">
-          <strong>Calendrier officiel des événements — ${name}</strong>
+          <strong>Calendrier officiel des événements à ${name}</strong>
           <span>Consultez la programmation complète et toujours à jour sur le site officiel de la municipalité.</span>
         </span>
         <span class="events-cta-arrow" aria-hidden="true">${arrow}</span>
@@ -165,7 +163,7 @@ function buildSeoSchema(city) {
   const realEstateAgent = {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
-    name: `${orgName} — ${city.name}`,
+    name: `${orgName}, ${city.name}`,
     areaServed: city.name,
     address: { '@type':'PostalAddress', addressLocality: city.name, addressRegion: 'QC', addressCountry: 'CA' },
     url: `${baseUrl}/guide-${city.slug}.html`
@@ -219,7 +217,7 @@ function buildSeoSchema(city) {
     },
     {
       q: `Combien de ventes résidentielles à ${city.name} chaque trimestre ?`,
-      a: `Les statistiques officielles du marché résidentiel à ${city.name} sont publiées chaque trimestre par Centris. Consultez les données à jour de Total résidentiel — ventes, nouvelles inscriptions, inscriptions en vigueur et volume — sur la page Centris dédiée à ${city.name}.`
+      a: `Les statistiques officielles du marché résidentiel à ${city.name} sont publiées chaque trimestre par Centris. Consultez les données à jour de Total résidentiel (ventes, nouvelles inscriptions, inscriptions en vigueur et volume) sur la page Centris dédiée à ${city.name}.`
     },
     {
       q: `Quels services et commodités trouve-t-on à ${city.name} ?`,
@@ -245,7 +243,7 @@ function buildSeoSchema(city) {
     address: { '@type':'PostalAddress', addressLocality: city.name, addressRegion: 'QC', addressCountry: 'CA' },
     containedInPlace: { '@type':'AdministrativeArea', name: 'Laurentides, Québec' },
     url: `${baseUrl}/guide-${city.slug}.html`,
-    description: `Guide complet ${city.name} 2026 : marché immobilier, taxes, écoles, parcs, transport — par ${courtierNote}.`
+    description: `Guide complet ${city.name} 2026 : marché immobilier, taxes, écoles, parcs, transport, par ${courtierNote}.`
   };
 
   // Pas de RealEstateAgent par ville : l'agence n'a pas de succursale dans chaque ville desservie.
@@ -268,13 +266,13 @@ function generateCity(city) {
   let html = TEMPLATE.replace(/<link rel="canonical"[^>]*>\n?/, '');
 
   // ===== HEAD : title + meta description + SEO additions =====
-  const title = `Agence immobilière ${city.name} ${city.brandName} | Vivre à ${city.name} en 2026 — Guide complet`;
-  const metaDesc = `Agence immobilière ${city.name} ${city.brandName} — Guide complet 2026 : qualité de vie, marché immobilier, parcs, transport, taxes municipales. Tout ce qu'il faut savoir pour s'installer à ${city.name}.`;
+  const title = `Agence immobilière ${city.name} ${city.brandName} | Vivre à ${city.name} en 2026 | Guide complet`;
+  const metaDesc = `Agence immobilière ${city.name} ${city.brandName}, guide complet 2026 : qualité de vie, marché immobilier, parcs, transport, taxes municipales. Tout ce qu'il faut savoir pour s'installer à ${city.name}.`;
   const ogImage = city.heroImage;
 
   // Remplace <title>
   html = html.replace(
-    /<title>Vivre à Blainville en 2026 — Guide complet \| RE\/MAX Crystal<\/title>/,
+    /<title>Vivre à Blainville en 2026 \| Guide complet \| RE\/MAX Crystal<\/title>/,
     `<title>${escapeHtml(title)}</title>`
   );
   // Remplace meta description
@@ -307,8 +305,8 @@ ${buildSeoSchema(city)}`
 
   // Hero title
   html = html.replace(
-    /<h1 class="hero-title reveal">Vivre à <em>Blainville<\/em><\/h1>/,
-    `<h1 class="hero-title reveal">Vivre à <em>${escapeHtml(city.nameEm)}</em></h1>`
+    /<h1 class="hero-title reveal">Vivre à Blainville<\/h1>/,
+    `<h1 class="hero-title reveal">Vivre à ${escapeHtml(city.nameEm)}</h1>`
   );
 
   // Hero subtitle
@@ -364,8 +362,8 @@ ${buildSeoSchema(city)}`
 
   // ===== Section 01 — INTRO =====
   html = html.replace(
-    /<h2 class="section-heading reveal">Pourquoi les familles <em>adorent<\/em> Blainville<\/h2>[\s\S]*?<div class="intro-grid">[\s\S]*?<\/div>\s*<\/section>/,
-    `<h2 class="section-heading reveal">Pourquoi les familles <em>adorent</em> ${escapeHtml(city.nameEm)}</h2>
+    /<h2 class="section-heading reveal">Pourquoi les familles adorent Blainville<\/h2>[\s\S]*?<div class="intro-grid">[\s\S]*?<\/div>\s*<\/section>/,
+    `<h2 class="section-heading reveal">Pourquoi les familles adorent ${escapeHtml(city.nameEm)}</h2>
 
       <div class="intro-grid">
         <div class="intro-text reveal">
@@ -387,8 +385,8 @@ ${buildIntro(city.intro)}
 
   // ===== Section 02 — QUALITÉ DE VIE =====
   html = html.replace(
-    /<h2 class="section-heading reveal">Un cadre de vie <em>exceptionnel<\/em><\/h2>\s*<p class="section-intro reveal">[^<]*<\/p>\s*<div class="ql-grid">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/,
-    `<h2 class="section-heading reveal">Un cadre de vie <em>exceptionnel</em></h2>
+    /<h2 class="section-heading reveal">Un cadre de vie exceptionnel<\/h2>\s*<p class="section-intro reveal">[^<]*<\/p>\s*<div class="ql-grid">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/,
+    `<h2 class="section-heading reveal">Un cadre de vie exceptionnel</h2>
       <p class="section-intro reveal">${escapeHtml(city.qualityIntro)}</p>
 
       <div class="ql-grid">
@@ -404,8 +402,8 @@ ${buildQualityCards(city.qualityCards)}
     `<section class="section" id="marche" data-city="${city.slug}">`
   );
   html = html.replace(
-    /<h2 class="section-heading reveal">Le marché immobilier à <em>Blainville<\/em><\/h2>/,
-    `<h2 class="section-heading reveal">Le marché immobilier à <em>${escapeHtml(city.nameEm)}</em></h2>`
+    /<h2 class="section-heading reveal">Le marché immobilier à Blainville<\/h2>/,
+    `<h2 class="section-heading reveal">Le marché immobilier à ${escapeHtml(city.nameEm)}</h2>`
   );
   html = html.replace(
     /<p class="section-intro reveal">Activité résidentielle à Blainville[^<]*<\/p>/,
@@ -416,8 +414,8 @@ ${buildQualityCards(city.qualityCards)}
     `href="https://www.centris.ca/fr/outils/statistiques-immobilieres/${city.centrisRegionSlug}/${city.slug}"`
   );
   html = html.replace(
-    /<div class="stats-table-caption">Total résidentiel — Blainville<\/div>/,
-    `<div class="stats-table-caption">Total résidentiel — ${escapeHtml(city.name)}</div>`
+    /<div class="stats-table-caption">Total résidentiel à Blainville<\/div>/,
+    `<div class="stats-table-caption">Total résidentiel à ${escapeHtml(city.name)}</div>`
   );
 
   // ===== Section 04 — ÉVÉNEMENTS : lien vers le calendrier officiel de la ville =====
@@ -431,8 +429,7 @@ ${buildQualityCards(city.qualityCards)}
     /<section class="section section-dark" id="parcs">[\s\S]*?<\/section>/,
     `<section class="section section-dark" id="parcs">
     <div class="container">
-      <div class="section-eyebrow reveal">05 — Nature</div>
-      <h2 class="section-heading reveal">Parcs & <em>espaces verts</em></h2>
+      <h2 class="section-heading reveal">Parcs & espaces verts</h2>
       <p class="section-intro reveal">${escapeHtml(city.parksIntro)}</p>
 
       <div class="parks-grid">
@@ -447,8 +444,7 @@ ${buildParkCards(city)}
     /<section class="section" id="transport">[\s\S]*?<\/section>\s*<!-- ===== CTA ===== -->/,
     `<section class="section" id="transport">
     <div class="container">
-      <div class="section-eyebrow reveal">06 — Transport & accès</div>
-      <h2 class="section-heading reveal">Se déplacer depuis <em>${escapeHtml(city.nameEm)}</em></h2>
+      <h2 class="section-heading reveal">Se déplacer depuis ${escapeHtml(city.nameEm)}</h2>
       <p class="section-intro reveal">${escapeHtml(city.transportIntro)}</p>
 
       <div class="table-wrap reveal">
@@ -475,7 +471,7 @@ ${buildTransportRows(city.transportTable)}
       <!-- TABLE: Taxes & Coûts -->
       <div class="table-wrap reveal" style="margin-block-start: clamp(24px, 3vw, 40px);">
         <div class="table-header">
-          <h3>Taxes municipales & coûts de vie — Comparatif</h3>
+          <h3>Taxes municipales et coûts de vie comparés</h3>
           <span class="table-badge">Données 2026</span>
         </div>
         <table class="data-table">

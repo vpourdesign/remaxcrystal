@@ -1,5 +1,5 @@
 /* ============================================================
-   CITIES DATA — Contenu narratif des 14 guides de villes
+   CITIES DATA, Contenu narratif des 14 guides de villes
    Utilisé par build-cities.mjs pour générer guide-<slug>.html
    ============================================================ */
 window.CITIES_DATA = {
@@ -39,9 +39,9 @@ window.CITIES_DATA = {
       { icon: 'sport', title: 'Sport & loisirs', text: 'Centre d\'excellence sportive, aréna, complexe aquatique municipal et sentiers piétonniers/cyclables.', value: 'Niveau pro' },
       { icon: 'transit', title: 'Accès et transport', text: 'Carrefour des autoroutes 15 et 640, lignes EXO et accès rapide au train de banlieue de Sainte-Thérèse.', value: '25 min Mtl' }
     ],
-    parksIntro: 'Boisbriand propose un réseau de parcs urbains et un accès privilégié au Domaine Vert — un terrain de jeu naturel toute l\'année.',
+    parksIntro: 'Boisbriand propose un réseau de parcs urbains et un accès privilégié au Domaine Vert, un terrain de jeu naturel toute l\'année.',
     parks: [
-      { img: 'parc.jpg', title: 'Parc régional du Domaine Vert', desc: 'Le poumon vert de la région — ski de fond, vélo, randonnée et camping familial.' },
+      { img: 'parc.jpg', title: 'Parc régional du Domaine Vert', desc: 'Le poumon vert de la région, ski de fond, vélo, randonnée et camping familial.' },
       { img: 'parc_Blais.jpg', title: 'Parc Blais', desc: 'Jeux d\'eau, modules pour enfants et grands espaces gazonnés pour familles.' },
       { img: 'parc_Clairiere.jpg', title: 'Parc de la Clairière', desc: 'Aire de jeux ombragée et sentiers de promenade conviviaux.' },
       { img: 'parc_Desjardins.jpg', title: 'Parc Desjardins', desc: 'Terrains sportifs, espace pique-nique et installations communautaires.' },
@@ -88,17 +88,17 @@ window.CITIES_DATA = {
     tagline: 'Une ville compacte, conviviale et bien connectée, à l\'échelle humaine.',
     intro: [
       `Bois-des-Filion séduit par sa taille humaine et son ambiance villageoise. Niché entre la rivière des Mille Îles et les grands axes routiers, ce milieu de vie attire les familles qui cherchent tranquillité et proximité.`,
-      `La ville investit dans la requalification de ses parcs et de ses berges. Les sentiers, jeux d'eau et installations familiales y sont entretenus avec soin — un cadre rare pour une municipalité de cette taille.`,
+      `La ville investit dans la requalification de ses parcs et de ses berges. Les sentiers, jeux d'eau et installations familiales y sont entretenus avec soin, un cadre rare pour une municipalité de cette taille.`,
       `À deux pas de Laval et de l'autoroute 640, Bois-des-Filion offre l'équilibre parfait entre prix accessibles, services de proximité et accès rapide aux grandes destinations métropolitaines.`
     ],
     qualityIntro: 'Bois-des-Filion mise sur la convivialité, les espaces verts revitalisés et une connectivité optimale.',
     qualityCards: [
       { icon: 'park', title: 'Berges revitalisées', text: 'Accès aménagé à la rivière des Mille Îles, sentiers riverains et points de vue uniques.', value: 'Riveraine' },
-      { icon: 'commerce', title: 'Services de proximité', text: 'Tous les services essentiels au cœur du village — épiceries, pharmacies, restos.', value: 'À pied' },
+      { icon: 'commerce', title: 'Services de proximité', text: 'Tous les services essentiels au cœur du village, épiceries, pharmacies, restos.', value: 'À pied' },
       { icon: 'sport', title: 'Parcs & loisirs', text: 'Réseau de parcs récents, jeux d\'eau, terrains sportifs et programmation municipale active.', value: '15+ parcs' },
       { icon: 'transit', title: 'Connexion routière', text: 'À la jonction de la 335 et de la 640. Accès direct à Laval, Terrebonne et Boisbriand.', value: '5 min A-640' }
     ],
-    parksIntro: 'Le réseau de parcs de Bois-des-Filion s\'étire le long de la rivière des Mille Îles — un terrain de jeu nature étonnamment dense.',
+    parksIntro: 'Le réseau de parcs de Bois-des-Filion s\'étire le long de la rivière des Mille Îles, un terrain de jeu nature étonnamment dense.',
     parks: [
       { img: 'parc1.jpg', title: 'Parc Bourbonnais', desc: 'Le grand parc familial avec jeux d\'eau, terrains sportifs et aire de pique-nique.' },
       { img: 'parc2.jpg', title: 'Parc des Patriotes', desc: 'Sentiers ombragés, espace gazonné et accès à la rivière des Mille Îles.' },
@@ -147,12 +147,12 @@ window.CITIES_DATA = {
     tagline: 'Vivre au bord du lac des Deux Montagnes, à 30 min de Montréal grâce au REM.',
     intro: [
       `Deux-Montagnes combine l'ambiance bord-de-lac à une connectivité métropolitaine de pointe. La gare terminus du REM en fait l'une des villes les plus accessibles de la Rive-Nord, sans renoncer à un cadre de vie résidentiel paisible.`,
-      `Les rues bordées d'arbres matures, les anciennes maisons de villégiature et les nouveaux développements riverains donnent à la ville un caractère unique — entre patrimoine et modernité.`,
+      `Les rues bordées d'arbres matures, les anciennes maisons de villégiature et les nouveaux développements riverains donnent à la ville un caractère unique, entre patrimoine et modernité.`,
       `Avec son accès direct à la plage municipale, ses quais publics et son parc linéaire, Deux-Montagnes attire les familles qui veulent vivre la villégiature au quotidien.`
     ],
     qualityIntro: 'Deux-Montagnes mise sur le REM, la proximité du lac et un cadre résidentiel patrimonial soigné.',
     qualityCards: [
-      { icon: 'transit', title: 'REM (terminus)', text: 'Gare terminus du Réseau express métropolitain — 30 min jusqu\'au centre-ville de Montréal, sans bouchon.', value: '30 min Mtl' },
+      { icon: 'transit', title: 'REM (terminus)', text: 'Gare terminus du Réseau express métropolitain, 30 min jusqu\'au centre-ville de Montréal, sans bouchon.', value: '30 min Mtl' },
       { icon: 'park', title: 'Lac des Deux Montagnes', text: 'Accès direct au lac : plage municipale, quais publics, marina et parc linéaire de 6 km.', value: '6 km riverain' },
       { icon: 'commerce', title: 'Vie de quartier', text: 'Restos, cafés, boutiques locales et services concentrés autour du chemin Oka et du quartier de la gare.', value: 'À pied' },
       { icon: 'sport', title: 'Sports nautiques', text: 'Voile, planche à voile, kayak, paddle. La ville est un point d\'ancrage pour les activités nautiques.', value: 'Toute l\'année' }
@@ -163,7 +163,7 @@ window.CITIES_DATA = {
       { img: 'parc2.jpg', title: 'Parc Central', desc: 'Espace patrimonial bordé d\'arbres centenaires au cœur de la ville.' },
       { img: 'parc3.jpg', title: 'Parc des Récollets', desc: 'Accès au lac, aire de pique-nique et sentier riverain.' },
       { img: 'parc4.jpg', title: 'Parc Édifice Gagné', desc: 'Sentiers, modules et zone gazonnée pour familles.' },
-      { img: 'parc5.jpg', title: 'Parc linéaire des berges', desc: 'Promenade de 6 km au bord du lac — incontournable.' }
+      { img: 'parc5.jpg', title: 'Parc linéaire des berges', desc: 'Promenade de 6 km au bord du lac, incontournable.' }
     ],
     natureExtraImg: '_cole_Polyvalente_Deux-Montagnes.jpg',
     natureExtraAlt: 'École polyvalente Deux-Montagnes',
@@ -205,9 +205,9 @@ window.CITIES_DATA = {
     ],
     tagline: 'Une ville-parc d\'exception, conçue comme un grand jardin résidentiel.',
     intro: [
-      `Lorraine est unique au Québec. Conçue dans les années 1960 comme une ville-jardin, elle préserve un couvert forestier exceptionnel — chaque rue, chaque terrain, chaque sentier respire la nature.`,
+      `Lorraine est unique au Québec. Conçue dans les années 1960 comme une ville-jardin, elle préserve un couvert forestier exceptionnel, chaque rue, chaque terrain, chaque sentier respire la nature.`,
       `Ce caractère résidentiel haut de gamme attire une population stable, fidèle et fortement engagée dans sa communauté. Les propriétés se transmettent souvent de génération en génération.`,
-      `Avec son centre culturel, ses sentiers boisés et sa proximité de l'autoroute 640, Lorraine offre une qualité de vie rare — confidentielle, naturelle et résolument familiale.`
+      `Avec son centre culturel, ses sentiers boisés et sa proximité de l'autoroute 640, Lorraine offre une qualité de vie rare, confidentielle, naturelle et résolument familiale.`
     ],
     qualityIntro: 'Lorraine se distingue par son urbanisme forestier, son caractère résidentiel exclusif et la qualité de ses installations.',
     qualityCards: [
@@ -219,7 +219,7 @@ window.CITIES_DATA = {
     parksIntro: 'À Lorraine, la nature pénètre chaque quartier. Les sentiers et parcs sont littéralement intégrés au tissu résidentiel.',
     parks: [
       { img: 'parc1.jpg', title: 'Parc du Grand-Côteau', desc: 'Sentiers boisés et terrains familiaux au cœur du quartier nord.' },
-      { img: 'parc2.jpg', title: 'Parc équestre régional', desc: 'Vaste espace partagé avec Blainville — sentiers et activités équestres.' },
+      { img: 'parc2.jpg', title: 'Parc équestre régional', desc: 'Vaste espace partagé avec Blainville, sentiers et activités équestres.' },
       { img: 'parc3.png', title: 'Parc des Cerfs', desc: 'Aire de jeux et zone boisée à l\'ambiance forestière préservée.' }
     ],
     natureExtraImg: 'share.jpg',
@@ -234,7 +234,7 @@ window.CITIES_DATA = {
     ],
     taxKey: 'lorraine',
     taxCompare: ['lorraine', 'rosemere', 'boisdesfillions', 'stetherese'],
-    ctaTagline: 'Nos courtiers connaissent Lorraine — ses rues sinueuses, ses propriétés patrimoniales, son marché confidentiel. Parlons-en.',
+    ctaTagline: 'Nos courtiers connaissent Lorraine, ses rues sinueuses, ses propriétés patrimoniales, son marché confidentiel. Parlons-en.',
     seoKeywords: ['agence immobilière Lorraine','courtier immobilier Lorraine','maison à vendre Lorraine','vivre à Lorraine','ville-jardin Lorraine','guide Lorraine 2026']
   },
 
@@ -262,13 +262,13 @@ window.CITIES_DATA = {
     ],
     tagline: 'Près de 485 km² entre développement, agriculture et grands espaces.',
     intro: [
-      `Mirabel est la plus grande ville en superficie au Québec — 485 km² qui regroupent secteurs urbains, zones agricoles, forêts et parcs industriels. Cette diversité géographique en fait une ville unique, où l'on peut choisir son style de vie.`,
+      `Mirabel est la plus grande ville en superficie au Québec, 485 km² qui regroupent secteurs urbains, zones agricoles, forêts et parcs industriels. Cette diversité géographique en fait une ville unique, où l'on peut choisir son style de vie.`,
       `Les secteurs Saint-Janvier, Saint-Augustin et Saint-Canut offrent des développements résidentiels modernes prisés par les jeunes familles. Saint-Benoît, Sainte-Scholastique et Saint-Hermas préservent un caractère rural et agricole.`,
       `Avec son accès direct aux autoroutes 15 et 50, ses pôles industriels stratégiques et son taux résidentiel compétitif, Mirabel attire chaque année les acheteurs qui recherchent valeur, espace et accessibilité.`
     ],
-    qualityIntro: 'Mirabel offre la rare combinaison de neuf, d\'espace et de prix abordables — avec services modernes.',
+    qualityIntro: 'Mirabel offre la rare combinaison de neuf, d\'espace et de prix abordables, avec services modernes.',
     qualityCards: [
-      { icon: 'park', title: 'Grands espaces', text: 'Forêts, terres agricoles, parcs régionaux et sentiers — Mirabel respire la nature à grande échelle.', value: '485 km²' },
+      { icon: 'park', title: 'Grands espaces', text: 'Forêts, terres agricoles, parcs régionaux et sentiers, Mirabel respire la nature à grande échelle.', value: '485 km²' },
       { icon: 'commerce', title: 'Développement résidentiel', text: 'De nouveaux quartiers à Saint-Janvier, Saint-Augustin et Saint-Canut. Choix de neuf accessible.', value: 'Neuf actif' },
       { icon: 'sport', title: 'Sport & loisirs', text: 'Aréna, bibliothèques, terrains sportifs et programmation municipale étoffée.', value: 'Réseau étendu' },
       { icon: 'transit', title: 'Connectivité', text: 'Carrefour des autoroutes 15 et 50. Accès rapide à Saint-Jérôme, Blainville et Laval.', value: '40 min Mtl' }
@@ -277,7 +277,7 @@ window.CITIES_DATA = {
     parks: [
       { img: 'parc1.jpg', title: 'Parc du Domaine Vert (nord)', desc: 'Continuité du Domaine Vert : sentiers, ski de fond, vélo et activités familiales.' },
       { img: 'parc2.jpg', title: 'Parc du Centre culturel', desc: 'Espace central animé, lieu d\'événements et de rassemblement.' },
-      { img: 'parc3.jpg', title: 'Parc régional du Bois-de-Belle-Rivière', desc: 'Grand site nature à proximité — randonnée, vélo et observation.' },
+      { img: 'parc3.jpg', title: 'Parc régional du Bois-de-Belle-Rivière', desc: 'Grand site nature à proximité, randonnée, vélo et observation.' },
       { img: 'parc4.jpg', title: 'Parc Saint-Augustin', desc: 'Aire familiale, modules et terrains sportifs au cœur du secteur.' },
       { img: 'parc5.jpg', title: 'Sentier des Patriotes', desc: 'Promenade historique reliant plusieurs secteurs ruraux.' }
     ],
@@ -293,7 +293,7 @@ window.CITIES_DATA = {
     ],
     taxKey: 'mirabel',
     taxCompare: ['mirabel', 'st-janvier', 'stesophie', 'blainville'],
-    ctaTagline: 'Nos courtiers connaissent les secteurs de Mirabel — du développement neuf au charme rural. Parlons de votre projet.',
+    ctaTagline: 'Nos courtiers connaissent les secteurs de Mirabel, du développement neuf au charme rural. Parlons de votre projet.',
     seoKeywords: ['agence immobilière Mirabel','courtier immobilier Mirabel','maison à vendre Mirabel','vivre à Mirabel','guide Mirabel 2026','Saint-Augustin Mirabel','Saint-Canut']
   },
 
@@ -323,7 +323,7 @@ window.CITIES_DATA = {
     intro: [
       `Oka est un joyau patrimonial des Basses-Laurentides. Sa position privilégiée entre le parc national d'Oka, le lac des Deux Montagnes et l'abbaye cistercienne lui confère une identité unique au Québec.`,
       `Les rues riveraines, les anciennes maisons de villégiature et les vergers de pommes définissent l'âme du village. C'est l'endroit idéal pour ceux qui rêvent d'une vie au rythme des saisons, en bord d'eau.`,
-      `La plage d'Oka, la Pure Lavande à proximité et l'accès direct au parc national en font une destination prisée — mais Oka reste avant tout un milieu de vie discret, recherché par les amoureux de nature.`
+      `La plage d'Oka, la Pure Lavande à proximité et l'accès direct au parc national en font une destination prisée, mais Oka reste avant tout un milieu de vie discret, recherché par les amoureux de nature.`
     ],
     qualityIntro: 'Oka offre une qualité de vie exceptionnelle, entre patrimoine, plein air et calme villageois.',
     qualityCards: [
@@ -334,15 +334,15 @@ window.CITIES_DATA = {
     ],
     parksIntro: 'À Oka, parcs et nature se confondent. Le parc national d\'Oka définit le paysage et le rythme de vie.',
     parks: [
-      { img: 'parc.jpg', title: 'Parc national d\'Oka', desc: 'Plage, sentiers de randonnée, vélo, camping et activités nautiques — un incontournable.' },
+      { img: 'parc.jpg', title: 'Parc national d\'Oka', desc: 'Plage, sentiers de randonnée, vélo, camping et activités nautiques, un incontournable.' },
       { img: 'parc1.jpg', title: 'Plage municipale', desc: 'Accès au lac des Deux Montagnes pour la baignade et les sports nautiques.' },
       { img: 'parc2.jpg', title: 'Parc Optimiste', desc: 'Espace familial au cœur du village avec modules et terrains sportifs.' },
-      { img: 'parc3.jpg', title: 'Sentier du Calvaire', desc: 'Sentier patrimonial menant aux croix du Calvaire — vue panoramique sur le lac.' },
+      { img: 'parc3.jpg', title: 'Sentier du Calvaire', desc: 'Sentier patrimonial menant aux croix du Calvaire, vue panoramique sur le lac.' },
       { img: 'parc4.jpg', title: 'Abbaye et vergers', desc: 'Sentiers ouverts au public dans l\'ancien domaine de l\'abbaye cistercienne.' }
     ],
     natureExtraImg: 'Plage_d\'Oka.jpg',
     natureExtraAlt: 'Plage d\'Oka',
-    transportIntro: 'Oka est accessible par la route 344 et la 640 — discrète mais bien reliée à la Rive-Nord.',
+    transportIntro: 'Oka est accessible par la route 344 et la 640, discrète mais bien reliée à la Rive-Nord.',
     transportTable: [
       { dest: 'Centre-ville de Montréal', car: '45 – 55 min', train: '—', dist: '50 km', access: 'A-640 / Rte 344' },
       { dest: 'Saint-Eustache', car: '15 min', train: '—', dist: '14 km', access: 'Rte 344' },
@@ -352,7 +352,7 @@ window.CITIES_DATA = {
     ],
     taxKey: 'oka',
     taxCompare: ['oka', 'pointecalumet', 'steustache', 'deuxmontagnes'],
-    ctaTagline: 'Nos courtiers connaissent Oka — son village, ses berges, son marché distinctif. Parlons-en.',
+    ctaTagline: 'Nos courtiers connaissent Oka, son village, ses berges, son marché distinctif. Parlons-en.',
     seoKeywords: ['agence immobilière Oka','courtier immobilier Oka','maison à vendre Oka','vivre à Oka','parc national Oka','guide Oka 2026']
   },
 
@@ -381,7 +381,7 @@ window.CITIES_DATA = {
     tagline: 'Une petite ville d\'eau, vivante et conviviale, en bord du lac des Deux Montagnes.',
     intro: [
       `Pointe-Calumet est une municipalité riveraine qui cultive son ambiance estivale. Connue pour le Super Aqua Club et ses accès au lac, elle attire les familles qui rêvent de pouvoir marcher jusqu'à la plage.`,
-      `Les rues compactes, les chalets devenus résidences permanentes et les développements modernes coexistent — un mélange qui donne à la ville son caractère décontracté et accessible.`,
+      `Les rues compactes, les chalets devenus résidences permanentes et les développements modernes coexistent, un mélange qui donne à la ville son caractère décontracté et accessible.`,
       `Avec la digue piétonnière de Sainte-Marthe à proximité et la 344 qui longe le lac, Pointe-Calumet offre une qualité de vie villégiature à un prix encore raisonnable.`
     ],
     qualityIntro: 'Pointe-Calumet, c\'est l\'esprit estival au quotidien, avec une vraie vie de quartier.',
@@ -408,7 +408,7 @@ window.CITIES_DATA = {
     ],
     taxKey: 'pointecalumet',
     taxCompare: ['pointecalumet', 'stemarthe', 'oka', 'deuxmontagnes'],
-    ctaTagline: 'Nos courtiers connaissent Pointe-Calumet — ses rues, son lac, son ambiance. Parlons de votre projet.',
+    ctaTagline: 'Nos courtiers connaissent Pointe-Calumet, ses rues, son lac, son ambiance. Parlons de votre projet.',
     seoKeywords: ['agence immobilière Pointe-Calumet','courtier immobilier Pointe-Calumet','maison à vendre Pointe-Calumet','vivre à Pointe-Calumet','guide Pointe-Calumet 2026']
   },
 
@@ -438,13 +438,13 @@ window.CITIES_DATA = {
     intro: [
       `Rosemère est l'une des villes les plus prestigieuses des Basses-Laurentides. Reconnue pour son urbanisme soigné, son couvert forestier et ses propriétés haut de gamme, elle attire une clientèle exigeante depuis des décennies.`,
       `Le club de golf, les rues bordées d'arbres centenaires et les propriétés riveraines de la rivière des Mille Îles définissent l'identité de la ville. Chaque quartier respire le soin et le caractère.`,
-      `Avec sa bibliothèque réputée, ses sentiers et ses écoles convoitées, Rosemère reste un milieu de vie familial premium — discret, raffiné et solidement ancré dans son histoire.`
+      `Avec sa bibliothèque réputée, ses sentiers et ses écoles convoitées, Rosemère reste un milieu de vie familial premium, discret, raffiné et solidement ancré dans son histoire.`
     ],
     qualityIntro: 'Rosemère se distingue par son urbanisme arborescent, ses propriétés de prestige et un mode de vie résidentiel cossu.',
     qualityCards: [
       { icon: 'park', title: 'Couvert forestier', text: 'Une des villes les plus arborescentes du Québec. Rues bordées d\'érables matures, parcs intégrés.', value: 'Vert dense' },
       { icon: 'sport', title: 'Golf & loisirs', text: 'Club de golf Rosemère, sentiers riverains, terrains sportifs et programmation culturelle.', value: 'Club privé' },
-      { icon: 'commerce', title: 'Quartiers de prestige', text: 'Riviera, Bourbonnière, Hautbois — chacun avec son caractère et ses propriétés signatures.', value: 'Premium' },
+      { icon: 'commerce', title: 'Quartiers de prestige', text: 'Riviera, Bourbonnière, Hautbois, chacun avec son caractère et ses propriétés signatures.', value: 'Premium' },
       { icon: 'transit', title: 'Connectivité', text: 'Gare EXO sur la ligne Saint-Jérôme. A-640 à proximité. 35 min de Montréal.', value: '35 min Mtl' }
     ],
     parksIntro: 'Le réseau de parcs de Rosemère longe la rivière des Mille Îles et tisse un cadre vert continu.',
@@ -497,12 +497,12 @@ window.CITIES_DATA = {
     tagline: 'Le pôle vivant de Mirabel : développement résidentiel, services et accessibilité.',
     intro: [
       `Saint-Janvier est le secteur le plus dynamique de Mirabel. C'est ici que se concentrent les écoles, les commerces, l'aréna et la majorité des nouveaux projets résidentiels.`,
-      `Les développements neufs y abondent — maisons familiales, jumelés, condos — à des prix encore compétitifs comparativement aux villes plus au sud. Le secteur attire jeunes familles et primo-acheteurs.`,
+      `Les développements neufs y abondent, maisons familiales, jumelés, condos, à des prix encore compétitifs comparativement aux villes plus au sud. Le secteur attire jeunes familles et primo-acheteurs.`,
       `Avec son accès direct à l'autoroute 15 et sa proximité de Blainville et de Saint-Jérôme, Saint-Janvier offre l'équilibre rare entre prix, services et accessibilité.`
     ],
     qualityIntro: 'Saint-Janvier offre des quartiers neufs, des services modernes et une connectivité solide.',
     qualityCards: [
-      { icon: 'park', title: 'Parcs récents', text: 'De nombreux parcs intégrés aux nouveaux quartiers — jeux d\'eau, modules, terrains sportifs.', value: 'Modernes' },
+      { icon: 'park', title: 'Parcs récents', text: 'De nombreux parcs intégrés aux nouveaux quartiers, jeux d\'eau, modules, terrains sportifs.', value: 'Modernes' },
       { icon: 'commerce', title: 'Services concentrés', text: 'Le pôle commercial de Mirabel : épiceries, restos, pharmacies, services médicaux et bancaires.', value: 'Tout sur place' },
       { icon: 'sport', title: 'Aréna & loisirs', text: 'Aréna municipal, complexe sportif et programmation jeunesse étoffée.', value: 'Familial' },
       { icon: 'transit', title: 'Accès A-15', text: 'Sortie autoroutière directe. À 10 min de Blainville, 15 min de Saint-Jérôme.', value: '45 min Mtl' }
@@ -556,7 +556,7 @@ window.CITIES_DATA = {
     intro: [
       `Sainte-Anne-des-Plaines a su préserver son âme rurale tout en se développant. Ses champs, vergers et zones agricoles font partie intégrante du paysage municipal.`,
       `Le noyau villageois autour de l'église et de la rue Principale conserve un caractère patrimonial fort. Les nouveaux quartiers s'intègrent dans ce tissu sans le dénaturer.`,
-      `Avec son accès rapide à la 640 et à Terrebonne, la ville attire les acheteurs qui veulent l'espace, le calme et la proximité métropolitaine — tout en gardant un budget raisonnable.`
+      `Avec son accès rapide à la 640 et à Terrebonne, la ville attire les acheteurs qui veulent l'espace, le calme et la proximité métropolitaine, tout en gardant un budget raisonnable.`
     ],
     qualityIntro: 'Sainte-Anne-des-Plaines, c\'est l\'équilibre rare entre caractère rural et services modernes.',
     qualityCards: [
@@ -571,11 +571,11 @@ window.CITIES_DATA = {
       { img: 'parc2.jpg', title: 'Parc des Patriotes', desc: 'Sentiers boisés et zone gazonnée prisée par les familles.' },
       { img: 'parc3.jpg', title: 'Parc Bonneville', desc: 'Aire de jeux et terrain de soccer au cœur du quartier.' },
       { img: 'parc4.jpg', title: 'Parc des Sapins', desc: 'Zone forestière préservée pour la marche et la détente.' },
-      { img: 'parc5.jpg', title: 'Parc rural', desc: 'Espace ouvert près des terres agricoles — pique-nique et observation.' }
+      { img: 'parc5.jpg', title: 'Parc rural', desc: 'Espace ouvert près des terres agricoles, pique-nique et observation.' }
     ],
     natureExtraImg: 'Ancien_couvent_de_Sainte-Anne-des-Plaines_03.JPG',
     natureExtraAlt: 'Ancien couvent de Sainte-Anne-des-Plaines',
-    transportIntro: 'Sainte-Anne-des-Plaines est branchée à la 640 — accès rapide à Terrebonne, Laval et Montréal.',
+    transportIntro: 'Sainte-Anne-des-Plaines est branchée à la 640, accès rapide à Terrebonne, Laval et Montréal.',
     transportTable: [
       { dest: 'Centre-ville de Montréal', car: '35 – 45 min', train: '—', dist: '38 km', access: 'A-640 / A-15' },
       { dest: 'Terrebonne', car: '10 min', train: '—', dist: '10 km', access: 'A-640' },
@@ -585,7 +585,7 @@ window.CITIES_DATA = {
     ],
     taxKey: 'steannedesplaines',
     taxCompare: ['steannedesplaines', 'blainville', 'boisbriand', 'stetherese'],
-    ctaTagline: 'Nos courtiers connaissent Sainte-Anne-des-Plaines — son village, ses champs, ses nouveaux quartiers. Parlons-en.',
+    ctaTagline: 'Nos courtiers connaissent Sainte-Anne-des-Plaines, son village, ses champs, ses nouveaux quartiers. Parlons-en.',
     seoKeywords: ['agence immobilière Sainte-Anne-des-Plaines','courtier immobilier Sainte-Anne-des-Plaines','maison à vendre Sainte-Anne-des-Plaines','vivre à Sainte-Anne-des-Plaines','guide Sainte-Anne-des-Plaines 2026']
   },
 
@@ -626,7 +626,7 @@ window.CITIES_DATA = {
     ],
     parksIntro: 'Sainte-Marthe-sur-le-Lac mise sur ses berges et sur un réseau de parcs intégrés aux quartiers.',
     parks: [
-      { img: 'parc1.jpg', title: 'Promenade de la Digue', desc: 'Parcours phare de 7 km au bord du lac — piéton, cycliste, panoramique.' },
+      { img: 'parc1.jpg', title: 'Promenade de la Digue', desc: 'Parcours phare de 7 km au bord du lac, piéton, cycliste, panoramique.' },
       { img: 'parc2.jpg', title: 'Parc Riviera', desc: 'Aire familiale au cœur du quartier riverain.' },
       { img: 'parc3.jpg', title: 'Parc des Anges', desc: 'Modules récents, terrains sportifs et zone de détente.' },
       { img: 'parc4.jpg', title: 'Parc Belisle', desc: 'Espace ombragé et aire de jeux pour familles.' },
@@ -672,7 +672,7 @@ window.CITIES_DATA = {
     ],
     tagline: 'Espaces verts, lacs et développements neufs dans le sud des Laurentides, voisine de Saint-Jérôme.',
     intro: [
-      `Sainte-Sophie est l'une des municipalités les plus étendues des Laurentides. Forêts, lacs et terrains résidentiels y cohabitent — un milieu de vie pensé pour ceux qui cherchent l'espace.`,
+      `Sainte-Sophie est l'une des municipalités les plus étendues des Laurentides. Forêts, lacs et terrains résidentiels y cohabitent, un milieu de vie pensé pour ceux qui cherchent l'espace.`,
       `La ville connaît une croissance soutenue depuis une décennie. Les nouveaux développements attirent des jeunes familles qui veulent profiter de la nature sans s'éloigner trop des grands axes.`,
       `Avec son accès à la 158, à la 117 et à proximité immédiate de Saint-Jérôme, Sainte-Sophie offre l'équilibre entre village, nature et services régionaux.`
     ],
@@ -702,7 +702,7 @@ window.CITIES_DATA = {
     ],
     taxKey: 'stesophie',
     taxCompare: ['stesophie', 'mirabel', 'st-janvier', 'steannedesplaines'],
-    ctaTagline: 'Nos courtiers connaissent Sainte-Sophie — ses lacs, ses forêts, ses nouveaux quartiers. Parlons-en.',
+    ctaTagline: 'Nos courtiers connaissent Sainte-Sophie, ses lacs, ses forêts, ses nouveaux quartiers. Parlons-en.',
     seoKeywords: ['agence immobilière Sainte-Sophie','courtier immobilier Sainte-Sophie','maison à vendre Sainte-Sophie','vivre à Sainte-Sophie','guide Sainte-Sophie 2026']
   },
 
@@ -732,12 +732,12 @@ window.CITIES_DATA = {
     intro: [
       `Sainte-Thérèse est le pôle culturel des Basses-Laurentides. Le Vieux-Sainte-Thérèse, la Place du Village et le Cégep Lionel-Groulx en font une ville à la fois patrimoniale, jeune et animée.`,
       `Sa gare de train EXO est l'un des grands atouts de la ville : 30 minutes jusqu'au centre-ville de Montréal, sans bouchon. C'est rare et précieux sur la Rive-Nord.`,
-      `Le mélange de propriétés patrimoniales, de condos modernes et de quartiers familiaux donne à Sainte-Thérèse un caractère unique — vivant, accessible et solidement ancré dans son histoire.`
+      `Le mélange de propriétés patrimoniales, de condos modernes et de quartiers familiaux donne à Sainte-Thérèse un caractère unique, vivant, accessible et solidement ancré dans son histoire.`
     ],
     qualityIntro: 'Sainte-Thérèse offre la rare combinaison de patrimoine, culture, transport en commun et vie urbaine de quartier.',
     qualityCards: [
       { icon: 'park', title: 'Vieux-Sainte-Thérèse', text: 'Cœur patrimonial vivant : Place du Village, terrasses, boutiques, programmation culturelle.', value: 'Marche' },
-      { icon: 'transit', title: 'Train EXO', text: 'Gare sur la ligne Saint-Jérôme — 30 min jusqu\'au centre-ville de Montréal.', value: '30 min Mtl' },
+      { icon: 'transit', title: 'Train EXO', text: 'Gare sur la ligne Saint-Jérôme, 30 min jusqu\'au centre-ville de Montréal.', value: '30 min Mtl' },
       { icon: 'commerce', title: 'Vie urbaine', text: 'Restos, cafés, théâtres, cinémas, bibliothèque moderne. La culture est partout.', value: 'Urbaine' },
       { icon: 'sport', title: 'Cégep & jeunesse', text: 'Cégep Lionel-Groulx, complexes sportifs et programmation étudiante dynamique.', value: 'Animée' }
     ],
@@ -747,10 +747,10 @@ window.CITIES_DATA = {
       { img: 'parc2.jpg', title: 'Parc Richelieu', desc: 'Aire de jeux et zone gazonnée intégrée au quartier résidentiel.' },
       { img: 'parc3.jpg', title: 'Parc de la Gare', desc: 'Espace urbain animé près de la station EXO.' },
       { img: 'parc4.jpg', title: 'Parc Ducharme', desc: 'Sentiers ombragés et aire de pique-nique familiale.' },
-      { img: 'parc5.jpg', title: 'Place du Village', desc: 'Le cœur patrimonial de la ville — événements, marché public et animation.' }
+      { img: 'parc5.jpg', title: 'Place du Village', desc: 'Le cœur patrimonial de la ville, événements, marché public et animation.' }
     ],
     natureExtraImg: 'showcase-map-cta.jpg',
-    natureExtraAlt: 'Sainte-Thérèse — quartier patrimonial',
+    natureExtraAlt: 'Sainte-Thérèse, quartier patrimonial',
     transportIntro: 'Sainte-Thérèse est l\'une des villes les mieux desservies par le transport collectif sur la Rive-Nord.',
     transportTable: [
       { dest: 'Centre-ville de Montréal', car: '30 – 40 min', train: '30 min', dist: '30 km', access: 'A-15 / A-640' },
@@ -800,7 +800,7 @@ window.CITIES_DATA = {
       { icon: 'sport', title: 'Sports & loisirs', text: 'Aréna, complexe aquatique, théâtre, bibliothèque moderne. Programmation très riche.', value: 'Multiple' },
       { icon: 'transit', title: 'A-13 direct', text: 'Connexion directe à l\'autoroute 13. 30 min de Montréal, aéroport YUL en 25 min.', value: '30 min Mtl' }
     ],
-    parksIntro: 'Saint-Eustache propose un grand réseau de parcs — du parc rivière au sentier patriote.',
+    parksIntro: 'Saint-Eustache propose un grand réseau de parcs, du parc rivière au sentier patriote.',
     parks: [
       { img: 'parc1.jpg', title: 'Parc de la Rivière du Chêne', desc: 'Le grand parc nature : sentiers, ponts, observation de la faune.' },
       { img: 'parc2.jpg', title: 'Parc Lavallée', desc: 'Aire familiale centrale avec modules et terrains sportifs.' },
@@ -818,7 +818,7 @@ window.CITIES_DATA = {
     ],
     taxKey: 'steustache',
     taxCompare: ['steustache', 'deuxmontagnes', 'boisbriand', 'stemarthe'],
-    ctaTagline: 'Nos courtiers connaissent Saint-Eustache — son Vieux-Village, ses quartiers, ses opportunités. Parlons-en.',
+    ctaTagline: 'Nos courtiers connaissent Saint-Eustache, son Vieux-Village, ses quartiers, ses opportunités. Parlons-en.',
     seoKeywords: ['agence immobilière Saint-Eustache','courtier immobilier Saint-Eustache','maison à vendre Saint-Eustache','vivre à Saint-Eustache','Vieux-Saint-Eustache','guide Saint-Eustache 2026']
   }
 
