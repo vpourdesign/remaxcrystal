@@ -550,9 +550,9 @@ window.CITIES_DATA = {
       { value: '15 800+', label: 'Résidents' },
       { value: '20+', label: 'Parcs & espaces verts' },
       { value: '3', label: 'Écoles primaires' },
-      { value: 'A-640', label: 'Accès rapide' }
+      { value: 'R-335', label: 'Vers A-640 et A-19' }
     ],
-    tagline: 'Un caractère rural préservé, à 30 min de Montréal et de Laval.',
+    tagline: 'Un caractère rural préservé, à 20 min de Laval et 40 min de Montréal.',
     intro: [
       `Sainte-Anne-des-Plaines a su préserver son âme rurale tout en se développant. Ses champs, vergers et zones agricoles font partie intégrante du paysage municipal.`,
       `Le noyau villageois autour de l'église et de la rue Principale conserve un caractère patrimonial fort. Les nouveaux quartiers s'intègrent dans ce tissu sans le dénaturer.`,
@@ -563,7 +563,7 @@ window.CITIES_DATA = {
       { icon: 'park', title: 'Espaces ruraux', text: 'Vergers, champs, sentiers et zones boisées. La nature fait partie du quotidien.', value: 'Vaste' },
       { icon: 'commerce', title: 'Vie villageoise', text: 'Centre-ville patrimonial, commerces de proximité et marché public saisonnier.', value: 'À pied' },
       { icon: 'sport', title: 'Sports & loisirs', text: 'Aréna, complexe sportif, sentiers cyclables et programmation jeunesse active.', value: 'Familial' },
-      { icon: 'transit', title: 'Accès A-640', text: 'À 10 min de Terrebonne, 30 min de Laval et de Montréal par la 640.', value: '30 min Mtl' }
+      { icon: 'transit', title: 'Route 335', text: 'L\'A-640 à une dizaine de minutes par la 335, Terrebonne et Laval à environ 20 min.', value: '40 min Mtl' }
     ],
     parksIntro: 'Le réseau de parcs de Sainte-Anne-des-Plaines mêle aires familiales et grands espaces ruraux.',
     parks: [
@@ -575,12 +575,12 @@ window.CITIES_DATA = {
     ],
     natureExtraImg: 'Ancien_couvent_de_Sainte-Anne-des-Plaines_03.JPG',
     natureExtraAlt: 'Ancien couvent de Sainte-Anne-des-Plaines',
-    transportIntro: 'Sainte-Anne-des-Plaines est branchée à la 640, accès rapide à Terrebonne, Laval et Montréal.',
+    transportIntro: 'Sainte-Anne-des-Plaines est traversée par la route 335, qui rejoint l\'A-640 à Bois-des-Filion et se prolonge par l\'A-19 vers Laval et Montréal.',
     transportTable: [
-      { dest: 'Centre-ville de Montréal', car: '35 – 45 min', train: '—', dist: '38 km', access: 'A-640 / A-15' },
-      { dest: 'Terrebonne', car: '10 min', train: '—', dist: '10 km', access: 'A-640' },
-      { dest: 'Laval', car: '20 min', train: '—', dist: '20 km', access: 'A-640' },
-      { dest: 'Blainville', car: '15 min', train: '—', dist: '12 km', access: 'A-640' },
+      { dest: 'Centre-ville de Montréal', car: '35 – 45 min', train: '—', dist: '38 km', access: 'R-335 / A-19' },
+      { dest: 'Terrebonne', car: '20 min', train: '—', dist: '20 km', access: 'R-335 / A-640' },
+      { dest: 'Laval', car: '20 min', train: '—', dist: '20 km', access: 'R-335 / A-19' },
+      { dest: 'Blainville', car: '15 min', train: '—', dist: '12 km', access: 'R-335 / A-640' },
       { dest: 'Aéroport YUL', car: '40 min', train: '—', dist: '42 km', access: 'A-15 / A-40' }
     ],
     taxKey: 'steannedesplaines',
