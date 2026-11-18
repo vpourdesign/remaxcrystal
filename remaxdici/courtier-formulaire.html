@@ -4,143 +4,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Votre page de courtier — Formulaire RE/MAX Crystal</title>
+<title>Votre page de courtier | Formulaire RE/MAX Crystal</title>
 <meta name="robots" content="noindex, nofollow">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy-deep:#1a2332; --navy:#1e3350; --navy-mid:#264060;
-    --blue-brand:#3578c4; --blue-light:#6ba3d9; --blue-pale:#b0cfe8;
-    --cream:#f7f5f0; --warm-white:#faf9f6; --gold:#c4a245;
-    --text-dark:#1a1f2b; --text-body:#3d4555; --text-muted:#6b7385;
-    --surface-card:#f8f9fb; --border-subtle:#e2e5eb;
-    --ok:#2e8b57; --err:#c0392b;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { font-size:16px; scroll-behavior:smooth; }
-  body { font-family:'Open Sans',sans-serif; background:var(--warm-white); color:var(--text-body); line-height:1.7; -webkit-font-smoothing:antialiased; }
-  h1,h2,h3,h4 { font-family:'Raleway',sans-serif; color:var(--text-dark); line-height:1.1; letter-spacing:-0.03em; }
-  em { font-style:italic; color:var(--blue-brand); }
-  img { display:block; max-width:100%; }
-  .container { width:min(92%,880px); margin-inline:auto; }
+/* ============================================================
+   FORMULAIRE COURTIER, design system RE/MAX Crystal
+   (design-system/DESIGN.md), mêmes jetons que le gabarit
+   courtiers/genevieve-marchand.html. Page autonome.
+   ============================================================ */
+:root {
+  --creme: #FAF9F0; --marine: #1C315E; --encre: #151A2E; --rouge: #EF2525;
+  --brume: #E0E3E8; --ardoise: #3D4555; --gris-note: #656571; --bleu: #3578C4;
+  --creme-70: color-mix(in oklch, var(--creme) 70%, transparent);
+  --creme-20: color-mix(in oklch, var(--creme) 20%, transparent);
+  --ok: #2E7D4F;
 
-  /* ===== hero ===== */
-  .form-hero { background:linear-gradient(160deg,var(--navy-deep),var(--navy) 60%,#15212f); color:#fff; padding:clamp(40px,6vw,68px) 0 clamp(30px,4vw,48px); position:relative; overflow:hidden; }
-  .form-hero::after { content:""; position:absolute; inset:0; background:radial-gradient(800px 360px at 85% 0%,rgba(53,120,196,0.25),transparent 60%); }
-  .form-hero .container { position:relative; z-index:1; }
-  .form-hero img { height:26px; margin-block-end:26px; }
-  .eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:'Raleway',sans-serif; font-size:0.74rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue-light); margin-block-end:16px; }
-  .eyebrow::before { content:""; width:26px; height:2px; background:var(--gold); }
-  .form-hero h1 { color:#fff; font-weight:300; font-size:clamp(2rem,5vw,3.1rem); letter-spacing:-0.04em; }
-  .form-hero h1 strong { font-weight:700; }
-  .form-hero p { color:rgba(255,255,255,0.82); max-width:62ch; margin-block-start:16px; font-weight:300; }
-  .form-hero .meta { margin-block-start:18px; font-size:0.84rem; color:var(--blue-pale); }
+  --affiche: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --texte: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 
-  /* ===== progress bar (sticky) ===== */
-  .progress-wrap { position:sticky; top:0; z-index:40; background:rgba(250,249,246,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--border-subtle); }
-  .progress-inner { width:min(92%,880px); margin-inline:auto; display:flex; align-items:center; gap:16px; padding-block:11px; }
-  .progress-track { flex:1; height:7px; border-radius:999px; background:var(--border-subtle); overflow:hidden; }
-  .progress-fill { height:100%; width:0%; border-radius:999px; background:linear-gradient(90deg,var(--blue-brand),var(--blue-light)); transition:width .5s cubic-bezier(.16,1,.3,1); }
-  .progress-label { font-family:'Raleway',sans-serif; font-size:0.78rem; font-weight:700; color:var(--navy); white-space:nowrap; }
-  .draft-note { font-size:0.72rem; color:var(--text-muted); white-space:nowrap; opacity:0; transition:opacity .4s; }
-  .draft-note.show { opacity:1; }
+  --fs-titre:  clamp(2.4rem, 5vw, 3.8rem);
+  --fs-h2:     clamp(1.5rem, 2.2vw, 1.9rem);
+  --fs-lead:   clamp(1.05rem, 1.25vw, 1.18rem);
+  --fs-corps:  clamp(1rem, 1.05vw, 1.0625rem);
+  --fs-label:  0.78rem;
+  --fs-petit:  0.875rem;
+  --fs-note:   0.8rem;
 
-  /* ===== body & fieldsets ===== */
-  .form-body { padding-block:clamp(36px,5vw,64px); }
-  fieldset { border:1px solid var(--border-subtle); background:#fff; border-radius:16px; padding:clamp(24px,3vw,38px); margin-block-end:26px; box-shadow:0 1px 3px rgba(35,50,70,0.04),0 10px 30px rgba(35,50,70,0.04); }
-  legend { font-family:'Raleway',sans-serif; font-weight:600; font-size:1.25rem; color:var(--text-dark); letter-spacing:-0.02em; padding:0 10px; display:flex; align-items:center; gap:12px; }
-  .legend-no { width:34px; height:34px; border-radius:10px; background:var(--navy); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:0.95rem; font-weight:600; flex-shrink:0; }
-  .legend-hint { font-size:0.9rem; color:var(--text-muted); margin-block:6px 22px; font-weight:400; }
+  --conteneur: 920px;
+  --marge: clamp(16px, 4vw, 48px);
+  --topbar: 72px;
+  --r-ui: 4px; --r-bloc: 6px;
+  --t: 200ms;
+}
 
-  .row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-  .row.three { grid-template-columns:1fr 1fr 1fr; }
-  @media (max-width:640px){ .row, .row.three { grid-template-columns:1fr; } }
-  .field { margin-block-end:18px; }
-  .field.full { grid-column:1/-1; }
-  label.flabel { display:block; font-size:0.83rem; font-weight:600; color:var(--text-dark); margin-block-end:7px; letter-spacing:0.01em; }
-  .req { color:var(--blue-brand); font-weight:700; }
-  .opt { font-weight:400; color:var(--text-muted); font-size:0.74rem; }
-  input[type=text], input[type=tel], input[type=email], input[type=url], input[type=number], select, textarea {
-    width:100%; padding:12px 14px; border:1px solid var(--border-subtle); border-radius:10px; background:var(--surface-card);
-    font-family:'Open Sans',sans-serif; font-size:0.94rem; color:var(--text-dark); transition:border-color .25s, box-shadow .25s;
-  }
-  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--blue-brand); box-shadow:0 0 0 3px rgba(53,120,196,0.12); }
-  input.invalid, select.invalid, textarea.invalid { border-color:var(--err); }
-  textarea { resize:vertical; min-height:100px; line-height:1.6; }
-  .hint { font-size:0.78rem; color:var(--text-muted); margin-block-start:6px; line-height:1.55; }
-  .hint b { color:var(--text-body); }
-  .counter { font-size:0.74rem; color:var(--text-muted); text-align:right; margin-block-start:4px; }
-  .counter.ok { color:var(--ok); }
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { background: var(--creme); color: var(--ardoise); font: 400 var(--fs-corps)/1.7 var(--texte); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+h1, h2, h3, h4 { color: var(--encre); }
+b, strong { font-weight: 600; color: var(--encre); }
+em { font-style: italic; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--marine); }
+:focus-visible { outline: 2px solid var(--bleu); outline-offset: 3px; border-radius: var(--r-ui); }
+.sombre :focus-visible { outline-color: var(--creme); }
+.container { max-width: var(--conteneur); margin-inline: auto; padding-inline: var(--marge); }
 
-  /* checkbox / radio grids */
-  .check-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-  .check-grid.two { grid-template-columns:repeat(2,1fr); }
-  @media (max-width:640px){ .check-grid, .check-grid.two { grid-template-columns:1fr 1fr; } }
-  @media (max-width:430px){ .check-grid, .check-grid.two { grid-template-columns:1fr; } }
-  .check { display:flex; align-items:center; gap:9px; padding:10px 13px; border:1px solid var(--border-subtle); border-radius:10px;
-    background:var(--surface-card); font-size:0.86rem; cursor:pointer; transition:border-color .2s, background .2s, opacity .2s; }
-  .check:hover { border-color:var(--blue-light); }
-  .check input { accent-color:var(--blue-brand); width:16px; height:16px; flex-shrink:0; }
-  .check input:checked ~ span { color:var(--text-dark); font-weight:600; }
-  .check.locked { opacity:0.45; pointer-events:none; }
+/* ===== barre du site ===== */
+.topbar { height: var(--topbar); background: var(--marine); display: flex; align-items: center; padding-inline: clamp(20px, 4vw, 48px); }
+.topbar img { height: clamp(28px, 3.5vw, 38px); width: auto; }
 
-  /* dynamic blocks */
-  .sub-block { border:1px dashed var(--border-subtle); border-radius:12px; padding:18px; margin-block-end:14px; background:var(--surface-card); }
-  .sub-block h4 { font-size:0.86rem; font-weight:700; color:var(--blue-brand); margin-block-end:12px; letter-spacing:0.05em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center; }
-  .add-btn { display:inline-flex; align-items:center; gap:7px; font-family:'Raleway',sans-serif; font-size:0.84rem; font-weight:700; color:var(--blue-brand); background:none; border:1px solid var(--blue-pale); border-radius:999px; padding:8px 18px; cursor:pointer; transition:background .25s; }
-  .add-btn:hover { background:rgba(53,120,196,0.08); }
-  .add-btn:disabled { opacity:0.4; cursor:default; }
-  .rm-btn { background:none; border:none; color:var(--text-muted); font-size:0.76rem; cursor:pointer; text-decoration:underline; }
+/* ===== hero ===== */
+.form-hero { padding-block: clamp(40px, 6vw, 80px) clamp(32px, 4vw, 56px); }
+.form-hero .container { position: relative; }
+.eyebrow { font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--marine); margin-block-end: 18px; }
+.form-hero h1 { font-family: var(--affiche); font-weight: 400; text-transform: uppercase; font-size: var(--fs-titre); line-height: 1.02; letter-spacing: 0.005em; color: var(--encre); max-width: 16ch; }
+.form-hero h1 strong { font-weight: 400; color: inherit; }
+.form-hero h1::after { content: ""; display: block; width: 36px; height: 3px; background: var(--rouge); margin-top: 18px; }
+.form-hero p { font-size: var(--fs-lead); font-weight: 500; line-height: 1.55; color: var(--encre); max-width: 62ch; margin-block-start: 22px; text-align: justify; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 10 4 4; }
+.form-hero .meta { margin-block-start: 22px; max-width: 62ch; padding: 18px 22px; border-radius: var(--r-bloc); background: var(--marine); color: var(--creme-70); font-size: var(--fs-petit); line-height: 1.6; }
+.form-hero .meta b { color: var(--creme); }
+.form-hero .ballon { position: absolute; top: 0; right: var(--marge); width: clamp(64px, 8vw, 104px); }
+@media (max-width: 680px) { .form-hero .ballon { width: 54px; top: -8px; } .form-hero h1, .form-hero .eyebrow { padding-right: 60px; } }
+@media (max-width: 480px) { .form-hero p { text-align: left; } }
 
-  /* uploads */
-  .upload { border:2px dashed var(--border-subtle); border-radius:12px; padding:20px; text-align:center; cursor:pointer; transition:border-color .25s, background .25s; background:var(--surface-card); }
-  .upload:hover { border-color:var(--blue-light); }
-  .upload.has-file { border-style:solid; border-color:var(--blue-brand); }
-  .upload input { display:none; }
-  .upload .up-icon { font-size:1.5rem; margin-block-end:4px; }
-  .upload .up-label { font-size:0.86rem; font-weight:600; color:var(--text-dark); }
-  .upload .up-specs { font-size:0.74rem; color:var(--text-muted); margin-block-start:3px; }
-  .thumbs { display:flex; gap:10px; flex-wrap:wrap; margin-block-start:12px; }
-  .thumb { position:relative; width:92px; height:66px; border-radius:8px; overflow:hidden; border:1px solid var(--border-subtle); }
-  .thumb img { width:100%; height:100%; object-fit:cover; }
-  .thumb button { position:absolute; top:3px; right:3px; width:20px; height:20px; border-radius:50%; border:none; background:rgba(26,35,50,0.75); color:#fff; font-size:0.7rem; cursor:pointer; line-height:1; }
-  .file-err { color:var(--err); font-size:0.78rem; margin-block-start:6px; display:none; }
-  .file-err.show { display:block; }
+/* ===== barre de progression (collante) ===== */
+.progress-wrap { position: sticky; top: 0; z-index: 40; background: var(--creme); box-shadow: 0 1px 0 var(--brume); }
+.progress-inner { max-width: var(--conteneur); margin-inline: auto; padding: 12px var(--marge); display: flex; align-items: center; gap: 16px; }
+.progress-track { flex: 1; height: 8px; border-radius: 999px; background: var(--brume); overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; border-radius: 999px; background: var(--marine); }
+.progress-label { font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--marine); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.draft-note { font-size: var(--fs-note); color: var(--gris-note); white-space: nowrap; opacity: 0; transition: opacity var(--t) ease; }
+.draft-note.show { opacity: 1; }
+@media (max-width: 480px) { .draft-note { display: none; } }
 
-  .consent { display:flex; gap:12px; align-items:flex-start; font-size:0.9rem; cursor:pointer; }
-  .consent input { accent-color:var(--blue-brand); width:18px; height:18px; margin-top:3px; flex-shrink:0; }
-  .consent.small { font-size:0.8rem; color:var(--text-muted); margin-block-start:8px; }
+/* ===== sections ===== */
+.form-body { padding-block: clamp(32px, 5vw, 64px) clamp(56px, 7vw, 96px); }
+fieldset { border: 0; border-top: 3px solid var(--encre); padding: clamp(28px, 3.4vw, 40px) 0 clamp(36px, 4vw, 52px); min-width: 0; }
+legend { float: left; width: 100%; display: flex; align-items: center; gap: 14px; font-family: var(--affiche); font-weight: 400; text-transform: uppercase; font-size: var(--fs-h2); line-height: 1.05; letter-spacing: 0.005em; color: var(--encre); }
+legend + * { clear: both; }
+.legend-no { flex: none; width: 38px; height: 38px; border-radius: var(--r-ui); background: var(--marine); color: var(--creme); display: inline-flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+.legend-hint { clear: both; padding-top: 14px; margin-block-end: 28px; font-size: var(--fs-petit); line-height: 1.6; max-width: 64ch; }
+.legend-hint::before { content: ""; display: block; width: 36px; height: 3px; background: var(--rouge); margin-bottom: 14px; }
 
-  /* submit */
-  .submit-row { text-align:center; margin-block-start:10px; }
-  .btn { display:inline-block; padding:15px 40px; border-radius:999px; background:var(--blue-brand); color:#fff; font-weight:600; font-family:'Raleway',sans-serif; font-size:0.98rem; border:none; cursor:pointer; transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; }
-  .btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(53,120,196,0.35); }
-  .btn:disabled { opacity:0.6; cursor:wait; transform:none; box-shadow:none; }
-  .submit-hint { font-size:0.82rem; color:var(--text-muted); margin-block-start:14px; }
-  .form-error { display:none; background:#fdf0ee; border:1px solid #eecfca; color:var(--err); border-radius:12px; padding:14px 18px; font-size:0.88rem; margin-block-end:18px; }
-  .form-error.show { display:block; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.row.three { grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 640px) { .row, .row.three { grid-template-columns: 1fr; } }
+.field { margin-block-end: 22px; }
+.field.full { grid-column: 1 / -1; }
+label.flabel { display: block; font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--encre); margin-block-end: 8px; }
+.req { color: var(--rouge); font-weight: 600; }
+.opt { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--gris-note); font-size: var(--fs-note); }
+input[type=text], input[type=tel], input[type=email], input[type=url], input[type=number], select, textarea {
+  width: 100%; min-height: 48px; padding: 12px 14px; border: 0; border-radius: var(--r-ui);
+  background: var(--creme); box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--ardoise) 35%, var(--brume));
+  font: 500 0.95rem/1.5 var(--texte); color: var(--encre);
+  transition: box-shadow var(--t) ease;
+}
+input::placeholder, textarea::placeholder { color: var(--gris-note); font-weight: 400; }
+input:hover, select:hover, textarea:hover { box-shadow: inset 0 0 0 1px var(--marine); }
+input:focus, select:focus, textarea:focus { outline: none; box-shadow: inset 0 0 0 2px var(--marine); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+input.invalid, select.invalid, textarea.invalid { box-shadow: inset 0 0 0 2px var(--rouge); }
+select { appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--marine) 50%), linear-gradient(135deg, var(--marine) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+.hint { font-size: var(--fs-note); color: var(--ardoise); margin-block-start: 8px; line-height: 1.55; }
+.hint b { color: var(--encre); }
+.counter { font-size: var(--fs-note); color: var(--gris-note); text-align: right; margin-block-start: 6px; font-variant-numeric: tabular-nums; }
+.counter.ok { color: var(--ok); font-weight: 600; }
 
-  /* success */
-  .success { display:none; background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:clamp(28px,4vw,48px); text-align:center; box-shadow:0 10px 30px rgba(35,50,70,0.06); }
-  .success.show { display:block; }
-  .success .tick { width:60px; height:60px; border-radius:50%; background:rgba(46,139,87,0.12); color:var(--ok); display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 18px; }
-  .success h2 { font-size:1.6rem; font-weight:600; margin-block-end:10px; }
-  .success p { color:var(--text-body); max-width:52ch; margin:0 auto 10px; }
-  .success .mailto { display:inline-block; margin-block-start:10px; color:var(--blue-brand); font-weight:600; text-decoration:underline; }
+/* cases et boutons radio */
+.check-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.check-grid.two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) { .check-grid, .check-grid.two { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 430px) { .check-grid, .check-grid.two { grid-template-columns: 1fr; } }
+.check { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 14px; border-radius: var(--r-ui);
+  background: var(--creme); box-shadow: inset 0 0 0 1px var(--brume); font-size: var(--fs-petit); font-weight: 500; line-height: 1.35; cursor: pointer;
+  transition: box-shadow var(--t) ease, background-color var(--t) ease, opacity var(--t) ease; }
+.check:hover { box-shadow: inset 0 0 0 1px var(--marine); }
+.check:has(input:checked) { box-shadow: inset 0 0 0 2px var(--marine); background: color-mix(in srgb, var(--marine) 6%, var(--creme)); }
+.check:has(input:focus-visible) { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.check input { accent-color: var(--marine); width: 17px; height: 17px; flex-shrink: 0; }
+.check input:checked ~ span { color: var(--encre); font-weight: 600; }
+.check.locked { opacity: 0.45; pointer-events: none; }
 
-  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-  .footer { background:var(--navy-deep); color:rgba(255,255,255,0.5); padding-block:26px; font-size:0.8rem; text-align:center; }
+/* blocs dynamiques (membres, témoignages, FAQ) */
+.sub-block { border-radius: var(--r-bloc); padding: 20px; margin-block-end: 14px; background: color-mix(in srgb, var(--brume) 55%, var(--creme)); }
+.sub-block h4 { font-size: var(--fs-label); font-weight: 600; color: var(--marine); margin-block-end: 14px; letter-spacing: 0.08em; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+.add-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 0; border-radius: var(--r-ui);
+  font: 600 var(--fs-petit)/1 var(--texte); color: var(--marine); background: transparent; box-shadow: inset 0 0 0 2px var(--marine); cursor: pointer;
+  transition: background-color var(--t) ease, color var(--t) ease; }
+.add-btn:hover { background: var(--marine); color: var(--creme); }
+.add-btn:disabled { opacity: 0.4; cursor: default; background: transparent; color: var(--marine); }
+.rm-btn { background: none; border: 0; color: var(--ardoise); font: 500 var(--fs-note)/1.4 var(--texte); text-transform: none; letter-spacing: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.rm-btn:hover { color: var(--encre); }
+
+/* téléversements */
+.upload { display: block; border-radius: var(--r-bloc); padding: 24px 20px; text-align: center; cursor: pointer; background: var(--creme);
+  box-shadow: inset 0 0 0 2px var(--brume); transition: box-shadow var(--t) ease, background-color var(--t) ease; }
+.upload:hover { box-shadow: inset 0 0 0 2px var(--marine); }
+.upload:focus-within { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.upload.has-file { box-shadow: inset 0 0 0 2px var(--marine); background: color-mix(in srgb, var(--marine) 6%, var(--creme)); }
+.upload input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.upload .up-icon { width: 28px; height: 28px; margin: 0 auto 8px; color: var(--marine); }
+.upload .up-icon svg { width: 100%; height: 100%; }
+.upload .up-label { font-size: var(--fs-petit); font-weight: 600; color: var(--encre); }
+.upload .up-specs { font-size: var(--fs-note); color: var(--gris-note); margin-block-start: 4px; }
+.thumbs { display: flex; gap: 10px; flex-wrap: wrap; margin-block-start: 12px; }
+.thumb { position: relative; width: 92px; height: 66px; border-radius: var(--r-ui); overflow: hidden; background: var(--brume); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb button { position: absolute; top: 4px; right: 4px; width: 22px; height: 22px; border-radius: var(--r-ui); border: 0; background: var(--encre); color: var(--creme); font-size: 0.7rem; cursor: pointer; line-height: 1; }
+.file-err { color: var(--encre); font-size: var(--fs-note); margin-block-start: 8px; display: none; padding-left: 12px; box-shadow: inset 3px 0 0 var(--rouge); }
+.file-err.show { display: block; }
+
+.consent { display: flex; gap: 12px; align-items: flex-start; font-size: var(--fs-petit); line-height: 1.6; cursor: pointer; }
+.consent input { accent-color: var(--marine); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; }
+.consent.small { font-size: var(--fs-note); color: var(--gris-note); margin-block-start: 10px; }
+
+/* envoi */
+.submit-row { text-align: center; padding-top: clamp(28px, 3vw, 40px); border-top: 3px solid var(--encre); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 34px; border: 0; border-radius: var(--r-ui);
+  background: var(--marine); color: var(--creme); font: 600 1rem/1 var(--texte); cursor: pointer; transition: background-color var(--t) ease; }
+.btn:hover { background: var(--encre); }
+.btn:active { background: var(--ardoise); }
+.btn:disabled { opacity: 0.6; cursor: wait; background: var(--marine); }
+.submit-hint { font-size: var(--fs-note); color: var(--gris-note); margin-block-start: 14px; }
+.form-error { display: none; background: var(--creme); box-shadow: inset 0 0 0 2px var(--rouge); color: var(--encre); border-radius: var(--r-bloc); padding: 16px 20px; font-size: var(--fs-petit); line-height: 1.6; margin-block-end: 20px; text-align: left; }
+.form-error.show { display: block; }
+
+/* confirmation */
+.success { display: none; background: var(--marine); color: var(--creme-70); border-radius: var(--r-bloc); padding: clamp(32px, 5vw, 56px); text-align: center; }
+.success.show { display: block; }
+.success .tick { width: 56px; height: 56px; border-radius: var(--r-ui); background: var(--creme); color: var(--marine); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 600; margin: 0 auto 20px; }
+.success h2 { font-family: var(--affiche); font-weight: 400; text-transform: uppercase; font-size: clamp(1.9rem, 3vw, 2.5rem); line-height: 1.05; color: var(--creme); margin-block-end: 14px; }
+.success h2::after { content: ""; display: block; width: 36px; height: 3px; background: var(--rouge); margin: 14px auto 0; }
+.success p { max-width: 52ch; margin: 0 auto 10px; }
+.success strong, .success b { color: var(--creme); }
+.success .mailto { display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; margin-block-start: 14px; border-radius: var(--r-ui); background: var(--creme); color: var(--marine); font-weight: 600; text-decoration: none; transition: background-color var(--t) ease; }
+.success .mailto:hover { background: var(--brume); }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* pied */
+.pied { background: var(--encre); color: var(--creme-70); }
+.pied .signature { display: flex; align-items: center; gap: 14px; padding-block: 26px; border-bottom: 1px solid var(--creme-20); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--creme); font-size: 0.92rem; }
+.pied .signature img { flex: none; width: 26px; height: auto; }
+.pied .legal { padding-block: 22px 28px; font-size: var(--fs-petit); }
 </style>
 </head>
 <body>
 
+  <div class="topbar"><img id="agenceLogo" src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal" width="240" height="40"></div>
+
   <header class="form-hero">
     <div class="container">
-      <img id="agenceLogo" src="brand_assets/Crystal-long-blanc-crystal.png" alt="RE/MAX Crystal">
-      <div class="eyebrow">Votre présence en ligne</div>
-      <h1>Bâtissons <strong>votre page</strong> de courtier</h1>
-      <p>Remplissez ce formulaire une seule fois — comptez 15 à 20 minutes. Avec vos réponses, nous créons votre page personnelle sur le site de l'agence : optimisée pour Google, citée par les moteurs de réponse IA (ChatGPT, Perplexity) et reliée aux guides de vos villes.</p>
-      <div class="meta">✍️ Écrivez comme vous parlez — on s'occupe de la rédaction finale. Vos réponses sont enregistrées automatiquement dans ce navigateur : vous pouvez quitter et revenir finir plus tard.</div>
+      <img class="ballon" src="brand_assets/ballon-240.webp" alt="" width="240" height="272" aria-hidden="true">
+      <p class="eyebrow">Votre présence en ligne</p>
+      <h1>Bâtissons votre page de courtier</h1>
+      <p>Remplissez ce formulaire une seule fois, comptez 15 à 20 minutes. Avec vos réponses, nous créons votre page personnelle sur le site de l'agence : optimisée pour Google, citée par les moteurs de réponse IA (ChatGPT, Perplexity) et reliée aux guides de vos villes.</p>
+      <div class="meta"><b>Écrivez comme vous parlez, on s'occupe de la rédaction finale.</b> Vos réponses sont enregistrées automatiquement dans ce navigateur : vous pouvez quitter et revenir finir plus tard.</div>
     </div>
   </header>
 
@@ -148,7 +216,7 @@
     <div class="progress-inner">
       <span class="progress-label" id="progressLabel">0 % complété</span>
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-      <span class="draft-note" id="draftNote">Brouillon enregistré ✓</span>
+      <span class="draft-note" id="draftNote">Brouillon enregistré</span>
     </div>
   </div>
 
@@ -159,13 +227,13 @@
         <!-- ============ A · IDENTITÉ ============ -->
         <fieldset id="sec-a">
           <legend><span class="legend-no">A</span> Identité</legend>
-          <div class="legend-hint">Comment vous présenter sur votre page — exactement comme sur votre permis.</div>
+          <div class="legend-hint">Comment vous présenter sur votre page, exactement comme sur votre permis.</div>
 
           <div class="field full">
             <label class="flabel">Vous travaillez… <span class="req">*</span></label>
             <div class="check-grid two">
-              <label class="check"><input type="radio" name="typeProfil" value="solo" checked><span>Seul(e) — page à mon nom</span></label>
-              <label class="check"><input type="radio" name="typeProfil" value="equipe"><span>En équipe — page d'équipe</span></label>
+              <label class="check"><input type="radio" name="typeProfil" value="solo" checked><span>Seul(e) : page à mon nom</span></label>
+              <label class="check"><input type="radio" name="typeProfil" value="equipe"><span>En équipe : page d'équipe</span></label>
             </div>
           </div>
 
@@ -181,14 +249,14 @@
                 <option>Courtier immobilier résidentiel et commercial</option>
                 <option>Courtier immobilier commercial</option>
               </select>
-              <div class="hint">Celui de votre permis OACIQ — il doit être exact, c'est une obligation.</div>
+              <div class="hint">Celui de votre permis OACIQ. Il doit être exact, c'est une obligation.</div>
             </div>
           </div>
 
           <div id="equipeBlock" style="display:none;">
             <div class="field full">
               <label class="flabel">Membres de l'équipe</label>
-              <div class="hint" style="margin-block-end:10px;">Ajoutez chaque membre avec son titre exact. <b>Exemple :</b> « Marc Dubois — Courtier immobilier résidentiel ».</div>
+              <div class="hint" style="margin-block-end:10px;">Ajoutez chaque membre avec son titre exact. <b>Exemple :</b> « Marc Dubois, courtier immobilier résidentiel ».</div>
               <div id="membresList"></div>
               <button type="button" class="add-btn" id="addMembre">+ Ajouter un membre</button>
             </div>
@@ -201,7 +269,7 @@
             </div>
             <div class="field"><label class="flabel" for="anneeDebut">Année de début en courtage <span class="req">*</span></label>
               <input type="number" id="anneeDebut" name="anneeDebut" required min="1960" max="2026" placeholder="Ex. 2008">
-              <div class="hint">Nous calculons automatiquement « X années d'expérience » — un fait chiffré que Google et les IA adorent.</div>
+              <div class="hint">Nous calculons automatiquement « X années d'expérience », un fait chiffré que Google et les IA adorent.</div>
             </div>
           </div>
 
@@ -227,11 +295,11 @@
           <div class="field">
             <label class="flabel" for="villePrincipale">Ville principale <span class="req">*</span></label>
             <select id="villePrincipale" name="villePrincipale" required></select>
-            <div class="hint"><b>La ville où vous voulez être trouvé en premier.</b> Une seule — c'est elle qui domine votre page. <b>Exemple :</b> si 70 % de vos ventes sont à Blainville, choisissez Blainville.</div>
+            <div class="hint"><b>La ville où vous voulez être trouvé en premier.</b> Une seule : c'est elle qui domine votre page. <b>Exemple :</b> si 70 % de vos ventes sont à Blainville, choisissez Blainville.</div>
           </div>
 
           <div class="field full">
-            <label class="flabel">Villes secondaires <span class="opt">(optionnel — maximum 2)</span></label>
+            <label class="flabel">Villes secondaires <span class="opt">(optionnel, maximum 2)</span></label>
             <div class="check-grid" id="villesSecGrid"></div>
             <div class="hint">Au-delà de 3 villes, Google ne sait plus où vous classer. Choisissez vos 2 marchés secondaires les plus réels.</div>
           </div>
@@ -245,7 +313,7 @@
           <div class="field full">
             <label class="flabel" for="lienTerritoire">Votre lien avec ce territoire <span class="req">*</span></label>
             <textarea id="lienTerritoire" name="lienTerritoire" required placeholder="Ex. J'y habite depuis 12 ans, mes enfants vont à l'école du quartier, j'ai vendu ma première maison sur la rue Principale…"></textarea>
-            <div class="hint">Pourquoi on vous le demande : c'est la matière première d'un contenu <b>unique et crédible</b> — personne d'autre n'a votre histoire. Racontez, on réécrit.</div>
+            <div class="hint">Pourquoi on vous le demande : c'est la matière première d'un contenu <b>unique et crédible</b> : personne d'autre n'a votre histoire. Racontez, on réécrit.</div>
           </div>
 
           <div class="field full">
@@ -258,7 +326,7 @@
         <!-- ============ C · SPÉCIALITÉS & SERVICES ============ -->
         <fieldset id="sec-c">
           <legend><span class="legend-no">C</span> Spécialités et services</legend>
-          <div class="legend-hint">Ce que vous faites vraiment — pour attirer les bons clients, pas tous les clients.</div>
+          <div class="legend-hint">Ce que vous faites vraiment, pour attirer les bons clients, pas tous les clients.</div>
 
           <div class="field full">
             <label class="flabel">Votre clientèle <span class="req">*</span></label>
@@ -303,21 +371,21 @@
           <div class="field full">
             <label class="flabel">Vos 3 plus-values <span class="req">*</span></label>
             <div class="hint" style="margin-block-end:10px;"><b>Concret et vérifiable.</b> « Réponse en moins de 2 h » bat « service personnalisé ». Chiffres, délais, engagements précis.</div>
-            <div class="field"><input type="text" name="plusValue1" id="plusValue1" required placeholder="Plus-value 1 — Ex. Je réponds en moins de 2 heures, 7 jours sur 7"></div>
-            <div class="field"><input type="text" name="plusValue2" id="plusValue2" placeholder="Plus-value 2 — Ex. Photos et vidéo pro incluses dans chaque mandat"></div>
-            <div class="field" style="margin-block-end:0;"><input type="text" name="plusValue3" id="plusValue3" placeholder="Plus-value 3 — Ex. Bilan de marché envoyé chaque mois à mes vendeurs"></div>
+            <div class="field"><input type="text" name="plusValue1" id="plusValue1" required placeholder="Plus-value 1. Ex. Je réponds en moins de 2 heures, 7 jours sur 7"></div>
+            <div class="field"><input type="text" name="plusValue2" id="plusValue2" placeholder="Plus-value 2. Ex. Photos et vidéo pro incluses dans chaque mandat"></div>
+            <div class="field" style="margin-block-end:0;"><input type="text" name="plusValue3" id="plusValue3" placeholder="Plus-value 3. Ex. Bilan de marché envoyé chaque mois à mes vendeurs"></div>
           </div>
         </fieldset>
 
         <!-- ============ D · PREUVE SOCIALE ============ -->
         <fieldset id="sec-d">
           <legend><span class="legend-no">D</span> Preuve sociale</legend>
-          <div class="legend-hint">Les faits qui rassurent : chiffres, prix, vrais témoignages. Rien d'inventé — tout doit être vérifiable.</div>
+          <div class="legend-hint">Les faits qui rassurent : chiffres, prix, vrais témoignages. Rien d'inventé : tout doit être vérifiable.</div>
 
           <div class="row">
             <div class="field"><label class="flabel" for="transactions">Transactions (approximatif) <span class="opt">(optionnel)</span></label>
               <input type="text" id="transactions" name="transactions" placeholder="Ex. ~450 ventes en carrière, ou 35 ventes par année">
-              <div class="hint">Nombre de ventes ou volume — à vie ou annuel, comme vous comptez.</div>
+              <div class="hint">Nombre de ventes ou volume, à vie ou annuel, comme vous comptez.</div>
             </div>
             <div class="field"><label class="flabel" for="prix">Prix et reconnaissances <span class="opt">(optionnel)</span></label>
               <input type="text" id="prix" name="prix" placeholder="Ex. Palme d'or 2023, Club 100 %, Temple de la renommée">
@@ -326,13 +394,13 @@
 
           <div class="field full">
             <label class="flabel">2-3 témoignages clients réels <span class="opt">(fortement recommandé)</span></label>
-            <div class="hint" style="margin-block-end:12px;">Copiez les mots exacts du client (Google, courriel, texto). Avec son nom, sa ville — et son accord.</div>
+            <div class="hint" style="margin-block-end:12px;">Copiez les mots exacts du client (Google, courriel, texto). Avec son nom, sa ville, et son accord.</div>
             <div class="sub-block temoin" data-i="1">
               <h4>Témoignage 1</h4>
               <div class="field full"><textarea name="temoignage1" placeholder="Ce que le client a écrit ou dit…"></textarea></div>
               <div class="row">
-                <div class="field"><input type="text" name="temoignage1Nom" placeholder="Nom du client — Ex. N. Therrien"></div>
-                <div class="field"><input type="text" name="temoignage1Ville" placeholder="Ville — Ex. Blainville"></div>
+                <div class="field"><input type="text" name="temoignage1Nom" placeholder="Nom du client. Ex. N. Therrien"></div>
+                <div class="field"><input type="text" name="temoignage1Ville" placeholder="Ville. Ex. Blainville"></div>
               </div>
               <label class="consent small"><input type="checkbox" name="temoignage1Ok"> Ce client m'a donné son accord pour publier son témoignage.</label>
             </div>
@@ -359,7 +427,7 @@
           <div class="row">
             <div class="field"><label class="flabel" for="googleBusiness">Lien fiche Google Business <span class="opt">(optionnel)</span></label>
               <input type="url" id="googleBusiness" name="googleBusiness" placeholder="https://g.page/…">
-              <div class="hint">Votre page et votre fiche Google doivent raconter la même histoire — ça renforce les deux.</div>
+              <div class="hint">Votre page et votre fiche Google doivent raconter la même histoire : ça renforce les deux.</div>
             </div>
             <div class="field"><label class="flabel" for="centris">Lien profil Centris / vos inscriptions <span class="opt">(optionnel)</span></label>
               <input type="url" id="centris" name="centris" placeholder="https://www.centris.ca/fr/courtier-immobilier/…">
@@ -380,13 +448,13 @@
         <!-- ============ E · CONTENU BRUT ============ -->
         <fieldset id="sec-e">
           <legend><span class="legend-no">E</span> Dans vos mots</legend>
-          <div class="legend-hint">La matière première de votre page. Pas besoin d'être « bon en rédaction » — écrivez comme vous parlez, on s'occupe du reste.</div>
+          <div class="legend-hint">La matière première de votre page. Pas besoin d'être « bon en rédaction » : écrivez comme vous parlez, on s'occupe du reste.</div>
 
           <div class="field full">
             <label class="flabel" for="presentation">Présentez-vous dans vos mots <span class="req">*</span></label>
             <textarea id="presentation" name="presentation" required rows="7" placeholder="Qui vous êtes, comment vous êtes arrivé en immobilier, comment vous travaillez avec vos clients, ce qui vous rend fier…"></textarea>
-            <div class="counter" id="presCounter">0 mot — visez 150 à 300 mots</div>
-            <div class="hint">150 à 300 mots. Plus vous en donnez, plus votre page sera unique — c'est ce qui la fait sortir du lot face aux 50 autres pages de courtiers.</div>
+            <div class="counter" id="presCounter">0 mot, visez 150 à 300 mots</div>
+            <div class="hint">150 à 300 mots. Plus vous en donnez, plus votre page sera unique : c'est ce qui la fait sortir du lot face aux 50 autres pages de courtiers.</div>
           </div>
 
           <div class="field full">
@@ -396,8 +464,8 @@
           </div>
 
           <div class="field full">
-            <label class="flabel">3 à 5 questions que vos clients posent souvent — et vos réponses <span class="req">*</span></label>
-            <div class="hint" style="margin-block-end:12px;">Les vraies questions qu'on vous pose au téléphone. Elles deviennent la FAQ de votre page — la section que Google et les IA citent le plus. <b>Exemple :</b> « Combien vaut ma maison à Blainville ? » → votre réponse honnête, en 2-3 phrases.</div>
+            <label class="flabel">3 à 5 questions que vos clients posent souvent, et vos réponses <span class="req">*</span></label>
+            <div class="hint" style="margin-block-end:12px;">Les vraies questions qu'on vous pose au téléphone. Elles deviennent la FAQ de votre page, la section que Google et les IA citent le plus. <b>Exemple :</b> « Combien vaut ma maison à Blainville ? » → votre réponse honnête, en 2-3 phrases.</div>
             <div id="faqList"></div>
             <button type="button" class="add-btn" id="addFaq">+ Ajouter une question</button>
           </div>
@@ -406,7 +474,7 @@
         <!-- ============ F · CONTACT & CTA ============ -->
         <fieldset id="sec-f">
           <legend><span class="legend-no">F</span> Contact</legend>
-          <div class="legend-hint">Ces coordonnées apparaissent sur la page et dans les données lues par Google — elles doivent être identiques partout (site, fiche Google, Centris).</div>
+          <div class="legend-hint">Ces coordonnées apparaissent sur la page et dans les données lues par Google : elles doivent être identiques partout (site, fiche Google, Centris).</div>
 
           <div class="row three">
             <div class="field"><label class="flabel" for="cellulaire">Téléphone cellulaire <span class="req">*</span></label>
@@ -434,13 +502,13 @@
         <!-- ============ G · MÉDIAS ============ -->
         <fieldset id="sec-g">
           <legend><span class="legend-no">G</span> Photos et vidéo</legend>
-          <div class="legend-hint">Une vraie photo pro fait toute la différence — c'est la première chose que le visiteur regarde.</div>
+          <div class="legend-hint">Une vraie photo pro fait toute la différence : c'est la première chose que le visiteur regarde.</div>
 
           <div class="field full">
             <label class="flabel">Portrait professionnel <span class="req">*</span></label>
             <label class="upload" id="portraitUpload">
               <input type="file" id="portrait" accept="image/jpeg,image/png,image/webp">
-              <div class="up-icon">📷</div>
+              <div class="up-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
               <div class="up-label">Choisir votre portrait</div>
               <div class="up-specs">JPG, PNG ou WebP · la plus grande version que vous avez</div>
             </label>
@@ -452,7 +520,7 @@
             <label class="flabel">Photo d'équipe ou logo d'équipe</label>
             <label class="upload" id="equipeUpload">
               <input type="file" id="photoEquipe" accept="image/jpeg,image/png,image/webp">
-              <div class="up-icon">👥</div>
+              <div class="up-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14c2.8 0 5 1.4 5 4.5"/></svg></div>
               <div class="up-label">Choisir la photo ou le logo d'équipe</div>
               <div class="up-specs">JPG, PNG ou WebP</div>
             </label>
@@ -463,7 +531,7 @@
             <label class="flabel">2 à 4 photos libres <span class="opt">(optionnel)</span></label>
             <label class="upload" id="libresUpload">
               <input type="file" id="photosLibres" accept="image/jpeg,image/png,image/webp" multiple>
-              <div class="up-icon">🏡</div>
+              <div class="up-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
               <div class="up-label">Ajouter des photos</div>
               <div class="up-specs">Propriétés vendues, votre secteur, vous en action · max 4 photos</div>
             </label>
@@ -473,7 +541,7 @@
 
           <div class="field full">
             <label class="flabel" for="video">Vidéo de présentation <span class="opt">(optionnel)</span></label>
-            <input type="url" id="video" name="video" placeholder="Lien YouTube ou Vimeo — https://…">
+            <input type="url" id="video" name="video" placeholder="Lien YouTube ou Vimeo : https://…">
           </div>
 
           <div class="field full" style="margin-block-end:0;">
@@ -503,7 +571,12 @@
     </div>
   </main>
 
-  <footer class="footer">© 2026 <span data-agence-nom>RE/MAX Crystal</span> — Formulaire de création de page courtier · V pour Design</footer>
+  <footer class="pied sombre">
+    <div class="container">
+      <p class="signature"><img src="brand_assets/ballon-120.webp" alt="" width="120" height="136" aria-hidden="true" loading="lazy">Une région · Une équipe · Des résultats</p>
+      <p class="legal">© 2026 <span data-agence-nom>RE/MAX Crystal</span> · Formulaire de création de page courtier · V pour Design</p>
+    </div>
+  </footer>
 
 <script src="data/courtiers-config.js"></script>
 <script>
@@ -514,7 +587,7 @@
   const AG = CFG.AGENCE;
   const DRAFT_KEY = `${AG.id}-courtier-brouillon-v1`;
   // Marque de l'agence (même fichier pour Crystal et D'ici, seule la config change)
-  document.title = `Votre page de courtier — Formulaire ${AG.nom}`;
+  document.title = `Votre page de courtier | Formulaire ${AG.nom}`;
   document.querySelectorAll('[data-agence-nom]').forEach(el => { el.textContent = AG.nom; });
   const logo = document.getElementById('agenceLogo');
   if (logo) { logo.src = AG.logo; logo.alt = AG.nom; }
@@ -547,7 +620,7 @@
 
   // Bureaux
   $('bureau').innerHTML = '<option value="">Choisir…</option>' +
-    CFG.BUREAUX.map(b => `<option value="${b.id}">${b.ville} — ${b.adresse}</option>`).join('');
+    CFG.BUREAUX.map(b => `<option value="${b.id}">${b.ville}, ${b.adresse}</option>`).join('');
 
   /* ================= équipe ================= */
   const membresList = $('membresList');
@@ -619,7 +692,7 @@
   function updateCounter() {
     const n = (pres.value.trim().match(/\S+/g) || []).length;
     const c = $('presCounter');
-    c.textContent = `${n} mot${n > 1 ? 's' : ''} — visez 150 à 300 mots`;
+    c.textContent = `${n} mot${n > 1 ? 's' : ''}, visez 150 à 300 mots`;
     c.classList.toggle('ok', n >= 150 && n <= 320);
   }
   pres.addEventListener('input', updateCounter);
@@ -999,7 +1072,7 @@
       download(fileName, JSON.stringify(payload, null, 2));
       $('successMsg').innerHTML = `L’envoi automatique n’a pas fonctionné, mais vos réponses sont sauvegardées dans le fichier <strong>${fileName}</strong>, téléchargé sur votre appareil. <b>Dernière étape :</b> envoyez ce fichier par courriel à l’équipe (bouton ci-dessous), en le joignant au message.`;
       const mailto = $('mailtoLink');
-      mailto.style.display = 'inline-block';
+      mailto.style.display = 'inline-flex';
       mailto.href = `mailto:${CFG.FALLBACK_EMAIL}?subject=${encodeURIComponent('Fiche courtier — ' + payload.identite.nomComplet)}&body=${encodeURIComponent('Bonjour,\n\nVoici ma fiche pour ma page de courtier ' + AG.nom + '.\nJ’ai joint le fichier ' + fileName + ' téléchargé depuis le formulaire.\n\n' + payload.identite.nomComplet)}`;
     }
     try { localStorage.removeItem(DRAFT_KEY); } catch (err) {}
