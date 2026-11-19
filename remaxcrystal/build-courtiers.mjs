@@ -104,6 +104,9 @@ function buildHub() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../brand_assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../brand_assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../brand_assets/apple-touch-icon.png">
 <title>Nos courtiers immobiliers | ${AG.nom}, ${AG.region}</title>
 <meta name="description" content="Trouvez votre courtier immobilier ${escapeHtml(AG.nom)} par ville : ${escapeHtml(AG.exemplesVilles)} et toute la région ${escapeHtml(AG.regionDe)}.">
 <link rel="canonical" href="${SITE}/courtiers/index.html">

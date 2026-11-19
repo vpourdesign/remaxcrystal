@@ -507,15 +507,52 @@ ${buildTaxComparativeRows(city)}
   const footerGuides = `          <a href="guide-dici-terrebonne.html">Vivre à Terrebonne</a>
           <a href="guide-dici-mascouche.html">Vivre à Mascouche</a>
           <a href="guide-dici-repentigny.html">Vivre à Repentigny</a>
+          <a href="guide-dici-charlemagne.html">Vivre à Charlemagne</a>
           <a href="guide-dici-lassomption.html">Vivre à L'Assomption</a>
+          <a href="guide-dici-lepiphanie.html">Vivre à L'Épiphanie</a>
+          <a href="guide-dici-saint-sulpice.html">Vivre à Saint-Sulpice</a>
           <a href="guide-dici-lavaltrie.html">Vivre à Lavaltrie</a>
+          <a href="guide-dici-saint-roch-de-lachigan.html">Vivre à Saint-Roch-de-l'Achigan</a>
           <a href="guide-dici-saint-lin-laurentides.html">Vivre à Saint-Lin–Laurentides</a>
-          <a href="guide-dici-joliette.html">Vivre à Joliette</a>
-          <a href="guide-dici-charlemagne.html">Vivre à Charlemagne</a>`;
+          <a href="guide-dici-saint-jacques.html">Vivre à Saint-Jacques</a>
+          <a href="guide-dici-joliette.html">Vivre à Joliette</a>`;
   html = html.replace(
     /<a href="[^"]*">Vivre à Blainville<\/a>[\s\S]*?<a href="[^"]*">Vivre à Bois-des-Filion<\/a>/,
     footerGuides
   );
+
+  // Footer « Outils » et « Contact » : le gabarit pointe vers « # ».
+  // On les remplace par des destinations réelles du site D'ici.
+  html = html.replace(
+    /<div class="footer-col">\s*<h5>(?:Nos outils|Outils)<\/h5>\s*(?:<a href="#">[^<]*<\/a>\s*)+<\/div>/,
+    `<div class="footer-col">
+          <h5>Outils</h5>
+          <a href="index.html#calculatrices">Calculatrices</a>
+          <a href="courtiers/index.html">Nos courtiers</a>
+          <a href="https://remaxdici.com/fr/nos-proprietes.html" target="_blank" rel="noopener">Propriétés à vendre</a>
+          <a href="https://remaxdici.com/fr/articles" target="_blank" rel="noopener">Blogue</a>
+        </div>`
+  );
+  html = html.replace(
+    /<div class="footer-col">\s*<h5>Contact<\/h5>\s*(?:<a href="#">[^<]*<\/a>\s*)+<\/div>/,
+    `<div class="footer-col">
+          <h5>Contact</h5>
+          <a href="index.html#bureaux">Nos bureaux</a>
+          <a href="https://remaxdici.com/fr/carriere.html" target="_blank" rel="noopener">Carrières</a>
+          <a href="https://remaxdici.com/fr/contact.html" target="_blank" rel="noopener">Évaluation gratuite</a>
+        </div>`
+  );
+
+  // Favicon D'ici (le gabarit Crystal n'en déclare pas)
+  if (!/rel="icon"/.test(html)) {
+    html = html.replace(
+      /<meta name="viewport"[^>]*>/,
+      (m) => `${m}
+<link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="brand_assets/favicon-192.png">
+<link rel="apple-touch-icon" href="brand_assets/apple-touch-icon.png">`
+    );
+  }
 
   // Footer copyright brand
   html = html.replace(
