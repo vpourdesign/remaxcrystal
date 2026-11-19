@@ -33,7 +33,7 @@ window.COURTIERS_CONFIG = {
     { nom: 'Saint-Lin–Laurentides',   guide: 'guide-dici-saint-lin-laurentides.html', photo: 'images/villes/saintlin/saintlin-1.jpg', photoAlt: 'Vue aérienne de l&#39;église de Saint-Lin–Laurentides' },
     { nom: "Saint-Roch-de-l'Achigan", guide: 'guide-dici-saint-roch-de-lachigan.html', photo: 'images-opt/villes/saintrochachigan/saintrochachigan-2.jpg', photoAlt: 'Couvent patrimonial de Saint-Roch-de-l&#39;Achigan' },
     { nom: 'Saint-Sulpice',           guide: 'guide-dici-saint-sulpice.html', photo: 'images-opt/villes/saintsulpice/saintsulpice-2.jpg', photoAlt: 'Belvédère sur le fleuve Saint-Laurent à Saint-Sulpice' },
-    { nom: 'Terrebonne',              guide: 'guide-dici-terrebonne.html', photo: 'images/villes/terrebonne/terrebonne-6.jpg', photoAlt: 'Vue aérienne de Terrebonne et de la rivière des Mille Îles' }
+    { nom: 'Terrebonne',              guide: 'guide-dici-terrebonne.html', photo: 'images/villes/terrebonne/terrebonne-2.jpg', photoAlt: 'Le Vieux-Terrebonne et son clocher, reflétés dans l&#39;eau' }
   ],
 
   /* --- Bureaux RE/MAX D'ici (NAP repris de agence.remaxdici.com,
