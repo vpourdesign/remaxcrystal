@@ -99,7 +99,8 @@
   /* ──── PAGES COURTIERS (maillage guides → pages) ──── */
   /* COURTIER_PAGES:START — généré par build-courtiers.mjs, ne pas éditer */
   const courtierPages = {
-    "Catherine Marleau": "courtiers/catherine-marleau.html"
+    "Catherine Marleau": "courtiers/catherine-marleau.html",
+    "Christine Depatie": "courtiers/christine-depatie.html"
   };
   /* COURTIER_PAGES:END */
 
