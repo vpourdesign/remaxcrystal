@@ -552,18 +552,14 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
 }
 .hero-cities-row {
   grid-area: villes; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--gout);
-  border-top: 2px solid var(--identite); counter-reset: ville;
+  border-top: 2px solid var(--identite);
 }
 /* 12 villes : quatre colonnes de trois, plutôt que cinq colonnes bancales */
 .hero-cities-row:has(> :nth-child(12):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .hero-city-tag {
-  counter-increment: ville; display: flex; align-items: baseline; gap: 12px; min-height: 52px; padding-block: 15px 13px;
+  display: flex; align-items: baseline; min-height: 52px; padding-block: 15px 13px;
   border-bottom: 1px solid var(--brume); font-weight: 600; line-height: 1.3; color: var(--encre);
   text-underline-offset: 4px; text-decoration-thickness: 2px; transition: color var(--t) ease;
-}
-.hero-city-tag::before {
-  content: counter(ville, decimal-leading-zero); flex: none; min-width: 1.5em;
-  font-family: var(--affiche); font-weight: 400; font-size: 1.0625rem; line-height: 1; color: var(--identite); font-variant-numeric: tabular-nums;
 }
 .hero-city-tag:hover { color: var(--identite); text-decoration-line: underline; }
 .hero-city-tag:active { color: var(--ardoise); }

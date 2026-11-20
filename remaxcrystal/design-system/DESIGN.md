@@ -175,7 +175,7 @@ node refonte-guides.mjs --tous                          # les 27 guides, en plac
 ### Accueils (index.html des deux sites)
 Même système que les guides : `guide.css` (tokens, barre, menu, titres, ouverture, calculateurs, pied de page) suivi de `accueil.css`, injectés par `refonte-guides.mjs` dans le même bloc `<style id="guide-refonte" data-page="accueil">`. Rien n'est écrit à la main dans les pages.
 
-- **Ouverture** : la photo, le titre sur son bandeau, le chapô, puis le sommaire numéroté des villes sur 12 colonnes (5 par rangée pour 15 villes, 4 pour 12). Il remplace la liste de faits des guides.
+- **Ouverture** : la photo, le titre sur son bandeau, le chapô, puis la liste des villes, sans numéros, sur 12 colonnes (5 par rangée pour 15 villes, 4 pour 12). Il remplace la liste de faits des guides.
 - **Calculateurs** : rail de 4 colonnes (titre, texte, liste des trois outils qui ouvrent leur onglet) et outil sur 8 colonnes.
 - **Phrase de l'agence** : une phrase en Montserrat 500, les données en 600 encre, le filet rouge au-dessus. Jamais de blocs de chiffres géants.
 - **Villes** : une ville vedette sur 8 colonnes et deux rangées, sa légende sur le bandeau; les autres en rangées d'empans variés (4/4/4, 7/5, 5/7, 6/6). La mosaïque est dessinée pour 12 ou 15 villes; le script le signale si le compte change.
