@@ -10,6 +10,7 @@
 
    Usage : node build-courtiers.mjs                       (site Crystal)
            node build-courtiers.mjs --site ../remaxdici   (site D'ici)
+           options : --hub (annuaire seulement) · --exclure slug1,slug2
    La marque (nom, région, logo) vient de <site>/data/courtiers-config.js.
    Les pages courtiers/<slug>.html elles-mêmes ne sont PAS générées ici :
    elles sont rédigées à neuf (voir docs/GENERER-PAGE-COURTIER.md).
@@ -55,6 +56,13 @@ const fiches = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json')).map(f =
   return j;
 }).sort((a, b) => a.identite.nomComplet.localeCompare(b.identite.nomComplet, 'fr'));
 
+// --exclure slug1,slug2 : fiches à laisser de côté (brouillons, données de test)
+const exclArg = process.argv.indexOf('--exclure');
+const EXCLUS = new Set(exclArg > -1 ? process.argv[exclArg + 1].split(',').map(x => x.trim()) : []);
+for (let i = fiches.length - 1; i >= 0; i--) if (EXCLUS.has(fiches[i].slug)) { console.log(`· ${fiches[i].slug} exclu (--exclure).`); fiches.splice(i, 1); }
+// --hub : régénère seulement courtiers/index.html (ni sitemap, ni courtiers.js)
+const HUB_SEUL = process.argv.includes('--hub');
+
 console.log(`\n${fiches.length} fiche(s) courtier chargée(s).`);
 
 // ---------- Helpers ----------
@@ -74,21 +82,162 @@ function portraitSrc(fiche) {
 
 // ============================================================
 // 1. HUB — courtiers/index.html
+//    Même design system que les guides et l'accueil : tokens de la marque
+//    et règles communes de design-system/guide.css, en-tête et pied de page
+//    repris de l'accueil du site (chemins réécrits pour courtiers/).
 // ============================================================
-function buildHub() {
-  const villesAvecCourtier = [...new Set(fiches.flatMap(f =>
-    [f.territoire.villePrincipale, ...f.territoire.villesSecondaires]))].sort((a, b) => a.localeCompare(b, 'fr'));
+const GUIDE_CSS = path.join(SCRIPT_DIR, 'design-system', 'guide.css');
 
-  const cards = fiches.map(f => {
-    const annees = f.identite.anneeDebut ? new Date().getFullYear() - f.identite.anneeDebut : null;
+function cssDesignSystem(marque) {
+  const src = fs.readFileSync(GUIDE_CSS, 'utf8');
+  const tokens = src.match(new RegExp(`/\\* @tokens ${marque} \\*/\\s*([\\s\\S]*?)\\s*/\\* @fin-tokens \\*/`));
+  const commun = src.split('/* @commun */');
+  if (!tokens || commun.length !== 2) throw new Error(`guide.css : tokens « ${marque} » ou marqueur @commun introuvable`);
+  return `${tokens[1]}\n${commun[1].trim()}`;
+}
+
+const CSS_HUB = `
+/* ===== annuaire des courtiers ===== */
+.topbar-logo { display: block; }
+@media (max-width: 1080px) {
+  .topbar-nav { display: flex; }
+  .topbar-nav a:not(.topbar-cta) { display: none; }
+}
+.crumbs { border-bottom: 1px solid var(--brume); }
+.crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-height: 52px; font-size: var(--fs-petit); color: var(--gris-note); }
+.crumbs a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; color: var(--identite); text-underline-offset: 4px; text-decoration-thickness: 2px; transition: color var(--t) ease; }
+.crumbs a:hover { text-decoration-line: underline; }
+.crumbs a:active { color: var(--encre); }
+
+.annuaire-tete { padding-block: clamp(48px, 6vw, 96px) clamp(36px, 4.5vw, 56px); }
+.annuaire-tete .container {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gout); row-gap: clamp(20px, 2.4vw, 32px);
+  grid-template-areas:
+    "surtitre surtitre surtitre surtitre surtitre surtitre surtitre surtitre surtitre surtitre surtitre surtitre"
+    "titre titre titre titre titre titre titre titre titre . . ."
+    "chapo chapo chapo chapo chapo chapo chapo . faits faits faits faits";
+}
+.annuaire-surtitre { grid-area: surtitre; font-size: var(--fs-petit); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--identite); }
+.annuaire-tete h1 {
+  grid-area: titre; font-family: var(--affiche); font-weight: 400; font-size: var(--fs-h1);
+  line-height: 1.02; letter-spacing: 0.005em; text-transform: uppercase; text-wrap: balance;
+}
+.annuaire-tete h1::after { content: ""; display: block; width: 36px; height: 3px; margin-top: 18px; background: var(--rouge); }
+.annuaire-chapo { grid-area: chapo; font-size: var(--fs-chapo); font-weight: 500; line-height: 1.55; color: var(--encre); max-width: 58ch; }
+.annuaire-faits { grid-area: faits; align-self: start; border-top: 2px solid var(--identite); }
+.annuaire-fait { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-block: 12px; border-bottom: 1px solid var(--brume); }
+.annuaire-fait dt { font-size: var(--fs-petit); color: var(--gris-note); }
+.annuaire-fait dd { font-weight: 600; color: var(--encre); font-variant-numeric: tabular-nums; }
+
+.filtres-bande { border-block: 1px solid var(--brume); }
+.filtres { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-block: 18px; }
+.filtres-label { margin-inline-end: 8px; font-size: var(--fs-petit); font-weight: 600; color: var(--encre); }
+.fpill {
+  min-height: 44px; padding-inline: 16px; border: 1px solid var(--bord-champ); border-radius: var(--r-ui);
+  font-size: var(--fs-petit); font-weight: 500; color: var(--encre);
+  transition: background-color var(--t) ease, color var(--t) ease, border-color var(--t) ease;
+}
+.fpill:hover { border-color: var(--identite); color: var(--identite); }
+.fpill:active { background-color: var(--brume); }
+.fpill[aria-pressed="true"] { background-color: var(--identite); border-color: var(--identite); color: var(--creme); }
+
+.annuaire { padding-block: clamp(40px, 5vw, 72px) var(--chap); }
+.grille-courtiers { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gout); row-gap: clamp(44px, 5vw, 72px); }
+.bcard { grid-column: span 4; display: flex; flex-direction: column; gap: 18px; border-radius: var(--r-bloc); }
+.bcard.hide { display: none; }
+.bcard:focus-visible { outline-offset: 6px; }
+.bcard-photo { aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-bloc); background: var(--brume); }
+.bcard-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.bcard-body { display: flex; flex-direction: column; gap: 4px; padding-top: 14px; border-top: 2px solid var(--identite); flex: 1; }
+.bcard-demo { align-self: flex-start; margin-bottom: 6px; padding: 2px 8px; border: 1px solid var(--bord-champ); border-radius: var(--r-ui); font-size: var(--fs-petit); font-weight: 600; color: var(--encre); }
+.bcard h2 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; transition: color var(--t) ease; }
+.bcard-title { font-size: var(--fs-petit); color: var(--gris-note); }
+.bcard-meta { margin-top: 8px; font-size: var(--fs-petit); font-weight: 500; color: var(--ardoise); }
+.bcard-exp { font-size: var(--fs-petit); color: var(--ardoise); font-variant-numeric: tabular-nums; }
+.bcard-link {
+  margin-top: auto; padding-top: 14px; font-size: var(--fs-petit); font-weight: 600; color: var(--identite);
+  text-underline-offset: 5px; text-decoration-thickness: 2px; transition: color var(--t) ease;
+}
+.bcard:hover h2 { color: var(--identite); }
+.bcard:hover .bcard-link { text-decoration-line: underline; }
+.bcard:active .bcard-link, .bcard:active h2 { color: var(--encre); }
+.vide { display: none; max-width: 52ch; padding-block: 24px; font-size: var(--fs-chapo); font-weight: 500; color: var(--encre); }
+.vide.show { display: block; }
+.vide a, .annuaire-appel a.lien { color: var(--identite); font-weight: 600; text-decoration-line: underline; text-underline-offset: 4px; }
+
+.annuaire-appel { background: var(--brume); color: var(--ardoise); padding-block: clamp(48px, 6vw, 80px); }
+.annuaire-appel .container { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gout); row-gap: 24px; align-items: end; }
+.annuaire-appel h2 { grid-column: 1 / span 7; font-family: var(--affiche); font-weight: 400; font-size: var(--fs-h2); line-height: 1.05; text-transform: uppercase; letter-spacing: 0.005em; color: var(--encre); text-wrap: balance; }
+.annuaire-appel h2::after { content: ""; display: block; width: 36px; height: 3px; margin-top: 14px; background: var(--rouge); }
+.annuaire-appel p { grid-column: 1 / span 6; font-size: var(--fs-chapo); line-height: 1.55; }
+.annuaire-appel .bouton {
+  grid-column: 9 / -1; grid-row: 1 / span 2; justify-self: end; display: inline-flex; align-items: center; min-height: 48px; padding-inline: 24px;
+  border-radius: var(--r-ui); background: var(--identite); color: var(--creme); font-weight: 600; transition: background-color var(--t) ease;
+}
+.annuaire-appel .bouton:hover { background: var(--encre); }
+.annuaire-appel .bouton:active { background: var(--bande); }
+
+@media (max-width: 1080px) {
+  .bcard { grid-column: span 6; }
+  .annuaire-tete .container { grid-template-areas: "surtitre" "titre" "chapo" "faits"; grid-template-columns: minmax(0, 1fr); }
+  .annuaire-faits { max-width: 420px; }
+  .annuaire-appel h2, .annuaire-appel p, .annuaire-appel .bouton { grid-column: 1 / -1; grid-row: auto; justify-self: start; }
+}
+@media (max-width: 600px) {
+  .bcard { grid-column: 1 / -1; }
+  .bcard-photo { aspect-ratio: 4 / 4.2; }
+}
+`;
+
+/** Réécrit les liens relatifs de l'accueil pour une page dans courtiers/. */
+function versSousDossier(fragment) {
+  return fragment.replace(/\b(href|src)="([^"]*)"/g, (m, attr, v) => {
+    if (/^(https?:|mailto:|tel:|\/\/|\/|data:)/.test(v)) return m;
+    if (v.startsWith('#')) return `${attr}="../index.html${v}"`;
+    if (v.startsWith('courtiers/')) return `${attr}="${v.slice('courtiers/'.length)}"`;
+    return `${attr}="../${v}"`;
+  });
+}
+
+function morceauxAccueil() {
+  const accueil = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  const marque = (accueil.match(/<style id="guide-refonte" data-marque="(crystal|dici)"/) || [])[1];
+  let topbar = (accueil.match(/<nav class="topbar"[\s\S]*?<\/nav>/) || [])[0];
+  let footer = (accueil.match(/<footer class="footer"[\s\S]*?<\/footer>/) || [])[0];
+  if (!marque || !topbar || !footer) throw new Error('index.html du site : bloc de style, topbar ou footer introuvable (accueil pas encore refondu ?)');
+  const contact = (topbar.match(/<a href="([^"]+)"[^>]*class="topbar-cta"/) || [])[1] || '../index.html#contact';
+  topbar = topbar
+    .replace(/\s*<button type="button" class="mm-trigger"[\s\S]*?<\/button>/, '')
+    .replace(/\s*<button type="button" class="nav-burger"[\s\S]*?<\/button>/, '')
+    .replace(/<div class="topbar-logo">([\s\S]*?)<\/div>/, '<a class="topbar-logo" href="index.html">$1</a>')
+    .replace(' id="topbar"', '');
+  footer = footer
+    .replace(/\s*<span class="credit-photo">[\s\S]*?<\/span>/, '')  // crédit de la photo d'accueil : sans objet ici
+    .replace(' id="contact"', '');
+  return { marque, contact, topbar: versSousDossier(topbar), footer: versSousDossier(footer) };
+}
+
+function buildHub() {
+  const enLigne = fiches.filter(f => pageExists(f));
+  const villesAvecCourtier = [...new Set(enLigne.flatMap(f =>
+    [f.territoire.villePrincipale, ...f.territoire.villesSecondaires]))].sort((a, b) => a.localeCompare(b, 'fr'));
+  const A = morceauxAccueil();
+  const css = cssDesignSystem(A.marque) + '\n' + CSS_HUB.trim();
+  for (const interdit of ['gradient(', 'box-shadow', 'backdrop-filter', 'blur(', 'transition: all', '#fff', '#000']) {
+    if (css.toLowerCase().includes(interdit)) throw new Error(`CSS du hub : interdit du design system « ${interdit} »`);
+  }
+
+  const cards = enLigne.map(f => {
+    const brut = f.identite.anneeDebut ? new Date().getFullYear() - Number(f.identite.anneeDebut) : null;
+    const annees = brut > 0 && brut < 70 ? brut : null;  // une année de début invraisemblable n'est pas affichée
     const villes = [f.territoire.villePrincipale, ...f.territoire.villesSecondaires];
-    return `      <a class="bcard reveal" href="/courtiers/${f.slug}.html" data-villes="${escapeHtml(villes.join('|'))}">
+    return `      <a class="bcard" href="${f.slug}.html" data-villes="${escapeHtml(villes.join('|'))}">
         <div class="bcard-photo"><img src="${escapeHtml(portraitSrc(f))}" alt="${escapeHtml(f.identite.nomComplet)}, courtier immobilier à ${escapeHtml(f.territoire.villePrincipale)}" loading="lazy"></div>
         <div class="bcard-body">
           ${isDemo(f) ? '<span class="bcard-demo">Démo</span>' : ''}
           <h2>${escapeHtml(f.identite.nomComplet)}</h2>
           <p class="bcard-title">${escapeHtml(f.identite.titre)}</p>
-          <p class="bcard-meta">${escapeHtml(f.territoire.villePrincipale)}${f.territoire.villesSecondaires.length ? ' · ' + escapeHtml(f.territoire.villesSecondaires.join(' · ')) : ''}</p>
+          <p class="bcard-meta">${escapeHtml(villes.join(' · '))}</p>
           ${annees ? `<p class="bcard-exp">${annees} ans de courtage</p>` : ''}
           <span class="bcard-link">Voir sa page →</span>
         </div>
@@ -96,7 +245,7 @@ function buildHub() {
   }).join('\n');
 
   const filters = villesAvecCourtier.map(v =>
-    `        <button class="fpill" data-ville="${escapeHtml(v)}">${escapeHtml(v)}</button>`).join('\n');
+    `        <button type="button" class="fpill" data-ville="${escapeHtml(v)}" aria-pressed="false">${escapeHtml(v)}</button>`).join('\n');
 
   const html = `<!DOCTYPE html>
 <!-- ⚙ GÉNÉRÉ par build-courtiers.mjs — ne pas éditer à la main. -->
@@ -116,128 +265,76 @@ function buildHub() {
 <meta property="og:description" content="L'annuaire des courtiers ${escapeHtml(AG.nom)}, classés par ville ${escapeHtml(AG.regionDe)}.">
 <meta property="og:url" content="${SITE}/courtiers/index.html">
 <meta property="og:locale" content="fr_CA">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 ${JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE}/` },
     { '@type': 'ListItem', position: 2, name: 'Nos courtiers', item: `${SITE}/courtiers/index.html` }
   ]
-}, null, 0)}
+})}
 </script>
-<style>
-  :root {
-    --navy-deep:#1a2332; --navy:#1e3350; --blue-brand:#3578c4; --blue-light:#6ba3d9; --blue-pale:#b0cfe8;
-    --cream:#f7f5f0; --warm-white:#faf9f6; --gold:#c4a245;
-    --text-dark:#1a1f2b; --text-body:#3d4555; --text-muted:#6b7385;
-    --surface-card:#f8f9fb; --border-subtle:#e2e5eb;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { font-size:16px; scroll-behavior:smooth; }
-  body { font-family:'Open Sans',sans-serif; background:var(--warm-white); color:var(--text-body); line-height:1.7; -webkit-font-smoothing:antialiased; }
-  h1,h2,h3 { font-family:'Raleway',sans-serif; color:var(--text-dark); line-height:1.1; letter-spacing:-0.03em; }
-  em { font-style:italic; color:var(--blue-brand); }
-  img { display:block; max-width:100%; }
-  a { text-decoration:none; color:inherit; }
-  .container { width:min(90%,1180px); margin-inline:auto; }
-  .topbar { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:16px clamp(20px,5vw,56px); background:rgba(26,35,50,0.92); backdrop-filter:blur(10px); }
-  .topbar img { height:26px; }
-  .topbar-nav { display:flex; gap:26px; align-items:center; }
-  .topbar-nav a { color:rgba(255,255,255,0.82); font-size:0.86rem; font-weight:500; }
-  .topbar-nav a.cta { background:var(--blue-brand); color:#fff; padding:9px 18px; border-radius:999px; font-weight:600; }
-  @media (max-width:760px){ .topbar-nav a:not(.cta){ display:none; } }
-  .crumbs { background:var(--cream); border-bottom:1px solid var(--border-subtle); font-size:0.8rem; }
-  .crumbs .container { display:flex; gap:8px; align-items:center; padding-block:10px; color:var(--text-muted); }
-  .crumbs a { color:var(--blue-brand); font-weight:600; }
-  .hero { background:linear-gradient(160deg,var(--navy-deep),var(--navy) 60%,#15212f); color:#fff; padding-block:clamp(44px,6vw,76px); position:relative; overflow:hidden; }
-  .hero::after { content:""; position:absolute; inset:0; background:radial-gradient(900px 420px at 85% 10%,rgba(53,120,196,0.25),transparent 60%); pointer-events:none; }
-  .hero .container { position:relative; z-index:1; }
-  .eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:'Raleway',sans-serif; font-size:0.74rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue-light); margin-block-end:16px; }
-  .eyebrow::before { content:""; width:26px; height:2px; background:var(--gold); }
-  .hero h1 { color:#fff; font-weight:300; font-size:clamp(2.2rem,5vw,3.6rem); letter-spacing:-0.04em; }
-  .hero h1 strong { font-weight:700; }
-  .hero p { color:rgba(255,255,255,0.82); max-width:60ch; margin-block-start:16px; font-weight:300; }
-  .filters { display:flex; gap:10px; flex-wrap:wrap; padding-block:clamp(24px,3vw,36px); }
-  .fpill { font-family:'Raleway',sans-serif; font-size:0.82rem; font-weight:600; color:var(--text-body); background:#fff; border:1px solid var(--border-subtle); border-radius:999px; padding:9px 18px; cursor:pointer; transition:all .25s; }
-  .fpill:hover { border-color:var(--blue-light); }
-  .fpill.on { background:var(--navy); border-color:var(--navy); color:#fff; }
-  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; padding-block-end:clamp(56px,7vw,96px); }
-  @media (max-width:900px){ .grid { grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:600px){ .grid { grid-template-columns:1fr; } }
-  .bcard { background:#fff; border:1px solid var(--border-subtle); border-radius:16px; overflow:hidden; box-shadow:0 1px 3px rgba(35,50,70,0.04),0 10px 30px rgba(35,50,70,0.05); transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; display:flex; flex-direction:column; }
-  .bcard:hover { transform:translateY(-5px); box-shadow:0 4px 10px rgba(35,50,70,0.1),0 20px 48px rgba(35,50,70,0.15); }
-  .bcard.hide { display:none; }
-  .bcard-photo { aspect-ratio:4/3.4; overflow:hidden; background:var(--navy); }
-  .bcard-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform .8s cubic-bezier(.16,1,.3,1); }
-  .bcard:hover .bcard-photo img { transform:scale(1.05); }
-  .bcard-body { padding:20px 22px 24px; display:flex; flex-direction:column; gap:4px; flex:1; }
-  .bcard-demo { align-self:flex-start; font-size:0.62rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; background:var(--gold); color:var(--navy-deep); border-radius:999px; padding:3px 10px; margin-block-end:4px; }
-  .bcard h2 { font-size:1.25rem; font-weight:700; }
-  .bcard-title { font-size:0.8rem; color:var(--text-muted); }
-  .bcard-meta { font-size:0.84rem; color:var(--text-body); font-weight:600; margin-block-start:6px; }
-  .bcard-exp { font-size:0.78rem; color:var(--text-muted); }
-  .bcard-link { margin-block-start:auto; padding-block-start:12px; font-size:0.84rem; font-weight:700; color:var(--blue-brand); }
-  .empty { display:none; text-align:center; color:var(--text-muted); padding-block:40px; }
-  .empty.show { display:block; }
-  .footer { background:var(--navy-deep); color:rgba(255,255,255,0.5); padding-block:28px; font-size:0.8rem; }
-  .footer .container { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-  .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1); }
-  .reveal.in { opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){ .reveal { opacity:1; transform:none; transition:none; } }
+<style id="annuaire-courtiers" data-marque="${A.marque}">
+/* Annuaire des courtiers, marque ${A.marque}. Généré par build-courtiers.mjs depuis design-system/guide.css : modifier la source, puis relancer le script. */
+${css}
 </style>
 </head>
 <body>
-  <nav class="topbar">
-    <a href="../index.html"><img src="../${AG.logo}" alt="${escapeHtml(AG.nom)}"></a>
-    <div class="topbar-nav">
-      <a href="../index.html#guides">Guides de villes</a>
-      <a href="../index.html#outils">Outils</a>
-      <a href="../index.html#contact" class="cta">Contact</a>
-    </div>
-  </nav>
+  ${A.topbar}
 
   <nav class="crumbs" aria-label="Fil d'Ariane">
-    <div class="container">
-      <a href="../index.html">Accueil</a>
-      <span aria-hidden="true">›</span>
-      <span>Nos courtiers</span>
-    </div>
+    <ol class="container">
+      <li><a href="../index.html">Accueil</a></li>
+      <li aria-hidden="true">›</li>
+      <li aria-current="page">Nos courtiers</li>
+    </ol>
   </nav>
 
-  <header class="hero">
+  <header class="annuaire-tete">
     <div class="container">
-      <div class="eyebrow">${escapeHtml(AG.nom)} · ${escapeHtml(AG.region)}</div>
-      <h1>Nos <strong>courtiers</strong>, ville par ville</h1>
-      <p>Chaque courtier ${escapeHtml(AG.nom)} a sa page : son territoire, sa façon de travailler, ses résultats et les réponses aux questions qu'on lui pose vraiment. Filtrez par ville pour trouver le vôtre.</p>
+      <p class="annuaire-surtitre">${escapeHtml(AG.nom)} · ${escapeHtml(AG.region)}</p>
+      <h1>Nos courtiers, ville par ville</h1>
+      <p class="annuaire-chapo">Chaque courtier ${escapeHtml(AG.nom)} a sa page : son territoire, sa façon de travailler, ses résultats et les réponses aux questions qu'on lui pose vraiment. Filtrez par ville pour trouver le vôtre.</p>
+      <dl class="annuaire-faits">
+        <div class="annuaire-fait"><dt>Courtiers</dt><dd>${enLigne.length}</dd></div>
+        <div class="annuaire-fait"><dt>Villes couvertes</dt><dd>${villesAvecCourtier.length}</dd></div>
+      </dl>
     </div>
   </header>
 
-  <main class="container">
-    <div class="filters" role="group" aria-label="Filtrer par ville">
-      <button class="fpill on" data-ville="*">Toutes les villes</button>
+  <div class="filtres-bande">
+    <div class="container filtres" role="group" aria-label="Filtrer par ville">
+      <span class="filtres-label">Ville</span>
+      <button type="button" class="fpill" data-ville="*" aria-pressed="true">Toutes les villes</button>
 ${filters}
     </div>
-    <div class="grid" id="grid">
+  </div>
+
+  <main class="container annuaire">
+    <div class="grille-courtiers" id="grid">
 ${cards}
     </div>
-    <p class="empty" id="empty">Aucune page de courtier pour cette ville pour l'instant. <a href="../index.html#contact" style="color:var(--blue-brand);font-weight:600;">Contactez l'agence</a> et on vous jumelle avec le bon courtier.</p>
+    <p class="vide" id="empty" role="status">Aucune page de courtier pour cette ville pour l'instant. <a href="${A.contact}" target="_blank" rel="noopener">Contactez l'agence</a> : on vous jumelle avec le bon courtier.</p>
   </main>
 
-  <footer class="footer">
+  <section class="annuaire-appel" aria-labelledby="appel-titre">
     <div class="container">
-      <span>© 2026 ${escapeHtml(AG.nom)}, franchisé indépendant et autonome de RE/MAX Québec</span>
-      <span><a href="../index.html" style="text-decoration:underline;">${SITE.replace(/^https?:\/\//, '')}</a> &nbsp; <button type="button" data-consent-open style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer;">Gérer les témoins</button></span>
+      <h2 id="appel-titre">Votre ville n'est pas dans la liste ?</h2>
+      <p>L'agence couvre toute la région ${escapeHtml(AG.regionDe)}. Dites-nous où vous cherchez, on vous jumelle avec le courtier qui connaît le secteur.</p>
+      <a class="bouton" href="${A.contact}" target="_blank" rel="noopener">Contacter l'agence</a>
     </div>
-  </footer>
+  </section>
+
+  ${A.footer}
 
   <script>
     const pills = document.querySelectorAll('.fpill');
     const cards = document.querySelectorAll('.bcard');
     pills.forEach(p => p.addEventListener('click', () => {
-      pills.forEach(x => x.classList.remove('on'));
-      p.classList.add('on');
+      pills.forEach(x => x.setAttribute('aria-pressed', String(x === p)));
       const v = p.dataset.ville;
       let shown = 0;
       cards.forEach(c => {
@@ -247,10 +344,6 @@ ${cards}
       });
       document.getElementById('empty').classList.toggle('show', shown === 0);
     }));
-    const io = new IntersectionObserver((es) => {
-      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay=(i%3)*0.05+'s'; io.observe(el); });
   </script>
 
   <script src="../consentement.js" data-agence="${escapeHtml(AG.nom)}" data-politique="${POLITIQUE}" defer></script>
@@ -259,7 +352,7 @@ ${cards}
 `;
   fs.mkdirSync(COURTIERS_DIR, { recursive: true });
   fs.writeFileSync(path.join(COURTIERS_DIR, 'index.html'), html);
-  console.log('✓ courtiers/index.html généré (hub annuaire).');
+  console.log(`✓ courtiers/index.html généré (hub annuaire, ${enLigne.length} courtiers).`);
 }
 
 // ============================================================
@@ -395,6 +488,7 @@ function checkDuplication() {
 
 // ============================================================
 buildHub();
+if (HUB_SEUL) { console.log('Terminé (--hub : sitemap et courtiers.js non touchés).'); process.exit(0); }
 buildSitemap();
 injectCourtierPages();
 const seoProblems = validatePages();
