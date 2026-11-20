@@ -149,7 +149,6 @@ const CSS_HUB = `
 .bcard-photo { aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-bloc); background: var(--brume); }
 .bcard-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .bcard-body { display: flex; flex-direction: column; gap: 4px; padding-top: 14px; border-top: 2px solid var(--identite); flex: 1; }
-.bcard-demo { align-self: flex-start; margin-bottom: 6px; padding: 2px 8px; border: 1px solid var(--bord-champ); border-radius: var(--r-ui); font-size: var(--fs-petit); font-weight: 600; color: var(--encre); }
 .bcard h2 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; transition: color var(--t) ease; }
 .bcard-title { font-size: var(--fs-petit); color: var(--gris-note); }
 .bcard-meta { margin-top: 8px; font-size: var(--fs-petit); font-weight: 500; color: var(--ardoise); }
@@ -194,7 +193,7 @@ function versSousDossier(fragment) {
   return fragment.replace(/\b(href|src)="([^"]*)"/g, (m, attr, v) => {
     if (/^(https?:|mailto:|tel:|\/\/|\/|data:)/.test(v)) return m;
     if (v.startsWith('#')) return `${attr}="../index.html${v}"`;
-    if (v.startsWith('courtiers/')) return `${attr}="${v.slice('courtiers/'.length)}"`;
+    if (v.startsWith('courtiers/')) return `${attr}="/${v}"`;  // absolu : la page est aussi servie à /courtiers
     return `${attr}="../${v}"`;
   });
 }
@@ -218,7 +217,8 @@ function morceauxAccueil() {
 }
 
 function buildHub() {
-  const enLigne = fiches.filter(f => pageExists(f));
+  // les pages démo (courtier fictif) restent hors de l'annuaire
+  const enLigne = fiches.filter(f => pageExists(f) && !isDemo(f));
   const villesAvecCourtier = [...new Set(enLigne.flatMap(f =>
     [f.territoire.villePrincipale, ...f.territoire.villesSecondaires]))].sort((a, b) => a.localeCompare(b, 'fr'));
   const A = morceauxAccueil();
@@ -231,10 +231,9 @@ function buildHub() {
     const brut = f.identite.anneeDebut ? new Date().getFullYear() - Number(f.identite.anneeDebut) : null;
     const annees = brut > 0 && brut < 70 ? brut : null;  // une année de début invraisemblable n'est pas affichée
     const villes = [f.territoire.villePrincipale, ...f.territoire.villesSecondaires];
-    return `      <a class="bcard" href="${f.slug}.html" data-villes="${escapeHtml(villes.join('|'))}">
+    return `      <a class="bcard" href="/courtiers/${f.slug}.html" data-villes="${escapeHtml(villes.join('|'))}">
         <div class="bcard-photo"><img src="${escapeHtml(portraitSrc(f))}" alt="${escapeHtml(f.identite.nomComplet)}, courtier immobilier à ${escapeHtml(f.territoire.villePrincipale)}" loading="lazy"></div>
         <div class="bcard-body">
-          ${isDemo(f) ? '<span class="bcard-demo">Démo</span>' : ''}
           <h2>${escapeHtml(f.identite.nomComplet)}</h2>
           <p class="bcard-title">${escapeHtml(f.identite.titre)}</p>
           <p class="bcard-meta">${escapeHtml(villes.join(' · '))}</p>
