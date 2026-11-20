@@ -103,7 +103,8 @@
     "Christine Depatie": "courtiers/christine-depatie.html",
     "Kim&Co | Courtiers Immobiliers": "courtiers/kim-co-courtiers-immobiliers.html",
     "Kim Di Chiaro": "courtiers/kim-co-courtiers-immobiliers.html",
-    "Kimberly Modafferi": "courtiers/kim-co-courtiers-immobiliers.html"
+    "Kimberly Modafferi": "courtiers/kim-co-courtiers-immobiliers.html",
+    "Maxime Beaulac": "courtiers/maxime-beaulac.html"
   };
   /* COURTIER_PAGES:END */
 
