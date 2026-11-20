@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Page /rondelle : vidéo accessible par code QR. Hors menus, hors sitemap, noindex (meta + en-tête X-Robots-Tag dans vercel.json). -->
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Vidéo | RE/MAX Crystal</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/brand_assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/brand_assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --creme: #FAF9F0; --bande: #1C315E; --identite: #1C315E; --encre: #151A2E; --rouge: #EF2525;
+  --brume: #E0E3E8; --focus: #3578C4;
+  --doux-bande: color-mix(in srgb, var(--creme) 72%, var(--bande));
+  --affiche: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --texte: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --marge: clamp(16px, 4vw, 48px); --r-ui: 4px; --r-bloc: 6px; --t: 200ms;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100dvh; display: flex; flex-direction: column; background: var(--creme); color: var(--encre); font: 400 clamp(1rem, 1.05vw, 1.0625rem)/1.6 var(--texte); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: var(--r-ui); }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; padding-inline: var(--marge); background: var(--bande); }
+.topbar img { height: clamp(26px, 3vw, 34px); width: auto; display: block; }
+.topbar :focus-visible { outline-color: var(--creme); }
+.lien-contact { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 18px; border-radius: var(--r-ui); background: var(--creme); color: var(--bande); font-size: clamp(0.875rem, 0.95vw, 0.9375rem); font-weight: 600; transition: background-color var(--t) ease; }
+.lien-contact:hover { background: var(--brume); }
+.lien-contact:active { background: var(--doux-bande); }
+main { flex: 1; width: 100%; max-width: 1100px; margin-inline: auto; padding: clamp(28px, 5vw, 64px) var(--marge) clamp(48px, 6vw, 80px); }
+h1 { margin: 0 0 clamp(20px, 3vw, 32px); font-family: var(--affiche); font-weight: 400; font-size: clamp(2rem, 4.4vw, 3.6rem); line-height: 1.04; text-transform: uppercase; letter-spacing: 0.005em; }
+h1::after { content: ""; display: block; width: 36px; height: 3px; margin-top: 14px; background: var(--rouge); }
+.video { aspect-ratio: 16 / 9; border-radius: var(--r-bloc); overflow: hidden; background: var(--encre); }
+.video video { display: block; width: 100%; height: 100%; object-fit: contain; }
+footer { padding: 20px var(--marge); font-size: clamp(0.875rem, 0.95vw, 0.9375rem); color: var(--doux-bande); background: var(--encre); }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a href="/"><img src="/brand_assets/Crystal-long-blanc-crystal.webp" alt="RE/MAX Crystal, accueil"></a>
+    <a class="lien-contact" href="https://remaxcrystal.com/fr/contact.html" rel="nofollow">Nous joindre</a>
+  </header>
+  <main>
+    <h1>Un mot de RE/MAX Crystal</h1>
+    <div class="video">
+      <video controls playsinline preload="metadata" poster="/videos/rondelle-apercu.webp">
+        <source src="/videos/rondelle.mp4" type="video/mp4">
+        Votre navigateur ne lit pas cette vidéo. <a href="/videos/rondelle.mp4">Téléchargez-la ici</a>.
+      </video>
+    </div>
+  </main>
+  <footer>© 2026 RE/MAX Crystal, franchisé indépendant et autonome de RE/MAX Québec</footer>
+</body>
+</html>
