@@ -104,7 +104,8 @@
     "Kim&Co | Courtiers Immobiliers": "courtiers/kim-co-courtiers-immobiliers.html",
     "Kim Di Chiaro": "courtiers/kim-co-courtiers-immobiliers.html",
     "Kimberly Modafferi": "courtiers/kim-co-courtiers-immobiliers.html",
-    "Maxime Beaulac": "courtiers/maxime-beaulac.html"
+    "Maxime Beaulac": "courtiers/maxime-beaulac.html",
+    "Steeve Landry Courtier Immobilier Résidentiel & Commercial": "courtiers/steeve-landry-courtier-immobilier-residentiel-commercial.html"
   };
   /* COURTIER_PAGES:END */
 
