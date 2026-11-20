@@ -100,7 +100,12 @@
   /* COURTIER_PAGES:START — généré par build-courtiers.mjs, ne pas éditer */
   const courtierPages = {
     "Catherine Marleau": "courtiers/catherine-marleau.html",
-    "Christine Depatie": "courtiers/christine-depatie.html"
+    "Christine Depatie": "courtiers/christine-depatie.html",
+    "Kim&Co | Courtiers Immobiliers": "courtiers/kim-co-courtiers-immobiliers.html",
+    "Kim Di Chiaro": "courtiers/kim-co-courtiers-immobiliers.html",
+    "Kimberly Modafferi": "courtiers/kim-co-courtiers-immobiliers.html",
+    "Maxime Beaulac": "courtiers/maxime-beaulac.html",
+    "Steeve Landry Courtier Immobilier Résidentiel & Commercial": "courtiers/steeve-landry-courtier-immobilier-residentiel-commercial.html"
   };
   /* COURTIER_PAGES:END */
 

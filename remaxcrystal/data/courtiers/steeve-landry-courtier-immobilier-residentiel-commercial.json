@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "genereLe": "2026-11-19T20:05:40.688Z",
+  "slug": "steeve-landry-courtier-immobilier-residentiel-commercial",
+  "identite": {
+    "type": "solo",
+    "nomComplet": "Steeve Landry Courtier Immobilier Résidentiel & Commercial",
+    "membresEquipe": [],
+    "titre": "Courtier immobilier résidentiel et commercial",
+    "permisOaciq": "J4363",
+    "anneeDebut": 2024,
+    "langues": [
+      "Français"
+    ]
+  },
+  "territoire": {
+    "villePrincipale": "Saint-Eustache",
+    "villesSecondaires": [
+      "Mirabel",
+      "Sainte-Marthe-sur-le-Lac"
+    ],
+    "quartiers": "",
+    "lienTerritoire": "J'habite à Saint-Jospeh-du-Lac",
+    "faitsLocaux": "Le REM, Les bons restaurants et les activités locales."
+  },
+  "servicesEtSpecialites": {
+    "clientele": "Les deux",
+    "specialites": [
+      "Unifamiliale",
+      "Condo",
+      "Plex",
+      "Propriété de prestige",
+      "Premier acheteur",
+      "55+ / retraités",
+      "Relocalisation",
+      "Succession"
+    ],
+    "services": [
+      "Évaluation gratuite",
+      "Mise en marché complète",
+      "Photo / vidéo professionnelle",
+      "Accompagnement acheteur",
+      "Analyse comparative de marché",
+      "Réseau d'entrepreneurs et notaires"
+    ],
+    "servicesAutre": "",
+    "plusValues": [
+      "Je réponds en moins de 2h, 6 jours/7",
+      "Photos et vidéo pro incluse dans chaque mandat"
+    ]
+  },
+  "preuveSociale": {
+    "transactions": "",
+    "prixEtReconnaissances": "",
+    "temoignages": [
+      {
+        "texte": "Bon courtier gentil, professionnel, respectueux et patient. Je le recommande!",
+        "nom": "David Trottier",
+        "ville": "Lachute",
+        "consentement": true
+      },
+      {
+        "texte": "Un soutien et un accompagnement hors pair. Une aide pour tout, comprendre et remplir les papiers, rêgler les imprévus avec moi ou sans moi, qui habite à 3h de route. Un professionnalisme qui s'allie à une bonne humeur et une réelle gentillesse. Merci du fond du coeur.",
+        "nom": "Cristiane Pravaz",
+        "ville": "Mirabel",
+        "consentement": true
+      },
+      {
+        "texte": "Je recommande les services de courtier immobilier de Steeve. Il nous a bien conseillé et accompagné tout au long du processus de vente… 2 fois car le premier couple d’acheteurs s’est désistée. Il est également très réactif concernant nos questions en cours de processus. Au final, on a pu vendre en moins de 3 mois. En terminant, je vous laisse deviner sa couleur préférée ?! ;)",
+        "nom": "Jean-Francois Lauzon",
+        "ville": "Laval",
+        "consentement": true
+      }
+    ],
+    "liens": {
+      "googleBusiness": "",
+      "centris": "",
+      "facebook": "https://www.facebook.com/@lorangeimmo",
+      "instagram": "https://instagram.com/lorangeimmo",
+      "linkedin": "https://linkedin.com/in/steeve-landry70",
+      "tiktok": "https://www.tiktok.com/@lorangeimmo",
+      "youtube": "https://youtube.com/@lorangeimmo"
+    }
+  },
+  "contenuBrut": {
+    "presentation": "Je m’appelle Steeve Landry, courtier immobilier résidentiel et commercial chez RE/MAX Crystal. On me connaît comme « votre voisin courtier ».\n\nAvant l’immobilier, j’ai passé plus de 20 ans en gestion stratégique et en chaîne d’approvisionnement. J’y ai appris à analyser, à négocier et à tenir parole, trois qualités qui comptent beaucoup quand on accompagne quelqu’un dans sa plus grosse transaction.\n\nJ’aide surtout des familles qui ont besoin de plus d’espace, des professionnels qui passent à leur deuxième propriété et des aînés qui préparent leur départ vers une résidence. Mon territoire : Mirabel, Saint-Eustache, Sainte-Marthe-sur-le-Lac, Saint-Joseph-du-Lac et Laval.\n\nJe vous parle clairement, je vous dis ce que je pense vraiment, et je ne vous presse jamais. Je vérifie chaque document avec soin, parce que les mauvaises surprises coûtent cher.\n\nCe qui me rend fier : voir mes clients repartir sereins, avec le sentiment d’avoir été écoutés.\n\nUn projet, même flou? Parlons-en.",
+    "momentMarquant": "Une cliente m'a téléphoné pour obtenir une évaluation marchande de sa maison à Laval. Elle voulait vendre son mari pas certain. Ils avaient peut-être l'envi de déménager à Montréal dans l'action après avoir vécu longtemps à Laval. Pendant ma visite j'ai convaincu le mari. Le contrat c'est signé sur le champs, nous avons  vendu et acheté dans la même deux semaines suivant la mise en vente de la maison. Ils étaient des clients heureux.",
+    "faq": [
+      {
+        "question": "Combien vaut ma maison?",
+        "reponse": "Honnêtement, je ne peux pas vous donner un chiffre sérieux sans avoir visité votre propriété. Deux maisons dans la même rue peuvent valoir 50 000 $ d’écart selon les rénovations, le terrain et l’état réel. Je vous prépare une analyse comparative fondée sur les ventes récentes de votre secteur, et vous savez exactement où vous vous situez avant de décider quoi que ce soit."
+      },
+      {
+        "question": "Est-ce que je dois vendre avant d’acheter ma prochaine maison?",
+        "reponse": "as nécessairement, et c’est la bonne question à poser avant de faire quoi que ce soit. Tout dépend de votre marge de manœuvre financière et de votre tolérance au risque. Nous regardons ensemble votre situation et je vous présente les scénarios possibles (condition de vente, délai de prise de possession, financement relais), avec les avantages et les risques de chacun."
+      },
+      {
+        "question": "Mes parents veulent quitter leur maison pour une résidence pour aînés. Par où commencer?",
+        "reponse": "Par une conversation, pas par une pancarte. Le bon ordre dépend de la date d’entrée en résidence, de l’état de la maison et de ce qui compte le plus pour la famille. Je vous aide à planifier la vente de façon à ce que la transition soit douce et que personne ne soit pressé."
+      }
+    ]
+  },
+  "contact": {
+    "cellulaire": "5147813403",
+    "courriel": "steevelandry@maison2reve.com",
+    "bureau": {
+      "id": "saint-eustache",
+      "ville": "Saint-Eustache",
+      "adresse": "479 boul. Arthur-Sauvé",
+      "codePostal": "J7P 2B3",
+      "tel": "450 472-7220"
+    },
+    "ctaPrincipal": "appel"
+  },
+  "medias": {
+    "dossierCible": "images/courtiers/steeve-landry-courtier-immobilier-residentiel-commercial",
+    "portrait": {
+      "fichier": "images/courtiers/steeve-landry-courtier-immobilier-residentiel-commercial/portrait.jpg",
+      "nomOriginal": "Ma face Insta.png"
+    },
+    "photoEquipe": null,
+    "photosLibres": [],
+    "video": "",
+    "consentement": true
+  },
+  "resumeMarkdown": "# Fiche courtier — Steeve Landry Courtier Immobilier Résidentiel & Commercial\n\n**Type :** Courtier solo\n**Titre :** Courtier immobilier résidentiel et commercial · Permis OACIQ J4363\n**Expérience :** depuis 2024 (~2 ans) · Langues : Français\n\n## Territoire\n- Ville principale : **Saint-Eustache**\n- Villes secondaires : Mirabel, Sainte-Marthe-sur-le-Lac\n- Quartiers : —\n- Lien au territoire : J'habite à Saint-Jospeh-du-Lac\n- Faits locaux : Le REM, Les bons restaurants et les activités locales.\n\n## Services\n- Clientèle : Les deux\n- Spécialités : Unifamiliale, Condo, Plex, Propriété de prestige, Premier acheteur, 55+ / retraités, Relocalisation, Succession\n- Services : Évaluation gratuite, Mise en marché complète, Photo / vidéo professionnelle, Accompagnement acheteur, Analyse comparative de marché, Réseau d'entrepreneurs et notaires\n- Plus-values : Je réponds en moins de 2h, 6 jours/7 | Photos et vidéo pro incluse dans chaque mandat\n\n## Preuve sociale\n- Transactions : —\n- Prix : —\n- Témoignages : 3 (consentement : oui)\n\n## Contenu brut\n### Présentation\nJe m’appelle Steeve Landry, courtier immobilier résidentiel et commercial chez RE/MAX Crystal. On me connaît comme « votre voisin courtier ».\n\nAvant l’immobilier, j’ai passé plus de 20 ans en gestion stratégique et en chaîne d’approvisionnement. J’y ai appris à analyser, à négocier et à tenir parole, trois qualités qui comptent beaucoup quand on accompagne quelqu’un dans sa plus grosse transaction.\n\nJ’aide surtout des familles qui ont besoin de plus d’espace, des professionnels qui passent à leur deuxième propriété et des aînés qui préparent leur départ vers une résidence. Mon territoire : Mirabel, Saint-Eustache, Sainte-Marthe-sur-le-Lac, Saint-Joseph-du-Lac et Laval.\n\nJe vous parle clairement, je vous dis ce que je pense vraiment, et je ne vous presse jamais. Je vérifie chaque document avec soin, parce que les mauvaises surprises coûtent cher.\n\nCe qui me rend fier : voir mes clients repartir sereins, avec le sentiment d’avoir été écoutés.\n\nUn projet, même flou? Parlons-en.\n### Moment marquant\nUne cliente m'a téléphoné pour obtenir une évaluation marchande de sa maison à Laval. Elle voulait vendre son mari pas certain. Ils avaient peut-être l'envi de déménager à Montréal dans l'action après avoir vécu longtemps à Laval. Pendant ma visite j'ai convaincu le mari. Le contrat c'est signé sur le champs, nous avons  vendu et acheté dans la même deux semaines suivant la mise en vente de la maison. Ils étaient des clients heureux.\n### FAQ\n- **Q :** Combien vaut ma maison?\n  **R :** Honnêtement, je ne peux pas vous donner un chiffre sérieux sans avoir visité votre propriété. Deux maisons dans la même rue peuvent valoir 50 000 $ d’écart selon les rénovations, le terrain et l’état réel. Je vous prépare une analyse comparative fondée sur les ventes récentes de votre secteur, et vous savez exactement où vous vous situez avant de décider quoi que ce soit.\n- **Q :** Est-ce que je dois vendre avant d’acheter ma prochaine maison?\n  **R :** as nécessairement, et c’est la bonne question à poser avant de faire quoi que ce soit. Tout dépend de votre marge de manœuvre financière et de votre tolérance au risque. Nous regardons ensemble votre situation et je vous présente les scénarios possibles (condition de vente, délai de prise de possession, financement relais), avec les avantages et les risques de chacun.\n- **Q :** Mes parents veulent quitter leur maison pour une résidence pour aînés. Par où commencer?\n  **R :** Par une conversation, pas par une pancarte. Le bon ordre dépend de la date d’entrée en résidence, de l’état de la maison et de ce qui compte le plus pour la famille. Je vous aide à planifier la vente de façon à ce que la transition soit douce et que personne ne soit pressé.\n\n## Contact\n- Cell : 5147813403 · Courriel : steevelandry@maison2reve.com\n- Bureau : Saint-Eustache, 479 boul. Arthur-Sauvé\n- CTA principal : appel\n\n## Médias\n- Portrait : images/courtiers/steeve-landry-courtier-immobilier-residentiel-commercial/portrait.jpg\n- Photos libres : 0\n- Vidéo : —",
+  "agence": "crystal",
+  "recuLe": "2026-11-19T20:05:41.000Z"
+}
