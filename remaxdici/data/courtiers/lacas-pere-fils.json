@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "genereLe": "2026-11-19T13:05:29.896Z",
+  "slug": "lacas-pere-fils",
+  "identite": {
+    "type": "equipe",
+    "nomComplet": "Lacas Père/Fils",
+    "membresEquipe": [
+      {
+        "nom": "Richard Lacas",
+        "titre": "Courtier immobilier résidentiel"
+      },
+      {
+        "nom": "Xavier Lacas",
+        "titre": "Courtier immobilier résidentiel"
+      },
+      {
+        "nom": "Simon Lacas",
+        "titre": "Courtier immobilier résidentiel"
+      }
+    ],
+    "titre": "Courtier immobilier résidentiel",
+    "permisOaciq": "H4830",
+    "anneeDebut": 2021,
+    "langues": [
+      "Français",
+      "Anglais"
+    ]
+  },
+  "territoire": {
+    "villePrincipale": "Terrebonne",
+    "villesSecondaires": [
+      "Mascouche",
+      "Saint-Roch-de-l'Achigan"
+    ],
+    "quartiers": "",
+    "lienTerritoire": "Richard habite Terrebonne depuis 30 ans. Ses fils Simon et Xavier y ont grandi, et c'est ici que l'équipe Lacas Père/Fils vend la majorité de ses propriétés, principalement à Terrebonne et à Mascouche. Nous connaissons les rues, les écoles et les projets du secteur parce que c'est chez nous.",
+    "faitsLocaux": "1.  Depuis janvier 2026, le train exo de Mascouche s'arrête à Côte-de-Liesse, où l'on prend le REM vers le centre-ville. Il faut en tenir compte quand un acheteur compare les temps de trajet. 2. 1.  Pour la première fois de son histoire, Terrebonne accueillera la Finale des Jeux du Québec, à l'été 2029. Près de 3 000 jeunes athlètes de 12 à 17 ans, venus des 19 régions du Québec, y compétitionneront, avec l'appui d'environ 2 500 bénévoles. C'est une belle vitrine pour notre ville, et un héritage sportif dont les familles d'ici profiteront bien après les Jeux. 3- 1.  Fondée en 1787, Saint-Roch-de-l'Achigan a su garder son âme de village. Près de 250 bâtiments y sont répertoriés pour leur valeur patrimoniale, dont 65 bâtiments agricoles. On y trouve des maisons de caractère et de grands terrains, dans le calme de la campagne, à une vingtaine de minutes de Mascouche."
+  },
+  "servicesEtSpecialites": {
+    "clientele": "Les deux",
+    "specialites": [
+      "Unifamiliale",
+      "Condo",
+      "Premier acheteur",
+      "55+ / retraités",
+      "Succession"
+    ],
+    "services": [
+      "Évaluation gratuite",
+      "Mise en marché complète",
+      "Photo / vidéo professionnelle",
+      "Accompagnement acheteur",
+      "Analyse comparative de marché",
+      "Réseau d'entrepreneurs et notaires"
+    ],
+    "servicesAutre": "",
+    "plusValues": [
+      "Deux courtiers sur chaque transaction : un courtier principal et un adjoint, pour que vous ayez toujours quelqu'un qui répond.",
+      "Un suivi au vendeur après chaque visite, et une mise en marché qui combine Centris, RE/MAX, Facebook, Instagram et notre infolettre.",
+      "« Vos courtiers de confiance, d’une propriété à l’autre ». Après la transaction, on reste en contact pour vos prochains projets, comme le ferait un conseiller financier."
+    ]
+  },
+  "preuveSociale": {
+    "transactions": "",
+    "prixEtReconnaissances": "",
+    "temoignages": [
+      {
+        "texte": "Une équipe de feu, une vraie pour nous accompagner et nous conseiller dans un moment aussi important et préoccupant de notre vie... ça vaut de l'or et c'est précieux. Compétants, avenants, professionnels, calmes, à l'écoute, disponibles, patients, ultra sympathiques et j'en passe! Merci pour tout Simon, Richard et Xavier! Nous sommes extrêmement satisfaits. Nous recommandons sans hésiter la famille Lacas pour vos projets immobiliers 👌🏼✨",
+        "nom": "S. Bayard",
+        "ville": "Mascouche",
+        "consentement": true
+      },
+      {
+        "texte": "Je recommande Lacas Père/Fils sans hésiter! Nous avons été accompagné par l'équipe pour l'achat de notre première maison et tout s'est déroulé à merveille. Toujours disponibles pour répondre à nos questions, service professionnel et excellente communication!\nC'est tout simplement la meilleure équipe! En plus d'être à l'écoute, compétent et bienveillant, ils sont sympathiques!\n\nMerci pour tout!!",
+        "nom": "A. Benoit",
+        "ville": "Mascouche",
+        "consentement": true
+      },
+      {
+        "texte": "Super service. Il y'a toujours quelqu'un de disponible pour répondre à nos questions et nous accompagner. J'ai toujours senti que mes questions/inquiétudes étaient prises au sérieux et surtout nous avons senti que l'important n'était pas d'aller rapidement mais bien de prendre le temps de trouver LA bonne maison pour nous !!",
+        "nom": "M. Jacques",
+        "ville": "Rosemère",
+        "consentement": true
+      }
+    ],
+    "liens": {
+      "googleBusiness": "https://maps.app.goo.gl/NZWa7hhAaYyaQXbQ8",
+      "centris": "https://lacasperefils.com/fr/mes-proprietes.html",
+      "facebook": "https://www.facebook.com/LacasPereFilsCourtierImmobilier",
+      "instagram": "https://www.instagram.com/lacas_perefils_remax/",
+      "linkedin": "https://www.linkedin.com/in/richardlacascourtier/",
+      "tiktok": "https://www.tiktok.com/@lacasperefilsremax",
+      "youtube": ""
+    }
+  },
+  "contenuBrut": {
+    "presentation": "Nous sommes Richard, Xavier et Simon Lacas, un père et ses deux fils. Ensemble, nous formons l'équipe Lacas Père/Fils chez RE/MAX D'ici, à Terrebonne.\nRichard habite Terrebonne depuis 30 ans. Avant de devenir courtier en 2021, il a fait carrière comme programmeur analyste : il aime les chiffres, les dossiers bien montés et les explications claires. Il détient aussi une formation supplémentaire en copropriété, utile pour les acheteurs et vendeurs de condos. Xavier et Simon ont grandi ici, connaissent les quartiers et s'occupent notamment de notre présence sur les réseaux sociaux.\nNous travaillons toujours à deux courtiers par transaction, un principal et un adjoint. Chaque lundi, nous faisons ensemble le tour de tous nos dossiers. Résultat : vous n'attendez jamais une réponse parce que « votre courtier est en visite ».\nNous accompagnons autant les acheteurs que les vendeurs, surtout pour des maisons unifamiliales et des condos à Terrebonne, Mascouche et Saint-Roch-de-l'Achigan, et aussi pour des plex et des chalets.\nNotre slogan, « Vos courtiers de confiance, d’une propriété à l’autre », résume notre façon de travailler. Une transaction n'est pas une fin : on veut être les courtiers que vous rappelez pour la prochaine maison, celle de vos enfants ou celle de vos parents.",
+    "momentMarquant": "Tout a commencé quand une connaissance nous a confié la vente du condo de ses parents. Nous avons pris le temps de bien les accompagner dans cette étape importante, et la transaction s’est déroulée en douceur.\n\nQuelque temps plus tard, son fils était prêt à acheter une maison. C’est vers nous qu’elle s’est tournée, tout naturellement. Puis, quelques années après, elle nous a recommandé une collègue de travail qui souhaitait vendre son duplex, une vente que nous avons conclue rapidement.\n\nDeux générations d’une même famille, puis une collègue : quand un client nous confie les gens qu’il aime, c’est la plus belle preuve de confiance qui soit. C’est exactement ce que nous voulons être, des courtiers de confiance, d’une propriété à l’autre.",
+    "faq": [
+      {
+        "question": "Combien vaut ma maison à Terrebonne?",
+        "reponse": "Ça dépend surtout des ventes récentes de propriétés semblables dans votre secteur. Nous préparons gratuitement une analyse comparative de marché à partir des ventes des derniers mois, et nous vous l'expliquons en personne."
+      },
+      {
+        "question": "Pourquoi deux courtiers sur mon dossier?",
+        "reponse": "Pour que quelqu'un soit toujours disponible pour vous, pour les acheteurs et pour les autres courtiers. Les visites, les offres et les suivis ne tombent jamais entre deux chaises. L'équipe s\"occupe de tout."
+      },
+      {
+        "question": "Combien de temps faut-il pour vendre?",
+        "reponse": "Le délai dépend du prix, du type de propriété et du secteur. Un prix juste dès le départ est ce qui raccourcit le plus le délai : c'est pourquoi l'analyse comparative est notre première étape."
+      },
+      {
+        "question": "Je veux acheter avant de vendre. Par où commencer?",
+        "reponse": "Par une préapprobation hypothécaire et une estimation de la valeur de votre propriété actuelle. Nous travaillons avec des partenaires en financement et nous coordonnons les deux transactions pour éviter le double paiement."
+      },
+      {
+        "question": "Que se passe-t-il après la vente?",
+        "reponse": "Nous restons en contact : suivi après la transaction, infolettre et disponibilité pour vos questions. C'est ce que veut dire par « Vos courtiers de confiance, d’une propriété à l’autre »."
+      }
+    ]
+  },
+  "contact": {
+    "cellulaire": "(450) 914-0025",
+    "courriel": "info@lacasperefils.com",
+    "bureau": {
+      "id": "terrebonne",
+      "ville": "Terrebonne",
+      "adresse": "550, chemin du Coteau, bureau 206",
+      "codePostal": "J6W 5H2",
+      "tel": "450 471-5503"
+    },
+    "ctaPrincipal": "evaluation"
+  },
+  "medias": {
+    "dossierCible": "images/courtiers/lacas-pere-fils",
+    "portrait": {
+      "fichier": "images/courtiers/lacas-pere-fils/portrait.jpg",
+      "nomOriginal": "129_Lacas.jpg"
+    },
+    "photoEquipe": {
+      "fichier": "images/courtiers/lacas-pere-fils/equipe.jpg",
+      "nomOriginal": "LogoPereFils.jpg"
+    },
+    "photosLibres": [
+      {
+        "fichier": "images/courtiers/lacas-pere-fils/photo-1.jpg",
+        "nomOriginal": "FBFFCBD6-4760-4BA0-B671-EE910F19B486.jpeg"
+      },
+      {
+        "fichier": "images/courtiers/lacas-pere-fils/photo-2.jpg",
+        "nomOriginal": "IMG_0207.jpeg"
+      },
+      {
+        "fichier": "images/courtiers/lacas-pere-fils/photo-3.jpg",
+        "nomOriginal": "IMG_4947.jpeg"
+      },
+      {
+        "fichier": "images/courtiers/lacas-pere-fils/photo-4.jpg",
+        "nomOriginal": "IMG_5747.jpeg"
+      }
+    ],
+    "video": "",
+    "consentement": true
+  },
+  "resumeMarkdown": "# Fiche courtier — Lacas Père/Fils\n\n**Type :** Équipe\n**Titre :** Courtier immobilier résidentiel · Permis OACIQ H4830\n**Expérience :** depuis 2021 (~5 ans) · Langues : Français, Anglais\n**Membres :** Richard Lacas (Courtier immobilier résidentiel) · Xavier Lacas (Courtier immobilier résidentiel) · Simon Lacas (Courtier immobilier résidentiel)\n\n## Territoire\n- Ville principale : **Terrebonne**\n- Villes secondaires : Mascouche, Saint-Roch-de-l'Achigan\n- Quartiers : —\n- Lien au territoire : Richard habite Terrebonne depuis 30 ans. Ses fils Simon et Xavier y ont grandi, et c'est ici que l'équipe Lacas Père/Fils vend la majorité de ses propriétés, principalement à Terrebonne et à Mascouche. Nous connaissons les rues, les écoles et les projets du secteur parce que c'est chez nous.\n- Faits locaux : 1.  Depuis janvier 2026, le train exo de Mascouche s'arrête à Côte-de-Liesse, où l'on prend le REM vers le centre-ville. Il faut en tenir compte quand un acheteur compare les temps de trajet. 2. 1.  Pour la première fois de son histoire, Terrebonne accueillera la Finale des Jeux du Québec, à l'été 2029. Près de 3 000 jeunes athlètes de 12 à 17 ans, venus des 19 régions du Québec, y compétitionneront, avec l'appui d'environ 2 500 bénévoles. C'est une belle vitrine pour notre ville, et un héritage sportif dont les familles d'ici profiteront bien après les Jeux. 3- 1.  Fondée en 1787, Saint-Roch-de-l'Achigan a su garder son âme de village. Près de 250 bâtiments y sont répertoriés pour leur valeur patrimoniale, dont 65 bâtiments agricoles. On y trouve des maisons de caractère et de grands terrains, dans le calme de la campagne, à une vingtaine de minutes de Mascouche.\n\n## Services\n- Clientèle : Les deux\n- Spécialités : Unifamiliale, Condo, Premier acheteur, 55+ / retraités, Succession\n- Services : Évaluation gratuite, Mise en marché complète, Photo / vidéo professionnelle, Accompagnement acheteur, Analyse comparative de marché, Réseau d'entrepreneurs et notaires\n- Plus-values : Deux courtiers sur chaque transaction : un courtier principal et un adjoint, pour que vous ayez toujours quelqu'un qui répond. | Un suivi au vendeur après chaque visite, et une mise en marché qui combine Centris, RE/MAX, Facebook, Instagram et notre infolettre. | « Vos courtiers de confiance, d’une propriété à l’autre ». Après la transaction, on reste en contact pour vos prochains projets, comme le ferait un conseiller financier.\n\n## Preuve sociale\n- Transactions : —\n- Prix : —\n- Témoignages : 3 (consentement : oui)\n\n## Contenu brut\n### Présentation\nNous sommes Richard, Xavier et Simon Lacas, un père et ses deux fils. Ensemble, nous formons l'équipe Lacas Père/Fils chez RE/MAX D'ici, à Terrebonne.\nRichard habite Terrebonne depuis 30 ans. Avant de devenir courtier en 2021, il a fait carrière comme programmeur analyste : il aime les chiffres, les dossiers bien montés et les explications claires. Il détient aussi une formation supplémentaire en copropriété, utile pour les acheteurs et vendeurs de condos. Xavier et Simon ont grandi ici, connaissent les quartiers et s'occupent notamment de notre présence sur les réseaux sociaux.\nNous travaillons toujours à deux courtiers par transaction, un principal et un adjoint. Chaque lundi, nous faisons ensemble le tour de tous nos dossiers. Résultat : vous n'attendez jamais une réponse parce que « votre courtier est en visite ».\nNous accompagnons autant les acheteurs que les vendeurs, surtout pour des maisons unifamiliales et des condos à Terrebonne, Mascouche et Saint-Roch-de-l'Achigan, et aussi pour des plex et des chalets.\nNotre slogan, « Vos courtiers de confiance, d’une propriété à l’autre », résume notre façon de travailler. Une transaction n'est pas une fin : on veut être les courtiers que vous rappelez pour la prochaine maison, celle de vos enfants ou celle de vos parents.\n### Moment marquant\nTout a commencé quand une connaissance nous a confié la vente du condo de ses parents. Nous avons pris le temps de bien les accompagner dans cette étape importante, et la transaction s’est déroulée en douceur.\n\nQuelque temps plus tard, son fils était prêt à acheter une maison. C’est vers nous qu’elle s’est tournée, tout naturellement. Puis, quelques années après, elle nous a recommandé une collègue de travail qui souhaitait vendre son duplex, une vente que nous avons conclue rapidement.\n\nDeux générations d’une même famille, puis une collègue : quand un client nous confie les gens qu’il aime, c’est la plus belle preuve de confiance qui soit. C’est exactement ce que nous voulons être, des courtiers de confiance, d’une propriété à l’autre.\n### FAQ\n- **Q :** Combien vaut ma maison à Terrebonne?\n  **R :** Ça dépend surtout des ventes récentes de propriétés semblables dans votre secteur. Nous préparons gratuitement une analyse comparative de marché à partir des ventes des derniers mois, et nous vous l'expliquons en personne.\n- **Q :** Pourquoi deux courtiers sur mon dossier?\n  **R :** Pour que quelqu'un soit toujours disponible pour vous, pour les acheteurs et pour les autres courtiers. Les visites, les offres et les suivis ne tombent jamais entre deux chaises. L'équipe s\"occupe de tout.\n- **Q :** Combien de temps faut-il pour vendre?\n  **R :** Le délai dépend du prix, du type de propriété et du secteur. Un prix juste dès le départ est ce qui raccourcit le plus le délai : c'est pourquoi l'analyse comparative est notre première étape.\n- **Q :** Je veux acheter avant de vendre. Par où commencer?\n  **R :** Par une préapprobation hypothécaire et une estimation de la valeur de votre propriété actuelle. Nous travaillons avec des partenaires en financement et nous coordonnons les deux transactions pour éviter le double paiement.\n- **Q :** Que se passe-t-il après la vente?\n  **R :** Nous restons en contact : suivi après la transaction, infolettre et disponibilité pour vos questions. C'est ce que veut dire par « Vos courtiers de confiance, d’une propriété à l’autre ».\n\n## Contact\n- Cell : (450) 914-0025 · Courriel : info@lacasperefils.com\n- Bureau : Terrebonne, 550, chemin du Coteau, bureau 206\n- CTA principal : evaluation\n\n## Médias\n- Portrait : images/courtiers/lacas-pere-fils/portrait.jpg\n- Photos libres : 4\n- Vidéo : —",
+  "agence": "dici",
+  "recuLe": "2026-11-19T13:05:30.693Z"
+}

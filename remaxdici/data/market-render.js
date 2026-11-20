@@ -15,13 +15,20 @@
 (function () {
   const nf = new Intl.NumberFormat('fr-CA');
 
+  // Donnée absente : Centris affiche « ** » quand le volume de transactions
+  // est insuffisant. On écrit « n. d. » (jamais un tiret seul) et on retire
+  // l'unité (k$) qui suit la valeur.
+  const ND = 'n. d.';
+  const ND_TITLE = 'Donnée non publiée par Centris : trop peu de transactions pour la période';
+  const isNull = (v) => v === null || v === undefined;
+
   function formatVal(field, n) {
-    if (n === null || n === undefined) return '—';
+    if (isNull(n)) return ND;
     return nf.format(n);
   }
 
   function formatVar(v) {
-    if (v === null || v === undefined) return '—';
+    if (isNull(v)) return ND;
     if (v === 0) return '0 %';
     const sign = v > 0 ? '+' : '−';
     return `${sign}${Math.abs(v)} %`;
@@ -33,7 +40,8 @@
   }
 
   function trendArrow(v) {
-    if (v === null || v === undefined || v === 0) return '—';
+    if (isNull(v)) return '';
+    if (v === 0) return '—';
     return v > 0 ? '↑' : '↓';
   }
 
@@ -49,6 +57,7 @@
         return;
       }
       const res = city.residential;
+      let hasNull = false;
 
       // Injecte les valeurs et variations
       section.querySelectorAll('[data-stat]').forEach(el => {
@@ -56,6 +65,9 @@
         const entry = res[field];
         if (!entry) return;
         const value = entry[prop];
+        const manquant = isNull(value);
+        if (manquant) { hasNull = true; el.title = ND_TITLE; el.classList.add('stat-nd'); }
+        else { el.removeAttribute('title'); el.classList.remove('stat-nd'); }
 
         if (prop === 'qVar' || prop === 'cumulVar') {
           el.textContent = formatVar(value);
@@ -69,8 +81,24 @@
           }
         } else {
           el.textContent = formatVal(field, value);
+          // L'unité (k$) n'a pas de sens sans valeur
+          const suffix = el.nextElementSibling;
+          if (suffix && suffix.classList.contains('stats-value-suffix')) suffix.hidden = manquant;
         }
       });
+
+      // Note explicative sous le tableau quand une donnée manque
+      const wrap = section.querySelector('.stats-table-wrap');
+      let note = section.querySelector('.stats-note-nd');
+      if (hasNull && wrap && !note) {
+        note = document.createElement('p');
+        note.className = 'stats-note-nd';
+        note.style.cssText = 'margin:12px 0 0;font-size:0.85rem;opacity:.75;';
+        note.textContent = 'n. d. : donnée non publiée par Centris, le nombre de transactions étant trop faible pour la période.';
+        wrap.insertAdjacentElement('afterend', note);
+      } else if (!hasNull && note) {
+        note.remove();
+      }
 
       // Métadonnées (label trimestre, source, date)
       section.querySelectorAll('[data-meta]').forEach(el => {
