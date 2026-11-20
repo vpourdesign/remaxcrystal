@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "genereLe": "2026-11-19T17:51:53.477Z",
+  "slug": "marie-pier-bourdeau",
+  "identite": {
+    "type": "solo",
+    "nomComplet": "Marie-Pier Bourdeau",
+    "membresEquipe": [],
+    "titre": "Courtier immobilier résidentiel et commercial",
+    "permisOaciq": "J4243",
+    "anneeDebut": 2024,
+    "langues": [
+      "Français",
+      "Anglais"
+    ]
+  },
+  "territoire": {
+    "villePrincipale": "Mascouche",
+    "villesSecondaires": [
+      "Repentigny",
+      "Terrebonne"
+    ],
+    "quartiers": "Mascouche Heights, Grand-Coteau, Jardins du Coteau, Seigneurie du Chêne, Vieux-Mascouche, Mascouche-Ouest, Mascouche-Est, Gare de Mascouche, Valmont-sur-parc, Des Moulins, Félix-Leclerc",
+    "lienTerritoire": "Mascouche, c’est chez moi! J’y habite depuis plusieurs années et j’ai le plaisir d’y accompagner mes clients dans leurs projets immobiliers. Je connais ses quartiers, ses attraits et tout ce qui rend cette ville si agréable à vivre. Mon expérience du secteur est un véritable atout pour vous et il me fera un grand plaisir de vous accompagner que ce soit dans la vente ou dans l'achat d'un bien immobilier.",
+    "faitsLocaux": "La ville compte plus de 40 parcs, dont le magnifique parc du Grand-Coteau, avec ses sentiers pédestres, ses jeux d'eau, ses pistes de ski de fond et ses activités de plein air en toute saison. Avec 34 % d’espaces verts sur son territoire, votre ville est assurément verte."
+  },
+  "servicesEtSpecialites": {
+    "clientele": "Les deux",
+    "specialites": [
+      "Unifamiliale",
+      "Condo",
+      "Propriété de prestige",
+      "Premier acheteur"
+    ],
+    "services": [
+      "Évaluation gratuite",
+      "Mise en marché complète",
+      "Photo / vidéo professionnelle",
+      "Home staging",
+      "Visite virtuelle",
+      "Accompagnement acheteur",
+      "Analyse comparative de marché",
+      "Réseau d'entrepreneurs et notaires"
+    ],
+    "servicesAutre": "",
+    "plusValues": [
+      "Disponible 7 jours sur 7",
+      "Photos professionnelles incluses dans chaque mandat.",
+      "Un accompagnement de la première rencontre jusqu'à la signature chez le notaire."
+    ]
+  },
+  "preuveSociale": {
+    "transactions": "",
+    "prixEtReconnaissances": "",
+    "temoignages": [
+      {
+        "texte": "Nous avons eu une excellente expérience avec Marie-Pier. Elle a été d’une grande patience tout au long de notre transaction, toujours à l’écoute de nos besoins et attentive à chaque détail.\n\nNous avons particulièrement apprécié sa prudence et son professionnalisme. Elle a pris le temps de bien vérifier les informations de toutes les propriété visitées, de répondre à toutes nos questions et de s’assurer que chaque étape de la transaction soit faite avec sérieux et rigueur. Nous nous sommes sentis accompagnés et en confiance du début à la fin.\n\nMerci pour ton excellent travail, ta disponibilité et ton dévouement. Nous sommes vraiment heureux d’avoir pu compter sur toi pour l’achat de notre maison!",
+        "nom": "Kimberly Turcotte",
+        "ville": "Mascouche",
+        "consentement": true
+      },
+      {
+        "texte": "Nous avons eu la chance de travailler avec Marie-Pier pour l’achat de notre tout premier immeuble à revenus, et nous ne pouvions rêver d’une meilleure accompagnatrice dans cette aventure. Dès le début, elle a su nous mettre en confiance, nous guider étape par étape avec patience, professionnalisme et une connaissance impressionnante du marché.\n\nMême si nous étions complètement débutants dans le domaine de l’investissement immobilier, elle a pris le temps de bien nous expliquer chaque détail, de répondre à toutes nos questions (et il y en avait beaucoup !) et de nous conseiller avec transparence et bienveillance. Grâce à elle, nous avons pu faire un choix éclairé et nous sentons maintenant outillés pour la suite.\n\nSon implication, sa disponibilité et son souci du détail ont vraiment fait toute la différence. Si vous cherchez une courtière qui travaille pour vous comme si c’était pour elle-même, ne cherchez plus. Merci infiniment pour ton excellent travail !",
+        "nom": "Éric Payment",
+        "ville": "Repentigny",
+        "consentement": true
+      },
+      {
+        "texte": "Je tiens à recommander chaleureusement Marie-Pier pour ses compétences exceptionnelles en tant que courtière immobilière. Marie-Pier est une professionnelle dévouée, toujours à l'écoute de ses clients. Elle cerne parfaitement les besoins de chacun et suit ses dossiers avec une rigueur exemplaire.\n\nMarie-Pier nous a patiemment accompagnés lors de nos visites, nous aidant à faire le meilleur choix pour nous. Elle pratique son métier dans les règles de l'art, avec un souci du détail que nous avons grandement apprécié. Même notre équipe financière à la banque a été grandement impressionnée par son professionnalisme et la qualité des dossiers qu'elle a soumis.\n\nPour vous accompagner dans ce marché turbulent, nous vous recommandons sérieusement Marie-Pier. Son expertise, son dévouement et son intégrité font d'elle un atout précieux pour toute transaction immobilière. Elle saura vous guider avec assurance et compétence, vous permettant ainsi de réaliser vos projets en toute sérénité.",
+        "nom": "Michelle Lanoix",
+        "ville": "Repentigny",
+        "consentement": true
+      }
+    ],
+    "liens": {
+      "googleBusiness": "https://share.google/jboEhohk891Czg5XD",
+      "centris": "https://www.centris.ca/fr/courtier-immobilier~marie-pier-bourdeau~re-max-d-ici/j4243",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/mariepier.bourdeau/",
+      "linkedin": "",
+      "tiktok": "",
+      "youtube": ""
+    }
+  },
+  "contenuBrut": {
+    "presentation": "Bienvenue dans le monde de l'immobilier !\nJe suis une courtière passionnée et dévouée qui croit que chaque transaction est unique, mettant en avant votre satisfaction comme priorité absolue.\n\n C'est pourquoi à partir d'aujourd'hui, je m'engage à vous accompagner à chaque étape du processus, en vous offrant des conseils avisés, une expertise approfondie du marché et un soutien personnalisé pour concrétiser vos projets immobiliers.\n\nQue vous soyez à la recherche d'une propriété à acheter, à vendre ou à louer, je suis là pour vous guider avec professionnalisme, intégrité et dévouement. Je suis prête à relever tous les défis pour vous aider à atteindre vos objectifs immobiliers.\n\nPrête à réaliser vos rêves immobiliers ensembles ? Contactez moi dès maintenant !",
+    "momentMarquant": "",
+    "faq": [
+      {
+        "question": "Pourquoi faire affaire avec un courtier immobilier pour acheter une propriété ?",
+        "reponse": "Acheter une propriété c'est une décision importante et il est essentiel à mon avis d'être bien accompagné. Mon rôle est de vous guider à chaque étape, d'analyser les documents, de valider les informations et de vous conseiller sur sa juste valeur marchande grâce à l'analyse des comparables vendus dans le secteur. Je veux vous aider à prendre une décision éclairée et à acheter au meilleur prix possible, tout en protégeant vos intérêts."
+      },
+      {
+        "question": "Quels sont les frais pour l'achat d'une maison ?",
+        "reponse": "C'est une question très fréquente et nous en discuterons assurément lors de notre première rencontre. Au-delà de la mise de fonds, il faut prévoir certains frais supplémentaires, comme les frais de notaire, l'inspection, la taxe de bienvenue, les ajustements de taxes municipales et scolaires et certains frais liés au financement. N'hésitez pas à me contacter, il me fera plaisir de répondre à vos questions afin de bien planifier votre achat."
+      },
+      {
+        "question": "Combien vaut ma maison ?",
+        "reponse": "Chaque propriété est unique. Appelez-moi pour obtenir une évaluation gratuite et découvrir la valeur marchande de votre propriété selon les conditions actuelles du marché."
+      }
+    ]
+  },
+  "contact": {
+    "cellulaire": "5145169525",
+    "courriel": "mariepier.bourdeau@remax-quebec.com",
+    "bureau": {
+      "id": "terrebonne",
+      "ville": "Terrebonne",
+      "adresse": "550, chemin du Coteau, bureau 206",
+      "codePostal": "J6W 5H2",
+      "tel": "450 471-5503"
+    },
+    "ctaPrincipal": "evaluation"
+  },
+  "medias": {
+    "dossierCible": "images/courtiers/marie-pier-bourdeau",
+    "portrait": {
+      "fichier": "images/courtiers/marie-pier-bourdeau/portrait.jpg",
+      "nomOriginal": "14_MPB.jpg"
+    },
+    "photoEquipe": null,
+    "photosLibres": [
+      {
+        "fichier": "images/courtiers/marie-pier-bourdeau/photo-1.jpg",
+        "nomOriginal": "IMG_6144.JPG"
+      },
+      {
+        "fichier": "images/courtiers/marie-pier-bourdeau/photo-2.jpg",
+        "nomOriginal": "210_MPB.jpg"
+      }
+    ],
+    "video": "",
+    "consentement": true
+  },
+  "resumeMarkdown": "# Fiche courtier — Marie-Pier Bourdeau\n\n**Type :** Courtier solo\n**Titre :** Courtier immobilier résidentiel et commercial · Permis OACIQ J4243\n**Expérience :** depuis 2024 (~2 ans) · Langues : Français, Anglais\n\n## Territoire\n- Ville principale : **Mascouche**\n- Villes secondaires : Repentigny, Terrebonne\n- Quartiers : Mascouche Heights, Grand-Coteau, Jardins du Coteau, Seigneurie du Chêne, Vieux-Mascouche, Mascouche-Ouest, Mascouche-Est, Gare de Mascouche, Valmont-sur-parc, Des Moulins, Félix-Leclerc\n- Lien au territoire : Mascouche, c’est chez moi! J’y habite depuis plusieurs années et j’ai le plaisir d’y accompagner mes clients dans leurs projets immobiliers. Je connais ses quartiers, ses attraits et tout ce qui rend cette ville si agréable à vivre. Mon expérience du secteur est un véritable atout pour vous et il me fera un grand plaisir de vous accompagner que ce soit dans la vente ou dans l'achat d'un bien immobilier.\n- Faits locaux : La ville compte plus de 40 parcs, dont le magnifique parc du Grand-Coteau, avec ses sentiers pédestres, ses jeux d'eau, ses pistes de ski de fond et ses activités de plein air en toute saison. Avec 34 % d’espaces verts sur son territoire, votre ville est assurément verte.\n\n## Services\n- Clientèle : Les deux\n- Spécialités : Unifamiliale, Condo, Propriété de prestige, Premier acheteur\n- Services : Évaluation gratuite, Mise en marché complète, Photo / vidéo professionnelle, Home staging, Visite virtuelle, Accompagnement acheteur, Analyse comparative de marché, Réseau d'entrepreneurs et notaires\n- Plus-values : Disponible 7 jours sur 7 | Photos professionnelles incluses dans chaque mandat. | Un accompagnement de la première rencontre jusqu'à la signature chez le notaire.\n\n## Preuve sociale\n- Transactions : —\n- Prix : —\n- Témoignages : 3 (consentement : oui)\n\n## Contenu brut\n### Présentation\nBienvenue dans le monde de l'immobilier !\nJe suis une courtière passionnée et dévouée qui croit que chaque transaction est unique, mettant en avant votre satisfaction comme priorité absolue.\n\n C'est pourquoi à partir d'aujourd'hui, je m'engage à vous accompagner à chaque étape du processus, en vous offrant des conseils avisés, une expertise approfondie du marché et un soutien personnalisé pour concrétiser vos projets immobiliers.\n\nQue vous soyez à la recherche d'une propriété à acheter, à vendre ou à louer, je suis là pour vous guider avec professionnalisme, intégrité et dévouement. Je suis prête à relever tous les défis pour vous aider à atteindre vos objectifs immobiliers.\n\nPrête à réaliser vos rêves immobiliers ensembles ? Contactez moi dès maintenant !\n### FAQ\n- **Q :** Pourquoi faire affaire avec un courtier immobilier pour acheter une propriété ?\n  **R :** Acheter une propriété c'est une décision importante et il est essentiel à mon avis d'être bien accompagné. Mon rôle est de vous guider à chaque étape, d'analyser les documents, de valider les informations et de vous conseiller sur sa juste valeur marchande grâce à l'analyse des comparables vendus dans le secteur. Je veux vous aider à prendre une décision éclairée et à acheter au meilleur prix possible, tout en protégeant vos intérêts.\n- **Q :** Quels sont les frais pour l'achat d'une maison ?\n  **R :** C'est une question très fréquente et nous en discuterons assurément lors de notre première rencontre. Au-delà de la mise de fonds, il faut prévoir certains frais supplémentaires, comme les frais de notaire, l'inspection, la taxe de bienvenue, les ajustements de taxes municipales et scolaires et certains frais liés au financement. N'hésitez pas à me contacter, il me fera plaisir de répondre à vos questions afin de bien planifier votre achat.\n- **Q :** Combien vaut ma maison ?\n  **R :** Chaque propriété est unique. Appelez-moi pour obtenir une évaluation gratuite et découvrir la valeur marchande de votre propriété selon les conditions actuelles du marché.\n\n## Contact\n- Cell : 5145169525 · Courriel : mariepier.bourdeau@remax-quebec.com\n- Bureau : Terrebonne, 550, chemin du Coteau, bureau 206\n- CTA principal : evaluation\n\n## Médias\n- Portrait : images/courtiers/marie-pier-bourdeau/portrait.jpg\n- Photos libres : 2\n- Vidéo : —",
+  "agence": "dici",
+  "recuLe": "2026-11-19T17:51:53.875Z"
+}
