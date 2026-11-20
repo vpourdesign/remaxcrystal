@@ -93,7 +93,7 @@
       if (hasNull && wrap && !note) {
         note = document.createElement('p');
         note.className = 'stats-note-nd';
-        note.style.cssText = 'margin:12px 0 0;font-size:0.85rem;opacity:.75;';
+        // style : .stats-note-nd dans design-system/guide.css
         note.textContent = 'n. d. : donnée non publiée par Centris, le nombre de transactions étant trop faible pour la période.';
         wrap.insertAdjacentElement('afterend', note);
       } else if (!hasNull && note) {
