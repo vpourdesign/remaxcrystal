@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "genereLe": "2026-11-19T15:59:02.476Z",
+  "slug": "kim-co-courtiers-immobiliers",
+  "identite": {
+    "type": "equipe",
+    "nomComplet": "Kim&Co | Courtiers Immobiliers",
+    "membresEquipe": [
+      {
+        "nom": "Kim Di Chiaro",
+        "titre": "Courtier immobilier résidentiel"
+      },
+      {
+        "nom": "Kimberly Modafferi",
+        "titre": "Courtier immobilier résidentiel"
+      }
+    ],
+    "titre": "Courtier immobilier résidentiel",
+    "permisOaciq": "G9025",
+    "anneeDebut": 2017,
+    "langues": [
+      "Français"
+    ]
+  },
+  "territoire": {
+    "villePrincipale": "Blainville",
+    "villesSecondaires": [
+      "Lorraine",
+      "Rosemère"
+    ],
+    "quartiers": "Chambéry",
+    "lienTerritoire": "J'habite ce secteur depuis 7 ans, mes enfants vont à l'école de Chambéry, et le CPE de Chambéry (Les Amis d'A...bord), et je pratique tous mes activités dans le secteur (Cours, yoga, pilates, parc, etc). En somme je connais tous de ce quartier, et les atouts qu'il a à offrir.",
+    "faitsLocaux": "Secteur en pleinne croissance, plusieurs nouveau sentiers à proximité, de nouvelles écoles bien reconnu, une CPE de 80 places magnifique, des services à proximité."
+  },
+  "servicesEtSpecialites": {
+    "clientele": "Les deux",
+    "specialites": [
+      "Unifamiliale",
+      "Condo",
+      "Plex",
+      "Propriété de prestige",
+      "Premier acheteur",
+      "55+ / retraités"
+    ],
+    "services": [
+      "Évaluation gratuite",
+      "Mise en marché complète",
+      "Photo / vidéo professionnelle",
+      "Accompagnement acheteur",
+      "Analyse comparative de marché",
+      "Réseau d'entrepreneurs et notaires"
+    ],
+    "servicesAutre": "",
+    "plusValues": [
+      "Un système CRM complet qui permet un accompagnement des plus obtimale",
+      "Une expérience personnalisé : je ne roule pas à la quantité mais bien à la qualité de mon service",
+      "Un suivi rigoureux, précieux et détaillé tout au long du mandat."
+    ]
+  },
+  "preuveSociale": {
+    "transactions": "35 à 40 par années",
+    "prixEtReconnaissances": "Je m'en fou!",
+    "temoignages": [
+      {
+        "texte": "Nous avons eu la chance d’être accompagnés par Kim lors de l’achat de notre maison et la vente de cette dernière. Dès les premiers instants nous nous sommes sentis en confiance avec Kim. Elle connaît son métier. Elle est à l’écoute des besoins de ses clients. Elle sait nous accompagner, nous rassurer mais surtout elle est disponible et sécurisante lors des moments plus insécurisants voire stressants. Toujours calme et souriante, elle nous accompagne dans tout le processus d’achat ou de vente d’une propriété. C’est une professionnelle de haut niveau. Être accompagné par Kim c’est se sentir en confiance tout au long du processus. Nous la recommandons sans hésitation! Encore merci Kim pour ce bel et généreux accompagnement.",
+        "nom": "André et Richard",
+        "ville": "Saint-Sauveur",
+        "consentement": true
+      },
+      {
+        "texte": "Kim a le don de nous mettre en confiance avec sa douceur et son professionnalisme. Elle fait des pieds et des mains pour réaliser nos demandes. Notre dossier fut complexe à certains moments mais elle n’a jamais lâché prise. Je la recommande les yeux fermés. Une femme passionnée par son travail. En aucun temps on se sens comme un numéro. Je me suis toujours senti prioritaire et je l’ai grandement apprécié. Comme on dit l’essayer c’est l’adopter!!!",
+        "nom": "Annick",
+        "ville": "Saint-Eustache",
+        "consentement": true
+      },
+      {
+        "texte": "Service impeccable, bien au-dessus de nos attentes ! Notre agent Kim a su se rendre disponible à tout moment, littéralement 24/7, pour répondre à nos questions et nos demandes. Son professionnalisme est sans égal – la meilleure agent au monde ! Grâce à Kim, nous avons loué et vendu notre bien et vécu une expérience de vente sereine et sans stress. Un grand merci pour son dévouement et son accompagnement exceptionnel. Nous recommandons vivement !",
+        "nom": "Francis",
+        "ville": "Prévost",
+        "consentement": true
+      }
+    ],
+    "liens": {
+      "googleBusiness": "https://share.google/TBK7TVs4e34dV6FFn",
+      "centris": "https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQqDMABE_-XmDNrNrA6lFDrU4iIOqV40NBpJtCWI_16kHdyOe-9uxWADJBIIPL170eeuJSTS9JRlGQSc1qbhlRESEFgCz3SdV1Mfi15NDJCJQNhjafgJkFUtEKh809_UsH9BQBs70_-hNrRtKJVd9nW1_opLC4lczeycjxB47xwSdwbTcpyNstjEUS5orRm7R5x48Atlia3evtoTDLLbAAAA&v=2&sortSeed=1301597202&sort=None&pageSize=20",
+      "facebook": "https://www.facebook.com/kimdichiaroremax",
+      "instagram": "https://www.instagram.com/kimdichiaroremax?fbclid=IwY2xjawVr-RJleHRuA2FlbQIxMABwZG9mBWJyaWQRMW0xOXRORlRIMFlsazQxbnlzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEfB6b30JZruvgXZv0L3RmOsrZj1Gt3F34G2ip2RixZHX4C8nuU2TdcK8XEbRI_aem_skINFkYFqTAoIRgcYMd2Sg",
+      "linkedin": "http://linkedin.com/in/kim-di-chiaro-7b702671/",
+      "tiktok": "",
+      "youtube": "https://www.youtube.com/@dichiarokim"
+    }
+  },
+  "contenuBrut": {
+    "presentation": "Je suis Kim Di Chiaro, courtière immobilière résidentielle depuis 2017 et cofondatrice de Kim&Co | L’Équipe Modafferi et Di Chiaro. \n\nPassionnée par l’immobilier, je place l’humain au cœur de ma pratique et j’accorde une grande importance à l’écoute, à une représentation professionnelle et attentive, à la transparence ainsi qu’à la qualité de l’accompagnement offert à chacun de mes clients. Derrière chaque projet immobilier se trouvent des objectifs, des émotions, des enjeux financiers et, bien souvent, une décision importante. Mon rôle est de vous guider avec clarté, rigueur et stratégie afin que vous puissiez avancer avec confiance à chaque étape.\n\nMa façon de travailler repose sur des valeurs simples : la disponibilité, l’écoute, l’engagement et le souci du travail bien fait. Je prends le temps de comprendre votre réalité, d’anticiper les différentes étapes de la transaction, de vous présenter les options clairement et de défendre vos intérêts avec sérieux.\n\nDiplômée du Collège de l’immobilier et formée en marketing à l’Université du Québec à Montréal, je combine mes connaissances du marché à une approche moderne et réfléchie de la mise en marché. Présentation des propriétés, positionnement stratégique, technologies, réseaux sociaux et communication font partie intégrante de mon travail. Avec plus de 15 ans d’expérience en vente et en service à la clientèle, j’ai développé une approche axée sur le souci du détail, la confiance et un accompagnement adapté aux besoins de chacun.\n\nAu sein de Kim&Co | L’Équipe Modafferi et Di Chiaro, cette philosophie se poursuit dans une approche collaborative où deux expertises, deux regards complémentaires et une même exigence de qualité sont mis au service de nos clients.\n\nQue vous souhaitiez acheter, vendre ou investir, mon engagement demeure le même : vous conseiller avec objectivité, défendre vos intérêts et vous accompagner avec constance et professionnalisme du début à la fin. Votre projet mérite une stratégie adaptée, une attention soutenue et un accompagnement sur lequel vous pouvez compter.\n\nIl me fera plaisir de découvrir votre projet et de le concrétiser avec vous.",
+    "momentMarquant": "",
+    "faq": [
+      {
+        "question": "Ma distinction",
+        "reponse": "Mon approche personnalisée, humaine, et attentionnée"
+      },
+      {
+        "question": "Combine vaut ma propriété?",
+        "reponse": "J’offre toujours une analyse détaillée, expliquée dans un langage clair et accessible, afin que mes clients comprennent chaque étape et se sentent pleinement en confiance avec notre stratégie de mise en marché, surtout au niveau du prix demandé, qui demeure bien souvent la GRANDE question."
+      },
+      {
+        "question": "Mon expérience",
+        "reponse": "J’œuvre au sein de la même agence RE/MAX depuis maintenant 10 ans. Reconnue pour ma fidélité, mon engagement et mon implication active au sein de mon réseau, j’ai développé des relations professionnelles solides qui représentent un véritable atout et qui me permettent de faire bénéficier mes clients d’un précieux réseau de contacts et d’opportunités."
+      }
+    ]
+  },
+  "contact": {
+    "cellulaire": "450-430-4207",
+    "courriel": "kim.dichiaro@remax-quebec,com",
+    "bureau": {
+      "id": "sainte-therese",
+      "ville": "Sainte-Thérèse",
+      "adresse": "228 boul. du Curé-Labelle",
+      "codePostal": "J7E 2X7",
+      "tel": "450 430-4207"
+    },
+    "ctaPrincipal": "evaluation"
+  },
+  "medias": {
+    "dossierCible": "images/courtiers/kim-co-courtiers-immobiliers",
+    "portrait": {
+      "fichier": "images/courtiers/kim-co-courtiers-immobiliers/portrait.jpg",
+      "nomOriginal": "20260603_K2project_02-Kim_00458_VW1_Square_Synbad.jpg"
+    },
+    "photoEquipe": {
+      "fichier": "images/courtiers/kim-co-courtiers-immobiliers/equipe.jpg",
+      "nomOriginal": "Logo Kim&Co - Noir - Courtiers Immobiliers - Serré.png"
+    },
+    "photosLibres": [
+      {
+        "fichier": "images/courtiers/kim-co-courtiers-immobiliers/photo-1.jpg",
+        "nomOriginal": "20260603_K2project_03-Duo_01034_VW1_WeTransfer.png"
+      },
+      {
+        "fichier": "images/courtiers/kim-co-courtiers-immobiliers/photo-2.jpg",
+        "nomOriginal": "DSC01812.JPG"
+      },
+      {
+        "fichier": "images/courtiers/kim-co-courtiers-immobiliers/photo-3.jpg",
+        "nomOriginal": "DSC01229.jpg"
+      }
+    ],
+    "video": "",
+    "consentement": true
+  },
+  "resumeMarkdown": "# Fiche courtier — Kim&Co | Courtiers Immobiliers\n\n**Type :** Équipe\n**Titre :** Courtier immobilier résidentiel · Permis OACIQ G9025\n**Expérience :** depuis 2017 (~9 ans) · Langues : Français\n**Membres :** Kim Di Chiaro (Courtier immobilier résidentiel) · Kimberly Modafferi (Courtier immobilier résidentiel)\n\n## Territoire\n- Ville principale : **Blainville**\n- Villes secondaires : Lorraine, Rosemère\n- Quartiers : Chambéry\n- Lien au territoire : J'habite ce secteur depuis 7 ans, mes enfants vont à l'école de Chambéry, et le CPE de Chambéry (Les Amis d'A...bord), et je pratique tous mes activités dans le secteur (Cours, yoga, pilates, parc, etc). En somme je connais tous de ce quartier, et les atouts qu'il a à offrir.\n- Faits locaux : Secteur en pleinne croissance, plusieurs nouveau sentiers à proximité, de nouvelles écoles bien reconnu, une CPE de 80 places magnifique, des services à proximité.\n\n## Services\n- Clientèle : Les deux\n- Spécialités : Unifamiliale, Condo, Plex, Propriété de prestige, Premier acheteur, 55+ / retraités\n- Services : Évaluation gratuite, Mise en marché complète, Photo / vidéo professionnelle, Accompagnement acheteur, Analyse comparative de marché, Réseau d'entrepreneurs et notaires\n- Plus-values : Un système CRM complet qui permet un accompagnement des plus obtimale | Une expérience personnalisé : je ne roule pas à la quantité mais bien à la qualité de mon service | Un suivi rigoureux, précieux et détaillé tout au long du mandat.\n\n## Preuve sociale\n- Transactions : 35 à 40 par années\n- Prix : Je m'en fou!\n- Témoignages : 3 (consentement : oui)\n\n## Contenu brut\n### Présentation\nJe suis Kim Di Chiaro, courtière immobilière résidentielle depuis 2017 et cofondatrice de Kim&Co | L’Équipe Modafferi et Di Chiaro. \n\nPassionnée par l’immobilier, je place l’humain au cœur de ma pratique et j’accorde une grande importance à l’écoute, à une représentation professionnelle et attentive, à la transparence ainsi qu’à la qualité de l’accompagnement offert à chacun de mes clients. Derrière chaque projet immobilier se trouvent des objectifs, des émotions, des enjeux financiers et, bien souvent, une décision importante. Mon rôle est de vous guider avec clarté, rigueur et stratégie afin que vous puissiez avancer avec confiance à chaque étape.\n\nMa façon de travailler repose sur des valeurs simples : la disponibilité, l’écoute, l’engagement et le souci du travail bien fait. Je prends le temps de comprendre votre réalité, d’anticiper les différentes étapes de la transaction, de vous présenter les options clairement et de défendre vos intérêts avec sérieux.\n\nDiplômée du Collège de l’immobilier et formée en marketing à l’Université du Québec à Montréal, je combine mes connaissances du marché à une approche moderne et réfléchie de la mise en marché. Présentation des propriétés, positionnement stratégique, technologies, réseaux sociaux et communication font partie intégrante de mon travail. Avec plus de 15 ans d’expérience en vente et en service à la clientèle, j’ai développé une approche axée sur le souci du détail, la confiance et un accompagnement adapté aux besoins de chacun.\n\nAu sein de Kim&Co | L’Équipe Modafferi et Di Chiaro, cette philosophie se poursuit dans une approche collaborative où deux expertises, deux regards complémentaires et une même exigence de qualité sont mis au service de nos clients.\n\nQue vous souhaitiez acheter, vendre ou investir, mon engagement demeure le même : vous conseiller avec objectivité, défendre vos intérêts et vous accompagner avec constance et professionnalisme du début à la fin. Votre projet mérite une stratégie adaptée, une attention soutenue et un accompagnement sur lequel vous pouvez compter.\n\nIl me fera plaisir de découvrir votre projet et de le concrétiser avec vous.\n### FAQ\n- **Q :** Ma distinction\n  **R :** Mon approche personnalisée, humaine, et attentionnée\n- **Q :** Combine vaut ma propriété?\n  **R :** J’offre toujours une analyse détaillée, expliquée dans un langage clair et accessible, afin que mes clients comprennent chaque étape et se sentent pleinement en confiance avec notre stratégie de mise en marché, surtout au niveau du prix demandé, qui demeure bien souvent la GRANDE question.\n- **Q :** Mon expérience\n  **R :** J’œuvre au sein de la même agence RE/MAX depuis maintenant 10 ans. Reconnue pour ma fidélité, mon engagement et mon implication active au sein de mon réseau, j’ai développé des relations professionnelles solides qui représentent un véritable atout et qui me permettent de faire bénéficier mes clients d’un précieux réseau de contacts et d’opportunités.\n\n## Contact\n- Cell : 450-430-4207 · Courriel : kim.dichiaro@remax-quebec,com\n- Bureau : Sainte-Thérèse, 228 boul. du Curé-Labelle\n- CTA principal : evaluation\n\n## Médias\n- Portrait : images/courtiers/kim-co-courtiers-immobiliers/portrait.jpg\n- Photos libres : 3\n- Vidéo : —",
+  "agence": "crystal",
+  "recuLe": "2026-11-19T15:59:03.540Z"
+}
