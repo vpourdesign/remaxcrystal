@@ -39,25 +39,25 @@ window.CITIES_DICI = {
     ],
     tagline: "La grande ville de Lanaudière, entre patrimoine du Vieux-Terrebonne et quartiers neufs comme Urbanova.",
     intro: [
-      `Terrebonne est la locomotive de Lanaudière : près de 120 000 résidents, un centre historique parmi les mieux conservés du Québec et des secteurs résidentiels neufs qui attirent chaque année des centaines de familles. La ville conjugue le charme du Vieux-Terrebonne et l'élan des nouveaux quartiers comme Urbanova.`,
-      `L'Île-des-Moulins, site historique national au bord de la rivière des Mille Îles, donne à la ville une âme rare. À quelques minutes, les rues du Vieux-Terrebonne alignent restos, terrasses, théâtre et commerces de proximité dans un décor patrimonial vivant.`,
-      `Côté pratique, Terrebonne coche toutes les cases : gare de train de banlieue exo, accès aux autoroutes 25, 40 et 640, écoles, hôpital et grands pôles commerciaux. C'est la ville la plus complète de la région pour qui veut tout avoir à portée de main.`
+      `Terrebonne est la plus grande ville de Lanaudière, avec près de 120 000 résidents. Elle compte un centre historique et des secteurs résidentiels neufs qui attirent chaque année de nouvelles familles. La ville conjugue le charme du Vieux-Terrebonne et l'élan des nouveaux quartiers comme Urbanova.`,
+      `L'Île-des-Moulins, site historique national au bord de la rivière des Mille Îles, donne son cachet à la ville. À quelques minutes, les rues du Vieux-Terrebonne regroupent restaurants, terrasses, théâtre et commerces de proximité.`,
+      `Côté pratique, on y trouve une gare de train de banlieue exo, l'accès aux autoroutes 25, 40 et 640, des écoles, un hôpital et de grands pôles commerciaux.`
     ],
     qualityIntro: "De l'Île-des-Moulins aux sentiers d'Urbanova, Terrebonne offre aux familles un cadre de vie aussi riche en histoire qu'en services modernes.",
     qualityCards: [
       { icon: 'park', title: 'Île-des-Moulins & rivière', text: 'Site historique national, parcs riverains et sentiers le long de la rivière des Mille Îles, en plein cœur de la ville.', value: 'Site national' },
-      { icon: 'commerce', title: 'Vieux-Terrebonne', text: 'Restaurants, terrasses, boutiques et théâtre dans un quartier patrimonial parmi les plus animés de la Rive-Nord.', value: 'Cœur vivant' },
+      { icon: 'commerce', title: 'Vieux-Terrebonne', text: 'Restaurants, terrasses, boutiques et théâtre dans un quartier patrimonial.', value: 'Cœur vivant' },
       { icon: 'sport', title: 'Sport & loisirs', text: 'Complexe aquatique, arénas, Cité du sport et un vaste réseau de pistes cyclables, notamment dans Urbanova.', value: '100+ parcs' },
       { icon: 'transit', title: 'Transport & accès', text: 'Gare de train de banlieue exo vers Montréal et accès rapide aux autoroutes 25, 40 et 640.', value: 'Gare exo' }
     ],
-    parksIntro: "Terrebonne protège un patrimoine vert exceptionnel : l'Île-des-Moulins, les berges de la rivière et les grands parcs de quartier des nouveaux secteurs.",
+    parksIntro: "Terrebonne compte l'Île-des-Moulins, les berges de la rivière et de grands parcs de quartier dans les nouveaux secteurs.",
     parks: [
       { img: 'terrebonne-2.jpg', title: 'Parc de l\'Île-des-Moulins' },
       { img: 'terrebonne-3.jpg', title: 'Île-des-Moulins, Terrebonne' },
       { img: 'terrebonne-4.jpg', title: 'Parc des Pionniers' },
       { img: 'terrebonne-5.jpg', title: 'Parc des Vignobles' }
     ],
-    transportIntro: "Idéalement reliée à Montréal et à Laval, Terrebonne combine train de banlieue, réseau d'autobus exo et trois autoroutes majeures.",
+    transportIntro: "Terrebonne est reliée à Montréal et à Laval par le train de banlieue exo, le réseau d'autobus exo et trois autoroutes.",
     transportTable: [
       { dest: 'Centre-ville de Montréal', car: '30 – 45 min', train: 'Train exo + REM ~55 min', dist: '32 km', access: 'A-25 Sud' },
       { dest: 'Laval', car: '15 – 25 min', train: 'Bus exo', dist: '18 km', access: 'A-25 / A-440' },
@@ -97,23 +97,23 @@ window.CITIES_DICI = {
     ],
     tagline: "La ville-nature de Lanaudière, reliée au centre-ville de Montréal par le train exo et le REM.",
     intro: [
-      `Mascouche s'est imposée comme l'une des villes les plus attractives de la Rive-Nord : croissance soutenue, nouveaux quartiers résidentiels et un cadre de vie où la nature n'est jamais loin. Sa gare exo la relie au centre-ville de Montréal en un peu plus d'une heure, avec correspondance au REM à Côte-de-Liesse.`,
-      `Le Parc du Grand-Coteau, vaste poumon vert au cœur de la ville, résume bien l'esprit de Mascouche : ski de fond, glissades, sentiers et patinoire l'hiver, plein air et événements l'été. Le Domaine seigneurial de Mascouche rappelle quant à lui ses racines historiques.`,
-      `Avec ses pôles commerciaux le long de la 25, ses écoles et son accès autoroutier direct, Mascouche séduit les familles qui cherchent l'espace et le calme sans renoncer à la proximité de la métropole.`
+      `Mascouche est une ville en croissance, avec de nouveaux quartiers résidentiels et un cadre de vie où la nature n'est jamais loin. Sa gare exo la relie au centre-ville de Montréal en un peu plus d'une heure, avec correspondance au REM à Côte-de-Liesse.`,
+      `Le Parc du Grand-Coteau, un grand espace vert au cœur de la ville, propose du ski de fond, des glissades, des sentiers et une patinoire l'hiver, du plein air et des événements l'été. Le Domaine seigneurial de Mascouche rappelle quant à lui ses racines historiques.`,
+      `Mascouche compte des pôles commerciaux le long de la 25, des écoles et un accès autoroutier direct, à distance raisonnable de Montréal.`
     ],
-    qualityIntro: "Mascouche marie nature, services de proximité et accès rapide à Montréal, un équilibre recherché par les familles de la région.",
+    qualityIntro: "Nature, services de proximité et accès à Montréal : Mascouche réunit les trois.",
     qualityCards: [
       { icon: 'park', title: 'Parc du Grand-Coteau', text: 'Le grand parc-nature de la ville : ski de fond, glissades, patinoire, sentiers et activités familiales en toutes saisons.', value: 'Quatre saisons' },
       { icon: 'transit', title: 'Train de banlieue exo', text: 'Le train exo va jusqu\'à la station Côte-de-Liesse, où le REM prend le relais vers le centre-ville. Environ 1 h 05 de trajet, sans la voiture.', value: '~1 h 05 Mtl' },
       { icon: 'commerce', title: 'Commerces & services', text: 'Pôles commerciaux le long de la 25, épiceries, restaurants et services professionnels à distance de marche des quartiers.', value: 'Tout sur place' },
       { icon: 'sport', title: 'Sport & plein air', text: 'Arénas, complexe sportif, terrains et un réseau de pistes cyclables qui sillonne la ville et ses espaces verts.', value: 'Ville active' }
     ],
-    parksIntro: "Mascouche mise sur ses grands espaces : le Parc du Grand-Coteau et un chapelet de parcs de quartier qui font respirer chaque secteur.",
+    parksIntro: "Mascouche compte le Parc du Grand-Coteau et plusieurs parcs de quartier répartis dans ses secteurs.",
     parks: [
       { img: 'mascouche-1.jpg', title: 'Aire de jeux familiale, Mascouche' },
       { img: 'mascouche-3.jpg', title: 'Parcs et étangs de Mascouche' }
     ],
-    transportIntro: "Mascouche profite d'un atout rare dans Lanaudière : une gare de train de banlieue, doublée d'un accès direct aux autoroutes 25 et 640.",
+    transportIntro: "Mascouche compte une gare de train de banlieue et un accès direct aux autoroutes 25 et 640.",
     transportTable: [
       { dest: 'Centre-ville de Montréal', car: '30 – 45 min', train: 'Train exo + REM ~1 h 05', dist: '35 km', access: 'A-25 Sud' },
       { dest: 'Laval', car: '20 – 30 min', train: 'Bus exo', dist: '22 km', access: 'A-25 / A-440' },
@@ -151,15 +151,15 @@ window.CITIES_DICI = {
       { value: 'Espace culturel', label: 'Pôle artistique' },
       { value: 'A-40 / A-640', label: 'Accès direct' }
     ],
-    tagline: "La ville au bord du fleuve, porte d'entrée de Lanaudière à la limite de Montréal.",
+    tagline: "La ville au bord du fleuve, à l'entrée de Lanaudière.",
     intro: [
-      `Repentigny est la deuxième ville de Lanaudière et la plus proche de l'île de Montréal. Posée sur la rive du Saint-Laurent, à l'embouchure de la rivière L'Assomption, elle offre un cadre de vie maritime rare sur la Rive-Nord, avec promenades riveraines, marinas et golfs.`,
-      `La ville s'est dotée d'un véritable cœur culturel : l'Espace culturel de Repentigny, avec sa bibliothèque, sa salle de spectacle et ses jardins, est devenu un repère pour toute la région. Les familles y trouvent une programmation riche, été comme hiver.`,
-      `Avec ses quartiers résidentiels établis, ses écoles, son cégep et un accès direct aux autoroutes 40 et 640, Repentigny combine la tranquillité d'une ville de banlieue mature et la proximité immédiate de Montréal.`
+      `Repentigny est la deuxième ville de Lanaudière par sa population et l'une des plus proches de l'île de Montréal. Posée sur la rive du Saint-Laurent, à l'embouchure de la rivière L'Assomption, elle offre un cadre de vie au bord du fleuve, avec promenades riveraines, marinas et golfs.`,
+      `L'Espace culturel de Repentigny regroupe une bibliothèque, une salle de spectacle et des jardins. Il propose une programmation durant toute l'année.`,
+      `Repentigny compte des quartiers résidentiels établis, des écoles, un cégep et un accès direct aux autoroutes 40 et 640.`
     ],
     qualityIntro: "Entre le fleuve, l'Espace culturel et ses quartiers verdoyants, Repentigny offre une qualité de vie complète aux portes de Montréal.",
     qualityCards: [
-      { icon: 'park', title: 'Bord du fleuve', text: 'Promenades riveraines, parcs au bord du Saint-Laurent, marinas et golfs : un cadre de vie maritime unique sur la Rive-Nord.', value: 'Front fleuve' },
+      { icon: 'park', title: 'Bord du fleuve', text: 'Promenades riveraines, parcs au bord du Saint-Laurent, marinas et golfs : un cadre de vie au bord du fleuve.', value: 'Front fleuve' },
       { icon: 'commerce', title: 'Espace culturel', text: 'Bibliothèque, salle de spectacle, jardins et programmation événementielle font de Repentigny un pôle culturel régional.', value: 'Pôle culturel' },
       { icon: 'sport', title: 'Sport & loisirs', text: 'Arénas, piscines, golfs, pistes cyclables et grands parcs : une ville pensée pour bouger en famille.', value: 'Ville active' },
       { icon: 'transit', title: 'Transport & accès', text: 'Accès direct aux autoroutes 40 et 640, terminus d\'autobus exo et liaison rapide vers Montréal.', value: 'Aux portes de Mtl' }
@@ -171,7 +171,7 @@ window.CITIES_DICI = {
       { img: 'repentigny-6.jpg', title: 'Espaces verts du Vieux-Repentigny' },
       { img: 'repentigny-2.jpg', title: 'Parc riverain de Repentigny' }
     ],
-    transportIntro: "Première ville de Lanaudière en arrivant de Montréal, Repentigny bénéficie d'un accès autoroutier immédiat et d'un réseau d'autobus exo.",
+    transportIntro: "Repentigny est l'une des premières villes de Lanaudière en arrivant de Montréal. Elle compte un accès autoroutier immédiat et un réseau d'autobus exo.",
     transportTable: [
       { dest: 'Centre-ville de Montréal', car: '25 – 40 min', train: 'Bus exo', dist: '25 km', access: 'A-40 Ouest' },
       { dest: 'Laval', car: '25 – 35 min', train: '—', dist: '30 km', access: 'A-40 / A-25' },
@@ -209,18 +209,18 @@ window.CITIES_DICI = {
       { value: 'Céline Dion', label: 'Ville natale' },
       { value: 'A-40', label: 'Accès direct' }
     ],
-    tagline: "La plus petite ville de Lanaudière, nichée entre deux rivières aux portes de Montréal.",
+    tagline: "Une ville à échelle humaine, entre deux rivières, aux portes de Montréal.",
     intro: [
-      `Charlemagne est une ville à échelle humaine, coincée entre la rivière L'Assomption et la rivière des Prairies, à la limite immédiate de l'île de Montréal. Son territoire compact en fait l'une des municipalités les plus accessibles de la région, tout est à quelques minutes.`,
-      `Connue comme la ville natale de Céline Dion, Charlemagne cultive une fierté de quartier et une vie communautaire tissée serré. On y trouve l'essentiel : écoles, commerces de proximité, parcs et bord de l'eau.`,
-      `Pour qui veut entrer dans Lanaudière tout en restant collé à Montréal, Charlemagne offre un rapport qualité-prix et un accès autoroutier (A-40) difficiles à battre.`
+      `Charlemagne est une ville à échelle humaine, située entre la rivière L'Assomption et la rivière des Prairies, à la limite de l'île de Montréal. Son territoire est compact : tout est à quelques minutes.`,
+      `Connue comme la ville natale de Céline Dion, Charlemagne cultive une fierté de quartier et une vie communautaire active. On y trouve l'essentiel : écoles, commerces de proximité, parcs et bord de l'eau.`,
+      `Pour qui veut entrer dans Lanaudière tout en restant collé à Montréal, Charlemagne offre un accès direct à l'autoroute 40.`
     ],
     qualityIntro: "Compacte et conviviale, Charlemagne réunit l'essentiel des services et un accès express à Montréal dans un format de petite ville.",
     qualityCards: [
       { icon: 'park', title: 'Entre deux rivières', text: "Bordée par la rivière L'Assomption et la rivière des Prairies, la ville offre parcs riverains et aires de jeux familiales.", value: 'Bord de l\'eau' },
       { icon: 'transit', title: 'Aux portes de Montréal', text: "Accès direct à l'autoroute 40 et liaison d'autobus : le centre-ville de Montréal est à une vingtaine de minutes.", value: '~20 min Mtl' },
       { icon: 'commerce', title: 'Proximité', text: 'Commerces de proximité, écoles et services du quotidien à distance de marche dans une ville à échelle humaine.', value: 'Tout proche' },
-      { icon: 'sport', title: 'Vie de quartier', text: 'Jeux d\'eau, parcs et installations communautaires animent une ville reconnue pour son esprit tissé serré.', value: 'Convivial' }
+      { icon: 'sport', title: 'Vie de quartier', text: 'Jeux d\'eau, parcs et installations communautaires animent une ville à l\'esprit de quartier marqué.', value: 'Convivial' }
     ],
     parksIntro: "Malgré sa petite taille, Charlemagne soigne ses espaces verts et ses aires de jeux, parfaits pour les familles.",
     parks: [
@@ -268,10 +268,10 @@ window.CITIES_DICI = {
     tagline: "La ville d'histoire et de culture, lovée dans une boucle de la rivière L'Assomption.",
     intro: [
       `L'Assomption est l'une des plus anciennes villes de Lanaudière, et cela se voit : son cœur historique, blotti dans une presqu'île formée par la rivière L'Assomption, aligne maisons patrimoniales, rues piétonnes et institutions réputées comme le Collège de L'Assomption.`,
-      `La ville respire la culture. Le Théâtre Hector-Charland en fait l'un des pôles de diffusion les plus dynamiques de la région, tandis que le centre-ville mêle cafés, boutiques et événements qui rythment l'année.`,
-      `Entourée de campagne et de pistes cyclables, mais reliée à Montréal par l'autoroute 40 et les routes 343 et 344, L'Assomption attire les familles qui cherchent le charme d'une ville d'histoire avec les services d'aujourd'hui.`
+      `La ville respire la culture. Le Théâtre Hector-Charland en fait un pôle de diffusion de la région, tandis que le centre-ville mêle cafés, boutiques et événements qui rythment l'année.`,
+      `Entourée de campagne et de pistes cyclables, mais reliée à Montréal par l'autoroute 40 et les routes 343 et 344, L'Assomption allie le charme d'une ville d'histoire et les services d'aujourd'hui.`
     ],
-    qualityIntro: "Patrimoine vivant, culture et nature : L'Assomption offre un milieu de vie au caractère affirmé, rare dans la région.",
+    qualityIntro: "Patrimoine, culture et nature : L'Assomption offre un milieu de vie au caractère bien marqué.",
     qualityCards: [
       { icon: 'park', title: 'Rivière & nature', text: "La rivière L'Assomption enserre le centre-ville. Parc écologique, berges et pistes cyclables prolongent la ville dans la nature.", value: 'Parc écolo' },
       { icon: 'commerce', title: 'Cœur patrimonial', text: 'Vieux quartier, cafés, boutiques et le Collège de L\'Assomption composent un centre-ville plein de caractère.', value: 'Centre vivant' },
@@ -326,11 +326,11 @@ window.CITIES_DICI = {
     intro: [
       `L'Épiphanie réunit, depuis le regroupement de la ville et de la paroisse, un noyau villageois animé et de vastes terres agricoles. La rivière L'Achigan traverse le territoire et donne à la municipalité son cadre paisible et verdoyant.`,
       `On vient à L'Épiphanie pour l'espace, le calme et la qualité de vie : grands terrains, air de campagne et un cœur villageois où se concentrent l'église, les commerces et les services de proximité.`,
-      `À distance raisonnable de Repentigny, de L'Assomption et des accès autoroutiers vers Montréal, L'Épiphanie offre le compromis idéal entre vie rurale et proximité des grands services.`
+      `À distance raisonnable de Repentigny, de L'Assomption et des accès autoroutiers vers Montréal, L'Épiphanie offre un équilibre entre vie rurale et proximité des services.`
     ],
     qualityIntro: "Espace, nature et tranquillité : L'Épiphanie séduit les familles qui cherchent la campagne sans s'éloigner des services.",
     qualityCards: [
-      { icon: 'park', title: "Rivière L'Achigan", text: 'La rivière et ses abords offrent un décor naturel apaisant, prisé pour la détente et les activités de plein air.', value: 'Cadre nature' },
+      { icon: 'park', title: "Rivière L'Achigan", text: 'La rivière et ses abords offrent un décor naturel propice à la détente et au plein air.', value: 'Cadre nature' },
       { icon: 'commerce', title: 'Cœur villageois', text: 'Église, commerces et services essentiels se regroupent dans un noyau villageois à échelle humaine.', value: 'Village vivant' },
       { icon: 'sport', title: 'Plein air & loisirs', text: 'Parcs, aires de jeux et grands espaces verts soutiennent une vie active et familiale.', value: 'Grands espaces' },
       { icon: 'transit', title: 'Campagne accessible', text: 'Routes 341 et 339 et accès à l\'autoroute 40 : Montréal et les pôles de la région restent à portée.', value: 'Bien relié' }
@@ -356,7 +356,7 @@ window.CITIES_DICI = {
 
   saintsulpice: {
     fileSlug: 'dici-saint-sulpice',
-    eventsUrl: 'https://municipalitesaintsulpice.com/evenements-a-venir-a-saint-sulpice',
+    eventsUrl: 'https://st-sulpice.com/evenements/',
     slug: 'saintsulpice',
     name: 'Saint-Sulpice',
     nameEm: 'Saint-Sulpice',
@@ -378,17 +378,17 @@ window.CITIES_DICI = {
       { value: 'Chemin du Roy', label: 'Route historique' },
       { value: 'A-40', label: 'Accès' }
     ],
-    tagline: "Le village riverain par excellence, sur le Chemin du Roy au bord du fleuve.",
+    tagline: "Un village riverain sur le Chemin du Roy, au bord du fleuve.",
     intro: [
-      `Saint-Sulpice est un village patrimonial étiré le long du fleuve Saint-Laurent, sur l'historique Chemin du Roy. Ici, la vie suit le rythme de l'eau : belvédères, haltes riveraines et grands ciels font le quotidien des résidents.`,
-      `Petite municipalité tissée serré, Saint-Sulpice conjugue maisons de caractère, terres agricoles et front fleuve. C'est une adresse recherchée par ceux qui rêvent de calme, d'espace et d'un point de vue imprenable sur le Saint-Laurent.`,
+      `Saint-Sulpice est un village patrimonial étiré le long du fleuve Saint-Laurent, sur l'historique Chemin du Roy. Belvédères, haltes riveraines et grands ciels font partie du quotidien des résidents.`,
+      `Petite municipalité, Saint-Sulpice compte des maisons de caractère, des terres agricoles et un front fleuve. On y trouve du calme, de l'espace et une vue sur le Saint-Laurent.`,
       `Tout en cultivant son charme villageois, Saint-Sulpice reste à quelques minutes de Repentigny et d'un accès rapide à l'autoroute 40 vers Montréal.`
     ],
-    qualityIntro: "Front fleuve, patrimoine et tranquillité : Saint-Sulpice offre une qualité de vie riveraine devenue rare.",
+    qualityIntro: "Front fleuve, patrimoine et tranquillité : Saint-Sulpice offre une qualité de vie au bord de l'eau.",
     qualityCards: [
       { icon: 'park', title: 'Bord du fleuve', text: 'Belvédères, haltes et accès au Saint-Laurent rythment le village le long du Chemin du Roy.', value: 'Front fleuve' },
-      { icon: 'commerce', title: 'Charme villageois', text: 'Maisons de caractère, patrimoine bâti et vie de village composent une adresse paisible et authentique.', value: 'Village' },
-      { icon: 'sport', title: 'Vélo & plein air', text: 'La route verte et le Chemin du Roy en font un terrain de jeu prisé des cyclistes et des amateurs de plein air.', value: 'Route verte' },
+      { icon: 'commerce', title: 'Charme villageois', text: 'Maisons de caractère, patrimoine bâti et vie de village composent une adresse paisible.', value: 'Village' },
+      { icon: 'sport', title: 'Vélo & plein air', text: 'La route verte et le Chemin du Roy en font un lieu de choix pour les cyclistes et les amateurs de plein air.', value: 'Route verte' },
       { icon: 'transit', title: 'Calme & accessible', text: "À quelques minutes de Repentigny et de l'autoroute 40 pour rejoindre Montréal.", value: 'Bien situé' }
     ],
     parksIntro: "Saint-Sulpice vit au bord de l'eau : ses plus beaux espaces longent le fleuve et le Chemin du Roy.",
@@ -406,7 +406,7 @@ window.CITIES_DICI = {
     ],
     taxKey: 'saintsulpice',
     taxCompare: ['saintsulpice', 'lavaltrie', 'repentigny', 'lassomption'],
-    ctaTagline: "Nos courtiers connaissent Saint-Sulpice et son marché riverain unique. Parlez à un expert local pour trouver votre adresse au bord du fleuve.",
+    ctaTagline: "Nos courtiers connaissent Saint-Sulpice et son marché riverain. Parlez à un expert local pour trouver votre adresse au bord du fleuve.",
     seoKeywords: ['agence immobilière Saint-Sulpice','courtier immobilier Saint-Sulpice','maison à vendre Saint-Sulpice','vivre à Saint-Sulpice','guide Saint-Sulpice 2026','bord du fleuve Chemin du Roy']
   },
 
@@ -436,11 +436,11 @@ window.CITIES_DICI = {
     ],
     tagline: "La ville d'art au bord du fleuve, sur le Chemin du Roy.",
     intro: [
-      `Lavaltrie marie le bord du fleuve Saint-Laurent et une vie culturelle étonnamment riche pour sa taille. Sur l'historique Chemin du Roy, la ville cultive les arts, la sculpture et les événements qui animent ses berges été comme hiver.`,
+      `Lavaltrie marie le bord du fleuve Saint-Laurent et une vie culturelle active. Sur l'historique Chemin du Roy, la ville cultive les arts, la sculpture et les événements qui animent ses berges été comme hiver.`,
       `Les familles apprécient Lavaltrie pour son équilibre : quartiers résidentiels paisibles, parc riverain, jeux d'eau et un cœur de ville fleuri et accueillant. La proximité de l'eau donne à chaque saison son décor.`,
       `Avec un accès direct à l'autoroute 40, Lavaltrie reste bien reliée à Repentigny, à Joliette et à Montréal, tout en conservant son cachet de ville riveraine.`
     ],
-    qualityIntro: "Bord du fleuve, arts et qualité de vie familiale : Lavaltrie offre un cadre de vie aussi beau qu'animé.",
+    qualityIntro: "Bord du fleuve, arts et qualité de vie familiale : Lavaltrie offre un cadre de vie agréable et animé.",
     qualityCards: [
       { icon: 'park', title: 'Parc riverain', text: 'Berges aménagées, jeux d\'eau et accès au Saint-Laurent font du bord du fleuve le cœur récréatif de la ville.', value: 'Front fleuve' },
       { icon: 'commerce', title: 'Ville d\'art', text: 'Sculpture, culture et événements rythment l\'année sur le Chemin du Roy, dans un centre-ville fleuri.', value: 'Vie culturelle' },
@@ -469,7 +469,7 @@ window.CITIES_DICI = {
 
   saintrochachigan: {
     fileSlug: 'dici-saint-roch-de-lachigan',
-    eventsUrl: 'https://sra.quebec/calendrier-des-evenements',
+    eventsUrl: 'https://sra.quebec/evenements',
     slug: 'saintrochachigan',
     name: "Saint-Roch-de-l'Achigan",
     nameEm: "Saint-Roch-de-l'Achigan",
@@ -491,11 +491,11 @@ window.CITIES_DICI = {
       { value: 'En croissance', label: 'Nouveaux quartiers' },
       { value: 'A-25', label: 'Accès direct' }
     ],
-    tagline: "Le village de Montcalm qui monte, à un saut d'autoroute de la métropole.",
+    tagline: "Un village de la MRC de Montcalm en croissance, au bord de la rivière L'Achigan.",
     intro: [
-      `Saint-Roch-de-l'Achigan est l'une des municipalités les plus dynamiques de la MRC de Montcalm. Son cœur villageois patrimonial, dominé par le Couvent et l'église, côtoie de nouveaux développements résidentiels qui attirent de jeunes familles.`,
-      `Traversée par la rivière L'Achigan, la municipalité offre l'espace et le calme de la campagne, avec des installations récentes : jeux d'eau, terrains sportifs synthétiques et parcs de quartier flambant neufs.`,
-      `Son accès direct à l'autoroute 25 met Terrebonne, Laval et Montréal à portée, ce qui en fait un choix de plus en plus prisé pour ceux qui veulent bâtir ou acheter neuf à bon prix.`
+      `Saint-Roch-de-l'Achigan est une municipalité de la MRC de Montcalm en croissance. Son cœur villageois patrimonial, dominé par le Couvent et l'église, côtoie de nouveaux développements résidentiels qui attirent de jeunes familles.`,
+      `Traversée par la rivière L'Achigan, la municipalité offre l'espace et le calme de la campagne, avec des installations récentes : jeux d'eau, terrains sportifs synthétiques et parcs de quartier récents.`,
+      `Son accès direct à l'autoroute 25 met Terrebonne, Laval et Montréal à portée, ce qui attire ceux qui veulent bâtir ou acheter neuf.`
     ],
     qualityIntro: "Patrimoine villageois, installations neuves et accès autoroutier : Saint-Roch-de-l'Achigan combine racines et croissance.",
     qualityCards: [
@@ -551,10 +551,10 @@ window.CITIES_DICI = {
     tagline: "L'une des villes qui grandissent le plus vite dans Lanaudière, berceau de Wilfrid Laurier.",
     intro: [
       `Saint-Lin–Laurentides figure parmi les villes à la croissance la plus rapide de Lanaudière. Ville natale de l'ancien premier ministre Wilfrid Laurier, elle conjugue un noyau villageois historique et de vastes développements résidentiels neufs.`,
-      `Traversée par la rivière L'Achigan, entourée de boisés et de sentiers, la ville offre l'espace et la nature recherchés par les familles, avec des prix encore accessibles pour qui veut bâtir ou acheter neuf.`,
+      `Traversée par la rivière L'Achigan, entourée de boisés et de sentiers, la ville offre de l'espace et de la nature, pour qui veut bâtir ou acheter neuf.`,
       `Les services suivent le rythme de la croissance : écoles, commerces, parcs et installations sportives se multiplient, tandis que la route 335 et l'autoroute 25 assurent le lien vers Terrebonne et Montréal.`
     ],
-    qualityIntro: "Nature, croissance et services en expansion : Saint-Lin–Laurentides attire les familles en quête d'espace et de neuf.",
+    qualityIntro: "Nature, croissance et services en expansion : Saint-Lin–Laurentides s'adresse aux familles en quête d'espace et de construction neuve.",
     qualityCards: [
       { icon: 'park', title: 'Rivière & boisés', text: "La rivière L'Achigan et les sentiers boisés offrent un terrain de jeu nature au cœur d'une ville en pleine expansion.", value: 'Plein air' },
       { icon: 'commerce', title: 'Ville en essor', text: 'Commerces, écoles et services se multiplient au rythme d\'une des plus fortes croissances de la région.', value: 'En expansion' },
@@ -607,18 +607,18 @@ window.CITIES_DICI = {
     ],
     tagline: "Le village de la « Nouvelle-Acadie », fier de ses racines et de sa qualité de vie.",
     intro: [
-      `Saint-Jacques est le cœur de la Nouvelle-Acadie, ce coin de Lanaudière où se sont installées des familles acadiennes après le Grand Dérangement. Cette histoire singulière donne à la municipalité une identité forte et une vie communautaire bien vivante.`,
+      `Saint-Jacques est le cœur de la Nouvelle-Acadie, ce coin de Lanaudière où se sont installées des familles acadiennes après le Grand Dérangement. Cette histoire donne à la municipalité une identité forte et une vie communautaire active.`,
       `Le village s'organise autour de son église, de ses parcs soigneusement entretenus et d'un centre-ville à échelle humaine. On y trouve écoles, commerces de proximité et une nature toujours à portée de main.`,
       `Bien reliée par la route 341 et à courte distance de l'autoroute 25, Saint-Jacques offre la tranquillité d'un village avec un accès commode à Saint-Lin, à Joliette et à la région métropolitaine.`
     ],
-    qualityIntro: "Patrimoine acadien, parcs soignés et vie de village : Saint-Jacques cultive une qualité de vie authentique.",
+    qualityIntro: "Patrimoine acadien, parcs soignés et vie de village : Saint-Jacques offre une qualité de vie à échelle humaine.",
     qualityCards: [
       { icon: 'park', title: 'Parcs & nature', text: 'Allées arborées, parcs entretenus et sentiers boisés offrent un cadre de vie verdoyant et paisible.', value: 'Cadre vert' },
       { icon: 'commerce', title: 'Cœur villageois', text: 'Église, commerces de proximité et services essentiels animent un centre-ville à échelle humaine.', value: 'Village vivant' },
       { icon: 'sport', title: 'Loisirs & communauté', text: 'Aires de jeux, terrains sportifs et événements communautaires rythment la vie de la Nouvelle-Acadie.', value: 'Vie active' },
       { icon: 'transit', title: 'Transport & accès', text: "Route 341 et accès à l'autoroute 25 vers Saint-Lin, Joliette et Montréal.", value: 'Bien relié' }
     ],
-    parksIntro: "Saint-Jacques soigne ses parcs et ses allées, écrin de verdure de la Nouvelle-Acadie.",
+    parksIntro: "Saint-Jacques soigne ses parcs et ses allées, au cœur de la Nouvelle-Acadie.",
     parks: [
       { img: 'stjacques-5.jpg', title: 'Sentier boisé en automne' },
       { img: 'stjacques-2.jpg', title: 'Aire de jeux familiale' },
@@ -664,11 +664,11 @@ window.CITIES_DICI = {
     ],
     tagline: "La capitale culturelle de Lanaudière, vibrante de musique, d'art et de vie de centre-ville.",
     intro: [
-      `Joliette est le cœur urbain et culturel de Lanaudière. Ville-centre de la région, elle rayonne grâce au Festival de Lanaudière, le plus grand festival de musique classique au Canada, et au Musée d'art de Joliette, l'un des plus importants musées régionaux du Québec.`,
-      `Son centre-ville animé, ses rues arborées, sa cathédrale et la rivière L'Assomption qui le traverse donnent à Joliette une qualité de vie urbaine rare hors des grands centres. Cafés, terrasses, commerces et institutions de santé et d'éducation y sont concentrés.`,
-      `Pôle de services pour toute la région, Joliette combine emplois, écoles, cégep et hôpital avec un coût de la vie attractif. La ville séduit autant les familles que ceux qui cherchent la vitalité d'un vrai centre-ville.`
+      `Joliette est le cœur urbain et culturel de Lanaudière. Ville-centre de la région, elle rayonne grâce au Festival de Lanaudière, l'un des plus importants festivals de musique classique au Canada, et au Musée d'art de Joliette, l'un des plus importants musées régionaux du Québec.`,
+      `Son centre-ville animé, ses rues arborées, sa cathédrale et la rivière L'Assomption qui le traverse donnent à Joliette une vie de centre-ville à taille humaine. Cafés, terrasses, commerces et institutions de santé et d'éducation y sont concentrés.`,
+      `Pôle de services pour toute la région, Joliette regroupe emplois, écoles, cégep et hôpital. On y trouve la vie de centre-ville d'une ville-centre.`
     ],
-    qualityIntro: "Culture, services et vie de centre-ville : Joliette offre tous les avantages d'une ville-centre au cœur de Lanaudière.",
+    qualityIntro: "Culture, services et vie de centre-ville : Joliette offre les services d'une ville-centre au cœur de Lanaudière.",
     qualityCards: [
       { icon: 'commerce', title: 'Capitale culturelle', text: 'Festival de Lanaudière, Musée d\'art de Joliette, théâtre et galeries font rayonner la ville bien au-delà de la région.', value: 'Pôle culturel' },
       { icon: 'park', title: 'Rivière & parcs', text: "La rivière L'Assomption traverse la ville ; parcs urbains, patinoire et berges en font le décor du quotidien.", value: 'Cœur vert' },

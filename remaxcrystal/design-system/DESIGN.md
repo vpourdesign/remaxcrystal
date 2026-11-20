@@ -97,3 +97,87 @@ Le site actuel utilise Raleway et Open Sans. Le système documente Anton + Monts
 - Le logo hors de sa languette ou déformé.
 
 **Test anti-slop :** quelqu'un pourrait-il deviner ces couleurs à partir du seul secteur « courtage immobilier »? Le marine oui, mais la combinaison crème + marine + rouge de donnée, l'affiche condensée et la languette du logo sont propres à Crystal. À garder tels quels.
+
+---
+
+## Guides de villes (web)
+
+Un entre-deux : la retenue des pages de courtiers, la chaleur et l'utilité des guides. Le résultat doit se lire comme un guide de magazine régional tenu par l'agence. Vaut pour les 15 guides Crystal (`guide-*.html`) et les 12 guides D'ici (`../remaxdici/guide-dici-*.html`).
+
+Fichiers :
+- `guide.css` : la feuille source unique, avec un bloc de tokens par marque (`@tokens crystal`, `@tokens dici`) et une partie commune.
+- `../refonte-guides.mjs` : le script qui transforme un guide et y colle le style.
+
+**Ce qui vient des pages de courtiers** : les tokens, Anton + Montserrat, les formes plates (rayons 4 px pour l'interface, 6 px pour les blocs et les photos), le filet rouge 36 × 3 px sous H1 et H2, les bandes pleines (marine, brume), le filet encre de 3 px entre deux chapitres crème, le rail collant, les boutons rectangulaires, la transition de couleur de 200 ms.
+
+**Ce qui reste des guides** : la grande photo de la ville en tête, la galerie de vraies photos de parcs, le texte long, le tableau Centris, les tableaux de trajets et de taxes, les calculateurs, le sommaire numéroté, l'ordre des sections.
+
+**Typo** : Anton en capitales pour H1 (`clamp(2.35rem, 5vw, 4.4rem)`) et H2 (`clamp(1.8rem, 2.8vw, 2.6rem)`), jamais plus grand. Chiffre des calculateurs en Anton (`clamp(2.4rem, 4vw, 3.4rem)`). Montserrat 400 / 500 / 600 pour tout le reste. Texte courant `clamp(1rem, 1.05vw, 1.0625rem)`, petit texte `clamp(0.875rem, 0.95vw, 0.9375rem)` : rien sous 14 px. Le portrait est justifié avec césure (aligné à gauche sous 480 px); son premier paragraphe et les chapôs restent alignés à gauche.
+
+**Grille** : 12 colonnes, conteneur 1240 px, gouttière `clamp(16px, 2vw, 28px)`, marge `clamp(16px, 4vw, 48px)`, sections de `clamp(64px, 8vw, 112px)`. Layout magazine : un sujet dominant par section, des empans inégaux qui changent d'une section à l'autre, des photos qui tiennent leur colonne, la hiérarchie par la taille et le filet plutôt que par la boîte.
+
+| Section | Fond | Empans (1440 px) |
+|---|---|---|
+| Ouverture | photo pleine largeur, puis crème | bandeau du titre 8 col. à cheval sur la photo; chapô 7 + fiche de repères 4 (zones nommées) |
+| Sommaire | crème, deux filets brume | 7 entrées sur une ligne (4 par ligne sous 1080 px, 2 sous 680 px) |
+| Calculateurs | bande pleine | rail du titre 4 + outil 8; dans l'outil, formulaire 3 / résultat 5 |
+| Portrait `#intro` | crème | texte 7 + photo 4, une colonne vide entre les deux (zones nommées `tete`, `texte`, `photo`) |
+| Qualité de vie `#qualite` | bande brume | tête 5 + 6; liste éditoriale, une ligne par sujet : titre 4, texte 5, repère 3. Tient avec 4, 5 ou 6 sujets |
+| Marché `#marche` | crème | tête 8 + fiche de source 4; tableau Centris 12 |
+| Événements `#evenements` | crème, filet encre 3 px au-dessus | texte 6 + bloc-lien 6 |
+| Parcs `#parcs` | bande pleine | tête 5 + 6; mosaïque : 7 (deux rangées) + 5 / 5, puis 6 + 6. Avec 4 photos la dernière prend 12, avec 2 photos 7 + 5 |
+| Transport `#transport` | crème | rail collant 4 + tableaux 8 |
+| Pied de page | encre | marque 4, villes 4 (deux sous-colonnes dès 7 liens), puis Outils 2 + Contact 2, ou Contact 3 seule si « Outils » n'existe pas |
+
+Sous 1080 px les rails passent au-dessus de leur contenu; sous 680 px tout est sur une colonne. Les tableaux défilent à l'horizontale dans `.table-wrap` et `.stats-table-wrap` (première colonne du tableau Centris collante).
+
+**Tokens par marque** (même système, autres valeurs) :
+
+| Rôle | Crystal | D'ici | Source D'ici |
+|---|---|---|---|
+| `--creme` fond | `#FAF9F0` | `#FAF9F1` | blanc cassé du ballon, `remaxdici/brand_assets/dicinoir.png` |
+| `--bande` barre du haut, bandes, bandeaux | `#1C315E` | `#091435` | nuit du ballon |
+| `--identite` filets de structure, liens, boutons | `#1C315E` | `#3E5CAA` | bleu du ballon |
+| `--encre` titres, pied de page | `#151A2E` | `#091435` | nuit du ballon |
+| `--rouge` filet et donnée pointée | `#EF2525` | `#ED2424` | rouge du ballon |
+| `--brume` filets fins, bande claire | `#E0E3E8` | `#DFE4F0` | brume Crystal tirée vers le bleu |
+| `--ardoise` texte | `#3D4555` | `#39415A` | ardoise Crystal tirée vers le bleu |
+| `--gris-note` notes, sur crème seulement | `#656571` | `#5F6579` | idem |
+| `--focus` anneau de focus 2 px | `#3578C4` | `#3E5CAA` | bleu du ballon |
+
+Chez Crystal le marine fait à la fois la bande et l'identité. Chez D'ici les deux rôles sont séparés : la nuit pour les bandes (le filet rouge y reste lisible), le bleu du ballon pour les détails. Logos : `Crystal-long-blanc-crystal.webp` et `diciblanc.png` dans la barre du haut et le pied de page. Palette D'ici validée par Vincent le 2026-11-20.
+
+**Mouvement** : transitions de couleur de 200 ms; survol, focus visible (2 px) et état actif sur tout ce qui se clique. Une seule animation : l'entrée du bandeau, du chapô et de la fiche à l'ouverture (560 ms, décalage de 90 ms, `transform` et `opacity`), coupée sous `prefers-reduced-motion`. Pas de GSAP, pas de Lenis, pas de parallaxe.
+
+**Interdits propres aux guides** :
+- Dégradés, ombres, flou, grain : `guide.css` n'en contient aucun et le script refuse de générer s'il en trouve.
+- Or et émeraude. Les variations du tableau Centris se lisent à la flèche et à la graisse, pas à la couleur.
+- Grilles de cartes identiques, bloc « gros chiffre + petit libellé », icône dans une pastille, pilules (les numéros de route sont des étiquettes rectangulaires au filet).
+- Texte posé sur une photo : toujours dans un bandeau plein (titre de l'ouverture, légende du portrait).
+- `#fff` et `#000`, texte en dégradé, bordure colorée à gauche d'un encadré, `transition: all`, cible tactile sous 44 px, texte sous 14 px.
+- Apparitions au défilement, Tailwind (la remise à zéro est dans `guide.css`), Raleway, Open Sans.
+
+**Mode d'emploi de `refonte-guides.mjs`** (Node, sans dépendance) :
+
+```
+cd remaxcrystal
+node refonte-guides.mjs <entrée.html> <sortie.html> [--marque crystal|dici] [--noindex]
+node refonte-guides.mjs --verifier [fichier.html ...]   # transforme en mémoire, n'écrit rien
+node refonte-guides.mjs --tous                          # les 27 guides, en place, tout ou rien
+```
+
+- La marque se déduit du dossier (`remaxdici/` ou préfixe `guide-dici-`); `--marque` la force. `--noindex` ne sert qu'aux prototypes `*-refonte.html`, que `--tous` ignore.
+- Le script remplace tous les blocs `<style>` par un seul `<style id="guide-refonte">`, change le lien Google Fonts, retire Tailwind, GSAP, ScrollTrigger et Lenis ainsi que le JavaScript qui en dépend, enveloppe chaque section dans `.section-tete` et `.section-corps`, et remplace les styles en ligne des tableaux par des classes.
+- Il ne touche ni au texte, ni aux `id`, ni au JSON-LD, ni aux balises meta, ni au code des calculateurs : chaque passage le vérifie et s'arrête sinon. Une ancre absente ou en double arrête tout, aucun fichier n'est écrit.
+- Il est idempotent : sur un guide déjà refondu, il ne fait que rafraîchir le style depuis `guide.css`. Pour changer le look des 27 guides, on modifie `guide.css` puis on relance `--tous`.
+- Avant `--tous` : lancer `--verifier`, lire la liste (elle signale les guides à 1 ou 2 calculateurs), puis vérifier deux ou trois pages en local.
+
+### Accueils (index.html des deux sites)
+Même système que les guides : `guide.css` (tokens, barre, menu, titres, ouverture, calculateurs, pied de page) suivi de `accueil.css`, injectés par `refonte-guides.mjs` dans le même bloc `<style id="guide-refonte" data-page="accueil">`. Rien n'est écrit à la main dans les pages.
+
+- **Ouverture** : la photo, le titre sur son bandeau, le chapô, puis le sommaire numéroté des villes sur 12 colonnes (5 par rangée pour 15 villes, 4 pour 12). Il remplace la liste de faits des guides.
+- **Calculateurs** : rail de 4 colonnes (titre, texte, liste des trois outils qui ouvrent leur onglet) et outil sur 8 colonnes.
+- **Phrase de l'agence** : une phrase en Montserrat 500, les données en 600 encre, le filet rouge au-dessus. Jamais de blocs de chiffres géants.
+- **Villes** : une ville vedette sur 8 colonnes et deux rangées, sa légende sur le bandeau; les autres en rangées d'empans variés (4/4/4, 7/5, 5/7, 6/6). La mosaïque est dessinée pour 12 ou 15 villes; le script le signale si le compte change.
+- **Courtiers** : bande brume, texte et liste éditoriale sur 6 colonnes, vidéo verticale (4:5) sur 5 colonnes.
+- **Bureaux** : photo, adresse, deux actions (téléphone plein, itinéraire en contour). Trois colonnes pour trois bureaux, deux pour deux.

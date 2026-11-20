@@ -22,9 +22,9 @@
 
   function formatVar(v) {
     if (v === null || v === undefined) return '—';
-    if (v === 0) return '0 %';
+    if (v === 0) return '0\u00a0%';
     const sign = v > 0 ? '+' : '−';
-    return `${sign}${Math.abs(v)} %`;
+    return `${sign}${Math.abs(v)}\u00a0%`;
   }
 
   function trendClass(v) {

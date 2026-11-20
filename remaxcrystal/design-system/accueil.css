@@ -1,0 +1,198 @@
+/* ============================================================
+   accueil.css : page d'accueil des deux sites agence
+   (agence.remaxcrystal.com et agence.remaxdici.com).
+
+   S'ajoute à guide.css, qui fournit les tokens de chaque marque,
+   la remise à zéro, la barre du haut, le menu des villes, les titres,
+   l'ouverture, les calculateurs et le pied de page.
+   Ici : seulement ce qui est propre à l'accueil.
+
+   Injectée par refonte-guides.mjs à la suite de guide.css, dans le même
+   bloc <style id="guide-refonte">. Modifier la source, puis relancer le script.
+   Référence : DESIGN.md, section « Guides de villes (web) ».
+   ============================================================ */
+
+/* ---------- ouverture : le sommaire du territoire à la place des faits ---------- */
+.hero-content {
+  grid-template-areas:
+    "titre titre titre titre titre titre titre titre . . . ."
+    "chapo chapo chapo chapo chapo chapo chapo . . . . ."
+    "villes villes villes villes villes villes villes villes villes villes villes villes";
+}
+.hero-cities-row {
+  grid-area: villes; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--gout);
+  border-top: 2px solid var(--identite); counter-reset: ville;
+}
+/* 12 villes : quatre colonnes de trois, plutôt que cinq colonnes bancales */
+.hero-cities-row:has(> :nth-child(12):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.hero-city-tag {
+  counter-increment: ville; display: flex; align-items: baseline; gap: 12px; min-height: 52px; padding-block: 15px 13px;
+  border-bottom: 1px solid var(--brume); font-weight: 600; line-height: 1.3; color: var(--encre);
+  text-underline-offset: 4px; text-decoration-thickness: 2px; transition: color var(--t) ease;
+}
+.hero-city-tag::before {
+  content: counter(ville, decimal-leading-zero); flex: none; min-width: 1.5em;
+  font-family: var(--affiche); font-weight: 400; font-size: 1.0625rem; line-height: 1; color: var(--identite); font-variant-numeric: tabular-nums;
+}
+.hero-city-tag:hover { color: var(--identite); text-decoration-line: underline; }
+.hero-city-tag:active { color: var(--ardoise); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-cities-row { animation: guide-entree 560ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both; }
+}
+
+/* ---------- calculateurs : le rail porte aussi la liste des trois outils ---------- */
+.quick-tools > .container { grid-template-rows: auto 1fr; row-gap: clamp(24px, 3vw, 36px); }
+.quick-tools-head { grid-row: 1; }
+.quick-tools-grid { grid-column: 1 / span 4; grid-row: 2; align-self: start; border-top: 1px solid var(--creme-25); }
+.tool-calculators { grid-row: 1 / span 2; align-self: start; }
+.quick-tool-card { display: block; padding-block: 16px; border-bottom: 1px solid var(--creme-25); }
+.quick-tool-name { font-size: var(--fs-corps); color: var(--creme); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.quick-tool-desc { margin-top: 4px; font-size: var(--fs-petit); line-height: 1.5; }
+.quick-tool-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 8px;
+  font-size: var(--fs-petit); font-weight: 600; color: var(--creme); transition: color var(--t) ease;
+}
+.quick-tool-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.quick-tool-card:hover .quick-tool-name { text-decoration-line: underline; }
+.quick-tool-card:active .quick-tool-link { color: var(--brume); }
+.quick-tool-card:focus-visible { outline-color: var(--creme); }
+
+/* ---------- la phrase de l'agence ---------- */
+.mission { padding-block: clamp(44px, 6vw, 84px); border-bottom: 1px solid var(--brume); }
+.mission-phrase {
+  max-width: 42ch; font-size: clamp(1.35rem, 2.6vw, 2.1rem); font-weight: 500; line-height: 1.32; letter-spacing: -0.01em;
+  color: var(--ardoise); text-wrap: pretty;
+}
+.mission-phrase::before { content: ""; display: block; width: 36px; height: 3px; margin-bottom: clamp(18px, 2vw, 26px); background: var(--rouge); }
+.mission-phrase strong { font-weight: 600; color: var(--encre); }
+
+/* ---------- sections de l'accueil : la même grille de 12 colonnes ---------- */
+.guides, .value, .social { padding-block: var(--chap); }
+.guides > .container, .value > .container, .social > .container {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gout); row-gap: clamp(32px, 4vw, 56px);
+}
+.guides-header, .social-header { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: end; row-gap: 20px; }
+.guides-header .section-heading, .social-header .section-heading { grid-column: 1 / span 5; }
+.guides-header .section-intro, .social-intro { grid-column: 7 / -1; }
+.social-intro { font-size: var(--fs-chapo); font-weight: 500; line-height: 1.5; color: var(--encre); max-width: 52ch; }
+
+/* ---------- les villes : une grande, puis des rangées d'empans variés ---------- */
+.city-grid { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; row-gap: clamp(28px, 3.4vw, 44px); }
+.city-card { grid-column: span 4; display: flex; flex-direction: column; min-width: 0; }
+.city-card-image { height: clamp(170px, 19vw, 260px); border-radius: var(--r-bloc); overflow: hidden; background: var(--brume); }
+.city-card-image img { width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.city-card-overlay, .city-card-arrow { display: none; }
+.city-card-content { padding-top: 14px; }
+.city-card-name {
+  font-family: var(--affiche); font-weight: 400; font-size: clamp(1.25rem, 1.7vw, 1.5rem); line-height: 1.1;
+  text-transform: uppercase; letter-spacing: 0.005em; color: var(--encre);
+  text-underline-offset: 5px; text-decoration-thickness: 2px; transition: color var(--t) ease;
+}
+.city-card-tagline { margin-top: 6px; max-width: 46ch; font-size: var(--fs-petit); line-height: 1.5; color: var(--ardoise); }
+.city-card:hover .city-card-name { color: var(--identite); text-decoration-line: underline; }
+.city-card:active .city-card-name { color: var(--ardoise); }
+/* la ville vedette : la photo sur deux rangées, la légende sur son bandeau */
+.city-card.featured .city-card-image { flex: 1 1 auto; height: auto; min-height: clamp(260px, 30vw, 420px); }
+.city-card.featured .city-card-content {
+  position: relative; z-index: 1; align-self: flex-start; max-width: min(88%, 34rem);
+  margin: -64px 0 0 clamp(14px, 2vw, 28px); padding: 18px 22px 20px;
+  background: var(--bande); border-radius: var(--r-bloc);
+}
+.city-card.featured .city-card-name { font-size: clamp(1.5rem, 2.4vw, 2.1rem); color: var(--creme); }
+.city-card.featured .city-card-tagline { color: var(--doux-bande); }
+.city-card.featured:hover .city-card-name, .city-card.featured:active .city-card-name { color: var(--creme); }
+@media (min-width: 1081px) {
+  .city-card.featured { grid-column: 1 / span 8; grid-row: span 2; }
+  .city-grid > :nth-child(2), .city-grid > :nth-child(3) { grid-column: 9 / -1; }
+  .city-grid > :nth-child(7), .city-grid > :nth-child(13) { grid-column: span 7; }
+  .city-grid > :nth-child(8), .city-grid > :nth-child(12) { grid-column: span 5; }
+  .city-grid > :nth-child(14), .city-grid > :nth-child(15) { grid-column: span 6; }
+  /* 12 villes : 8 + 2, puis 4 / 4 / 4, 7 / 5, 5 / 7, 6 / 6 */
+  .city-grid:has(> :nth-child(12):last-child) > :nth-child(9) { grid-column: span 5; }
+  .city-grid:has(> :nth-child(12):last-child) > :nth-child(10) { grid-column: span 7; }
+  .city-grid:has(> :nth-child(12):last-child) > :nth-child(11),
+  .city-grid:has(> :nth-child(12):last-child) > :nth-child(12) { grid-column: span 6; }
+}
+
+/* ---------- les courtiers : bande brume, texte 6 colonnes, vidéo verticale 5 colonnes ---------- */
+.value { background: var(--brume); }
+.value .guides-header { display: block; grid-column: 1 / span 9; }
+.value-grid { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: start; row-gap: clamp(32px, 4vw, 48px); }
+.value-text { grid-column: 1 / span 6; }
+.value-text > p { margin-top: 12px; max-width: 58ch; }
+.value-features { margin-top: clamp(28px, 3.4vw, 40px); border-top: 2px solid var(--encre); }
+.value-feature { padding-block: clamp(16px, 2vw, 22px); border-bottom: 1px solid var(--filet-doux); }
+/* h4 chez Crystal, h5 chez D'ici, même dessin */
+.value-feature-text :is(h3, h4, h5) { font-size: var(--fs-corps); font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+.value-feature-text p { margin-top: 4px; max-width: 58ch; font-size: var(--fs-petit); line-height: 1.6; }
+.value-image-wrap { grid-column: 8 / -1; }
+.value-image-wrap video, .value-image-wrap img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-bloc); background: var(--encre);
+}
+.value-image-overlay { display: none; }
+
+/* ---------- les bureaux : la photo, l'adresse, deux actions ---------- */
+.offices-grid { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; row-gap: clamp(32px, 4vw, 48px); }
+.office-card { grid-column: span 4; display: flex; flex-direction: column; min-width: 0; }
+.offices-grid:has(> :nth-child(2):last-child) .office-card { grid-column: span 6; }
+.office-card-media { aspect-ratio: 16 / 10; border-radius: var(--r-bloc); overflow: hidden; background: var(--brume); }
+.office-card-media img { width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.office-card-body { display: flex; flex-direction: column; flex: 1 1 auto; padding-top: 16px; }
+.office-card-addr { margin-top: 6px; font-size: var(--fs-petit); line-height: 1.6; }
+.office-card-addr svg { display: none; }
+.office-card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 18px; }
+.office-pill {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding-inline: 16px;
+  border: 2px solid var(--identite); border-radius: var(--r-ui); font-size: var(--fs-petit); font-weight: 600;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  transition: background-color var(--t) ease, color var(--t) ease, border-color var(--t) ease;
+}
+.office-pill svg { width: 16px; height: 16px; flex: none; }
+.office-pill-phone { background: var(--identite); color: var(--creme); }
+.office-pill-phone:hover { background: var(--encre); border-color: var(--encre); }
+.office-pill-map { color: var(--identite); }
+.office-pill-map:hover { background: var(--identite); color: var(--creme); }
+.office-pill:active { background: var(--ardoise); border-color: var(--ardoise); color: var(--creme); }
+
+/* ---------- pied de page : crédit de la photo d'en-tête ---------- */
+.credit-photo { font-size: var(--fs-petit); line-height: 1.5; }
+.footer .credit-photo a { display: inline; padding-block: 13px; text-decoration-line: underline; }
+
+/* ---------- tablette ---------- */
+@media (max-width: 1080px) {
+  .hero-content {
+    grid-template-areas:
+      "titre titre titre titre titre titre titre titre titre titre . ."
+      "chapo chapo chapo chapo chapo chapo chapo chapo chapo chapo . ."
+      "villes villes villes villes villes villes villes villes villes villes villes villes";
+  }
+  .hero-cities-row, .hero-cities-row:has(> :nth-child(12):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .quick-tools > .container { grid-template-rows: none; }
+  .quick-tools-head, .quick-tools-grid, .tool-calculators { grid-row: auto; }
+  .quick-tools-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gout); }
+  .guides-header .section-heading, .social-header .section-heading { grid-column: 1 / span 6; }
+  .city-card { grid-column: span 6; }
+  .city-card.featured, .city-grid > .city-card:nth-child(even):last-child { grid-column: 1 / -1; }
+  .value .guides-header { grid-column: 1 / -1; }
+  .value-text { grid-column: 1 / span 7; }
+  .value-image-wrap { grid-column: 8 / -1; }
+  .office-card, .offices-grid:has(> :nth-child(2):last-child) .office-card { grid-column: span 6; }
+}
+
+/* ---------- téléphone ---------- */
+@media (max-width: 680px) {
+  .hero-content { grid-template-areas: "titre" "chapo" "villes"; }
+  .hero-cities-row, .hero-cities-row:has(> :nth-child(12):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+  .quick-tools-grid { grid-template-columns: minmax(0, 1fr); }
+  .guides-header .section-heading, .social-header .section-heading, .guides-header .section-intro, .social-intro { grid-column: 1 / -1; }
+  .city-card, .city-card.featured { grid-column: 1 / -1; }
+  .city-card-image { height: 56vw; }
+  .city-card.featured .city-card-image { min-height: 72vw; }
+  .city-card.featured .city-card-content { margin-top: -44px; max-width: 92%; }
+  .value-text, .value-image-wrap { grid-column: 1 / -1; }
+  .office-card, .offices-grid:has(> :nth-child(2):last-child) .office-card { grid-column: 1 / -1; }
+  .office-pill { flex: 1 1 auto; }
+}
+@media (max-width: 340px) {
+  .hero-cities-row, .hero-cities-row:has(> :nth-child(12):last-child) { grid-template-columns: minmax(0, 1fr); }
+}

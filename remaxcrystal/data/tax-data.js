@@ -41,7 +41,7 @@ window.TAX_DATA = {
     poolFee: 0,
     source: 'Ville de Rosemère, Règlement 1016, taxation 2026',
     sourceUrl: 'https://www.ville.rosemere.qc.ca/taxation-et-tarification/',
-    note: 'Addition du taux résiduel, du transport collectif et de la taxe spéciale d\'infrastructures.'
+    note: 'Addition du taux résiduel, du transport collectif et de la taxe spéciale d’infrastructures.'
   },
   lorraine: {
     name: 'Lorraine',
@@ -71,7 +71,7 @@ window.TAX_DATA = {
     poolFee: 45,
     source: 'Ville de Bois-des-Filion, Dépliant « Comprendre le compte de taxes 2026 »',
     sourceUrl: 'https://villebdf.ca/wp-content/uploads/2026/02/BDF_DEPLIANT_TAXES2026.www_.pdf',
-    note: 'Tarifs fixes par logement : eau 308 $ + égouts 242 $ + matières résiduelles 319 $ + fonds infrastructures 75 $. Taxes de secteur possibles selon l\'adresse.'
+    note: 'Tarifs fixes par logement : eau 308 $ + égouts 242 $ + matières résiduelles 319 $ + fonds infrastructures 75 $. Taxes de secteur possibles selon l’adresse.'
   },
   deuxmontagnes: {
     name: 'Deux-Montagnes',
@@ -81,7 +81,7 @@ window.TAX_DATA = {
     poolFee: 35,
     source: 'Ville de Deux-Montagnes, Dépliant taxes 2026',
     sourceUrl: 'https://www.ville.deux-montagnes.qc.ca/storage/app/media/ville-de-deux-montagnes/administration-et-finances/taxes-et-evaluation-fonciere/hr_ville-dm_depliant-taxes_26.pdf',
-    note: 'Taux 0,5735 $ (1-5 log.) + 0,0103 $ usine d\'eau. Tarifs fixes : matières résiduelles 160 $ + eaux usées 163 $ + eau 189 $ + transport 85 $ + déneigement 125 $. Piscine : 25 $ hors-terre / 35 $ creusée.'
+    note: 'Taux 0,5735 $ (1-5 log.) + 0,0103 $ usine d’eau. Tarifs fixes : matières résiduelles 160 $ + eaux usées 163 $ + eau 189 $ + transport 85 $ + déneigement 125 $. Piscine : 25 $ hors-terre / 35 $ creusée.'
   },
   mirabel: {
     name: 'Mirabel',
@@ -91,7 +91,7 @@ window.TAX_DATA = {
     poolFee: 0,
     source: 'Ville de Mirabel, Prévisions budgétaires 2026 (Annexe 1)',
     sourceUrl: 'https://mirabel.ca/taxation',
-    note: 'Taux 1-2 logements : 0,267 $ général + 0,050 $ foncière spéciale (dette) = 0,317 $. Tarif fixe : eau 292 $/logement. Nouveau rôle 2026-2028. Taxes de secteur possibles selon l\'adresse.'
+    note: 'Taux 1-2 logements : 0,267 $ général + 0,050 $ foncière spéciale (dette) = 0,317 $. Tarif fixe : eau 292 $/logement. Nouveau rôle 2026-2028. Taxes de secteur possibles selon l’adresse.'
   },
   oka: {
     name: 'Oka',
@@ -100,9 +100,9 @@ window.TAX_DATA = {
     taxRates: { house: 0.605, condo: 0.605 },
     fixedFees: 280,
     poolFee: 0,
-    source: 'Municipalité d\'Oka, Droit de mutation (règl. 2018-195)',
+    source: 'Municipalité d’Oka, Droit de mutation (règl. 2018-195)',
     sourceUrl: 'https://municipalite.oka.qc.ca/citoyen/droit-de-mutation-oka/',
-    note: 'Barème spécial Oka (règlement 2018-195) : 1,5 % jusqu\'à 630 100 $, 2 % jusqu\'à 1 260 300 $, 3 % au-delà. Confirmé sur la page officielle (janvier 2026).'
+    note: 'Barème spécial Oka (règlement 2018-195) : 1,5 % jusqu’à 630 100 $, 2 % jusqu’à 1 260 300 $, 3 % au-delà. Confirmé sur la page officielle (janvier 2026).'
   },
   pointecalumet: {
     name: 'Pointe-Calumet',
@@ -111,9 +111,8 @@ window.TAX_DATA = {
     taxRates: { house: 0.82, condo: 0.82 },
     fixedFees: 254,
     poolFee: 0,
-    source: 'Municipalité de Pointe-Calumet, page Taxation',
-    sourceUrl: 'https://www.pointe-calumet.ca/services-aux-citoyens/finances/taxation/',
-    note: 'Tranche de 3 % au-delà de 500 000 $ à confirmer auprès de la municipalité (450 473-5930).'
+    hideWelcomeTax: true, // 2026-11-19 : page Taxation de la municipalité en 404, calcul de taxe de bienvenue retiré du guide et de l'accueil (décision de Vincent)
+    source: '', sourceUrl: '', note: ''
   },
   'st-janvier': {
     name: 'Saint-Janvier (Mirabel)',
@@ -123,7 +122,7 @@ window.TAX_DATA = {
     poolFee: 0,
     source: 'Ville de Mirabel, Prévisions budgétaires 2026 (secteur Saint-Janvier)',
     sourceUrl: 'https://mirabel.ca/taxation',
-    note: 'Saint-Janvier est un secteur de Mirabel, même taux 2026 (0,267 $ général + 0,050 $ dette = 0,317 $) et tarif d\'eau 292 $. Taxes de secteur possibles selon l\'adresse.'
+    note: 'Saint-Janvier est un secteur de Mirabel, même taux 2026 (0,267 $ général + 0,050 $ dette = 0,317 $) et tarif d’eau 292 $. Taxes de secteur possibles selon l’adresse.'
   },
   steannedesplaines: {
     name: 'Sainte-Anne-des-Plaines',
