@@ -100,7 +100,8 @@
   /* COURTIER_PAGES:START — généré par build-courtiers.mjs, ne pas éditer */
   const courtierPages = {
     "Catherine Marleau": "courtiers/catherine-marleau.html",
-    "Christine Depatie": "courtiers/christine-depatie.html"
+    "Christine Depatie": "courtiers/christine-depatie.html",
+    "Maxime Beaulac": "courtiers/maxime-beaulac.html"
   };
   /* COURTIER_PAGES:END */
 
