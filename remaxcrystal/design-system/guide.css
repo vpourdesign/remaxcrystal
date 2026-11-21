@@ -362,6 +362,8 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
 .stats-meta > span { display: block; padding-block: 10px; border-bottom: 1px solid var(--brume); }
 .stats-meta strong { color: var(--encre); }
 .stats-table-wrap { grid-column: 1 / -1; overflow-x: auto; }
+/* note « n. d. » ajoutée par data/market-render.js sous le tableau (D'ici) */
+.stats-note-nd { grid-column: 1 / -1; max-width: 72ch; font-size: var(--fs-petit); line-height: 1.5; color: var(--gris-note); }
 .stats-table-caption { position: sticky; left: 0; margin-bottom: 14px; font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; color: var(--encre); }
 .stats-table { width: 100%; min-width: 660px; border-top: 2px solid var(--identite); font-variant-numeric: tabular-nums; }
 .stats-table th { padding: 12px 14px; font-size: var(--fs-petit); font-weight: 600; line-height: 1.3; color: var(--ardoise); vertical-align: bottom; }

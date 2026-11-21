@@ -25,3 +25,6 @@ remaxcrystal/images/bureaux/
 remaxcrystal/images/galas/*
 !remaxcrystal/images/galas/gala-web.mp4
 !remaxcrystal/images/galas/gala-poster.jpg
+
+# Vidéo source de /rondelle (la version web est remaxcrystal/videos/rondelle.mp4)
+remaxcrystal/Remax.mp4
