@@ -105,6 +105,7 @@
     "Kim Di Chiaro": "courtiers/kim-co-courtiers-immobiliers.html",
     "Kimberly Modafferi": "courtiers/kim-co-courtiers-immobiliers.html",
     "Maxime Beaulac": "courtiers/maxime-beaulac.html",
+    "Sara Auclair": "courtiers/sara-auclair.html",
     "Steeve Landry Courtier Immobilier Résidentiel & Commercial": "courtiers/steeve-landry-courtier-immobilier-residentiel-commercial.html"
   };
   /* COURTIER_PAGES:END */

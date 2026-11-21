@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "genereLe": "2026-11-20T15:05:10.498Z",
+  "slug": "sara-auclair",
+  "identite": {
+    "type": "solo",
+    "nomComplet": "Sara Auclair",
+    "membresEquipe": [],
+    "titre": "Courtier immobilier résidentiel et commercial",
+    "permisOaciq": "F1286",
+    "anneeDebut": 2010,
+    "langues": [
+      "Français",
+      "Anglais"
+    ]
+  },
+  "territoire": {
+    "villePrincipale": "Boisbriand",
+    "villesSecondaires": [
+      "Saint-Eustache",
+      "Saint-Janvier (Mirabel)"
+    ],
+    "quartiers": "",
+    "lienTerritoire": "J'habite a Boisbriand depuis plus de 20 ans , j'y ai eu 3 maisons et élevé mes 3 enfants !",
+    "faitsLocaux": "Les sentiers au bord de l'eau sont magnifiques. Tout est proche , Faubourg Boisbriand et +++"
+  },
+  "servicesEtSpecialites": {
+    "clientele": "Les deux",
+    "specialites": [
+      "Unifamiliale",
+      "Condo",
+      "55+ / retraités"
+    ],
+    "services": [
+      "Évaluation gratuite",
+      "Mise en marché complète",
+      "Photo / vidéo professionnelle",
+      "Home staging",
+      "Accompagnement acheteur",
+      "Analyse comparative de marché",
+      "Réseau d'entrepreneurs et notaires"
+    ],
+    "servicesAutre": "",
+    "plusValues": [
+      "Je suis à l'écoute des besoins de mes clients",
+      "Service personnalisé, j'accompagne vraiment mes clients",
+      "Analyse exhaustive du marché et explication clair et facile à comprendre"
+    ]
+  },
+  "preuveSociale": {
+    "transactions": "",
+    "prixEtReconnaissances": "Temple de la renommée REMAX, club 100% or",
+    "temoignages": [],
+    "liens": {
+      "googleBusiness": "https://share.google/Xs8zdPIlyGoORkulL",
+      "centris": "https://www.centris.ca/fr/courtier-immobilier~sara-auclair~re-max-crystal/f1286",
+      "facebook": "https://www.facebook.com/profile.php?id=100063628986231",
+      "instagram": "https://www.instagram.com/saraauclair.remax/",
+      "linkedin": "",
+      "tiktok": "https://www.tiktok.com/@saraauclair0?lang=fr-CA",
+      "youtube": ""
+    }
+  },
+  "contenuBrut": {
+    "presentation": "Je suis une maman de 3 grands et merveilleux enfants et une grand-maman de 51 ans, je fais de l'immobilier depuis 2010 , ce que j'adore de mon métier: être moi même , être mon propre boss, faire pleins de choses/taches différentes, travailler en collaboration avec d'autres supers courtiers, ma liberté! J'ai eu plein de passion dans ma vie et elles me suivent encore , cuisiner, chanter, la décoration intérieur, le Hyrox ... J'habite boisbriand depuis plus de 20 ans et j'adore la rive-nord , on y trouve tout ce dont on a besoin , les restos, les cafés , de bonnes écoles et pleins d'endroit ou l'on peut profiter de la nature. Je suis une femme d'action  proche de ses sentiments et je vois toujours le verre à moitié plein. Ma joie de vivre est contagieuse, je suis toujours de bonne humeur!!! Etre avec moi = se sentir vu :).",
+    "momentMarquant": "Durant la pandémie dans le brou ha ha des offres multiples, j'ai chercher une maison avec des 1er acheteurs. Nous avons visites au moins 45 maisons , fait 11 offres d'achat ( avec bien sur les 100K de plus que le prix demandé et sans inspection - car le beau-père était Contracteur - ) mais rien n'y a fait... Et un beau dimanche ils sont aller se promener dans un quartier de maison neuve et boom ils ont trouvé leur perle sans moi. J'aurais pu être facher mais non, on avait tout essayé. Donc je leur ai dit félicitations et depuis , j'ai fait plus de 10 transactions grâce à eux. On ne sait pas ou nos efforts seront récompensés , en voila la preuve .",
+    "faq": [
+      {
+        "question": "Est ce qu'on peut negocier le prix ?",
+        "reponse": "Tout dépend de la motivation du vendeur et de l'action sur la maison . nous ne sommes plus dans des marchés en ébullition mais une maison bien inscrite recevra souvent beaucoup d'attention des acheteurs. Il y a des possibilités de négociation mais cela dépend de la situation. Raison de plus d'être bien accompagné."
+      },
+      {
+        "question": "Quel est le meilleur moment pour vendre?",
+        "reponse": "Toute l'année ! avant les gros mois étaient fevrier mars et avril, maintenant les maisons se vendent tout au long de l'année , même dans le temps des fêtes. Dans les dernières années, il y a eu en moyenne plus de maisons vendues en décembre qu'en janvier dans nos secteurs."
+      },
+      {
+        "question": "Seras tu la au notaire?",
+        "reponse": "Oui bien sur! Je serai a vos côtés du début à la fin de la transaction . Je donne mon 100% à mes clients . Un service personnalisé c'est très important pour moi!"
+      }
+    ]
+  },
+  "contact": {
+    "cellulaire": "514-241-2075",
+    "courriel": "saraauclair@videotron.ca",
+    "bureau": {
+      "id": "sainte-therese",
+      "ville": "Sainte-Thérèse",
+      "adresse": "228 boul. du Curé-Labelle",
+      "codePostal": "J7E 2X7",
+      "tel": "450 430-4207"
+    },
+    "ctaPrincipal": "appel"
+  },
+  "medias": {
+    "dossierCible": "images/courtiers/sara-auclair",
+    "portrait": {
+      "fichier": "images/courtiers/sara-auclair/portrait.jpg",
+      "nomOriginal": "490178145_1233380002126288_1185376334453125589_n.jpg"
+    },
+    "photoEquipe": null,
+    "photosLibres": [
+      {
+        "fichier": "images/courtiers/sara-auclair/photo-1.jpg",
+        "nomOriginal": "IMG_8461.jpeg"
+      },
+      {
+        "fichier": "images/courtiers/sara-auclair/photo-2.jpg",
+        "nomOriginal": "IMG_7958.jpeg"
+      },
+      {
+        "fichier": "images/courtiers/sara-auclair/photo-3.jpg",
+        "nomOriginal": "IMG_7860.jpeg"
+      },
+      {
+        "fichier": "images/courtiers/sara-auclair/photo-4.jpg",
+        "nomOriginal": "IMG_2868.jpeg"
+      }
+    ],
+    "video": "",
+    "consentement": true
+  },
+  "resumeMarkdown": "# Fiche courtier — Sara Auclair\n\n**Type :** Courtier solo\n**Titre :** Courtier immobilier résidentiel et commercial · Permis OACIQ F1286\n**Expérience :** depuis 2010 (~16 ans) · Langues : Français, Anglais\n\n## Territoire\n- Ville principale : **Boisbriand**\n- Villes secondaires : Saint-Eustache, Saint-Janvier (Mirabel)\n- Quartiers : —\n- Lien au territoire : J'habite a Boisbriand depuis plus de 20 ans , j'y ai eu 3 maisons et élevé mes 3 enfants !\n- Faits locaux : Les sentiers au bord de l'eau sont magnifiques. Tout est proche , Faubourg Boisbriand et +++\n\n## Services\n- Clientèle : Les deux\n- Spécialités : Unifamiliale, Condo, 55+ / retraités\n- Services : Évaluation gratuite, Mise en marché complète, Photo / vidéo professionnelle, Home staging, Accompagnement acheteur, Analyse comparative de marché, Réseau d'entrepreneurs et notaires\n- Plus-values : Je suis à l'écoute des besoins de mes clients | Service personnalisé, j'accompagne vraiment mes clients | Analyse exhaustive du marché et explication clair et facile à comprendre\n\n## Preuve sociale\n- Transactions : —\n- Prix : Temple de la renommée REMAX, club 100% or\n- Témoignages : 0 (consentement : oui)\n\n## Contenu brut\n### Présentation\nJe suis une maman de 3 grands et merveilleux enfants et une grand-maman de 51 ans, je fais de l'immobilier depuis 2010 , ce que j'adore de mon métier: être moi même , être mon propre boss, faire pleins de choses/taches différentes, travailler en collaboration avec d'autres supers courtiers, ma liberté! J'ai eu plein de passion dans ma vie et elles me suivent encore , cuisiner, chanter, la décoration intérieur, le Hyrox ... J'habite boisbriand depuis plus de 20 ans et j'adore la rive-nord , on y trouve tout ce dont on a besoin , les restos, les cafés , de bonnes écoles et pleins d'endroit ou l'on peut profiter de la nature. Je suis une femme d'action  proche de ses sentiments et je vois toujours le verre à moitié plein. Ma joie de vivre est contagieuse, je suis toujours de bonne humeur!!! Etre avec moi = se sentir vu :).\n### Moment marquant\nDurant la pandémie dans le brou ha ha des offres multiples, j'ai chercher une maison avec des 1er acheteurs. Nous avons visites au moins 45 maisons , fait 11 offres d'achat ( avec bien sur les 100K de plus que le prix demandé et sans inspection - car le beau-père était Contracteur - ) mais rien n'y a fait... Et un beau dimanche ils sont aller se promener dans un quartier de maison neuve et boom ils ont trouvé leur perle sans moi. J'aurais pu être facher mais non, on avait tout essayé. Donc je leur ai dit félicitations et depuis , j'ai fait plus de 10 transactions grâce à eux. On ne sait pas ou nos efforts seront récompensés , en voila la preuve .\n### FAQ\n- **Q :** Est ce qu'on peut negocier le prix ?\n  **R :** Tout dépend de la motivation du vendeur et de l'action sur la maison . nous ne sommes plus dans des marchés en ébullition mais une maison bien inscrite recevra souvent beaucoup d'attention des acheteurs. Il y a des possibilités de négociation mais cela dépend de la situation. Raison de plus d'être bien accompagné.\n- **Q :** Quel est le meilleur moment pour vendre?\n  **R :** Toute l'année ! avant les gros mois étaient fevrier mars et avril, maintenant les maisons se vendent tout au long de l'année , même dans le temps des fêtes. Dans les dernières années, il y a eu en moyenne plus de maisons vendues en décembre qu'en janvier dans nos secteurs.\n- **Q :** Seras tu la au notaire?\n  **R :** Oui bien sur! Je serai a vos côtés du début à la fin de la transaction . Je donne mon 100% à mes clients . Un service personnalisé c'est très important pour moi!\n\n## Contact\n- Cell : 514-241-2075 · Courriel : saraauclair@videotron.ca\n- Bureau : Sainte-Thérèse, 228 boul. du Curé-Labelle\n- CTA principal : appel\n\n## Médias\n- Portrait : images/courtiers/sara-auclair/portrait.jpg\n- Photos libres : 4\n- Vidéo : —",
+  "agence": "crystal",
+  "recuLe": "2026-11-20T15:05:11.634Z"
+}

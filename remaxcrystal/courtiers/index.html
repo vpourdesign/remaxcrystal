@@ -352,6 +352,8 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
 .stats-meta > span { display: block; padding-block: 10px; border-bottom: 1px solid var(--brume); }
 .stats-meta strong { color: var(--encre); }
 .stats-table-wrap { grid-column: 1 / -1; overflow-x: auto; }
+/* note « n. d. » ajoutée par data/market-render.js sous le tableau (D'ici) */
+.stats-note-nd { grid-column: 1 / -1; max-width: 72ch; font-size: var(--fs-petit); line-height: 1.5; color: var(--gris-note); }
 .stats-table-caption { position: sticky; left: 0; margin-bottom: 14px; font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; color: var(--encre); }
 .stats-table { width: 100%; min-width: 660px; border-top: 2px solid var(--identite); font-variant-numeric: tabular-nums; }
 .stats-table th { padding: 12px 14px; font-size: var(--fs-petit); font-weight: 600; line-height: 1.3; color: var(--ardoise); vertical-align: bottom; }
@@ -661,8 +663,8 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
       <h1>Nos courtiers, ville par ville</h1>
       <p class="annuaire-chapo">Chaque courtier RE/MAX Crystal a sa page : son territoire, sa façon de travailler, ses résultats et les réponses aux questions qu'on lui pose vraiment. Filtrez par ville pour trouver le vôtre.</p>
       <dl class="annuaire-faits">
-        <div class="annuaire-fait"><dt>Courtiers</dt><dd>5</dd></div>
-        <div class="annuaire-fait"><dt>Villes couvertes</dt><dd>7</dd></div>
+        <div class="annuaire-fait"><dt>Courtiers</dt><dd>6</dd></div>
+        <div class="annuaire-fait"><dt>Villes couvertes</dt><dd>9</dd></div>
       </dl>
     </div>
   </header>
@@ -672,10 +674,12 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
       <span class="filtres-label">Ville</span>
       <button type="button" class="fpill" data-ville="*" aria-pressed="true">Toutes les villes</button>
         <button type="button" class="fpill" data-ville="Blainville" aria-pressed="false">Blainville</button>
+        <button type="button" class="fpill" data-ville="Boisbriand" aria-pressed="false">Boisbriand</button>
         <button type="button" class="fpill" data-ville="Lorraine" aria-pressed="false">Lorraine</button>
         <button type="button" class="fpill" data-ville="Mirabel" aria-pressed="false">Mirabel</button>
         <button type="button" class="fpill" data-ville="Rosemère" aria-pressed="false">Rosemère</button>
         <button type="button" class="fpill" data-ville="Saint-Eustache" aria-pressed="false">Saint-Eustache</button>
+        <button type="button" class="fpill" data-ville="Saint-Janvier (Mirabel)" aria-pressed="false">Saint-Janvier (Mirabel)</button>
         <button type="button" class="fpill" data-ville="Sainte-Marthe-sur-le-Lac" aria-pressed="false">Sainte-Marthe-sur-le-Lac</button>
         <button type="button" class="fpill" data-ville="Sainte-Thérèse" aria-pressed="false">Sainte-Thérèse</button>
     </div>
@@ -720,6 +724,16 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
           <p class="bcard-title">Courtier immobilier résidentiel et commercial</p>
           <p class="bcard-meta">Lorraine · Rosemère · Sainte-Thérèse</p>
           <p class="bcard-exp">10 ans de courtage</p>
+          <span class="bcard-link">Voir sa page →</span>
+        </div>
+      </a>
+      <a class="bcard" href="/courtiers/sara-auclair.html" data-villes="Boisbriand|Saint-Eustache|Saint-Janvier (Mirabel)">
+        <div class="bcard-photo"><img src="../images/courtiers/sara-auclair/portrait.jpg" alt="Sara Auclair, courtier immobilier à Boisbriand" loading="lazy"></div>
+        <div class="bcard-body">
+          <h2>Sara Auclair</h2>
+          <p class="bcard-title">Courtier immobilier résidentiel et commercial</p>
+          <p class="bcard-meta">Boisbriand · Saint-Eustache · Saint-Janvier (Mirabel)</p>
+          <p class="bcard-exp">16 ans de courtage</p>
           <span class="bcard-link">Voir sa page →</span>
         </div>
       </a>
