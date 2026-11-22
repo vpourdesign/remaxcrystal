@@ -352,6 +352,8 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
 .stats-meta > span { display: block; padding-block: 10px; border-bottom: 1px solid var(--brume); }
 .stats-meta strong { color: var(--encre); }
 .stats-table-wrap { grid-column: 1 / -1; overflow-x: auto; }
+/* note « n. d. » ajoutée par data/market-render.js sous le tableau (D'ici) */
+.stats-note-nd { grid-column: 1 / -1; max-width: 72ch; font-size: var(--fs-petit); line-height: 1.5; color: var(--gris-note); }
 .stats-table-caption { position: sticky; left: 0; margin-bottom: 14px; font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; color: var(--encre); }
 .stats-table { width: 100%; min-width: 660px; border-top: 2px solid var(--identite); font-variant-numeric: tabular-nums; }
 .stats-table th { padding: 12px 14px; font-size: var(--fs-petit); font-weight: 600; line-height: 1.3; color: var(--ardoise); vertical-align: bottom; }
@@ -662,8 +664,8 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
       <h1>Nos courtiers, ville par ville</h1>
       <p class="annuaire-chapo">Chaque courtier RE/MAX D&#39;ici a sa page : son territoire, sa façon de travailler, ses résultats et les réponses aux questions qu'on lui pose vraiment. Filtrez par ville pour trouver le vôtre.</p>
       <dl class="annuaire-faits">
-        <div class="annuaire-fait"><dt>Courtiers</dt><dd>3</dd></div>
-        <div class="annuaire-fait"><dt>Villes couvertes</dt><dd>4</dd></div>
+        <div class="annuaire-fait"><dt>Courtiers</dt><dd>4</dd></div>
+        <div class="annuaire-fait"><dt>Villes couvertes</dt><dd>6</dd></div>
       </dl>
     </div>
   </header>
@@ -672,8 +674,10 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
     <div class="container filtres" role="group" aria-label="Filtrer par ville">
       <span class="filtres-label">Ville</span>
       <button type="button" class="fpill" data-ville="*" aria-pressed="true">Toutes les villes</button>
+        <button type="button" class="fpill" data-ville="Joliette" aria-pressed="false">Joliette</button>
         <button type="button" class="fpill" data-ville="Mascouche" aria-pressed="false">Mascouche</button>
         <button type="button" class="fpill" data-ville="Repentigny" aria-pressed="false">Repentigny</button>
+        <button type="button" class="fpill" data-ville="Saint-Lin–Laurentides" aria-pressed="false">Saint-Lin–Laurentides</button>
         <button type="button" class="fpill" data-ville="Saint-Roch-de-l&#39;Achigan" aria-pressed="false">Saint-Roch-de-l&#39;Achigan</button>
         <button type="button" class="fpill" data-ville="Terrebonne" aria-pressed="false">Terrebonne</button>
     </div>
@@ -681,6 +685,16 @@ h3, h4 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.3; letter-spa
 
   <main class="container annuaire">
     <div class="grille-courtiers" id="grid">
+      <a class="bcard" href="/courtiers/groupe-morel.html" data-villes="Saint-Lin–Laurentides|Joliette|Saint-Roch-de-l&#39;Achigan">
+        <div class="bcard-photo"><img src="../images/courtiers/groupe-morel/portrait.jpg" alt="Groupe Morel, courtier immobilier à Saint-Lin–Laurentides" loading="lazy"></div>
+        <div class="bcard-body">
+          <h2>Groupe Morel</h2>
+          <p class="bcard-title">Courtier immobilier résidentiel et commercial</p>
+          <p class="bcard-meta">Saint-Lin–Laurentides · Joliette · Saint-Roch-de-l&#39;Achigan</p>
+          <p class="bcard-exp">15 ans de courtage</p>
+          <span class="bcard-link">Voir sa page →</span>
+        </div>
+      </a>
       <a class="bcard" href="/courtiers/lacas-pere-fils.html" data-villes="Terrebonne|Mascouche|Saint-Roch-de-l&#39;Achigan">
         <div class="bcard-photo"><img src="../images/courtiers/lacas-pere-fils/portrait.jpg" alt="Lacas Père/Fils, courtier immobilier à Terrebonne" loading="lazy"></div>
         <div class="bcard-body">
